@@ -1,5 +1,7 @@
 import os
 import re
+import hmac
+
 from io import BytesIO
 from datetime import datetime, timezone
 
@@ -14,7 +16,9 @@ from flask import (
     send_file,
     flash,
 )
+
 from flask_sqlalchemy import SQLAlchemy
+
 from openpyxl import Workbook
 from openpyxl.styles import (
     Font,
@@ -24,6 +28,8 @@ from openpyxl.styles import (
     Side,
 )
 from openpyxl.utils import get_column_letter
+
+from translations import TRANSLATIONS
 
 
 # =========================================================
@@ -67,16 +73,13 @@ db = SQLAlchemy(app)
 # =========================================================
 
 class Guest(db.Model):
+
     __tablename__ = "guests"
 
     id = db.Column(
         db.Integer,
         primary_key=True
     )
-
-    # -----------------------------------------------------
-    # MAIN GUEST
-    # -----------------------------------------------------
 
     first_name = db.Column(
         db.String(100),
@@ -110,16 +113,17 @@ class Guest(db.Model):
         index=True
     )
 
-    # solo / companion
+    # Оставляем для совместимости с существующей PostgreSQL таблицей.
+    # Новые регистрации всегда будут solo.
     attendance_type = db.Column(
         db.String(30),
         nullable=False,
         default="solo"
     )
 
-    # -----------------------------------------------------
-    # COMPANION
-    # -----------------------------------------------------
+    # Старые companion-поля оставляем в модели,
+    # чтобы не ломать существующую БД.
+    # Новые регистрации их не используют.
 
     companion_first_name = db.Column(
         db.String(100),
@@ -151,10 +155,6 @@ class Guest(db.Model):
         nullable=True
     )
 
-    # -----------------------------------------------------
-    # OTHER
-    # -----------------------------------------------------
-
     special_notes = db.Column(
         db.Text,
         nullable=True
@@ -174,16 +174,134 @@ class Guest(db.Model):
 
 
 # =========================================================
+# LANGUAGES
+# =========================================================
+
+SUPPORTED_LANGUAGES = (
+    "hy",
+    "ru",
+    "en",
+)
+
+
+def normalize_language(lang):
+
+    if lang not in SUPPORTED_LANGUAGES:
+        return "hy"
+
+    return lang
+
+
+# =========================================================
+# VALIDATION TRANSLATIONS
+# =========================================================
+
+ERROR_MESSAGES = {
+
+    "hy": {
+        "first_name":
+            "Խնդրում ենք լրացնել անունը։",
+
+        "last_name":
+            "Խնդրում ենք լրացնել ազգանունը։",
+
+        "company":
+            "Խնդրում ենք լրացնել ընկերության / "
+            "կազմակերպության անվանումը։",
+
+        "phone":
+            "Խնդրում ենք լրացնել ճիշտ հեռախոսահամար։",
+
+        "email":
+            "Խնդրում ենք լրացնել ճիշտ էլեկտրոնային հասցե։",
+
+        "consent":
+            "Անհրաժեշտ է համաձայնել տվյալների "
+            "օգտագործման պայմաններին։",
+
+        "already":
+            "Այս հեռախոսահամարով կամ էլեկտրոնային "
+            "հասցեով գրանցում արդեն առկա է։",
+    },
+
+
+    "ru": {
+        "first_name":
+            "Пожалуйста, укажите имя.",
+
+        "last_name":
+            "Пожалуйста, укажите фамилию.",
+
+        "company":
+            "Пожалуйста, укажите компанию / организацию.",
+
+        "phone":
+            "Пожалуйста, укажите корректный номер телефона.",
+
+        "email":
+            "Пожалуйста, укажите корректный адрес электронной почты.",
+
+        "consent":
+            "Необходимо согласиться с условиями "
+            "использования предоставленных данных.",
+
+        "already":
+            "Регистрация с таким номером телефона "
+            "или электронной почтой уже существует.",
+    },
+
+
+    "en": {
+        "first_name":
+            "Please enter your first name.",
+
+        "last_name":
+            "Please enter your last name.",
+
+        "company":
+            "Please enter your company / organization.",
+
+        "phone":
+            "Please enter a valid phone number.",
+
+        "email":
+            "Please enter a valid email address.",
+
+        "consent":
+            "You must agree to the data usage terms.",
+
+        "already":
+            "A registration with this phone number "
+            "or email address already exists.",
+    },
+}
+
+
+# =========================================================
 # HELPERS
 # =========================================================
 
+def get_translation(lang):
+
+    lang = normalize_language(lang)
+
+    return TRANSLATIONS[lang]
+
+
 def admin_required():
-    if not session.get("admin_logged_in"):
+
+    if not session.get(
+            "admin_logged_in"
+    ):
         abort(403)
 
 
 def normalize_phone(phone: str) -> str:
-    phone = (phone or "").strip()
+
+    phone = (
+            phone
+            or ""
+    ).strip()
 
     phone = re.sub(
         r"[^\d+]",
@@ -192,12 +310,17 @@ def normalize_phone(phone: str) -> str:
     )
 
     if phone.startswith("00"):
-        phone = "+" + phone[2:]
+
+        phone = (
+                "+"
+                + phone[2:]
+        )
 
     return phone
 
 
 def valid_phone(phone: str) -> bool:
+
     if not phone:
         return False
 
@@ -207,13 +330,22 @@ def valid_phone(phone: str) -> bool:
         phone
     )
 
-    return len(digits) >= 8
+    return (
+            len(digits)
+            >= 8
+    )
 
 
 def valid_email(email: str) -> bool:
-    email = (email or "").strip()
 
-    pattern = r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
+    email = (
+            email
+            or ""
+    ).strip()
+
+    pattern = (
+        r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
+    )
 
     return bool(
         re.match(
@@ -227,10 +359,36 @@ def valid_email(email: str) -> bool:
 # HOME
 # =========================================================
 
-@app.route("/", methods=["GET"])
-def index():
+@app.route("/")
+def home():
+
+    return redirect(
+        url_for(
+            "index",
+            lang="hy"
+        )
+    )
+
+
+# =========================================================
+# LANGUAGE HOME
+# =========================================================
+
+@app.route("/<lang>")
+def index(lang):
+
+    lang = normalize_language(
+        lang
+    )
+
+    t = get_translation(
+        lang
+    )
+
     return render_template(
-        "index.html"
+        "index.html",
+        t=t,
+        lang=lang
     )
 
 
@@ -239,14 +397,26 @@ def index():
 # =========================================================
 
 @app.route(
-    "/register",
+    "/<lang>/register",
     methods=["POST"]
 )
-def register():
+def register(lang):
 
-    # -----------------------------------------------------
-    # MAIN GUEST
-    # -----------------------------------------------------
+    lang = normalize_language(
+        lang
+    )
+
+    t = get_translation(
+        lang
+    )
+
+    messages = ERROR_MESSAGES[
+        lang
+    ]
+
+    # =====================================================
+    # GET FORM DATA
+    # =====================================================
 
     first_name = request.form.get(
         "first_name",
@@ -280,310 +450,189 @@ def register():
         ""
     ).strip().lower()
 
-    attendance_type = request.form.get(
-        "attendance_type",
-        "solo"
-    )
-
-    # -----------------------------------------------------
-    # COMPANION
-    # -----------------------------------------------------
-
-    companion_first_name = request.form.get(
-        "companion_first_name",
-        ""
-    ).strip()
-
-    companion_last_name = request.form.get(
-        "companion_last_name",
-        ""
-    ).strip()
-
-    companion_company = request.form.get(
-        "companion_company",
-        ""
-    ).strip()
-
-    companion_position = request.form.get(
-        "companion_position",
-        ""
-    ).strip()
-
-    companion_phone = normalize_phone(
-        request.form.get(
-            "companion_phone",
-            ""
-        )
-    )
-
-    companion_email = request.form.get(
-        "companion_email",
-        ""
-    ).strip().lower()
-
-    # -----------------------------------------------------
-    # OTHER
-    # -----------------------------------------------------
-
     special_notes = request.form.get(
         "special_notes",
         ""
     ).strip()
 
     consent = (
-            request.form.get("consent")
+            request.form.get(
+                "consent"
+            )
             == "on"
     )
 
+
+    # =====================================================
+    # VALIDATION
+    # =====================================================
+
     errors = []
 
-    # =====================================================
-    # MAIN GUEST VALIDATION
-    # =====================================================
-
     if not first_name:
+
         errors.append(
-            "Խնդրում ենք լրացնել անունը։"
+            messages[
+                "first_name"
+            ]
         )
+
 
     if not last_name:
+
         errors.append(
-            "Խնդրում ենք լրացնել ազգանունը։"
+            messages[
+                "last_name"
+            ]
         )
+
 
     if not company:
+
         errors.append(
-            "Խնդրում ենք լրացնել ընկերության / "
-            "կազմակերպության անվանումը։"
+            messages[
+                "company"
+            ]
         )
 
-    if not valid_phone(phone):
+
+    if not valid_phone(
+            phone
+    ):
+
         errors.append(
-            "Խնդրում ենք լրացնել ճիշտ հեռախոսահամար։"
+            messages[
+                "phone"
+            ]
         )
 
-    if not valid_email(email):
+
+    if not valid_email(
+            email
+    ):
+
         errors.append(
-            "Խնդրում ենք լրացնել ճիշտ էլեկտրոնային հասցե։"
+            messages[
+                "email"
+            ]
         )
+
 
     if not consent:
+
         errors.append(
-            "Անհրաժեշտ է համաձայնել տվյալների "
-            "օգտագործման պայմաններին։"
+            messages[
+                "consent"
+            ]
         )
 
-    # =====================================================
-    # ATTENDANCE TYPE
-    # =====================================================
-
-    if attendance_type not in (
-            "solo",
-            "companion"
-    ):
-        attendance_type = "solo"
 
     # =====================================================
-    # COMPANION VALIDATION
-    # =====================================================
-
-    if attendance_type == "companion":
-
-        if not companion_first_name:
-            errors.append(
-                "Խնդրում ենք լրացնել ուղեկցող անձի անունը։"
-            )
-
-        if not companion_last_name:
-            errors.append(
-                "Խնդրում ենք լրացնել ուղեկցող անձի ազգանունը։"
-            )
-
-        if not valid_phone(
-                companion_phone
-        ):
-            errors.append(
-                "Խնդրում ենք լրացնել ուղեկցող անձի "
-                "ճիշտ հեռախոսահամարը։"
-            )
-
-        if (
-                companion_email
-                and
-                not valid_email(
-                    companion_email
-                )
-        ):
-            errors.append(
-                "Ուղեկցող անձի էլեկտրոնային հասցեն սխալ է։"
-            )
-
-    # =====================================================
-    # ERRORS
+    # VALIDATION ERROR
     # =====================================================
 
     if errors:
+
         return render_template(
             "index.html",
+
+            t=t,
+            lang=lang,
+
             errors=errors,
-            form_data=request.form
+
+            form_data=
+            request.form
+
         ), 400
 
-    # =====================================================
-    # REMOVE COMPANION DATA IF SOLO
-    # =====================================================
-
-    if attendance_type == "solo":
-
-        companion_first_name = None
-        companion_last_name = None
-        companion_company = None
-        companion_position = None
-        companion_phone = None
-        companion_email = None
 
     # =====================================================
-    # MAIN GUEST DUPLICATE CHECK
+    # DUPLICATE CHECK
     # =====================================================
 
-    existing_guest = Guest.query.filter(
-        db.or_(
-            Guest.email == email,
-            Guest.phone == phone
+    existing_guest = (
+        Guest.query
+        .filter(
+            db.or_(
+                Guest.email
+                == email,
+
+                Guest.phone
+                == phone
+            )
         )
-    ).first()
+        .first()
+    )
+
 
     if existing_guest:
+
         return redirect(
             url_for(
-                "already_registered"
+                "already_registered",
+                lang=lang
             )
         )
 
-    # =====================================================
-    # COMPANION DUPLICATE CHECK
-    # =====================================================
-
-    if attendance_type == "companion":
-
-        filters = [
-            Guest.phone == companion_phone,
-            Guest.companion_phone == companion_phone,
-            ]
-
-        if companion_email:
-            filters.extend([
-                Guest.email == companion_email,
-                Guest.companion_email == companion_email,
-                ])
-
-        existing_companion = Guest.query.filter(
-            db.or_(*filters)
-        ).first()
-
-        if existing_companion:
-
-            errors.append(
-                "Ուղեկցող անձը արդեն գրանցված է համակարգում։"
-            )
-
-            return render_template(
-                "index.html",
-                errors=errors,
-                form_data=request.form
-            ), 400
 
     # =====================================================
-    # PREVENT SAME PERSON AS COMPANION
-    # =====================================================
-
-    if (
-            attendance_type == "companion"
-            and companion_phone == phone
-    ):
-        errors.append(
-            "Հիմնական մասնակցի և ուղեկցող անձի "
-            "հեռախոսահամարները չեն կարող նույնը լինել։"
-        )
-
-        return render_template(
-            "index.html",
-            errors=errors,
-            form_data=request.form
-        ), 400
-
-    if (
-            attendance_type == "companion"
-            and companion_email
-            and companion_email == email
-    ):
-        errors.append(
-            "Հիմնական մասնակցի և ուղեկցող անձի "
-            "էլեկտրոնային հասցեները չեն կարող նույնը լինել։"
-        )
-
-        return render_template(
-            "index.html",
-            errors=errors,
-            form_data=request.form
-        ), 400
-
-    # =====================================================
-    # CREATE GUEST
+    # CREATE REGISTRATION
     # =====================================================
 
     guest = Guest(
 
-        # Main guest
-        first_name=first_name,
-        last_name=last_name,
-        company=company,
-        position=position or None,
-        phone=phone,
-        email=email,
+        first_name=
+        first_name,
 
-        # Attendance
-        attendance_type=attendance_type,
+        last_name=
+        last_name,
 
-        # Companion
-        companion_first_name=(
-                companion_first_name
+        company=
+        company,
+
+        position=(
+                position
                 or None
         ),
 
-        companion_last_name=(
-                companion_last_name
-                or None
-        ),
+        phone=
+        phone,
 
-        companion_company=(
-                companion_company
-                or None
-        ),
+        email=
+        email,
 
-        companion_position=(
-                companion_position
-                or None
-        ),
+        # Companion больше не используется
+        attendance_type=
+        "solo",
 
-        companion_phone=(
-                companion_phone
-                or None
-        ),
+        companion_first_name=
+        None,
 
-        companion_email=(
-                companion_email
-                or None
-        ),
+        companion_last_name=
+        None,
 
-        # Other
+        companion_company=
+        None,
+
+        companion_position=
+        None,
+
+        companion_phone=
+        None,
+
+        companion_email=
+        None,
+
         special_notes=(
                 special_notes
                 or None
         ),
 
-        consent=consent,
+        consent=
+        consent,
     )
+
 
     db.session.add(
         guest
@@ -591,9 +640,15 @@ def register():
 
     db.session.commit()
 
+
+    # =====================================================
+    # SUCCESS
+    # =====================================================
+
     return redirect(
         url_for(
-            "thank_you"
+            "thank_you",
+            lang=lang
         )
     )
 
@@ -602,10 +657,23 @@ def register():
 # THANK YOU
 # =========================================================
 
-@app.route("/thank-you")
-def thank_you():
+@app.route(
+    "/<lang>/thank-you"
+)
+def thank_you(lang):
+
+    lang = normalize_language(
+        lang
+    )
+
+    t = get_translation(
+        lang
+    )
+
     return render_template(
-        "thank_you.html"
+        "thank_you.html",
+        t=t,
+        lang=lang
     )
 
 
@@ -614,11 +682,22 @@ def thank_you():
 # =========================================================
 
 @app.route(
-    "/already-registered"
+    "/<lang>/already-registered"
 )
-def already_registered():
+def already_registered(lang):
+
+    lang = normalize_language(
+        lang
+    )
+
+    t = get_translation(
+        lang
+    )
+
     return render_template(
-        "already_registered.html"
+        "already_registered.html",
+        t=t,
+        lang=lang
     )
 
 
@@ -636,21 +715,28 @@ def already_registered():
 def admin_login():
 
     if request.method == "GET":
+
         return render_template(
             "admin_login.html"
         )
+
 
     password = request.form.get(
         "password",
         ""
     )
 
+
     admin_password = os.getenv(
         "ADMIN_PASSWORD",
         "change-me"
     )
 
-    if password != admin_password:
+
+    if not hmac.compare_digest(
+            password,
+            admin_password
+    ):
 
         flash(
             "Неверный пароль",
@@ -661,9 +747,11 @@ def admin_login():
             "admin_login.html"
         ), 403
 
+
     session[
         "admin_logged_in"
     ] = True
+
 
     return redirect(
         url_for(
@@ -676,7 +764,9 @@ def admin_login():
 # ADMIN LOGOUT
 # =========================================================
 
-@app.route("/admin/logout")
+@app.route(
+    "/admin/logout"
+)
 def admin_logout():
 
     session.clear()
@@ -692,44 +782,58 @@ def admin_logout():
 # ADMIN PANEL
 # =========================================================
 
-@app.route("/admin")
+@app.route(
+    "/admin"
+)
 def admin_guests():
 
     if not session.get(
             "admin_logged_in"
     ):
+
         return redirect(
             url_for(
                 "admin_login"
             )
         )
 
-    guests = Guest.query.order_by(
-        Guest.created_at.desc()
-    ).all()
+
+    guests = (
+        Guest.query
+        .order_by(
+            Guest.created_at.desc()
+        )
+        .all()
+    )
+
 
     registration_count = len(
         guests
     )
 
-    companions = sum(
-        1
-        for guest in guests
-        if guest.attendance_type
-        == "companion"
-    )
+
+    # Companion больше не используется
+    companions = 0
 
     total_people = (
-            registration_count
-            + companions
+        registration_count
     )
+
 
     return render_template(
         "admin.html",
-        guests=guests,
-        registration_count=registration_count,
-        companions=companions,
-        total_people=total_people,
+
+        guests=
+        guests,
+
+        registration_count=
+        registration_count,
+
+        companions=
+        companions,
+
+        total_people=
+        total_people,
     )
 
 
@@ -744,9 +848,15 @@ def export_excel():
 
     admin_required()
 
-    guests = Guest.query.order_by(
-        Guest.created_at.asc()
-    ).all()
+
+    guests = (
+        Guest.query
+        .order_by(
+            Guest.created_at.asc()
+        )
+        .all()
+    )
+
 
     wb = Workbook()
 
@@ -756,37 +866,39 @@ def export_excel():
         "DUSON Registrations"
     )
 
+
     # =====================================================
     # HEADERS
     # =====================================================
 
     headers = [
+
         "ID",
 
         "Անուն",
+
         "Ազգանուն",
+
         "Ընկերություն / կազմակերպություն",
+
         "Պաշտոն",
+
         "Հեռախոսահամար",
+
         "Էլեկտրոնային հասցե",
 
-        "Ուղեկցող անձ",
-
-        "Ուղեկցող անձի անուն",
-        "Ուղեկցող անձի ազգանուն",
-        "Ուղեկցող անձի ընկերություն",
-        "Ուղեկցող անձի պաշտոն",
-        "Ուղեկցող անձի հեռախոս",
-        "Ուղեկցող անձի էլ․ հասցե",
-
         "Հատուկ նշումներ",
+
         "Համաձայնություն",
+
         "Գրանցման ամսաթիվ",
     ]
+
 
     ws.append(
         headers
     )
+
 
     # =====================================================
     # HEADER STYLE
@@ -797,15 +909,18 @@ def export_excel():
         fgColor="07101F"
     )
 
+
     header_font = Font(
         color="FFFFFF",
         bold=True
     )
 
+
     thin = Side(
         style="thin",
         color="D8DCE3"
     )
+
 
     for cell in ws[1]:
 
@@ -818,17 +933,30 @@ def export_excel():
         )
 
         cell.alignment = Alignment(
-            horizontal="center",
-            vertical="center",
-            wrap_text=True
+            horizontal=
+            "center",
+
+            vertical=
+            "center",
+
+            wrap_text=
+            True
         )
 
         cell.border = Border(
-            left=thin,
-            right=thin,
-            top=thin,
-            bottom=thin
+            left=
+            thin,
+
+            right=
+            thin,
+
+            top=
+            thin,
+
+            bottom=
+            thin
         )
+
 
     # =====================================================
     # DATA
@@ -840,11 +968,13 @@ def export_excel():
             guest.created_at
         )
 
+
         if (
                 created
                 and
                 created.tzinfo
         ):
+
             created = (
                 created
                 .astimezone(
@@ -855,59 +985,26 @@ def export_excel():
                 )
             )
 
+
         ws.append([
 
             guest.id,
 
-            # Main guest
             guest.first_name,
+
             guest.last_name,
+
             guest.company,
-            guest.position or "",
+
+            guest.position
+            or "",
+
             guest.phone,
+
             guest.email,
 
-            # Has companion
-            (
-                "Այո"
-                if guest.attendance_type
-                   == "companion"
-                else "Ոչ"
-            ),
-
-            # Companion
-            (
-                    guest.companion_first_name
-                    or ""
-            ),
-
-            (
-                    guest.companion_last_name
-                    or ""
-            ),
-
-            (
-                    guest.companion_company
-                    or ""
-            ),
-
-            (
-                    guest.companion_position
-                    or ""
-            ),
-
-            (
-                    guest.companion_phone
-                    or ""
-            ),
-
-            (
-                    guest.companion_email
-                    or ""
-            ),
-
-            # Other
-            guest.special_notes or "",
+            guest.special_notes
+            or "",
 
             (
                 "Այո"
@@ -924,33 +1021,34 @@ def export_excel():
             ),
             ])
 
+
     # =====================================================
     # COLUMN WIDTHS
     # =====================================================
 
     widths = [
-        8,   # ID
 
-        18,  # first name
-        18,  # last name
-        30,  # company
-        24,  # position
-        20,  # phone
-        32,  # email
+        8,
 
-        18,  # companion yes/no
+        18,
 
-        20,  # companion first
-        20,  # companion last
-        30,  # companion company
-        24,  # companion position
-        20,  # companion phone
-        32,  # companion email
+        18,
 
-        42,  # notes
-        18,  # consent
-        22,  # created
+        30,
+
+        24,
+
+        20,
+
+        32,
+
+        42,
+
+        18,
+
+        22,
     ]
+
 
     for index, width in enumerate(
             widths,
@@ -963,8 +1061,9 @@ def export_excel():
             )
         ].width = width
 
+
     # =====================================================
-    # CELL STYLE
+    # CELLS
     # =====================================================
 
     for row in ws.iter_rows(
@@ -974,16 +1073,27 @@ def export_excel():
         for cell in row:
 
             cell.alignment = Alignment(
-                vertical="top",
-                wrap_text=True
+                vertical=
+                "top",
+
+                wrap_text=
+                True
             )
 
             cell.border = Border(
-                left=thin,
-                right=thin,
-                top=thin,
-                bottom=thin
+                left=
+                thin,
+
+                right=
+                thin,
+
+                top=
+                thin,
+
+                bottom=
+                thin
             )
+
 
     ws.freeze_panes = "A2"
 
@@ -991,19 +1101,23 @@ def export_excel():
         ws.dimensions
     )
 
+
     # =====================================================
     # SAVE
     # =====================================================
 
     output = BytesIO()
 
+
     wb.save(
         output
     )
 
+
     output.seek(
         0
     )
+
 
     filename = (
         "DUSON_registrations_"
@@ -1011,10 +1125,16 @@ def export_excel():
         ".xlsx"
     )
 
+
     return send_file(
+
         output,
+
         as_attachment=True,
-        download_name=filename,
+
+        download_name=
+        filename,
+
         mimetype=(
             "application/"
             "vnd.openxmlformats-officedocument."
@@ -1033,24 +1153,29 @@ def export_excel():
 def health():
 
     return {
-        "status": "ok"
+        "status":
+            "ok"
     }
 
 
 # =========================================================
-# LOCAL DEVELOPMENT ONLY
+# LOCAL DEVELOPMENT
 # =========================================================
 
 if __name__ == "__main__":
 
     app.run(
-        host="0.0.0.0",
+
+        host=
+        "0.0.0.0",
+
         port=int(
             os.getenv(
                 "PORT",
                 "5000"
             )
         ),
+
         debug=(
                 os.getenv(
                     "FLASK_DEBUG",
