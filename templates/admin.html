@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+
+{% block title %}DUSON — Registrations{% endblock %}
+
+{% block body %}
+
+<main class="admin-page">
+
+    <header class="admin-header">
+
+        <div>
+            <div class="admin-brand">
+                DUSON
+            </div>
+
+            <h1>
+                Event registrations
+            </h1>
+
+            <p>
+                10 September 2026 / Yerevan
+            </p>
+        </div>
+
+
+        <div class="admin-actions">
+
+            <a
+                    href="{{ url_for('export_excel') }}"
+                    class="admin-primary"
+            >
+                Download Excel
+            </a>
+
+            <a
+                    href="{{ url_for('admin_logout') }}"
+                    class="admin-secondary"
+            >
+                Logout
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ============================================== -->
+    <!-- STATISTICS -->
+    <!-- ============================================== -->
+
+    <section class="admin-stats">
+
+        <article>
+
+            <span>
+                Registrations
+            </span>
+
+            <strong>
+                {{ registration_count }}
+            </strong>
+
+        </article>
+
+
+        <article>
+
+            <span>
+                With companion
+            </span>
+
+            <strong>
+                {{ companions }}
+            </strong>
+
+        </article>
+
+
+        <article>
+
+            <span>
+                Total people
+            </span>
+
+            <strong>
+                {{ total_people }}
+            </strong>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- ============================================== -->
+    <!-- TABLE -->
+    <!-- ============================================== -->
+
+    <section class="admin-table-card">
+
+        <div class="table-scroll">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        Անուն
+                    </th>
+
+                    <th>
+                        Ազգանուն
+                    </th>
+
+                    <th>
+                        Ընկերություն
+                    </th>
+
+                    <th>
+                        Պաշտոն
+                    </th>
+
+                    <th>
+                        Հեռախոս
+                    </th>
+
+                    <th>
+                        Email
+                    </th>
+
+                    <th>
+                        Ուղեկցող
+                    </th>
+
+
+                    <!-- COMPANION -->
+
+                    <th>
+                        Ուղեկցող անձի անուն
+                    </th>
+
+                    <th>
+                        Ուղեկցող անձի ազգանուն
+                    </th>
+
+                    <th>
+                        Ուղեկցող ընկերություն
+                    </th>
+
+                    <th>
+                        Ուղեկցող պաշտոն
+                    </th>
+
+                    <th>
+                        Ուղեկցող հեռախոս
+                    </th>
+
+                    <th>
+                        Ուղեկցող Email
+                    </th>
+
+
+                    <th>
+                        Նշումներ
+                    </th>
+
+                    <th>
+                        Գրանցում
+                    </th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                {% for guest in guests %}
+
+                <tr>
+
+                    <!-- MAIN GUEST -->
+
+                    <td>
+                        {{ guest.id }}
+                    </td>
+
+                    <td>
+                        {{ guest.first_name }}
+                    </td>
+
+                    <td>
+                        {{ guest.last_name }}
+                    </td>
+
+                    <td>
+                        {{ guest.company }}
+                    </td>
+
+                    <td>
+                        {{ guest.position or '' }}
+                    </td>
+
+                    <td>
+                        {{ guest.phone }}
+                    </td>
+
+                    <td>
+                        {{ guest.email }}
+                    </td>
+
+
+                    <!-- HAS COMPANION -->
+
+                    <td>
+
+                        {% if guest.attendance_type == 'companion' %}
+
+                        Այո
+
+                        {% else %}
+
+                        Ոչ
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- COMPANION FIRST NAME -->
+
+                    <td>
+                        {{ guest.companion_first_name or '' }}
+                    </td>
+
+
+                    <!-- COMPANION LAST NAME -->
+
+                    <td>
+                        {{ guest.companion_last_name or '' }}
+                    </td>
+
+
+                    <!-- COMPANION COMPANY -->
+
+                    <td>
+                        {{ guest.companion_company or '' }}
+                    </td>
+
+
+                    <!-- COMPANION POSITION -->
+
+                    <td>
+                        {{ guest.companion_position or '' }}
+                    </td>
+
+
+                    <!-- COMPANION PHONE -->
+
+                    <td>
+                        {{ guest.companion_phone or '' }}
+                    </td>
+
+
+                    <!-- COMPANION EMAIL -->
+
+                    <td>
+                        {{ guest.companion_email or '' }}
+                    </td>
+
+
+                    <!-- NOTES -->
+
+                    <td>
+                        {{ guest.special_notes or '' }}
+                    </td>
+
+
+                    <!-- DATE -->
+
+                    <td>
+                        {{ guest.created_at.strftime('%d.%m.%Y %H:%M') }}
+                    </td>
+
+                </tr>
+
+
+                {% else %}
+
+                <tr>
+
+                    <td
+                            colspan="16"
+                            class="empty-table"
+                    >
+                        Пока регистраций нет.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+{% endblock %}

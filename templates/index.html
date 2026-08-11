@@ -1,0 +1,737 @@
+{% extends "base.html" %}
+
+{% block title %}DUSON — Closed Event Invitation{% endblock %}
+
+{% block body %}
+
+
+<!-- ===================================================== -->
+<!-- HERO -->
+<!-- ===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-inner">
+
+        <div class="hero-copy">
+
+            <div class="logo-badge" aria-label="DUSON">
+
+                <span class="logo-mark">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+
+                <span class="logo-text">
+                    DUSON
+                </span>
+
+            </div>
+
+
+            <p class="hero-kicker">
+                PRIVATE PRESENTATION
+            </p>
+
+
+            <h1>
+                Closed Event<br>
+                Invitation
+            </h1>
+
+
+            <p class="hero-subtitle">
+                INTRODUCING A NEW MODEL SERIES
+            </p>
+
+
+            <div class="hero-meta">
+
+                <span>
+                    10.09.2026
+                </span>
+
+                <span>
+                    18:00
+                </span>
+
+                <span>
+                    YEREVAN
+                </span>
+
+            </div>
+
+
+            <a
+                    href="#registration"
+                    class="hero-cta"
+            >
+
+                Գրանցվել
+
+                <span>
+                    ↓
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ===================================================== -->
+<!-- INTRO -->
+<!-- ===================================================== -->
+
+<section class="intro-section">
+
+    <div class="container">
+
+        <div class="section-label">
+            DUSON / 2026
+        </div>
+
+
+        <div class="intro-grid">
+
+            <div>
+
+                <h2>
+                    Ներքնակների նոր մոդելային շարքի
+                    փակ ներկայացում
+                </h2>
+
+            </div>
+
+
+            <div class="intro-copy">
+
+                <p>
+                    Դուսոնը հրավիրում է Ձեզ ներկա գտնվելու
+                    ներքնակների նոր մոդելային շարքի փակ ներկայացմանը։
+                </p>
+
+                <p>
+                    Միջոցառման ընթացքում առաջիններից կծանոթանաք
+                    Դուսոնի նոր մոդելներին, արտադրական նոր լուծումներին
+                    և հարմարավետության նոր մոտեցումներին։
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ===================================================== -->
+<!-- REGISTRATION -->
+<!-- ===================================================== -->
+
+<section
+        class="registration-section"
+        id="registration"
+>
+
+    <div class="container registration-grid">
+
+
+        <!-- ============================================= -->
+        <!-- LEFT SIDE -->
+        <!-- ============================================= -->
+
+        <div class="registration-info">
+
+            <div class="section-label">
+                REGISTRATION
+            </div>
+
+
+            <h2>
+                Մասնակցության<br>
+                գրանցում
+            </h2>
+
+
+            <p>
+                Խնդրում ենք լրացնել ստորև ներկայացված տվյալները։
+                Ձեր տվյալները հաջողությամբ ստանալուց հետո մեր թիմը
+                կկապվի Ձեզ հետ մասնակցությունը հաստատելու համար։
+            </p>
+
+
+            <div class="event-info-list">
+
+                <div>
+
+                    <span>
+                        Date
+                    </span>
+
+                    <strong>
+                        10 September 2026
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Time
+                    </span>
+
+                    <strong>
+                        18:00
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Location
+                    </span>
+
+                    <strong>
+                        Yerevan
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ============================================= -->
+        <!-- FORM CARD -->
+        <!-- ============================================= -->
+
+        <div class="form-card">
+
+
+            <!-- ========================================= -->
+            <!-- ERRORS -->
+            <!-- ========================================= -->
+
+            {% if errors %}
+
+            <div class="errors">
+
+                {% for error in errors %}
+
+                <div>
+                    {{ error }}
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% endif %}
+
+
+
+            <!-- ========================================= -->
+            <!-- FORM -->
+            <!-- ========================================= -->
+
+            <form
+                    method="post"
+                    action="{{ url_for('register') }}"
+                    class="registration-form"
+            >
+
+
+                <!-- ===================================== -->
+                <!-- MAIN GUEST -->
+                <!-- ===================================== -->
+
+                <div class="form-grid">
+
+
+                    <!-- FIRST NAME -->
+
+                    <label class="field">
+
+                        <span>
+                            Անուն *
+                        </span>
+
+                        <input
+                                type="text"
+                                name="first_name"
+                                required
+                                maxlength="100"
+                                placeholder="Մուտքագրեք անունը"
+                                value="{{ form_data.get('first_name','') if form_data else '' }}"
+                        >
+
+                    </label>
+
+
+
+                    <!-- LAST NAME -->
+
+                    <label class="field">
+
+                        <span>
+                            Ազգանուն *
+                        </span>
+
+                        <input
+                                type="text"
+                                name="last_name"
+                                required
+                                maxlength="100"
+                                placeholder="Մուտքագրեք ազգանունը"
+                                value="{{ form_data.get('last_name','') if form_data else '' }}"
+                        >
+
+                    </label>
+
+
+
+                    <!-- COMPANY -->
+
+                    <label class="field full">
+
+                        <span>
+                            Ընկերություն / կազմակերպություն *
+                        </span>
+
+                        <input
+                                type="text"
+                                name="company"
+                                required
+                                maxlength="200"
+                                placeholder="Ընկերության անվանում"
+                                value="{{ form_data.get('company','') if form_data else '' }}"
+                        >
+
+                    </label>
+
+
+
+                    <!-- POSITION -->
+
+                    <label class="field">
+
+                        <span>
+                            Պաշտոն
+                        </span>
+
+                        <input
+                                type="text"
+                                name="position"
+                                maxlength="200"
+                                placeholder="Ձեր պաշտոնը"
+                                value="{{ form_data.get('position','') if form_data else '' }}"
+                        >
+
+                    </label>
+
+
+
+                    <!-- PHONE -->
+
+                    <label class="field">
+
+                        <span>
+                            Հեռախոսահամար *
+                        </span>
+
+                        <input
+                                type="tel"
+                                name="phone"
+                                required
+                                maxlength="50"
+                                placeholder="+374 __ __ __ __"
+                                value="{{ form_data.get('phone','') if form_data else '' }}"
+                        >
+
+                    </label>
+
+
+
+                    <!-- EMAIL -->
+
+                    <label class="field full">
+
+                        <span>
+                            Էլեկտրոնային հասցե *
+                        </span>
+
+                        <input
+                                type="email"
+                                name="email"
+                                required
+                                maxlength="200"
+                                placeholder="email@example.com"
+                                value="{{ form_data.get('email','') if form_data else '' }}"
+                        >
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- ===================================== -->
+                <!-- COMPANION -->
+                <!-- ===================================== -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+                        Ուղեկցող անձ
+                    </div>
+
+
+                    <div class="radio-group">
+
+
+                        <!-- SOLO -->
+
+                        <label class="radio-option">
+
+                            <input
+                                    type="radio"
+                                    name="attendance_type"
+                                    value="solo"
+
+                                    {% if not form_data or form_data.get('attendance_type', 'solo') == 'solo' %}
+                            checked
+                            {% endif %}
+                            >
+
+                            <span class="radio-ui"></span>
+
+                            <span>
+                                Մասնակցելու եմ միայնակ
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- WITH COMPANION -->
+
+                        <label class="radio-option">
+
+                            <input
+                                    type="radio"
+                                    name="attendance_type"
+                                    value="companion"
+
+                                    {% if form_data and form_data.get('attendance_type') == 'companion' %}
+                            checked
+                            {% endif %}
+                            >
+
+                            <span class="radio-ui"></span>
+
+                            <span>
+                                Մասնակցելու եմ ուղեկցող անձի հետ
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- ================================= -->
+                    <!-- COMPANION FORM -->
+                    <!-- ================================= -->
+
+                    <div class="companion-form">
+
+
+                        <div class="companion-heading">
+
+                            <span>
+                                Ուղեկցող անձի տվյալներ
+                            </span>
+
+                            <small>
+                                COMPANION DETAILS
+                            </small>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- COMPANION FIRST NAME -->
+
+                            <label class="field">
+
+                                <span>
+                                    Անուն *
+                                </span>
+
+                                <input
+                                        type="text"
+                                        name="companion_first_name"
+                                        maxlength="100"
+                                        placeholder="Մուտքագրեք անունը"
+                                        value="{{ form_data.get('companion_first_name','') if form_data else '' }}"
+                                >
+
+                            </label>
+
+
+
+                            <!-- COMPANION LAST NAME -->
+
+                            <label class="field">
+
+                                <span>
+                                    Ազգանուն *
+                                </span>
+
+                                <input
+                                        type="text"
+                                        name="companion_last_name"
+                                        maxlength="100"
+                                        placeholder="Մուտքագրեք ազգանունը"
+                                        value="{{ form_data.get('companion_last_name','') if form_data else '' }}"
+                                >
+
+                            </label>
+
+
+
+                            <!-- COMPANION COMPANY -->
+
+                            <label class="field full">
+
+                                <span>
+                                    Ընկերություն / կազմակերպություն
+                                </span>
+
+                                <input
+                                        type="text"
+                                        name="companion_company"
+                                        maxlength="200"
+                                        placeholder="Ընկերության անվանում"
+                                        value="{{ form_data.get('companion_company','') if form_data else '' }}"
+                                >
+
+                            </label>
+
+
+
+                            <!-- COMPANION POSITION -->
+
+                            <label class="field">
+
+                                <span>
+                                    Պաշտոն
+                                </span>
+
+                                <input
+                                        type="text"
+                                        name="companion_position"
+                                        maxlength="200"
+                                        placeholder="Պաշտոն"
+                                        value="{{ form_data.get('companion_position','') if form_data else '' }}"
+                                >
+
+                            </label>
+
+
+
+                            <!-- COMPANION PHONE -->
+
+                            <label class="field">
+
+                                <span>
+                                    Հեռախոսահամար *
+                                </span>
+
+                                <input
+                                        type="tel"
+                                        name="companion_phone"
+                                        maxlength="50"
+                                        placeholder="+374 __ __ __ __"
+                                        value="{{ form_data.get('companion_phone','') if form_data else '' }}"
+                                >
+
+                            </label>
+
+
+
+                            <!-- COMPANION EMAIL -->
+
+                            <label class="field full">
+
+                                <span>
+                                    Էլեկտրոնային հասցե
+                                </span>
+
+                                <input
+                                        type="email"
+                                        name="companion_email"
+                                        maxlength="200"
+                                        placeholder="email@example.com"
+                                        value="{{ form_data.get('companion_email','') if form_data else '' }}"
+                                >
+
+                            </label>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ===================================== -->
+                <!-- SPECIAL NOTES -->
+                <!-- ===================================== -->
+
+                <div class="form-section">
+
+                    <label class="field">
+
+                        <span>
+                            Հատուկ նշումներ
+                        </span>
+
+                        <textarea
+                                name="special_notes"
+                                rows="4"
+                                maxlength="2000"
+                                placeholder="Սննդային սահմանափակումներ, հատուկ պահանջներ կամ այլ տեղեկատվություն"
+                        >{{ form_data.get('special_notes','') if form_data else '' }}</textarea>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- ===================================== -->
+                <!-- CONSENT -->
+                <!-- ===================================== -->
+
+                <label class="consent">
+
+                    <input
+                            type="checkbox"
+                            name="consent"
+                            required
+
+                            {% if form_data and form_data.get('consent') %}
+                    checked
+                    {% endif %}
+                    >
+
+                    <span class="check-ui"></span>
+
+
+                    <span class="consent-text">
+
+                        Համաձայն եմ, որ տրամադրված տվյալներն օգտագործվեն
+                        միջոցառման կազմակերպման, մասնակցության հաստատման
+                        և միջոցառման հետ կապված հաղորդակցության նպատակով։
+
+                    </span>
+
+                </label>
+
+
+
+                <!-- ===================================== -->
+                <!-- SUBMIT -->
+                <!-- ===================================== -->
+
+                <button
+                        type="submit"
+                        class="submit-button"
+                >
+
+                    <span>
+                        Գրանցվել և ստանալ անձնական հրավիրատոմսը
+                    </span>
+
+                    <span class="button-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+
+
+            <!-- ========================================= -->
+            <!-- NOTE -->
+            <!-- ========================================= -->
+
+            <div class="important-note">
+
+                <strong>
+                    Կարևոր
+                </strong>
+
+                <p>
+                    Միջոցառումը փակ ձևաչափով է։
+                    Գրանցումը դեռևս չի համարվում վերջնական
+                    մասնակցության հաստատում։
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container footer-inner">
+
+        <div class="footer-brand">
+            DUSON
+        </div>
+
+        <div class="footer-copy">
+            Կյանքը սիրելու համար
+        </div>
+
+        <div class="footer-year">
+            © 2026 DUSON
+        </div>
+
+    </div>
+
+</footer>
+
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Շնորհակալություն — DUSON{% endblock %}
+
+{% block body %}
+
+<section class="result-page">
+
+    <div class="result-bg"></div>
+
+    <div class="result-card">
+
+        <div class="logo-badge dark-logo">
+            <span class="logo-mark">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+
+            <span class="logo-text">
+                DUSON
+            </span>
+        </div>
+
+        <div class="result-icon">
+            ✓
+        </div>
+
+        <p class="result-kicker">
+            REGISTRATION RECEIVED
+        </p>
+
+        <h1>
+            Շնորհակալություն<br>
+            գրանցման համար
+        </h1>
+
+        <p class="result-text">
+            Ձեր տվյալները հաջողությամբ ստացվել են։
+        </p>
+
+        <p class="result-text muted-result">
+            Մեր թիմը կհաստատի Ձեր մասնակցությունը, որից հետո
+            Դուք կստանաք անձնական հրավիրատոմսը և միջոցառման
+            վերաբերյալ լրացուցիչ տեղեկատվությունը։
+        </p>
+
+        <div class="result-meta">
+            <span>10.09.2026</span>
+            <span>18:00</span>
+            <span>YEREVAN</span>
+        </div>
+
+        <a
+            class="back-link"
+            href="{{ url_for('index') }}"
+        >
+            ← Վերադառնալ գլխավոր էջ
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

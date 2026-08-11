@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}DUSON{% endblock %}
+
+{% block body %}
+
+<section class="result-page">
+
+    <div class="result-bg"></div>
+
+    <div class="result-card">
+
+        <div class="logo-badge dark-logo">
+            <span class="logo-mark">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+
+            <span class="logo-text">
+                DUSON
+            </span>
+        </div>
+
+        <p class="result-kicker">
+            REGISTRATION
+        </p>
+
+        <h1>
+            Դուք արդեն<br>
+            գրանցված եք
+        </h1>
+
+        <p class="result-text">
+            Այս հեռախոսահամարով կամ էլեկտրոնային հասցեով
+            գրանցում արդեն առկա է համակարգում։
+        </p>
+
+        <a
+            class="back-link"
+            href="{{ url_for('index') }}"
+        >
+            ← Վերադառնալ
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

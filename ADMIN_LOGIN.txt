@@ -1,0 +1,10 @@
+DUSON Invitation Admin
+
+URL:
+http://localhost:8000/admin
+
+Admin password:
+DusonAdmin
+
+IMPORTANT:
+Change ADMIN_PASSWORD in .env before production deployment.
