@@ -17,9 +17,9 @@ TRANSLATIONS = {
 
         # EVENT
         "date": "Ամսաթիվ",
-        "date_value": "10 սեպտեմբերի 2026",
+        "date_value": "09 սեպտեմբերի 2026",
         "time": "Ժամ",
-        "time_value": "18:00",
+        "time_value": "18:30",
         "location": "Վայր",
         "location_value": "Երևան",
 

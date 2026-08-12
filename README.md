@@ -167,3 +167,6 @@ duson_user
 The password is stored in `.env`.
 
 Do not expose PostgreSQL port 5432 publicly. The database is only available to the Docker network.
+
+
+
