@@ -1,61 +1,108 @@
 {% extends "base.html" %}
 
-{% block title %}Շնորհակալություն — DUSON{% endblock %}
+{% block title %}{{ t.thank_you_title }} — DUSON{% endblock %}
 
 {% block body %}
 
+<!-- ===================================================== -->
+<!-- THANK YOU PAGE -->
+<!-- ===================================================== -->
+
 <section class="result-page">
 
+    <!-- BACKGROUND -->
     <div class="result-bg"></div>
 
+
+    <!-- RESULT CARD -->
     <div class="result-card">
 
-        <div class="logo-badge dark-logo">
-            <span class="logo-mark">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
 
-            <span class="logo-text">
-                DUSON
-            </span>
+        <!-- ================================================= -->
+        <!-- LOGO -->
+        <!-- ================================================= -->
+
+        <div class="result-logo">
+
+            <img
+                    src="{{ url_for('static', filename='images/duson-logo.png') }}"
+                    alt="DUSON"
+            >
+
         </div>
+
+
+        <!-- ================================================= -->
+        <!-- SUCCESS ICON -->
+        <!-- ================================================= -->
 
         <div class="result-icon">
             ✓
         </div>
 
+
+        <!-- ================================================= -->
+        <!-- KICKER -->
+        <!-- ================================================= -->
+
         <p class="result-kicker">
-            REGISTRATION RECEIVED
+            {{ t.registration_received }}
         </p>
+
+
+        <!-- ================================================= -->
+        <!-- TITLE -->
+        <!-- ================================================= -->
 
         <h1>
-            Շնորհակալություն<br>
-            գրանցման համար
+            {{ t.thank_you_title }}
         </h1>
 
+
+        <!-- ================================================= -->
+        <!-- TEXT -->
+        <!-- ================================================= -->
+
         <p class="result-text">
-            Ձեր տվյալները հաջողությամբ ստացվել են։
+            {{ t.thank_you_text }}
         </p>
+
 
         <p class="result-text muted-result">
-            Մեր թիմը կհաստատի Ձեր մասնակցությունը, որից հետո
-            Դուք կստանաք անձնական հրավիրատոմսը և միջոցառման
-            վերաբերյալ լրացուցիչ տեղեկատվությունը։
+            {{ t.thank_you_details }}
         </p>
 
+
+        <!-- ================================================= -->
+        <!-- EVENT META -->
+        <!-- ================================================= -->
+
         <div class="result-meta">
-            <span>10.09.2026</span>
-            <span>18:00</span>
-            <span>YEREVAN</span>
+
+            <span>
+                {{ t.date_value }}
+            </span>
+
+            <span>
+                {{ t.time_value }}
+            </span>
+
+            <span>
+                {{ t.location_value }}
+            </span>
+
         </div>
 
+
+        <!-- ================================================= -->
+        <!-- BACK LINK -->
+        <!-- ================================================= -->
+
         <a
-            class="back-link"
-            href="{{ url_for('index') }}"
+                class="back-link"
+                href="{{ url_for('index', lang=lang) }}"
         >
-            ← Վերադառնալ գլխավոր էջ
+            ← {{ t.back_home }}
         </a>
 
     </div>

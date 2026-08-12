@@ -1802,3 +1802,35 @@ tbody tr:hover {
     }
 
 }
+
+/* ===================================================== */
+/* RESULT PAGE LOGO */
+/* ===================================================== */
+
+.result-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.result-logo img {
+    display: block;
+
+    width: 190px;
+    max-width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+@media (max-width: 720px) {
+
+    .result-logo img {
+        width: 155px;
+    }
+
+}

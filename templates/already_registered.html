@@ -1,46 +1,73 @@
 {% extends "base.html" %}
 
-{% block title %}DUSON{% endblock %}
+{% block title %}{{ t.already_registered }} — DUSON{% endblock %}
 
 {% block body %}
 
+<!-- ===================================================== -->
+<!-- ALREADY REGISTERED PAGE -->
+<!-- ===================================================== -->
+
 <section class="result-page">
 
+    <!-- BACKGROUND -->
     <div class="result-bg"></div>
 
+
+    <!-- RESULT CARD -->
     <div class="result-card">
 
-        <div class="logo-badge dark-logo">
-            <span class="logo-mark">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
 
-            <span class="logo-text">
-                DUSON
-            </span>
+        <!-- ================================================= -->
+        <!-- LOGO -->
+        <!-- ================================================= -->
+
+        <div class="result-logo">
+
+            <img
+                    src="{{ url_for('static', filename='images/duson-logo.png') }}"
+                    alt="DUSON"
+            >
+
         </div>
 
+
+        <!-- ================================================= -->
+        <!-- KICKER -->
+        <!-- ================================================= -->
+
         <p class="result-kicker">
-            REGISTRATION
+            {{ t.registration_label }}
         </p>
+
+
+        <!-- ================================================= -->
+        <!-- TITLE -->
+        <!-- ================================================= -->
 
         <h1>
-            Դուք արդեն<br>
-            գրանցված եք
+            {{ t.already_registered }}
         </h1>
 
-        <p class="result-text">
-            Այս հեռախոսահամարով կամ էլեկտրոնային հասցեով
-            գրանցում արդեն առկա է համակարգում։
+
+        <!-- ================================================= -->
+        <!-- TEXT -->
+        <!-- ================================================= -->
+
+        <p class="result-text muted-result">
+            {{ t.already_registered_text }}
         </p>
 
+
+        <!-- ================================================= -->
+        <!-- BACK LINK -->
+        <!-- ================================================= -->
+
         <a
-            class="back-link"
-            href="{{ url_for('index') }}"
+                class="back-link"
+                href="{{ url_for('index', lang=lang) }}"
         >
-            ← Վերադառնալ
+            ← {{ t.back_home }}
         </a>
 
     </div>
