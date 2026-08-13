@@ -2617,3 +2617,87 @@ tbody tr:hover {
     }
 
 }
+
+.hero-brand {
+    position: absolute;
+    top: 38px;
+    left: 0;
+    z-index: 20;
+
+    display: inline-flex;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.hero-brand img {
+    display: block;
+    width: 110px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ===================================================== */
+/* RESULT PAGE LOGO */
+/* ===================================================== */
+
+.result-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.result-logo img {
+    display: block;
+    width: 280px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ===================================================== */
+/* FOOTER LOGO */
+/* ===================================================== */
+
+.footer-brand {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.footer-brand img {
+    display: block;
+    width: 54px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ===================================================== */
+/* MOBILE */
+/* ===================================================== */
+
+@media (max-width: 720px) {
+
+    .hero-brand {
+        top: 24px;
+    }
+
+    .hero-brand img {
+        width: 54px;
+    }
+
+    .result-logo img {
+        width: 220px;
+    }
+
+    .footer-brand img {
+        width: 110px;
+    }
+}
