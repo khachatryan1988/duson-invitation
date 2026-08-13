@@ -105,8 +105,8 @@ textarea {
     min-height: 820px;
 
     background:
-        var(--olive)
-        url("../images/baghramyan-hero.jpg")
+        #111411
+        url("../images/baghramyan-hero.png")
         center center / cover
         no-repeat;
 
@@ -1653,15 +1653,14 @@ textarea {
 
 .result-bg {
     position: absolute;
-
     inset: 0;
 
     background:
         linear-gradient(
-            rgba(18, 21, 18, .76),
-            rgba(18, 21, 18, .91)
+            rgba(17, 20, 17, 0.72),
+            rgba(17, 20, 17, 0.82)
         ),
-        url("../images/baghramyan-hero.jpg")
+        url("../images/baghramyan-hero.png")
         center center / cover
         no-repeat;
 }
