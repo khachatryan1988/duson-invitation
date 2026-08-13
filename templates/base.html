@@ -1,21 +1,80 @@
 <!doctype html>
 <html lang="hy">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#020817">
 
-    <title>{% block title %}DUSON Closed Event Invitation{% endblock %}</title>
+    <meta charset="UTF-8">
 
     <meta
-        name="description"
-        content="DUSON closed event invitation — new model series presentation."
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
     >
 
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css', v='20260811-2') }}"
+    <title>
+        {% block title %}Baghramyan Residence — Private Invitation{% endblock %}
+    </title>
+
+
+    <!-- SEO -->
+    <meta
+            name="description"
+            content="Private invitation to an exclusive Baghramyan Residence event in Yerevan."
     >
+
+
+    <!-- OPEN GRAPH -->
+    <meta
+            property="og:type"
+            content="website"
+    >
+
+    <meta
+            property="og:title"
+            content="Baghramyan Residence — Private Invitation"
+    >
+
+    <meta
+            property="og:description"
+            content="An exclusive private event at Baghramyan Residence in the heart of Yerevan."
+    >
+
+    <meta
+            property="og:url"
+            content="https://invitation.baghramyan-residence.am/{{ lang if lang else 'hy' }}"
+    >
+
+    <meta
+            property="og:image"
+            content="https://invitation.baghramyan-residence.am/static/images/baghramyan-preview.jpg"
+    >
+
+    <meta
+            property="og:site_name"
+            content="Baghramyan Residence"
+    >
+
+
+    <!-- TWITTER / OTHER PREVIEWS -->
+    <meta
+            name="twitter:card"
+            content="summary_large_image"
+    >
+
+    <meta
+            name="twitter:title"
+            content="Baghramyan Residence — Private Invitation"
+    >
+
+    <meta
+            name="twitter:description"
+            content="An exclusive private event at Baghramyan Residence in the heart of Yerevan."
+    >
+
+
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
 </head>
 <body>
     {% block body %}{% endblock %}
