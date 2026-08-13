@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}DUSON — Closed Event Invitation{% endblock %}
+{% block title %}Baghramyan Residence — Private Invitation{% endblock %}
 
 {% block body %}
 
@@ -14,25 +14,23 @@
 
     <div class="container hero-inner">
 
+        <!-- BRAND -->
+        <a
+                class="hero-brand"
+                href="{{ url_for('index', lang=lang) }}"
+                aria-label="Baghramyan Residence"
+        >
+            <span class="hero-brand-main">
+                BAGHRAMYAN
+            </span>
 
-        <!-- ================================================= -->
-        <!-- TOP LOGO -->
-        <!-- ================================================= -->
-
-        <div class="hero-top-logo">
-
-            <img
-                    src="{{ url_for('static', filename='images/duson-logo.png') }}"
-                    alt="DUSON"
-            >
-
-        </div>
+            <span class="hero-brand-sub">
+                RESIDENCE
+            </span>
+        </a>
 
 
-        <!-- ================================================= -->
         <!-- LANGUAGE SWITCHER -->
-        <!-- ================================================= -->
-
         <div class="language-switcher">
 
             <a
@@ -63,71 +61,85 @@
         </div>
 
 
-        <!-- ================================================= -->
         <!-- HERO CONTENT -->
-        <!-- ================================================= -->
-
         <div class="hero-copy">
-
-
-            <!-- KICKER -->
 
             <p class="hero-kicker">
                 {{ t.private_presentation }}
             </p>
 
-
-            <!-- TITLE -->
-
             <h1>
                 {{ t.hero_title_1 }}<br>
-                {{ t.hero_title_2 }}
+                <em>{{ t.hero_title_2 }}</em>
             </h1>
-
-
-            <!-- SUBTITLE -->
 
             <p class="hero-subtitle">
                 {{ t.hero_subtitle }}
             </p>
 
 
-            <!-- EVENT META -->
-
+            <!-- META -->
             <div class="hero-meta">
 
-                <span>
-                    {{ t.date_value }}
-                </span>
+                <div class="hero-meta-item">
 
-                <span>
-                    {{ t.time_value }}
-                </span>
+                    <span>
+                        {{ t.date }}
+                    </span>
 
-                <span>
-                    {{ t.location_value }}
-                </span>
+                    <strong>
+                        {{ t.date_value }}
+                    </strong>
+
+                </div>
+
+                <div class="hero-meta-item">
+
+                    <span>
+                        {{ t.time }}
+                    </span>
+
+                    <strong>
+                        {{ t.time_value }}
+                    </strong>
+
+                </div>
+
+                <div class="hero-meta-item">
+
+                    <span>
+                        {{ t.location }}
+                    </span>
+
+                    <strong>
+                        {{ t.location_value }}
+                    </strong>
+
+                </div>
 
             </div>
 
 
             <!-- CTA -->
-
             <a
                     href="#registration"
                     class="hero-cta"
             >
-
                 <span>
                     {{ t.register_button }}
                 </span>
 
-                <span>
-                    ↓
+                <span class="hero-cta-arrow">
+                    ↘
                 </span>
-
             </a>
 
+        </div>
+
+
+        <!-- VERTICAL TEXT -->
+        <div class="hero-side-text">
+            MARSHAL BAGHRAMYAN AVE. 37 · YEREVAN
         </div>
 
     </div>
@@ -143,17 +155,22 @@
 
     <div class="container">
 
-        <div class="section-label">
-            {{ t.intro_label }}
+        <div class="section-top">
+
+            <div class="section-label">
+                {{ t.intro_label }}
+            </div>
+
+            <div class="section-number">
+                01
+            </div>
+
         </div>
 
 
         <div class="intro-grid">
 
-
-            <!-- LEFT -->
-
-            <div>
+            <div class="intro-heading">
 
                 <h2>
                     {{ t.intro_title }}
@@ -162,11 +179,9 @@
             </div>
 
 
-            <!-- RIGHT -->
-
             <div class="intro-copy">
 
-                <p>
+                <p class="intro-lead">
                     {{ t.intro_text_1 }}
                 </p>
 
@@ -184,6 +199,162 @@
 
 
 <!-- ===================================================== -->
+<!-- RESIDENCE HIGHLIGHTS -->
+<!-- ===================================================== -->
+
+<section class="highlights-section">
+
+    <div class="container">
+
+        <div class="section-top light">
+
+            <div class="section-label">
+                {{ t.highlights_label }}
+            </div>
+
+            <div class="section-number">
+                02
+            </div>
+
+        </div>
+
+
+        <div class="highlights-heading">
+
+            <h2>
+                {{ t.highlights_title }}
+            </h2>
+
+            <p>
+                {{ t.highlights_text }}
+            </p>
+
+        </div>
+
+
+        <div class="highlights-grid">
+
+
+            <!-- ITEM 01 -->
+            <article class="highlight-card">
+
+                <span class="highlight-number">
+                    01
+                </span>
+
+                <div>
+
+                    <h3>
+                        {{ t.feature_1_title }}
+                    </h3>
+
+                    <p>
+                        {{ t.feature_1_text }}
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- ITEM 02 -->
+            <article class="highlight-card">
+
+                <span class="highlight-number">
+                    02
+                </span>
+
+                <div>
+
+                    <h3>
+                        {{ t.feature_2_title }}
+                    </h3>
+
+                    <p>
+                        {{ t.feature_2_text }}
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- ITEM 03 -->
+            <article class="highlight-card">
+
+                <span class="highlight-number">
+                    03
+                </span>
+
+                <div>
+
+                    <h3>
+                        {{ t.feature_3_title }}
+                    </h3>
+
+                    <p>
+                        {{ t.feature_3_text }}
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- ITEM 04 -->
+            <article class="highlight-card">
+
+                <span class="highlight-number">
+                    04
+                </span>
+
+                <div>
+
+                    <h3>
+                        {{ t.feature_4_title }}
+                    </h3>
+
+                    <p>
+                        {{ t.feature_4_text }}
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- QUOTE / BRAND STATEMENT -->
+<!-- ===================================================== -->
+
+<section class="statement-section">
+
+    <div class="container statement-inner">
+
+        <span class="statement-mark">
+            “
+        </span>
+
+        <p>
+            {{ t.statement }}
+        </p>
+
+        <span class="statement-caption">
+            BAGHRAMYAN RESIDENCE
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
 <!-- REGISTRATION -->
 <!-- ===================================================== -->
 
@@ -192,351 +363,334 @@
         id="registration"
 >
 
-    <div class="container registration-grid">
+    <div class="container">
 
 
-        <!-- ================================================= -->
-        <!-- REGISTRATION INFO -->
-        <!-- ================================================= -->
-
-        <div class="registration-info">
-
+        <div class="section-top">
 
             <div class="section-label">
                 {{ t.registration_label }}
             </div>
 
-
-            <h2>
-                {{ t.registration_title_1 }}<br>
-                {{ t.registration_title_2 }}
-            </h2>
-
-
-            <p>
-                {{ t.registration_text }}
-            </p>
-
-
-            <!-- EVENT INFORMATION -->
-
-            <div class="event-info-list">
-
-
-                <!-- DATE -->
-
-                <div>
-
-                    <span>
-                        {{ t.date }}
-                    </span>
-
-                    <strong>
-                        {{ t.date_value }}
-                    </strong>
-
-                </div>
-
-
-                <!-- TIME -->
-
-                <div>
-
-                    <span>
-                        {{ t.time }}
-                    </span>
-
-                    <strong>
-                        {{ t.time_value }}
-                    </strong>
-
-                </div>
-
-
-                <!-- LOCATION -->
-
-                <div>
-
-                    <span>
-                        {{ t.location }}
-                    </span>
-
-                    <strong>
-                        {{ t.location_value }}
-                    </strong>
-
-                </div>
-
+            <div class="section-number">
+                03
             </div>
 
         </div>
 
 
-        <!-- ================================================= -->
-        <!-- FORM CARD -->
-        <!-- ================================================= -->
-
-        <div class="form-card">
+        <div class="registration-grid">
 
 
             <!-- ================================================= -->
-            <!-- ERRORS -->
+            <!-- LEFT SIDE -->
             <!-- ================================================= -->
 
-            {% if errors %}
+            <div class="registration-info">
 
-            <div class="errors">
+                <h2>
+                    {{ t.registration_title_1 }}
+                    <em>
+                        {{ t.registration_title_2 }}
+                    </em>
+                </h2>
 
-                {% for error in errors %}
+                <p>
+                    {{ t.registration_text }}
+                </p>
 
-                <div>
-                    {{ error }}
+
+                <div class="event-info-list">
+
+                    <!-- DATE -->
+                    <div>
+
+                        <span>
+                            {{ t.date }}
+                        </span>
+
+                        <strong>
+                            {{ t.date_value }}
+                        </strong>
+
+                    </div>
+
+
+                    <!-- TIME -->
+                    <div>
+
+                        <span>
+                            {{ t.time }}
+                        </span>
+
+                        <strong>
+                            {{ t.time_value }}
+                        </strong>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+                    <div>
+
+                        <span>
+                            {{ t.location }}
+                        </span>
+
+                        <strong>
+                            {{ t.location_value }}
+                        </strong>
+
+                    </div>
+
+
+                    <!-- ADDRESS -->
+                    <div>
+
+                        <span>
+                            {{ t.address }}
+                        </span>
+
+                        <strong>
+                            {{ t.address_value }}
+                        </strong>
+
+                    </div>
+
                 </div>
-
-                {% endfor %}
 
             </div>
 
-            {% endif %}
-
 
             <!-- ================================================= -->
-            <!-- REGISTRATION FORM -->
+            <!-- FORM CARD -->
             <!-- ================================================= -->
 
-            <form
-                    method="post"
-                    action="{{ url_for('register', lang=lang) }}"
-                    class="registration-form"
-            >
+            <div class="form-card">
 
 
-                <div class="form-grid">
+                <!-- ERRORS -->
+                {% if errors %}
 
+                <div class="errors">
 
-                    <!-- ================================================= -->
-                    <!-- FIRST NAME -->
-                    <!-- ================================================= -->
+                    {% for error in errors %}
 
-                    <label class="field">
+                    <div>
+                        {{ error }}
+                    </div>
 
-                        <span>
-                            {{ t.first_name }} *
-                        </span>
-
-                        <input
-                                type="text"
-                                name="first_name"
-                                required
-                                maxlength="100"
-                                autocomplete="given-name"
-                                placeholder="{{ t.first_name_placeholder }}"
-                                value="{{ form_data.get('first_name', '') if form_data else '' }}"
-                        >
-
-                    </label>
-
-
-                    <!-- ================================================= -->
-                    <!-- LAST NAME -->
-                    <!-- ================================================= -->
-
-                    <label class="field">
-
-                        <span>
-                            {{ t.last_name }} *
-                        </span>
-
-                        <input
-                                type="text"
-                                name="last_name"
-                                required
-                                maxlength="100"
-                                autocomplete="family-name"
-                                placeholder="{{ t.last_name_placeholder }}"
-                                value="{{ form_data.get('last_name', '') if form_data else '' }}"
-                        >
-
-                    </label>
-
-
-                    <!-- ================================================= -->
-                    <!-- COMPANY -->
-                    <!-- ================================================= -->
-
-                    <label class="field full">
-
-                        <span>
-                            {{ t.company }} *
-                        </span>
-
-                        <input
-                                type="text"
-                                name="company"
-                                required
-                                maxlength="200"
-                                autocomplete="organization"
-                                placeholder="{{ t.company_placeholder }}"
-                                value="{{ form_data.get('company', '') if form_data else '' }}"
-                        >
-
-                    </label>
-
-
-                    <!-- ================================================= -->
-                    <!-- POSITION -->
-                    <!-- ================================================= -->
-
-                    <label class="field">
-
-                        <span>
-                            {{ t.position }}
-                        </span>
-
-                        <input
-                                type="text"
-                                name="position"
-                                maxlength="200"
-                                autocomplete="organization-title"
-                                placeholder="{{ t.position_placeholder }}"
-                                value="{{ form_data.get('position', '') if form_data else '' }}"
-                        >
-
-                    </label>
-
-
-                    <!-- ================================================= -->
-                    <!-- PHONE -->
-                    <!-- ================================================= -->
-
-                    <label class="field">
-
-                        <span>
-                            {{ t.phone }} *
-                        </span>
-
-                        <input
-                                type="tel"
-                                name="phone"
-                                required
-                                maxlength="50"
-                                autocomplete="tel"
-                                placeholder="{{ t.phone_placeholder }}"
-                                value="{{ form_data.get('phone', '') if form_data else '' }}"
-                        >
-
-                    </label>
-
-
-                    <!-- ================================================= -->
-                    <!-- EMAIL -->
-                    <!-- ================================================= -->
-
-                    <label class="field full">
-
-                        <span>
-                            {{ t.email }} *
-                        </span>
-
-                        <input
-                                type="email"
-                                name="email"
-                                required
-                                maxlength="200"
-                                autocomplete="email"
-                                placeholder="{{ t.email_placeholder }}"
-                                value="{{ form_data.get('email', '') if form_data else '' }}"
-                        >
-
-                    </label>
+                    {% endfor %}
 
                 </div>
 
-
-                <!-- ================================================= -->
-                <!-- SPECIAL NOTES -->
-                <!-- ================================================= -->
-
-                <div class="form-section">
-
-                    <label class="field">
-
-                        <span>
-                            {{ t.special_notes }}
-                        </span>
-
-                        <textarea
-                                name="special_notes"
-                                rows="4"
-                                maxlength="2000"
-                                placeholder="{{ t.special_notes_placeholder }}"
-                        >{{ form_data.get('special_notes', '') if form_data else '' }}</textarea>
-
-                    </label>
-
-                </div>
+                {% endif %}
 
 
-                <!-- ================================================= -->
-                <!-- CONSENT -->
-                <!-- ================================================= -->
-
-                <label class="consent">
-
-                    <input
-                            type="checkbox"
-                            name="consent"
-                            required
-                            {% if form_data and form_data.get('consent') %}
-                    checked
-                    {% endif %}
-                    >
-
-                    <span class="check-ui"></span>
-
-
-                    <span class="consent-text">
-                        {{ t.consent }}
-                    </span>
-
-                </label>
-
-
-                <!-- ================================================= -->
-                <!-- SUBMIT -->
-                <!-- ================================================= -->
-
-                <button
-                        type="submit"
-                        class="submit-button"
+                <!-- FORM -->
+                <form
+                        method="post"
+                        action="{{ url_for('register', lang=lang) }}"
+                        class="registration-form"
                 >
 
-                    <span>
-                        {{ t.submit }}
-                    </span>
-
-                    <span class="button-arrow">
-                        →
-                    </span>
-
-                </button>
-
-            </form>
+                    <div class="form-grid">
 
 
-            <!-- ================================================= -->
-            <!-- IMPORTANT NOTE -->
-            <!-- ================================================= -->
+                        <!-- FIRST NAME -->
+                        <label class="field">
 
-            <div class="important-note">
+                            <span>
+                                {{ t.first_name }} *
+                            </span>
 
-                <strong>
-                    {{ t.important }}
-                </strong>
+                            <input
+                                    type="text"
+                                    name="first_name"
+                                    required
+                                    maxlength="100"
+                                    autocomplete="given-name"
+                                    placeholder="{{ t.first_name_placeholder }}"
+                                    value="{{ form_data.get('first_name', '') if form_data else '' }}"
+                            >
 
-                <p>
-                    {{ t.important_text }}
-                </p>
+                        </label>
+
+
+                        <!-- LAST NAME -->
+                        <label class="field">
+
+                            <span>
+                                {{ t.last_name }} *
+                            </span>
+
+                            <input
+                                    type="text"
+                                    name="last_name"
+                                    required
+                                    maxlength="100"
+                                    autocomplete="family-name"
+                                    placeholder="{{ t.last_name_placeholder }}"
+                                    value="{{ form_data.get('last_name', '') if form_data else '' }}"
+                            >
+
+                        </label>
+
+
+                        <!-- COMPANY -->
+                        <label class="field full">
+
+                            <span>
+                                {{ t.company }} *
+                            </span>
+
+                            <input
+                                    type="text"
+                                    name="company"
+                                    required
+                                    maxlength="200"
+                                    autocomplete="organization"
+                                    placeholder="{{ t.company_placeholder }}"
+                                    value="{{ form_data.get('company', '') if form_data else '' }}"
+                            >
+
+                        </label>
+
+
+                        <!-- POSITION -->
+                        <label class="field">
+
+                            <span>
+                                {{ t.position }}
+                            </span>
+
+                            <input
+                                    type="text"
+                                    name="position"
+                                    maxlength="200"
+                                    autocomplete="organization-title"
+                                    placeholder="{{ t.position_placeholder }}"
+                                    value="{{ form_data.get('position', '') if form_data else '' }}"
+                            >
+
+                        </label>
+
+
+                        <!-- PHONE -->
+                        <label class="field">
+
+                            <span>
+                                {{ t.phone }} *
+                            </span>
+
+                            <input
+                                    type="tel"
+                                    name="phone"
+                                    required
+                                    maxlength="50"
+                                    autocomplete="tel"
+                                    placeholder="{{ t.phone_placeholder }}"
+                                    value="{{ form_data.get('phone', '') if form_data else '' }}"
+                            >
+
+                        </label>
+
+
+                        <!-- EMAIL -->
+                        <label class="field full">
+
+                            <span>
+                                {{ t.email }} *
+                            </span>
+
+                            <input
+                                    type="email"
+                                    name="email"
+                                    required
+                                    maxlength="200"
+                                    autocomplete="email"
+                                    placeholder="{{ t.email_placeholder }}"
+                                    value="{{ form_data.get('email', '') if form_data else '' }}"
+                            >
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- SPECIAL NOTES -->
+                    <div class="form-section">
+
+                        <label class="field">
+
+                            <span>
+                                {{ t.special_notes }}
+                            </span>
+
+                            <textarea
+                                    name="special_notes"
+                                    rows="4"
+                                    maxlength="2000"
+                                    placeholder="{{ t.special_notes_placeholder }}"
+                            >{{ form_data.get('special_notes', '') if form_data else '' }}</textarea>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- CONSENT -->
+                    <label class="consent">
+
+                        <input
+                                type="checkbox"
+                                name="consent"
+                                required
+                                {% if form_data and form_data.get('consent') %}
+                        checked
+                        {% endif %}
+                        >
+
+                        <span class="check-ui"></span>
+
+                        <span class="consent-text">
+                            {{ t.consent }}
+                        </span>
+
+                    </label>
+
+
+                    <!-- SUBMIT -->
+                    <button
+                            type="submit"
+                            class="submit-button"
+                    >
+
+                        <span>
+                            {{ t.submit }}
+                        </span>
+
+                        <span class="button-arrow">
+                            ↗
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- IMPORTANT -->
+                <div class="important-note">
+
+                    <strong>
+                        {{ t.important }}
+                    </strong>
+
+                    <p>
+                        {{ t.important_text }}
+                    </p>
+
+                </div>
 
             </div>
 
@@ -555,27 +709,31 @@
 
     <div class="container footer-inner">
 
+        <div class="footer-brand">
 
-        <!-- LOGO -->
+            <span class="footer-brand-main">
+                BAGHRAMYAN
+            </span>
 
-        <div class="footer-logo">
-
-            <img
-                    src="{{ url_for('static', filename='images/duson-logo.png') }}"
-                    alt="DUSON"
-            >
+            <span class="footer-brand-sub">
+                RESIDENCE
+            </span>
 
         </div>
 
-
-        <!-- SLOGAN -->
 
         <div class="footer-copy">
-            {{ t.footer_slogan }}
+
+            <span>
+                {{ t.footer_slogan }}
+            </span>
+
+            <small>
+                {{ t.address_value }}
+            </small>
+
         </div>
 
-
-        <!-- COPYRIGHT -->
 
         <div class="footer-year">
             {{ t.copyright }}

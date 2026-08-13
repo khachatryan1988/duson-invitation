@@ -988,23 +988,23 @@ def export_excel():
 
         ws.append([
 
-            guest.id,
-
-            guest.first_name,
-
-            guest.last_name,
-
-            guest.company,
-
-            guest.position
-            or "",
-
-            guest.phone,
-
-            guest.email,
-
-            guest.special_notes
-            or "",
+            # guest.id,
+            #
+            # guest.first_name,
+            #
+            # guest.last_name,
+            #
+            # guest.company,
+            #
+            # guest.position
+            # or "",
+            #
+            # guest.phone,
+            #
+            # guest.email,
+            #
+            # guest.special_notes
+            # or "",
 
             (
                 "Այո"
