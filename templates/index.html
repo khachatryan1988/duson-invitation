@@ -75,7 +75,7 @@
             </p>
 
 
-            <!-- META -->
+            <!-- EVENT META -->
             <div class="hero-meta">
 
                 <div class="hero-meta-item">
@@ -90,6 +90,7 @@
 
                 </div>
 
+
                 <div class="hero-meta-item">
 
                     <span>
@@ -102,15 +103,20 @@
 
                 </div>
 
-                <div class="hero-meta-item">
 
-                    <span>
-                        {{ t.location }}
-                    </span>
+                <div class="hero-meta-item hero-location">
+
+    <span>
+        {{ t.location }}
+    </span>
 
                     <strong>
                         {{ t.location_value }}
                     </strong>
+
+                    <small class="hero-location-address">
+                        {{ t.address_value }}
+                    </small>
 
                 </div>
 
@@ -122,6 +128,7 @@
                     href="#registration"
                     class="hero-cta"
             >
+
                 <span>
                     {{ t.register_button }}
                 </span>
@@ -129,14 +136,15 @@
                 <span class="hero-cta-arrow">
                     ↘
                 </span>
+
             </a>
 
         </div>
 
 
-        <!-- VERTICAL TEXT -->
+        <!-- SIDE EVENT LOCATION -->
         <div class="hero-side-text">
-            MARSHAL BAGHRAMYAN AVE. 37 · YEREVAN
+            DOMUS · ARSHAKUNYATS 33 · YEREVAN
         </div>
 
     </div>
@@ -145,7 +153,7 @@
 
 
 <!-- ===================================================== -->
-<!-- INTRO -->
+<!-- ABOUT EVENT -->
 <!-- ===================================================== -->
 
 <section class="intro-section">
@@ -167,6 +175,7 @@
 
         <div class="intro-grid">
 
+            <!-- LEFT -->
             <div class="intro-heading">
 
                 <h2>
@@ -176,6 +185,7 @@
             </div>
 
 
+            <!-- RIGHT -->
             <div class="intro-copy">
 
                 <p class="intro-lead">
@@ -186,6 +196,10 @@
                     {{ t.intro_text_2 }}
                 </p>
 
+                <p>
+                    {{ t.intro_text_3 }}
+                </p>
+
             </div>
 
         </div>
@@ -196,17 +210,17 @@
 
 
 <!-- ===================================================== -->
-<!-- RESIDENCE HIGHLIGHTS -->
+<!-- AGENDA -->
 <!-- ===================================================== -->
 
-<section class="highlights-section">
+<section class="agenda-section">
 
     <div class="container">
 
         <div class="section-top light">
 
             <div class="section-label">
-                {{ t.highlights_label }}
+                {{ t.agenda_label }}
             </div>
 
             <div class="section-number">
@@ -216,135 +230,90 @@
         </div>
 
 
-        <div class="highlights-heading">
+        <div class="agenda-header">
 
             <h2>
-                {{ t.highlights_title }}
+                {{ t.agenda_title }}
             </h2>
-
-            <p>
-                {{ t.highlights_text }}
-            </p>
 
         </div>
 
 
-        <div class="highlights-grid">
+        <div class="agenda-list">
 
 
             <!-- ITEM 01 -->
-            <article class="highlight-card">
+            <div class="agenda-item">
 
-                <span class="highlight-number">
+                <div class="agenda-number">
                     01
-                </span>
-
-                <div>
-
-                    <h3>
-                        {{ t.feature_1_title }}
-                    </h3>
-
-                    <p>
-                        {{ t.feature_1_text }}
-                    </p>
-
                 </div>
 
-            </article>
+                <div class="agenda-time">
+                    {{ t.agenda_1_time }}
+                </div>
+
+                <div class="agenda-title">
+                    {{ t.agenda_1_title }}
+                </div>
+
+            </div>
 
 
             <!-- ITEM 02 -->
-            <article class="highlight-card">
+            <div class="agenda-item">
 
-                <span class="highlight-number">
+                <div class="agenda-number">
                     02
-                </span>
-
-                <div>
-
-                    <h3>
-                        {{ t.feature_2_title }}
-                    </h3>
-
-                    <p>
-                        {{ t.feature_2_text }}
-                    </p>
-
                 </div>
 
-            </article>
+                <div class="agenda-time">
+                    {{ t.agenda_2_time }}
+                </div>
+
+                <div class="agenda-title">
+                    {{ t.agenda_2_title }}
+                </div>
+
+            </div>
 
 
             <!-- ITEM 03 -->
-            <article class="highlight-card">
+            <div class="agenda-item">
 
-                <span class="highlight-number">
+                <div class="agenda-number">
                     03
-                </span>
-
-                <div>
-
-                    <h3>
-                        {{ t.feature_3_title }}
-                    </h3>
-
-                    <p>
-                        {{ t.feature_3_text }}
-                    </p>
-
                 </div>
 
-            </article>
+                <div class="agenda-time">
+                    {{ t.agenda_3_time }}
+                </div>
+
+                <div class="agenda-title">
+                    {{ t.agenda_3_title }}
+                </div>
+
+            </div>
 
 
             <!-- ITEM 04 -->
-            <article class="highlight-card">
+            <div class="agenda-item">
 
-                <span class="highlight-number">
+                <div class="agenda-number">
                     04
-                </span>
-
-                <div>
-
-                    <h3>
-                        {{ t.feature_4_title }}
-                    </h3>
-
-                    <p>
-                        {{ t.feature_4_text }}
-                    </p>
-
                 </div>
 
-            </article>
+                <div class="agenda-time">
+                    {{ t.agenda_4_time }}
+                </div>
+
+                <div class="agenda-title">
+                    {{ t.agenda_4_title }}
+                </div>
+
+            </div>
 
         </div>
-
-    </div>
-
-</section>
-
-
-<!-- ===================================================== -->
-<!-- QUOTE / BRAND STATEMENT -->
-<!-- ===================================================== -->
-
-<section class="statement-section">
-
-    <div class="container statement-inner">
-
-        <span class="statement-mark">
-            “
-        </span>
-
-        <p>
-            {{ t.statement }}
-        </p>
-
-        <span class="statement-caption">
-            BAGHRAMYAN RESIDENCE
-        </span>
 
     </div>
 
@@ -361,7 +330,6 @@
 >
 
     <div class="container">
-
 
         <div class="section-top">
 
@@ -387,17 +355,21 @@
 
                 <h2>
                     {{ t.registration_title_1 }}
+
                     <em>
                         {{ t.registration_title_2 }}
                     </em>
                 </h2>
+
 
                 <p>
                     {{ t.registration_text }}
                 </p>
 
 
+                <!-- EVENT INFO -->
                 <div class="event-info-list">
+
 
                     <!-- DATE -->
                     <div>
@@ -558,12 +530,13 @@
                         <label class="field">
 
                             <span>
-                                {{ t.position }}
+                                {{ t.position }} *
                             </span>
 
                             <input
                                     type="text"
                                     name="position"
+                                    required
                                     maxlength="200"
                                     autocomplete="organization-title"
                                     placeholder="{{ t.position_placeholder }}"
@@ -706,14 +679,19 @@
 
     <div class="container footer-inner">
 
+
+        <!-- LOGO -->
         <div class="footer-brand">
+
             <img
                     src="{{ url_for('static', filename='images/baghramyan-logo.svg') }}"
                     alt="Baghramyan Residence"
             >
+
         </div>
 
 
+        <!-- FOOTER COPY -->
         <div class="footer-copy">
 
             <span>
@@ -727,6 +705,7 @@
         </div>
 
 
+        <!-- DATE -->
         <div class="footer-year">
             {{ t.copyright }}
         </div>

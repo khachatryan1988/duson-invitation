@@ -13,147 +13,193 @@ TRANSLATIONS = {
 
         "html_lang": "hy",
 
+        # =================================================
         # HERO
-        "private_presentation": "ՓԱԿ ՄԻՋՈՑԱՌՈՒՄ",
+        # =================================================
 
-        "hero_title_1": "Բացառիկ",
-        "hero_title_2": "հրավեր",
+        "private_presentation": "ՀԱՏՈՒԿ ՀՐԱՎԵՐ",
+
+        "hero_title_1": "Հուշագրերի ստորագրման",
+        "hero_title_2": "արարողություն",
 
         "hero_subtitle":
-            "Բացահայտեք շքեղ բնակության նոր չափանիշը Երևանի սրտում։",
+            "BAGHRAMYAN RESIDENCE",
 
         "register_button": "Գրանցվել",
 
+        # =================================================
         # EVENT
+        # =================================================
+
         "date": "Ամսաթիվ",
-        "date_value": "10 սեպտեմբերի 2026",
+        "date_value": "09 սեպտեմբերի 2026",
 
         "time": "Ժամ",
-        "time_value": "18:00",
+        "time_value": "19:00",
 
         "location": "Վայր",
-        "location_value": "Baghramyan Residence",
+        "location_value": "DOMUS",
 
         "address": "Հասցե",
-        "address_value": "Մարշալ Բաղրամյան պողոտա 37, Երևան",
+        "address_value": "Արշակունյաց 33, Երևան",
 
 
-        # INTRO
-        "intro_label": "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
+        # =================================================
+        # ABOUT EVENT
+        # =================================================
+
+        "intro_label":
+            "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
 
         "intro_title":
             "Երեկո՝ նվիրված ժամանակակից պրեմիում բնակության նոր մշակույթին",
 
         "intro_text_1":
-            "Baghramyan Residence-ը հրավիրում է Ձեզ բացառիկ փակ միջոցառման՝ ծանոթանալու նախագծի գաղափարախոսությանը, ճարտարապետական լուծումներին և բնակության նոր մոտեցմանը։",
+            "Baghramyan Residence-ը սիրով հրավիրում է Ձեզ մասնակցելու գործընկերային հուշագրերի ստորագրման հատուկ միջոցառմանը։",
 
         "intro_text_2":
-            "Միջոցառման ընթացքում հնարավորություն կունենաք բացահայտելու նախագիծը ավելի մոտիկից, ծանոթանալու դրա առանձնահատկություններին և զգալու այն միջավայրը, որը ձևավորվում է Երևանի ամենահեղինակավոր հասցեներից մեկում։",
+            "Երեկոյի ընթացքում կներկայացվեն նախագծի գործընկերները, կստորագրվեն համագործակցության հուշագրերը և կներկայացվեն Baghramyan Residence-ում կիրառվող առաջատար լուծումներն ու տեխնոլոգիաները։",
+
+        "intro_text_3":
+            "Պաշտոնական հատվածին կհաջորդի հյուրասիրություն և հաճելի ժամանց։",
 
 
-        # HIGHLIGHTS
-        "highlights_label": "ԲԱՑԱՀԱՅՏԵՔ ՆԱԽԱԳԻԾԸ",
+        # =================================================
+        # AGENDA
+        # =================================================
 
-        "highlights_title":
-            "Նախագծված կյանքի բարձր որակի համար",
+        "agenda_label": "ՕՐԱԿԱՐԳ",
 
-        "highlights_text":
-            "Baghramyan Residence-ը միավորում է կենտրոնական դիրքը, ժամանակակից ճարտարապետությունը, տեխնոլոգիական լուծումները և բարձրակարգ բնակության համար նախատեսված ենթակառուցվածքները։",
+        "agenda_title":
+            "Միջոցառման ծրագիր",
 
-        "feature_1_title":
-            "Հեղինակավոր հասցե",
+        "agenda_1_time": "19:00",
+        "agenda_1_title":
+            "Միջոցառման պաշտոնական բացում",
 
-        "feature_1_text":
-            "Մարշալ Բաղրամյան պողոտա 37՝ Երևանի կենտրոնի առանցքային և ամենապահանջված հատվածներից մեկում։",
+        "agenda_2_time": "19:10",
+        "agenda_2_title":
+            "Հուշագրերի ստորագրման արարողություն",
 
-        "feature_2_title":
-            "Պանորամային տեսարաններ",
+        "agenda_3_time": "19:45",
+        "agenda_3_title":
+            "Գործընկերների պրեզենտացիաների ներկայացում",
 
-        "feature_2_text":
-            "Հատակից առաստաղ ձգվող պատուհանները բացում են գեղեցիկ տեսարաններ դեպի Երևան և Արարատ։",
-
-        "feature_3_title":
-            "Խելացի շենք",
-
-        "feature_3_text":
-            "Ժամանակակից BMS համակարգը նախատեսված է շենքի հիմնական համակարգերի արդյունավետ կառավարման համար։",
-
-        "feature_4_title":
-            "Պրեմիում միջավայր",
-
-        "feature_4_text":
-            "Բարձրակարգ նյութեր, ընդունարան, անվտանգություն և մանրակրկիտ մտածված ընդհանուր տարածքներ։",
+        "agenda_4_time": "20:35",
+        "agenda_4_title":
+            "Հյուրասիրություն և հաճելի ժամանց",
 
 
-        # STATEMENT
-        "statement":
-            "Տունը պարզապես հասցե չէ։ Այն միջավայր է, որն արտացոլում է Ձեր ապրելակերպը։",
-
-
+        # =================================================
         # REGISTRATION
-        "registration_label": "ՄԱՍՆԱԿՑՈՒԹՅՈՒՆ",
+        # =================================================
 
-        "registration_title_1": "Ամրագրեք",
-        "registration_title_2": "Ձեր մասնակցությունը",
+        "registration_label":
+            "ՄԱՍՆԱԿՑՈՒԹՅԱՆ ՀԱՍՏԱՏՈՒՄ",
+
+        "registration_title_1":
+            "Հաստատեք",
+
+        "registration_title_2":
+            "Ձեր մասնակցությունը",
 
         "registration_text":
-            "Խնդրում ենք լրացնել Ձեր տվյալները։ Գրանցման հայտը ստանալուց հետո մեր թիմը կկապվի Ձեզ հետ՝ մասնակցությունը հաստատելու և լրացուցիչ տեղեկություններ տրամադրելու համար։",
+            "Խնդրում ենք լրացնել ստորև ներկայացված տվյալները՝ Ձեր մասնակցությունը հաստատելու և անհատական հրավիրատոմսը ստանալու համար։",
 
 
+        # =================================================
         # FORM
-        "first_name": "Անուն",
-        "first_name_placeholder": "Մուտքագրեք անունը",
+        # =================================================
 
-        "last_name": "Ազգանուն",
-        "last_name_placeholder": "Մուտքագրեք ազգանունը",
+        "first_name":
+            "Անուն",
 
-        "company": "Ընկերություն / կազմակերպություն",
-        "company_placeholder": "Ընկերության անվանում",
+        "first_name_placeholder":
+            "Մուտքագրեք Ձեր անունը",
 
-        "position": "Պաշտոն",
-        "position_placeholder": "Ձեր պաշտոնը",
+        "last_name":
+            "Ազգանուն",
 
-        "phone": "Հեռախոսահամար",
-        "phone_placeholder": "+374 __ __ __ __",
+        "last_name_placeholder":
+            "Մուտքագրեք Ձեր ազգանունը",
 
-        "email": "Էլեկտրոնային հասցե",
-        "email_placeholder": "email@example.com",
+        "company":
+            "Ընկերություն / կազմակերպություն",
 
-        "special_notes": "Լրացուցիչ նշումներ",
+        "company_placeholder":
+            "Ընկերության անվանումը",
+
+        "position":
+            "Պաշտոն",
+
+        "position_placeholder":
+            "Ձեր պաշտոնը",
+
+        "phone":
+            "Հեռախոսահամար",
+
+        "phone_placeholder":
+            "+374 __ __ __ __",
+
+        "email":
+            "Էլեկտրոնային հասցե",
+
+        "email_placeholder":
+            "email@example.com",
+
+        "special_notes":
+            "Հատուկ նշումներ",
 
         "special_notes_placeholder":
-            "Հատուկ պահանջներ կամ լրացուցիչ տեղեկատվություն",
+            "Ցանկության դեպքում նշեք լրացուցիչ տեղեկություն կամ սննդային սահմանափակումներ։",
+
+
+        # =================================================
+        # CONSENT
+        # =================================================
 
         "consent":
             "Համաձայն եմ, որ տրամադրված տվյալներն օգտագործվեն միջոցառման կազմակերպման, մասնակցության հաստատման և միջոցառման հետ կապված հաղորդակցության նպատակով։",
 
         "submit":
-            "Ուղարկել գրանցման հայտը",
+            "Հաստատել մասնակցությունը",
 
-        "important": "Կարևոր",
+
+        # =================================================
+        # IMPORTANT
+        # =================================================
+
+        "important":
+            "Կարևոր",
 
         "important_text":
-            "Միջոցառումը փակ ձևաչափով է։ Գրանցման հայտը ինքնին չի համարվում մասնակցության վերջնական հաստատում։",
+            "Միջոցառումը կազմակերպվում է միայն հրավերով։ Մասնակցությունն անհատական է։ Խնդրում ենք միջոցառման օրը ներկայացնել Ձեր անձնական QR հրավիրատոմսը՝ մուտքի և գրանցման համար։",
 
 
+        # =================================================
         # THANK YOU
+        # =================================================
+
         "registration_received":
-            "ԳՐԱՆՑՄԱՆ ՀԱՅՏԸ ՍՏԱՑՎԵԼ Է",
+            "ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ ՀԱՍՏԱՏՎԱԾ Է",
 
         "thank_you_title":
-            "Շնորհակալություն գրանցման համար",
+            "Շնորհակալություն",
 
         "thank_you_text":
-            "Ձեր տվյալները հաջողությամբ ստացվել են։",
+            "Ձեր մասնակցության տվյալները հաջողությամբ ստացվել են։",
 
         "thank_you_details":
-            "Մեր թիմը կկապվի Ձեզ հետ՝ մասնակցությունը հաստատելու և միջոցառման վերաբերյալ լրացուցիչ տեղեկատվություն տրամադրելու համար։",
+            "Միջոցառման համար նախատեսված անձնական հրավիրատոմսի վերաբերյալ լրացուցիչ տեղեկատվությունը կտրամադրվի Ձեզ առանձին։",
 
         "back_home":
             "Վերադառնալ գլխավոր էջ",
 
 
+        # =================================================
         # ALREADY REGISTERED
+        # =================================================
+
         "already_registered":
             "Դուք արդեն գրանցված եք",
 
@@ -161,12 +207,15 @@ TRANSLATIONS = {
             "Այս հեռախոսահամարով կամ էլեկտրոնային հասցեով գրանցում արդեն առկա է համակարգում։",
 
 
+        # =================================================
         # FOOTER
+        # =================================================
+
         "footer_slogan":
-            "Շքեղ բնակություն Երևանի սրտում",
+            "Building Partnerships. Building the Future.",
 
         "copyright":
-            "© 2026 Baghramyan Residence",
+            "09.09.2026",
 
     },
 
@@ -179,147 +228,220 @@ TRANSLATIONS = {
 
         "html_lang": "ru",
 
+        # =================================================
         # HERO
-        "private_presentation": "ЗАКРЫТОЕ МЕРОПРИЯТИЕ",
+        # =================================================
 
-        "hero_title_1": "Эксклюзивное",
-        "hero_title_2": "приглашение",
+        "private_presentation":
+            "СПЕЦИАЛЬНОЕ ПРИГЛАШЕНИЕ",
+
+        "hero_title_1":
+            "Церемония подписания",
+
+        "hero_title_2":
+            "меморандумов",
 
         "hero_subtitle":
-            "Откройте для себя новый уровень премиальной жизни в самом сердце Еревана.",
+            "BAGHRAMYAN RESIDENCE",
 
-        "register_button": "Зарегистрироваться",
+        "register_button":
+            "Зарегистрироваться",
 
+
+        # =================================================
         # EVENT
-        "date": "Дата",
-        "date_value": "10 сентября 2026",
+        # =================================================
 
-        "time": "Время",
-        "time_value": "18:00",
+        "date":
+            "Дата",
 
-        "location": "Место",
-        "location_value": "Baghramyan Residence",
+        "date_value":
+            "09 сентября 2026",
 
-        "address": "Адрес",
-        "address_value": "проспект Маршала Баграмяна 37, Ереван",
+        "time":
+            "Время",
+
+        "time_value":
+            "19:00",
+
+        "location":
+            "Место",
+
+        "location_value":
+            "DOMUS",
+
+        "address":
+            "Адрес",
+
+        "address_value":
+            "ул. Аршакуняц 33, Ереван",
 
 
-        # INTRO
-        "intro_label": "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
+        # =================================================
+        # ABOUT EVENT
+        # =================================================
+
+        "intro_label":
+            "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
 
         "intro_title":
             "Вечер, посвящённый новой культуре современной премиальной жизни",
 
         "intro_text_1":
-            "Baghramyan Residence приглашает Вас на эксклюзивное закрытое мероприятие, где Вы сможете познакомиться с концепцией проекта, архитектурными решениями и современным подходом к городской жизни.",
+            "Baghramyan Residence приглашает Вас на специальное мероприятие, посвящённое подписанию партнёрских меморандумов.",
 
         "intro_text_2":
-            "Во время мероприятия Вы сможете ближе познакомиться с особенностями резиденции и почувствовать атмосферу проекта, расположенного по одному из самых престижных адресов Еревана.",
+            "В течение вечера будут представлены партнёры проекта, подписаны меморандумы о сотрудничестве, а также представлены передовые решения и технологии, применяемые в Baghramyan Residence.",
+
+        "intro_text_3":
+            "После официальной части гостей ждут угощения и приятное продолжение вечера.",
 
 
-        # HIGHLIGHTS
-        "highlights_label": "ОТКРОЙТЕ ПРОЕКТ",
+        # =================================================
+        # AGENDA
+        # =================================================
 
-        "highlights_title":
-            "Создано для высокого качества жизни",
+        "agenda_label":
+            "ПРОГРАММА",
 
-        "highlights_text":
-            "Baghramyan Residence объединяет престижное расположение, современную архитектуру, технологичные решения и инфраструктуру премиального жилого комплекса.",
+        "agenda_title":
+            "Программа мероприятия",
 
-        "feature_1_title":
-            "Престижный адрес",
+        "agenda_1_time":
+            "19:00",
 
-        "feature_1_text":
-            "Проспект Маршала Баграмяна 37 — одно из ключевых и наиболее престижных расположений в центре Еревана.",
+        "agenda_1_title":
+            "Официальное открытие мероприятия",
 
-        "feature_2_title":
-            "Панорамные виды",
+        "agenda_2_time":
+            "19:10",
 
-        "feature_2_text":
-            "Панорамные окна от пола до потолка открывают красивые виды на Ереван и гору Арарат.",
+        "agenda_2_title":
+            "Церемония подписания меморандумов",
 
-        "feature_3_title":
-            "Умное здание",
+        "agenda_3_time":
+            "19:45",
 
-        "feature_3_text":
-            "Современная BMS-система предназначена для эффективного управления ключевыми инженерными системами здания.",
+        "agenda_3_title":
+            "Презентации партнёров",
 
-        "feature_4_title":
-            "Премиальная среда",
+        "agenda_4_time":
+            "20:35",
 
-        "feature_4_text":
-            "Высококачественные материалы, ресепшен, безопасность и тщательно продуманные общественные пространства.",
-
-
-        # STATEMENT
-        "statement":
-            "Дом — это не просто адрес. Это пространство, которое отражает Ваш образ жизни.",
+        "agenda_4_title":
+            "Угощения и приятное продолжение вечера",
 
 
+        # =================================================
         # REGISTRATION
-        "registration_label": "УЧАСТИЕ",
+        # =================================================
 
-        "registration_title_1": "Зарегистрируйте",
-        "registration_title_2": "своё участие",
+        "registration_label":
+            "ПОДТВЕРЖДЕНИЕ УЧАСТИЯ",
+
+        "registration_title_1":
+            "Подтвердите",
+
+        "registration_title_2":
+            "Ваше участие",
 
         "registration_text":
-            "Пожалуйста, заполните данные ниже. После получения заявки наша команда свяжется с Вами для подтверждения участия и предоставления дополнительной информации.",
+            "Пожалуйста, заполните данные ниже, чтобы подтвердить Ваше участие и получить персональное приглашение.",
 
 
+        # =================================================
         # FORM
-        "first_name": "Имя",
-        "first_name_placeholder": "Введите имя",
+        # =================================================
 
-        "last_name": "Фамилия",
-        "last_name_placeholder": "Введите фамилию",
+        "first_name":
+            "Имя",
 
-        "company": "Компания / организация",
-        "company_placeholder": "Название компании",
+        "first_name_placeholder":
+            "Введите Ваше имя",
 
-        "position": "Должность",
-        "position_placeholder": "Ваша должность",
+        "last_name":
+            "Фамилия",
 
-        "phone": "Номер телефона",
-        "phone_placeholder": "+374 __ __ __ __",
+        "last_name_placeholder":
+            "Введите Вашу фамилию",
 
-        "email": "Электронная почта",
-        "email_placeholder": "email@example.com",
+        "company":
+            "Компания / организация",
 
-        "special_notes": "Дополнительная информация",
+        "company_placeholder":
+            "Название компании",
+
+        "position":
+            "Должность",
+
+        "position_placeholder":
+            "Ваша должность",
+
+        "phone":
+            "Номер телефона",
+
+        "phone_placeholder":
+            "+374 __ __ __ __",
+
+        "email":
+            "Электронная почта",
+
+        "email_placeholder":
+            "email@example.com",
+
+        "special_notes":
+            "Дополнительная информация",
 
         "special_notes_placeholder":
-            "Особые пожелания или дополнительная информация",
+            "При желании укажите дополнительную информацию или пищевые ограничения.",
+
+
+        # =================================================
+        # CONSENT
+        # =================================================
 
         "consent":
-            "Я согласен(-на) на использование предоставленных данных для организации мероприятия, подтверждения участия и коммуникации, связанной с мероприятием.",
+            "Я согласен(-на), чтобы предоставленные данные использовались для организации мероприятия, подтверждения участия и коммуникации, связанной с мероприятием.",
 
         "submit":
-            "Отправить заявку на участие",
+            "Подтвердить участие",
 
-        "important": "Важно",
+
+        # =================================================
+        # IMPORTANT
+        # =================================================
+
+        "important":
+            "Важно",
 
         "important_text":
-            "Мероприятие проходит в закрытом формате. Отправка регистрационной формы сама по себе не является окончательным подтверждением участия.",
+            "Мероприятие проводится только по приглашениям. Участие является индивидуальным. В день мероприятия просим предъявить Ваше персональное QR-приглашение для входа и регистрации.",
 
 
+        # =================================================
         # THANK YOU
+        # =================================================
+
         "registration_received":
-            "ЗАЯВКА ПОЛУЧЕНА",
+            "УЧАСТИЕ ПОДТВЕРЖДЕНО",
 
         "thank_you_title":
-            "Спасибо за регистрацию",
+            "Спасибо",
 
         "thank_you_text":
-            "Ваши данные успешно получены.",
+            "Ваши данные для участия успешно получены.",
 
         "thank_you_details":
-            "Наша команда свяжется с Вами для подтверждения участия и предоставления дополнительной информации о мероприятии.",
+            "Дополнительная информация о персональном приглашении на мероприятие будет предоставлена Вам отдельно.",
 
         "back_home":
             "Вернуться на главную",
 
 
+        # =================================================
         # ALREADY REGISTERED
+        # =================================================
+
         "already_registered":
             "Вы уже зарегистрированы",
 
@@ -327,12 +449,15 @@ TRANSLATIONS = {
             "Регистрация с этим номером телефона или адресом электронной почты уже существует в системе.",
 
 
+        # =================================================
         # FOOTER
+        # =================================================
+
         "footer_slogan":
-            "Премиальная жизнь в сердце Еревана",
+            "Building Partnerships. Building the Future.",
 
         "copyright":
-            "© 2026 Baghramyan Residence",
+            "09.09.2026",
 
     },
 
@@ -345,147 +470,220 @@ TRANSLATIONS = {
 
         "html_lang": "en",
 
+        # =================================================
         # HERO
-        "private_presentation": "PRIVATE EVENT",
+        # =================================================
 
-        "hero_title_1": "An exclusive",
-        "hero_title_2": "invitation",
+        "private_presentation":
+            "SPECIAL INVITATION",
+
+        "hero_title_1":
+            "Memorandum Signing",
+
+        "hero_title_2":
+            "Ceremony",
 
         "hero_subtitle":
-            "Discover a new standard of premium living in the heart of Yerevan.",
+            "BAGHRAMYAN RESIDENCE",
 
-        "register_button": "Register",
+        "register_button":
+            "Register",
 
+
+        # =================================================
         # EVENT
-        "date": "Date",
-        "date_value": "10 September 2026",
+        # =================================================
 
-        "time": "Time",
-        "time_value": "18:00",
+        "date":
+            "Date",
 
-        "location": "Location",
-        "location_value": "Baghramyan Residence",
+        "date_value":
+            "09 September 2026",
 
-        "address": "Address",
-        "address_value": "37 Marshal Baghramyan Avenue, Yerevan",
+        "time":
+            "Time",
+
+        "time_value":
+            "19:00",
+
+        "location":
+            "Venue",
+
+        "location_value":
+            "DOMUS",
+
+        "address":
+            "Address",
+
+        "address_value":
+            "33 Arshakunyats Ave., Yerevan",
 
 
-        # INTRO
-        "intro_label": "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
+        # =================================================
+        # ABOUT EVENT
+        # =================================================
+
+        "intro_label":
+            "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
 
         "intro_title":
             "An evening dedicated to a new culture of contemporary premium living",
 
         "intro_text_1":
-            "Baghramyan Residence invites you to an exclusive private event where you can discover the concept, architecture and contemporary approach behind the project.",
+            "Baghramyan Residence is pleased to invite you to a special event dedicated to the signing of partnership memorandums.",
 
         "intro_text_2":
-            "During the evening, you will have the opportunity to explore the residence in greater detail and experience the atmosphere of one of Yerevan’s most prestigious addresses.",
+            "During the evening, the project partners will be introduced, cooperation memorandums will be signed, and the advanced solutions and technologies implemented at Baghramyan Residence will be presented.",
+
+        "intro_text_3":
+            "The official part of the event will be followed by a reception and an enjoyable evening.",
 
 
-        # HIGHLIGHTS
-        "highlights_label": "DISCOVER THE PROJECT",
+        # =================================================
+        # AGENDA
+        # =================================================
 
-        "highlights_title":
-            "Designed for an elevated way of living",
+        "agenda_label":
+            "AGENDA",
 
-        "highlights_text":
-            "Baghramyan Residence brings together a prime central location, contemporary architecture, advanced technology and amenities designed for premium urban living.",
+        "agenda_title":
+            "Event programme",
 
-        "feature_1_title":
-            "Prime Location",
+        "agenda_1_time":
+            "19:00",
 
-        "feature_1_text":
-            "37 Marshal Baghramyan Avenue places the residence at one of the most prestigious addresses in central Yerevan.",
+        "agenda_1_title":
+            "Official opening of the event",
 
-        "feature_2_title":
-            "Panoramic Views",
+        "agenda_2_time":
+            "19:10",
 
-        "feature_2_text":
-            "Floor-to-ceiling windows provide beautiful views across Yerevan and toward Mount Ararat.",
+        "agenda_2_title":
+            "Memorandum signing ceremony",
 
-        "feature_3_title":
-            "Smart Building",
+        "agenda_3_time":
+            "19:45",
 
-        "feature_3_text":
-            "A modern BMS system supports efficient management of key building systems and technologies.",
+        "agenda_3_title":
+            "Partner presentations",
 
-        "feature_4_title":
-            "Premium Environment",
+        "agenda_4_time":
+            "20:35",
 
-        "feature_4_text":
-            "Premium materials, reception services, security and carefully designed shared spaces complete the experience.",
-
-
-        # STATEMENT
-        "statement":
-            "A home is more than an address. It is a space that reflects the way you choose to live.",
+        "agenda_4_title":
+            "Reception and evening programme",
 
 
+        # =================================================
         # REGISTRATION
-        "registration_label": "ATTENDANCE",
+        # =================================================
 
-        "registration_title_1": "Reserve",
-        "registration_title_2": "your invitation",
+        "registration_label":
+            "ATTENDANCE CONFIRMATION",
+
+        "registration_title_1":
+            "Confirm",
+
+        "registration_title_2":
+            "your attendance",
 
         "registration_text":
-            "Please complete the form below. Once your registration request is received, our team will contact you to confirm your attendance and provide additional event information.",
+            "Please complete the information below to confirm your attendance and receive your personal invitation.",
 
 
+        # =================================================
         # FORM
-        "first_name": "First name",
-        "first_name_placeholder": "Enter your first name",
+        # =================================================
 
-        "last_name": "Last name",
-        "last_name_placeholder": "Enter your last name",
+        "first_name":
+            "First name",
 
-        "company": "Company / organization",
-        "company_placeholder": "Company name",
+        "first_name_placeholder":
+            "Enter your first name",
 
-        "position": "Position",
-        "position_placeholder": "Your position",
+        "last_name":
+            "Last name",
 
-        "phone": "Phone number",
-        "phone_placeholder": "+374 __ __ __ __",
+        "last_name_placeholder":
+            "Enter your last name",
 
-        "email": "Email address",
-        "email_placeholder": "email@example.com",
+        "company":
+            "Company / organization",
 
-        "special_notes": "Additional notes",
+        "company_placeholder":
+            "Company name",
+
+        "position":
+            "Position",
+
+        "position_placeholder":
+            "Your position",
+
+        "phone":
+            "Phone number",
+
+        "phone_placeholder":
+            "+374 __ __ __ __",
+
+        "email":
+            "Email address",
+
+        "email_placeholder":
+            "email@example.com",
+
+        "special_notes":
+            "Special notes",
 
         "special_notes_placeholder":
-            "Special requests or additional information",
+            "If needed, please provide additional information or dietary restrictions.",
+
+
+        # =================================================
+        # CONSENT
+        # =================================================
 
         "consent":
             "I agree that the information provided may be used for event organization, attendance confirmation and communication related to the event.",
 
         "submit":
-            "Submit registration request",
+            "Confirm attendance",
 
-        "important": "Important",
+
+        # =================================================
+        # IMPORTANT
+        # =================================================
+
+        "important":
+            "Important",
 
         "important_text":
-            "This is a private event. Submission of the registration form does not itself constitute final confirmation of attendance.",
+            "The event is by invitation only. Attendance is personal and non-transferable. Please present your personal QR invitation on the day of the event for entry and registration.",
 
 
+        # =================================================
         # THANK YOU
+        # =================================================
+
         "registration_received":
-            "REGISTRATION RECEIVED",
+            "ATTENDANCE CONFIRMED",
 
         "thank_you_title":
-            "Thank you for registering",
+            "Thank you",
 
         "thank_you_text":
-            "Your information has been received successfully.",
+            "Your attendance information has been received successfully.",
 
         "thank_you_details":
-            "Our team will contact you to confirm your attendance and provide additional information about the event.",
+            "Additional information regarding your personal invitation will be provided separately.",
 
         "back_home":
             "Back to home",
 
 
+        # =================================================
         # ALREADY REGISTERED
+        # =================================================
+
         "already_registered":
             "You are already registered",
 
@@ -493,12 +691,15 @@ TRANSLATIONS = {
             "A registration with this phone number or email address already exists in the system.",
 
 
+        # =================================================
         # FOOTER
+        # =================================================
+
         "footer_slogan":
-            "Luxury living in the heart of Yerevan",
+            "Building Partnerships. Building the Future.",
 
         "copyright":
-            "© 2026 Baghramyan Residence",
+            "09.09.2026",
 
     },
 
