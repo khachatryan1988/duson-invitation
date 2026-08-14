@@ -106,7 +106,7 @@ textarea {
 
     background:
         #111411
-        url("../images/baghramyan-hero.png")
+        url("../images/baghramyan-hero.webp")
         center center / cover
         no-repeat;
 
@@ -1874,7 +1874,7 @@ textarea {
             rgba(17, 20, 17, 0.72),
             rgba(17, 20, 17, 0.82)
         ),
-        url("../images/baghramyan-hero.png")
+        url("../images/baghramyan-hero.webp")
         center center / cover
         no-repeat;
 }
