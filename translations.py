@@ -35,7 +35,7 @@ TRANSLATIONS = {
         "date_value": "09 սեպտեմբերի 2026",
 
         "time": "Ժամ",
-        "time_value": "19:00",
+        "time_value": "18:00",
 
         "location": "Վայր",
         "location_value": "DOMUS",
@@ -73,20 +73,24 @@ TRANSLATIONS = {
         "agenda_title":
             "Միջոցառման ծրագիր",
 
-        "agenda_1_time": "19:00",
+        "agenda_1_time": "18:00",
         "agenda_1_title":
+            "Հյուրերի դիմավորում և հյուրասիրություն",
+
+        "agenda_2_time": "19:00",
+        "agenda_2_title":
             "Միջոցառման պաշտոնական բացում",
 
-        "agenda_2_time": "19:10",
-        "agenda_2_title":
+        "agenda_3_time": "19:10",
+        "agenda_3_title":
             "Հուշագրերի ստորագրման արարողություն",
 
-        "agenda_3_time": "19:45",
-        "agenda_3_title":
+        "agenda_4_time": "19:45",
+        "agenda_4_title":
             "Գործընկերների պրեզենտացիաների ներկայացում",
 
-        "agenda_4_time": "20:35",
-        "agenda_4_title":
+        "agenda_5_time": "20:35",
+        "agenda_5_title":
             "Հյուրասիրություն և հաճելի ժամանց",
 
 
@@ -262,7 +266,7 @@ TRANSLATIONS = {
             "Время",
 
         "time_value":
-            "19:00",
+            "18:00",
 
         "location":
             "Место",
@@ -301,6 +305,10 @@ TRANSLATIONS = {
         # AGENDA
         # =================================================
 
+        # =================================================
+        # AGENDA
+        # =================================================
+
         "agenda_label":
             "ПРОГРАММА",
 
@@ -308,27 +316,33 @@ TRANSLATIONS = {
             "Программа мероприятия",
 
         "agenda_1_time":
-            "19:00",
+            "18:00",
 
         "agenda_1_title":
-            "Официальное открытие мероприятия",
+            "Встреча гостей и приветственный фуршет",
 
         "agenda_2_time":
-            "19:10",
+            "19:00",
 
         "agenda_2_title":
-            "Церемония подписания меморандумов",
+            "Официальное открытие мероприятия",
 
         "agenda_3_time":
-            "19:45",
+            "19:10",
 
         "agenda_3_title":
-            "Презентации партнёров",
+            "Церемония подписания меморандумов",
 
         "agenda_4_time":
-            "20:35",
+            "19:45",
 
         "agenda_4_title":
+            "Презентации партнёров",
+
+        "agenda_5_time":
+            "20:35",
+
+        "agenda_5_title":
             "Угощения и приятное продолжение вечера",
 
 
@@ -504,7 +518,7 @@ TRANSLATIONS = {
             "Time",
 
         "time_value":
-            "19:00",
+            "18:00",
 
         "location":
             "Venue",
@@ -543,6 +557,10 @@ TRANSLATIONS = {
         # AGENDA
         # =================================================
 
+        # =================================================
+        # AGENDA
+        # =================================================
+
         "agenda_label":
             "AGENDA",
 
@@ -550,27 +568,33 @@ TRANSLATIONS = {
             "Event programme",
 
         "agenda_1_time":
-            "19:00",
+            "18:00",
 
         "agenda_1_title":
-            "Official opening of the event",
+            "Guest arrival and welcome reception",
 
         "agenda_2_time":
-            "19:10",
+            "19:00",
 
         "agenda_2_title":
-            "Memorandum signing ceremony",
+            "Official opening of the event",
 
         "agenda_3_time":
-            "19:45",
+            "19:10",
 
         "agenda_3_title":
-            "Partner presentations",
+            "Memorandum signing ceremony",
 
         "agenda_4_time":
-            "20:35",
+            "19:45",
 
         "agenda_4_title":
+            "Partner presentations",
+
+        "agenda_5_time":
+            "20:35",
+
+        "agenda_5_title":
             "Reception and evening programme",
 
 
