@@ -41,7 +41,7 @@ TRANSLATIONS = {
         "location_value": "Baghramyan Residence",
 
         "address": "Հասցե",
-        "address_value": "Արշակունյաց 33, 4-րդ հարկ, Տերրասա, Երևան",
+        "address_value": "Արշակունյաց 33 (Դոմուս), 4-րդ հարկ, Տերրասա, Երևան",
 
 
         # =================================================
@@ -278,7 +278,7 @@ TRANSLATIONS = {
             "Адрес",
 
         "address_value":
-            "ул. Аршакуняц 33, 4-й этаж, терраса, Ереван",
+            "ул. Аршакуняц 33 (DOMUS), 4-й этаж, терраса, Ереван",
 
 
         # =================================================
@@ -530,7 +530,7 @@ TRANSLATIONS = {
             "Address",
 
         "address_value":
-            "33 Arshakunyats Ave., 4th floor, Terrace, Yerevan",
+            "33 Arshakunyats Ave. (DOMUS), 4th floor, Terrace, Yerevan",
 
 
         # =================================================
