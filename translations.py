@@ -38,7 +38,7 @@ TRANSLATIONS = {
         "time_value": "18:00",
 
         "location": "Վայր",
-        "location_value": "DOMUS",
+        "location_value": "Baghramyan Residence",
 
         "address": "Հասցե",
         "address_value": "Արշակունյաց 33, 4-րդ հարկ, Տերրասա, Երևան",
@@ -272,7 +272,7 @@ TRANSLATIONS = {
             "Место",
 
         "location_value":
-            "DOMUS",
+            "Baghramyan Residence",
 
         "address":
             "Адрес",
@@ -524,7 +524,7 @@ TRANSLATIONS = {
             "Venue",
 
         "location_value":
-            "DOMUS",
+            "Baghramyan Residence",
 
         "address":
             "Address",
