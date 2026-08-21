@@ -113,17 +113,19 @@ class Guest(db.Model):
         index=True
     )
 
-    # Оставляем для совместимости с существующей PostgreSQL таблицей.
-    # Новые регистрации всегда будут solo.
+    # =====================================================
+    # LEGACY COMPANION FIELDS
+    # =====================================================
+    #
+    # Оставляем только для совместимости с существующей БД.
+    # Новые регистрации всегда solo.
+    #
+
     attendance_type = db.Column(
         db.String(30),
         nullable=False,
         default="solo"
     )
-
-    # Старые companion-поля оставляем в модели,
-    # чтобы не ломать существующую БД.
-    # Новые регистрации их не используют.
 
     companion_first_name = db.Column(
         db.String(100),
@@ -199,6 +201,7 @@ def normalize_language(lang):
 ERROR_MESSAGES = {
 
     "hy": {
+
         "first_name":
             "Խնդրում ենք լրացնել անունը։",
 
@@ -208,6 +211,9 @@ ERROR_MESSAGES = {
         "company":
             "Խնդրում ենք լրացնել ընկերության / "
             "կազմակերպության անվանումը։",
+
+        "position":
+            "Խնդրում ենք լրացնել պաշտոնը։",
 
         "phone":
             "Խնդրում ենք լրացնել ճիշտ հեռախոսահամար։",
@@ -226,6 +232,7 @@ ERROR_MESSAGES = {
 
 
     "ru": {
+
         "first_name":
             "Пожалуйста, укажите имя.",
 
@@ -234,6 +241,9 @@ ERROR_MESSAGES = {
 
         "company":
             "Пожалуйста, укажите компанию / организацию.",
+
+        "position":
+            "Пожалуйста, укажите должность.",
 
         "phone":
             "Пожалуйста, укажите корректный номер телефона.",
@@ -252,6 +262,7 @@ ERROR_MESSAGES = {
 
 
     "en": {
+
         "first_name":
             "Please enter your first name.",
 
@@ -260,6 +271,9 @@ ERROR_MESSAGES = {
 
         "company":
             "Please enter your company / organization.",
+
+        "position":
+            "Please enter your position.",
 
         "phone":
             "Please enter a valid phone number.",
@@ -414,6 +428,7 @@ def register(lang):
         lang
     ]
 
+
     # =====================================================
     # GET FORM DATA
     # =====================================================
@@ -469,6 +484,7 @@ def register(lang):
 
     errors = []
 
+
     if not first_name:
 
         errors.append(
@@ -492,6 +508,16 @@ def register(lang):
         errors.append(
             messages[
                 "company"
+            ]
+        )
+
+
+    # POSITION теперь обязательный
+    if not position:
+
+        errors.append(
+            messages[
+                "position"
             ]
         )
 
@@ -541,8 +567,7 @@ def register(lang):
 
             errors=errors,
 
-            form_data=
-            request.form
+            form_data=request.form
 
         ), 400
 
@@ -555,11 +580,8 @@ def register(lang):
         Guest.query
         .filter(
             db.or_(
-                Guest.email
-                == email,
-
-                Guest.phone
-                == phone
+                Guest.email == email,
+                Guest.phone == phone
             )
         )
         .first()
@@ -582,55 +604,38 @@ def register(lang):
 
     guest = Guest(
 
-        first_name=
-        first_name,
+        first_name=first_name,
 
-        last_name=
-        last_name,
+        last_name=last_name,
 
-        company=
-        company,
+        company=company,
 
-        position=(
-                position
-                or None
-        ),
+        position=position,
 
-        phone=
-        phone,
+        phone=phone,
 
-        email=
-        email,
+        email=email,
 
-        # Companion больше не используется
-        attendance_type=
-        "solo",
+        attendance_type="solo",
 
-        companion_first_name=
-        None,
+        companion_first_name=None,
 
-        companion_last_name=
-        None,
+        companion_last_name=None,
 
-        companion_company=
-        None,
+        companion_company=None,
 
-        companion_position=
-        None,
+        companion_position=None,
 
-        companion_phone=
-        None,
+        companion_phone=None,
 
-        companion_email=
-        None,
+        companion_email=None,
 
         special_notes=(
                 special_notes
                 or None
         ),
 
-        consent=
-        consent,
+        consent=consent,
     )
 
 
@@ -812,28 +817,29 @@ def admin_guests():
     )
 
 
-    # Companion больше не используется
+    # =====================================================
+    # Старые значения пока оставляем для совместимости
+    # с admin.html.
+    #
+    # После удаления companion-карточек из admin.html
+    # их можно удалить и отсюда.
+    # =====================================================
+
     companions = 0
 
-    total_people = (
-        registration_count
-    )
+    total_people = registration_count
 
 
     return render_template(
         "admin.html",
 
-        guests=
-        guests,
+        guests=guests,
 
-        registration_count=
-        registration_count,
+        registration_count=registration_count,
 
-        companions=
-        companions,
+        companions=companions,
 
-        total_people=
-        total_people,
+        total_people=total_people,
     )
 
 
@@ -858,13 +864,15 @@ def export_excel():
     )
 
 
+    # =====================================================
+    # WORKBOOK
+    # =====================================================
+
     wb = Workbook()
 
     ws = wb.active
 
-    ws.title = (
-        "DUSON Registrations"
-    )
+    ws.title = "Baghramyan Registrations"
 
 
     # =====================================================
@@ -901,12 +909,12 @@ def export_excel():
 
 
     # =====================================================
-    # HEADER STYLE
+    # EXCEL STYLES
     # =====================================================
 
     header_fill = PatternFill(
-        "solid",
-        fgColor="07101F"
+        fill_type="solid",
+        fgColor="252A24"
     )
 
 
@@ -918,44 +926,35 @@ def export_excel():
 
     thin = Side(
         style="thin",
-        color="D8DCE3"
+        color="D8D8D2"
     )
 
 
+    # =====================================================
+    # HEADER STYLE
+    # =====================================================
+
     for cell in ws[1]:
 
-        cell.fill = (
-            header_fill
-        )
+        cell.fill = header_fill
 
-        cell.font = (
-            header_font
-        )
+        cell.font = header_font
 
         cell.alignment = Alignment(
-            horizontal=
-            "center",
-
-            vertical=
-            "center",
-
-            wrap_text=
-            True
+            horizontal="center",
+            vertical="center",
+            wrap_text=True
         )
 
         cell.border = Border(
-            left=
-            thin,
-
-            right=
-            thin,
-
-            top=
-            thin,
-
-            bottom=
-            thin
+            left=thin,
+            right=thin,
+            top=thin,
+            bottom=thin
         )
+
+
+    ws.row_dimensions[1].height = 38
 
 
     # =====================================================
@@ -964,15 +963,14 @@ def export_excel():
 
     for guest in guests:
 
-        created = (
-            guest.created_at
-        )
+        created = guest.created_at
 
 
+        # Excel не поддерживает timezone-aware datetime.
+        # Для отображения превращаем дату в обычную.
         if (
                 created
-                and
-                created.tzinfo
+                and created.tzinfo
         ):
 
             created = (
@@ -988,23 +986,23 @@ def export_excel():
 
         ws.append([
 
-            # guest.id,
-            #
-            # guest.first_name,
-            #
-            # guest.last_name,
-            #
-            # guest.company,
-            #
-            # guest.position
-            # or "",
-            #
-            # guest.phone,
-            #
-            # guest.email,
-            #
-            # guest.special_notes
-            # or "",
+            guest.id,
+
+            guest.first_name,
+
+            guest.last_name,
+
+            guest.company,
+
+            guest.position
+            or "",
+
+            guest.phone,
+
+            guest.email,
+
+            guest.special_notes
+            or "",
 
             (
                 "Այո"
@@ -1028,25 +1026,25 @@ def export_excel():
 
     widths = [
 
-        8,
+        8,      # ID
 
-        18,
+        20,     # First name
 
-        18,
+        20,     # Last name
 
-        30,
+        32,     # Company
 
-        24,
+        25,     # Position
 
-        20,
+        20,     # Phone
 
-        32,
+        35,     # Email
 
-        42,
+        45,     # Notes
 
-        18,
+        18,     # Consent
 
-        22,
+        23,     # Date
     ]
 
 
@@ -1063,7 +1061,7 @@ def export_excel():
 
 
     # =====================================================
-    # CELLS
+    # BODY CELLS
     # =====================================================
 
     for row in ws.iter_rows(
@@ -1073,33 +1071,25 @@ def export_excel():
         for cell in row:
 
             cell.alignment = Alignment(
-                vertical=
-                "top",
-
-                wrap_text=
-                True
+                vertical="top",
+                wrap_text=True
             )
 
             cell.border = Border(
-                left=
-                thin,
-
-                right=
-                thin,
-
-                top=
-                thin,
-
-                bottom=
-                thin
+                left=thin,
+                right=thin,
+                top=thin,
+                bottom=thin
             )
 
 
+    # =====================================================
+    # EXCEL FEATURES
+    # =====================================================
+
     ws.freeze_panes = "A2"
 
-    ws.auto_filter.ref = (
-        ws.dimensions
-    )
+    ws.auto_filter.ref = ws.dimensions
 
 
     # =====================================================
@@ -1108,11 +1098,9 @@ def export_excel():
 
     output = BytesIO()
 
-
     wb.save(
         output
     )
-
 
     output.seek(
         0
@@ -1120,7 +1108,7 @@ def export_excel():
 
 
     filename = (
-        "DUSON_registrations_"
+        "Baghramyan_registration_"
         f"{datetime.now().strftime('%Y-%m-%d')}"
         ".xlsx"
     )
@@ -1132,8 +1120,7 @@ def export_excel():
 
         as_attachment=True,
 
-        download_name=
-        filename,
+        download_name=filename,
 
         mimetype=(
             "application/"
@@ -1153,8 +1140,7 @@ def export_excel():
 def health():
 
     return {
-        "status":
-            "ok"
+        "status": "ok"
     }
 
 
@@ -1166,8 +1152,7 @@ if __name__ == "__main__":
 
     app.run(
 
-        host=
-        "0.0.0.0",
+        host="0.0.0.0",
 
         port=int(
             os.getenv(
