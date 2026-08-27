@@ -1,0 +1,1327 @@
+{% extends "memorandum/base.html" %}
+
+{% block title %}
+Baghramyan Residence — Special Invitation
+{% endblock %}
+
+
+{% block body %}
+
+
+<!-- ===================================================== -->
+<!-- HERO POSITION OVERRIDES -->
+<!-- ===================================================== -->
+
+<!--<style>-->
+
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+<!--    /* TOP LOGO — НИЖЕ                                      */-->
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+
+<!--    .mem-envelope-brand {-->
+<!--        top: 65px !important;-->
+<!--    }-->
+
+
+<!--    .mem-envelope-brand img {-->
+<!--        width: 145px;-->
+<!--        height: auto;-->
+<!--    }-->
+
+
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+<!--    /* ENVELOPE — НЕМНОГО ВЫШЕ                              */-->
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+
+<!--    .mem-envelope-stage {-->
+<!--        padding-top: 120px !important;-->
+<!--        padding-bottom: 40px !important;-->
+<!--    }-->
+
+
+<!--    .mem-envelope {-->
+<!--        transform: translateY(-45px);-->
+<!--    }-->
+
+
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+<!--    /* OPEN BUTTON                                           */-->
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+
+<!--    .mem-envelope-open {-->
+<!--        gap: 7px !important;-->
+<!--    }-->
+
+
+<!--    .mem-open-label {-->
+<!--        position: relative;-->
+
+<!--        margin-bottom: 1px;-->
+
+<!--        color: #56564f;-->
+
+<!--        font-family:-->
+<!--            Georgia,-->
+<!--            "Times New Roman",-->
+<!--            serif;-->
+
+<!--        font-size: 12px;-->
+
+<!--        line-height: 1.2;-->
+
+<!--        text-align: center;-->
+
+<!--        white-space: nowrap;-->
+<!--    }-->
+
+
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+<!--    /* ARROW TO BR                                           */-->
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+
+<!--    .mem-open-arrow {-->
+<!--        position: relative;-->
+
+<!--        display: block;-->
+
+<!--        width: 1px;-->
+<!--        height: 35px;-->
+
+<!--        margin:-->
+<!--            1px-->
+<!--            auto-->
+<!--            0;-->
+
+<!--        background:-->
+<!--            linear-gradient(-->
+<!--                180deg,-->
+<!--                rgba(151, 105, 47, .25) 0%,-->
+<!--                rgba(151, 105, 47, .92) 100%-->
+<!--            );-->
+
+<!--        pointer-events: none;-->
+<!--    }-->
+
+
+<!--    .mem-open-arrow::after {-->
+<!--        content: "";-->
+
+<!--        position: absolute;-->
+
+<!--        left: 50%;-->
+<!--        bottom: -1px;-->
+
+<!--        width: 8px;-->
+<!--        height: 8px;-->
+
+<!--        border-right:-->
+<!--            1.5px solid-->
+<!--            #9c6c31;-->
+
+<!--        border-bottom:-->
+<!--            1.5px solid-->
+<!--            #9c6c31;-->
+
+<!--        transform:-->
+<!--            translateX(-50%)-->
+<!--            rotate(45deg);-->
+<!--    }-->
+
+
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+<!--    /* BR WAX SEAL                                           */-->
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+
+<!--    .mem-wax-seal {-->
+<!--        margin-top: 2px;-->
+
+<!--        transition:-->
+<!--            transform .25s ease,-->
+<!--            box-shadow .25s ease;-->
+<!--    }-->
+
+
+<!--    .mem-wax-monogram {-->
+<!--        font-size: 17px;-->
+
+<!--        font-family:-->
+<!--            Georgia,-->
+<!--            "Times New Roman",-->
+<!--            serif;-->
+<!--    }-->
+
+
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+<!--    /* SMALL ANIMATION FOR ARROW                             */-->
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+
+<!--    @keyframes memArrowMove {-->
+
+<!--        0%,-->
+<!--        100% {-->
+<!--            transform:-->
+<!--                translateY(0);-->
+<!--        }-->
+
+<!--        50% {-->
+<!--            transform:-->
+<!--                translateY(4px);-->
+<!--        }-->
+
+<!--    }-->
+
+
+<!--    .mem-open-arrow {-->
+<!--        animation:-->
+<!--            memArrowMove-->
+<!--            1.55s-->
+<!--            ease-in-out-->
+<!--            infinite;-->
+<!--    }-->
+
+
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+<!--    /* MOBILE                                                */-->
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+
+<!--    @media (max-width: 720px) {-->
+
+<!--        .mem-envelope-brand {-->
+<!--            top: 52px !important;-->
+<!--        }-->
+
+
+<!--        .mem-envelope-brand img {-->
+<!--            width: 105px;-->
+<!--        }-->
+
+
+<!--        .mem-envelope {-->
+<!--            transform:-->
+<!--                translateY(-25px);-->
+<!--        }-->
+
+
+<!--        .mem-envelope-stage {-->
+<!--            padding-top: 105px !important;-->
+<!--        }-->
+
+
+<!--        .mem-open-label {-->
+<!--            font-size: 10px;-->
+<!--        }-->
+
+
+<!--        .mem-open-arrow {-->
+<!--            height: 27px;-->
+<!--        }-->
+
+<!--    }-->
+
+<!--</style>-->
+
+
+<!-- ===================================================== -->
+<!-- PREMIUM INTERACTIVE INVITATION HERO -->
+<!-- ===================================================== -->
+
+<section
+        class="mem-envelope-hero"
+        id="invitation"
+>
+
+
+    <!-- BACKGROUND -->
+
+    <div class="mem-envelope-background"></div>
+
+    <div class="mem-envelope-overlay"></div>
+
+
+    <div class="mem-container mem-envelope-inner">
+
+
+        <!-- ================================================= -->
+        <!-- LANGUAGE SWITCHER -->
+        <!-- ================================================= -->
+
+        <nav
+                class="mem-envelope-languages"
+                aria-label="Language"
+        >
+
+            <a
+                    href="{{ url_for('memorandum_index', lang='hy') }}"
+                    class="{% if lang == 'hy' %}active{% endif %}"
+            >
+                HY
+            </a>
+
+
+            <span>
+                /
+            </span>
+
+
+            <a
+                    href="{{ url_for('memorandum_index', lang='ru') }}"
+                    class="{% if lang == 'ru' %}active{% endif %}"
+            >
+                RU
+            </a>
+
+
+            <span>
+                /
+            </span>
+
+
+            <a
+                    href="{{ url_for('memorandum_index', lang='en') }}"
+                    class="{% if lang == 'en' %}active{% endif %}"
+            >
+                EN
+            </a>
+
+        </nav>
+
+
+        <!-- ================================================= -->
+        <!-- BRAND ABOVE ENVELOPE -->
+        <!-- ================================================= -->
+
+        <div class="mem-envelope-brand">
+
+            <img
+                    src="{{ url_for('static', filename='memorandum/images/logo.svg') }}"
+                    alt="Baghramyan Residence"
+            >
+
+
+            <span>
+                {{ t.private_presentation }}
+            </span>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- ENVELOPE STAGE -->
+        <!-- ================================================= -->
+
+        <div class="mem-envelope-stage">
+
+
+            <div
+                    class="mem-envelope"
+                    id="memorandumEnvelope"
+            >
+
+
+                <!-- ========================================= -->
+                <!-- ENVELOPE BACK -->
+                <!-- ========================================= -->
+
+                <div class="mem-envelope-back"></div>
+
+
+                <!-- ========================================= -->
+                <!-- INVITATION CARD -->
+                <!-- ========================================= -->
+
+                <div class="mem-invitation-card">
+
+
+                    <img
+                            class="mem-card-logo"
+                            src="{{ url_for('static', filename='memorandum/images/logo.svg') }}"
+                            alt="Baghramyan Residence"
+                    >
+
+
+                    <div class="mem-card-label">
+
+                        {{ t.private_presentation }}
+
+                    </div>
+
+
+                    <h1>
+
+                        {{ t.hero_title_1 }}
+
+                        <em>
+                            {{ t.hero_title_2 }}
+                        </em>
+
+                    </h1>
+
+
+                    <div class="mem-card-divider"></div>
+
+
+                    <!-- DATE + TIME -->
+
+                    <div class="mem-card-date">
+
+                        <span>
+                            {{ t.date_value }}
+                        </span>
+
+
+                        <strong>
+                            {{ t.time_value }}
+                        </strong>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="mem-card-location">
+
+                        <strong>
+                            {{ t.location_value }}
+                        </strong>
+
+
+                        <span>
+                            {{ t.address_value }}
+                        </span>
+
+                    </div>
+
+
+                    <!-- REGISTER BUTTON -->
+
+                    <a
+                            href="#rsvp"
+                            class="mem-card-button"
+                    >
+
+                        <span>
+                            {{ t.register_button }}
+                        </span>
+
+
+                        <span class="mem-card-button-arrow">
+                            ↓
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- ========================================= -->
+                <!-- ENVELOPE FRONT -->
+                <!-- ========================================= -->
+
+                <div class="mem-envelope-front"></div>
+
+
+                <!-- ========================================= -->
+                <!-- TOP FLAP -->
+                <!-- ========================================= -->
+
+                <div class="mem-envelope-flap"></div>
+
+
+                <!-- ========================================= -->
+                <!-- OPEN INVITATION -->
+                <!-- ========================================= -->
+
+                <button
+                        type="button"
+                        class="mem-envelope-open"
+                        id="openMemorandumInvitation"
+                        aria-expanded="false"
+                        aria-label="{{ t.open_invitation }}"
+                >
+
+
+                    <!-- TEXT -->
+
+                    <span class="mem-open-label">
+
+                        {{ t.open_invitation }}
+
+                    </span>
+
+
+                    <!-- ARROW TO BR -->
+
+                    <span
+                            class="mem-open-arrow"
+                            aria-hidden="true"
+                    ></span>
+
+
+                    <!-- WAX SEAL -->
+
+                    <span class="mem-wax-seal">
+
+
+                        <span class="mem-wax-ring"></span>
+
+
+                        <span class="mem-wax-monogram">
+
+                            BR
+
+                        </span>
+
+
+                    </span>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- SCROLL INDICATOR -->
+        <!-- ================================================= -->
+
+        <a
+                href="#about"
+                class="mem-envelope-scroll"
+                aria-label="Scroll down"
+        >
+
+            <span></span>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- ABOUT / INVITATION -->
+<!-- ===================================================== -->
+
+<section
+        class="mem-about"
+        id="about"
+>
+
+    <div class="mem-container">
+
+
+        <div class="mem-section-number">
+            01
+        </div>
+
+
+        <div class="mem-about-grid">
+
+
+            <!-- LEFT -->
+
+            <div>
+
+
+                <div class="mem-section-label">
+
+                    {{ t.intro_label }}
+
+                </div>
+
+
+                <h2>
+
+                    {{ t.intro_title }}
+
+                </h2>
+
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="mem-about-text">
+
+
+                <p class="lead">
+
+                    {{ t.intro_text_1 }}
+
+                </p>
+
+
+                <p>
+
+                    {{ t.intro_text_2 }}
+
+                </p>
+
+
+                {% if t.intro_text_3 %}
+
+                <p>
+
+                    {{ t.intro_text_3 }}
+
+                </p>
+
+                {% endif %}
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- AGENDA -->
+<!-- ===================================================== -->
+
+<section class="mem-agenda">
+
+
+    <div class="mem-container">
+
+
+        <div class="mem-section-top">
+
+
+            <div>
+
+
+                <div class="mem-section-label light">
+
+                    {{ t.agenda_label }}
+
+                </div>
+
+
+                <h2>
+
+                    {{ t.agenda_title }}
+
+                </h2>
+
+
+            </div>
+
+
+            <div class="mem-section-number light">
+
+                02
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- AGENDA LIST -->
+        <!-- ================================================= -->
+
+        <div class="mem-agenda-list">
+
+
+            <!-- 01 -->
+
+            <div class="mem-agenda-item">
+
+
+                <span class="number">
+                    01
+                </span>
+
+
+                <time>
+
+                    {{ t.agenda_1_time }}
+
+                </time>
+
+
+                <strong>
+
+                    {{ t.agenda_1_title }}
+
+                </strong>
+
+
+            </div>
+
+
+            <!-- 02 -->
+
+            <div class="mem-agenda-item">
+
+
+                <span class="number">
+                    02
+                </span>
+
+
+                <time>
+
+                    {{ t.agenda_2_time }}
+
+                </time>
+
+
+                <strong>
+
+                    {{ t.agenda_2_title }}
+
+                </strong>
+
+
+            </div>
+
+
+            <!-- 03 -->
+
+            <div class="mem-agenda-item">
+
+
+                <span class="number">
+                    03
+                </span>
+
+
+                <time>
+
+                    {{ t.agenda_3_time }}
+
+                </time>
+
+
+                <strong>
+
+                    {{ t.agenda_3_title }}
+
+                </strong>
+
+
+            </div>
+
+
+            <!-- 04 -->
+
+            <div class="mem-agenda-item">
+
+
+                <span class="number">
+                    04
+                </span>
+
+
+                <time>
+
+                    {{ t.agenda_4_time }}
+
+                </time>
+
+
+                <strong>
+
+                    {{ t.agenda_4_title }}
+
+                </strong>
+
+
+            </div>
+
+
+            <!-- 05 -->
+
+            <div class="mem-agenda-item">
+
+
+                <span class="number">
+                    05
+                </span>
+
+
+                <time>
+
+                    {{ t.agenda_5_time }}
+
+                </time>
+
+
+                <strong>
+
+                    {{ t.agenda_5_title }}
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- RSVP -->
+<!-- ===================================================== -->
+
+<section
+        class="mem-rsvp"
+        id="rsvp"
+>
+
+
+    <div class="mem-container">
+
+
+        <div class="mem-section-number">
+
+            03
+
+        </div>
+
+
+        <div class="mem-rsvp-grid">
+
+
+            <!-- ================================================= -->
+            <!-- LEFT INFO -->
+            <!-- ================================================= -->
+
+            <div class="mem-rsvp-info">
+
+
+                <div class="mem-section-label">
+
+                    {{ t.registration_label }}
+
+                </div>
+
+
+                <h2>
+
+                    {{ t.registration_title_1 }}
+
+                    <em>
+
+                        {{ t.registration_title_2 }}
+
+                    </em>
+
+                </h2>
+
+
+                <p>
+
+                    {{ t.registration_text }}
+
+                </p>
+
+
+                <!-- EVENT DETAILS -->
+
+                <div class="mem-details">
+
+
+                    <!-- DATE -->
+
+                    <div>
+
+
+                        <small>
+
+                            {{ t.date }}
+
+                        </small>
+
+
+                        <strong>
+
+                            {{ t.date_value }}
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <!-- TIME -->
+
+                    <div>
+
+
+                        <small>
+
+                            {{ t.time }}
+
+                        </small>
+
+
+                        <strong>
+
+                            {{ t.time_value }}
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <!-- ADDRESS -->
+
+                    <div>
+
+
+                        <small>
+
+                            {{ t.address }}
+
+                        </small>
+
+
+                        <strong>
+
+                            {{ t.address_value }}
+
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- FORM -->
+            <!-- ================================================= -->
+
+            <div class="mem-form-card">
+
+
+                <!-- ERRORS -->
+
+                {% if errors %}
+
+                <div class="mem-errors">
+
+
+                    {% for error in errors %}
+
+                    <div>
+
+                        {{ error }}
+
+                    </div>
+
+                    {% endfor %}
+
+
+                </div>
+
+                {% endif %}
+
+
+                <!-- FORM -->
+
+                <form
+                        method="post"
+                        action="{{ url_for('memorandum_register', lang=lang) }}"
+                >
+
+
+                    <div class="mem-form-grid">
+
+
+                        <!-- FIRST NAME -->
+
+                        <label>
+
+
+                            <span>
+
+                                {{ t.first_name }} *
+
+                            </span>
+
+
+                            <input
+                                    type="text"
+                                    name="first_name"
+                                    required
+                                    maxlength="100"
+                                    autocomplete="given-name"
+                                    placeholder="{{ t.first_name_placeholder }}"
+                                    value="{{ form_data.get('first_name', '') if form_data else '' }}"
+                            >
+
+
+                        </label>
+
+
+                        <!-- LAST NAME -->
+
+                        <label>
+
+
+                            <span>
+
+                                {{ t.last_name }} *
+
+                            </span>
+
+
+                            <input
+                                    type="text"
+                                    name="last_name"
+                                    required
+                                    maxlength="100"
+                                    autocomplete="family-name"
+                                    placeholder="{{ t.last_name_placeholder }}"
+                                    value="{{ form_data.get('last_name', '') if form_data else '' }}"
+                            >
+
+
+                        </label>
+
+
+                        <!-- COMPANY -->
+
+                        <label class="full">
+
+
+                            <span>
+
+                                {{ t.company }}
+
+                            </span>
+
+
+                            <input
+                                    type="text"
+                                    name="company"
+                                    maxlength="200"
+                                    autocomplete="organization"
+                                    placeholder="{{ t.company_placeholder }}"
+                                    value="{{ form_data.get('company', '') if form_data else '' }}"
+                            >
+
+
+                        </label>
+
+
+                        <!-- POSITION -->
+
+                        <label>
+
+
+                            <span>
+
+                                {{ t.position }}
+
+                            </span>
+
+
+                            <input
+                                    type="text"
+                                    name="position"
+                                    maxlength="200"
+                                    autocomplete="organization-title"
+                                    placeholder="{{ t.position_placeholder }}"
+                                    value="{{ form_data.get('position', '') if form_data else '' }}"
+                            >
+
+
+                        </label>
+
+
+                        <!-- PHONE -->
+
+                        <label>
+
+
+                            <span>
+
+                                {{ t.phone }}
+
+                            </span>
+
+
+                            <input
+                                    type="tel"
+                                    name="phone"
+                                    maxlength="50"
+                                    autocomplete="tel"
+                                    placeholder="{{ t.phone_placeholder }}"
+                                    value="{{ form_data.get('phone', '') if form_data else '' }}"
+                            >
+
+
+                        </label>
+
+
+                        <!-- EMAIL -->
+
+                        <label class="full">
+
+
+                            <span>
+
+                                {{ t.email }}
+
+                            </span>
+
+
+                            <input
+                                    type="email"
+                                    name="email"
+                                    maxlength="200"
+                                    autocomplete="email"
+                                    placeholder="{{ t.email_placeholder }}"
+                                    value="{{ form_data.get('email', '') if form_data else '' }}"
+                            >
+
+
+                        </label>
+
+
+                        <!-- NOTES -->
+
+                        <label class="full">
+
+
+                            <span>
+
+                                {{ t.special_notes }}
+
+                            </span>
+
+
+                            <textarea
+                                    name="special_notes"
+                                    rows="4"
+                                    maxlength="2000"
+                                    placeholder="{{ t.special_notes_placeholder }}"
+                            >{{ form_data.get('special_notes', '') if form_data else '' }}</textarea>
+
+
+                        </label>
+
+
+                    </div>
+
+
+                    <!-- CONSENT -->
+
+                    <label class="mem-consent">
+
+
+                        <input
+                                type="checkbox"
+                                name="consent"
+                                required
+                                {% if form_data and form_data.get('consent') %}
+                        checked
+                        {% endif %}
+                        >
+
+
+                        <span>
+
+                            {{ t.consent }}
+
+                        </span>
+
+
+                    </label>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                            class="mem-submit"
+                            type="submit"
+                    >
+
+
+                        <span>
+
+                            {{ t.submit }}
+
+                        </span>
+
+
+                        <span>
+
+                            →
+
+                        </span>
+
+
+                    </button>
+
+
+                </form>
+
+
+                <!-- IMPORTANT -->
+
+                <div class="mem-important">
+
+
+                    <strong>
+
+                        {{ t.important }}
+
+                    </strong>
+
+
+                    <p>
+
+                        {{ t.important_text }}
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer class="mem-footer">
+
+
+    <div class="mem-container mem-footer-inner">
+
+
+        <img
+                src="{{ url_for('static', filename='memorandum/images/logo.svg') }}"
+                alt="Baghramyan Residence"
+        >
+
+
+        <div>
+
+            {{ t.footer_slogan }}
+
+        </div>
+
+
+        <small>
+
+            {{ t.copyright }}
+
+        </small>
+
+
+    </div>
+
+
+</footer>
+
+
+<!-- ===================================================== -->
+<!-- ENVELOPE SCRIPT -->
+<!-- ===================================================== -->
+
+<script>
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+
+            const envelope =
+                document.getElementById(
+                    "memorandumEnvelope"
+                );
+
+
+            const openButton =
+                document.getElementById(
+                    "openMemorandumInvitation"
+                );
+
+
+            if (
+                !envelope
+                ||
+                !openButton
+            ) {
+
+                return;
+
+            }
+
+
+            openButton.addEventListener(
+                "click",
+                function () {
+
+
+                    if (
+                        envelope.classList.contains(
+                            "is-open"
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    envelope.classList.add(
+                        "is-open"
+                    );
+
+
+                    openButton.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
+
+
+                }
+            );
+
+
+        }
+    );
+
+</script>
+
+
+{% endblock %}

@@ -29,7 +29,30 @@ from openpyxl.styles import (
 )
 from openpyxl.utils import get_column_letter
 
+
+# =========================================================
+# TRANSLATIONS
+# =========================================================
+
 from translations import TRANSLATIONS
+
+from translations_memorandum import (
+    TRANSLATIONS as MEMORANDUM_TRANSLATIONS
+)
+
+
+# =========================================================
+# EVENTS
+# =========================================================
+
+EVENT_MAIN = "baghramyan-main"
+EVENT_MEMORANDUM = "memorandum-signing"
+
+
+EVENT_NAMES = {
+    EVENT_MAIN: "Baghramyan Residence",
+    EVENT_MEMORANDUM: "Memorandum Signing",
+}
 
 
 # =========================================================
@@ -81,6 +104,23 @@ class Guest(db.Model):
         primary_key=True
     )
 
+    # =====================================================
+    # SOURCE EVENT
+    # =====================================================
+    #
+    # baghramyan-main
+    # memorandum-signing
+    #
+    # По этому полю определяем,
+    # с какой страницы пришла регистрация.
+    #
+
+    event_slug = db.Column(
+        db.String(100),
+        nullable=True,
+        index=True
+    )
+
     first_name = db.Column(
         db.String(100),
         nullable=False
@@ -91,6 +131,8 @@ class Guest(db.Model):
         nullable=False
     )
 
+    # Оставляем NOT NULL для совместимости
+    # с существующей PostgreSQL.
     company = db.Column(
         db.String(200),
         nullable=False
@@ -113,13 +155,10 @@ class Guest(db.Model):
         index=True
     )
 
+
     # =====================================================
-    # LEGACY COMPANION FIELDS
+    # LEGACY FIELDS
     # =====================================================
-    #
-    # Оставляем только для совместимости с существующей БД.
-    # Новые регистрации всегда solo.
-    #
 
     attendance_type = db.Column(
         db.String(30),
@@ -156,6 +195,11 @@ class Guest(db.Model):
         db.String(200),
         nullable=True
     )
+
+
+    # =====================================================
+    # OTHER
+    # =====================================================
 
     special_notes = db.Column(
         db.Text,
@@ -195,7 +239,7 @@ def normalize_language(lang):
 
 
 # =========================================================
-# VALIDATION TRANSLATIONS
+# VALIDATION MESSAGES
 # =========================================================
 
 ERROR_MESSAGES = {
@@ -302,11 +346,16 @@ def get_translation(lang):
     return TRANSLATIONS[lang]
 
 
+def get_memorandum_translation(lang):
+
+    lang = normalize_language(lang)
+
+    return MEMORANDUM_TRANSLATIONS[lang]
+
+
 def admin_required():
 
-    if not session.get(
-            "admin_logged_in"
-    ):
+    if not session.get("admin_logged_in"):
         abort(403)
 
 
@@ -324,11 +373,7 @@ def normalize_phone(phone: str) -> str:
     )
 
     if phone.startswith("00"):
-
-        phone = (
-                "+"
-                + phone[2:]
-        )
+        phone = "+" + phone[2:]
 
     return phone
 
@@ -344,10 +389,7 @@ def valid_phone(phone: str) -> bool:
         phone
     )
 
-    return (
-            len(digits)
-            >= 8
-    )
+    return len(digits) >= 8
 
 
 def valid_email(email: str) -> bool:
@@ -369,8 +411,16 @@ def valid_email(email: str) -> bool:
     )
 
 
+def get_event_name(event_slug: str) -> str:
+
+    return EVENT_NAMES.get(
+        event_slug,
+        event_slug or ""
+    )
+
+
 # =========================================================
-# HOME
+# ROOT
 # =========================================================
 
 @app.route("/")
@@ -385,7 +435,23 @@ def home():
 
 
 # =========================================================
-# LANGUAGE HOME
+# =========================================================
+# MAIN BAGHRAMYAN VERSION
+# =========================================================
+# =========================================================
+#
+# /hy
+# /ru
+# /en
+#
+# event_slug:
+# baghramyan-main
+#
+# =========================================================
+
+
+# =========================================================
+# MAIN INDEX
 # =========================================================
 
 @app.route("/<lang>")
@@ -407,7 +473,19 @@ def index(lang):
 
 
 # =========================================================
-# REGISTRATION
+# MAIN REGISTRATION
+# =========================================================
+#
+# REQUIRED:
+#
+# first_name
+# last_name
+# company
+# position
+# phone
+# email
+# consent
+#
 # =========================================================
 
 @app.route(
@@ -430,7 +508,7 @@ def register(lang):
 
 
     # =====================================================
-    # GET FORM DATA
+    # FORM DATA
     # =====================================================
 
     first_name = request.form.get(
@@ -486,70 +564,48 @@ def register(lang):
 
 
     if not first_name:
-
         errors.append(
-            messages[
-                "first_name"
-            ]
+            messages["first_name"]
         )
 
 
     if not last_name:
-
         errors.append(
-            messages[
-                "last_name"
-            ]
+            messages["last_name"]
         )
 
 
     if not company:
-
         errors.append(
-            messages[
-                "company"
-            ]
+            messages["company"]
         )
 
 
-    # POSITION теперь обязательный
     if not position:
-
         errors.append(
-            messages[
-                "position"
-            ]
+            messages["position"]
         )
 
 
     if not valid_phone(
             phone
     ):
-
         errors.append(
-            messages[
-                "phone"
-            ]
+            messages["phone"]
         )
 
 
     if not valid_email(
             email
     ):
-
         errors.append(
-            messages[
-                "email"
-            ]
+            messages["email"]
         )
 
 
     if not consent:
-
         errors.append(
-            messages[
-                "consent"
-            ]
+            messages["consent"]
         )
 
 
@@ -575,10 +631,21 @@ def register(lang):
     # =====================================================
     # DUPLICATE CHECK
     # =====================================================
+    #
+    # Проверяем только внутри MAIN event.
+    #
+    # Один человек может зарегистрироваться:
+    #
+    # 1 раз на baghramyan-main
+    # +
+    # 1 раз на memorandum-signing
+    #
+    # =====================================================
 
     existing_guest = (
         Guest.query
         .filter(
+            Guest.event_slug == EVENT_MAIN,
             db.or_(
                 Guest.email == email,
                 Guest.phone == phone
@@ -599,10 +666,13 @@ def register(lang):
 
 
     # =====================================================
-    # CREATE REGISTRATION
+    # SAVE
     # =====================================================
 
     guest = Guest(
+
+        # ВАЖНО
+        event_slug=EVENT_MAIN,
 
         first_name=first_name,
 
@@ -615,6 +685,403 @@ def register(lang):
         phone=phone,
 
         email=email,
+
+        attendance_type="solo",
+
+        companion_first_name=None,
+        companion_last_name=None,
+        companion_company=None,
+        companion_position=None,
+        companion_phone=None,
+        companion_email=None,
+
+        special_notes=(
+                special_notes
+                or None
+        ),
+
+        consent=consent,
+    )
+
+
+    db.session.add(
+        guest
+    )
+
+    db.session.commit()
+
+
+    return redirect(
+        url_for(
+            "thank_you",
+            lang=lang
+        )
+    )
+
+
+# =========================================================
+# MAIN THANK YOU
+# =========================================================
+
+@app.route(
+    "/<lang>/thank-you"
+)
+def thank_you(lang):
+
+    lang = normalize_language(
+        lang
+    )
+
+    t = get_translation(
+        lang
+    )
+
+    return render_template(
+        "thank_you.html",
+        t=t,
+        lang=lang
+    )
+
+
+# =========================================================
+# MAIN ALREADY REGISTERED
+# =========================================================
+
+@app.route(
+    "/<lang>/already-registered"
+)
+def already_registered(lang):
+
+    lang = normalize_language(
+        lang
+    )
+
+    t = get_translation(
+        lang
+    )
+
+    return render_template(
+        "already_registered.html",
+        t=t,
+        lang=lang
+    )
+
+
+# =========================================================
+# =========================================================
+# MEMORANDUM VERSION
+# =========================================================
+# =========================================================
+#
+# /memorandum-signing/hy
+# /memorandum-signing/ru
+# /memorandum-signing/en
+#
+# event_slug:
+# memorandum-signing
+#
+# =========================================================
+
+
+# =========================================================
+# MEMORANDUM ROOT
+# =========================================================
+
+@app.route(
+    "/memorandum-signing"
+)
+def memorandum_home():
+
+    return redirect(
+        url_for(
+            "memorandum_index",
+            lang="hy"
+        )
+    )
+
+
+# =========================================================
+# MEMORANDUM INDEX
+# =========================================================
+
+@app.route(
+    "/memorandum-signing/<lang>"
+)
+def memorandum_index(lang):
+
+    lang = normalize_language(
+        lang
+    )
+
+    t = get_memorandum_translation(
+        lang
+    )
+
+    return render_template(
+        "memorandum/index.html",
+
+        t=t,
+        lang=lang
+    )
+
+
+# =========================================================
+# MEMORANDUM REGISTRATION
+# =========================================================
+#
+# REQUIRED:
+#
+# first_name
+# last_name
+# consent
+#
+# OPTIONAL:
+#
+# company
+# position
+# phone
+# email
+# special_notes
+#
+# =========================================================
+
+@app.route(
+    "/memorandum-signing/<lang>/register",
+    methods=["POST"]
+)
+def memorandum_register(lang):
+
+    lang = normalize_language(
+        lang
+    )
+
+    t = get_memorandum_translation(
+        lang
+    )
+
+    messages = ERROR_MESSAGES[
+        lang
+    ]
+
+
+    # =====================================================
+    # FORM DATA
+    # =====================================================
+
+    first_name = request.form.get(
+        "first_name",
+        ""
+    ).strip()
+
+    last_name = request.form.get(
+        "last_name",
+        ""
+    ).strip()
+
+    company = request.form.get(
+        "company",
+        ""
+    ).strip()
+
+    position = request.form.get(
+        "position",
+        ""
+    ).strip()
+
+    phone = normalize_phone(
+        request.form.get(
+            "phone",
+            ""
+        )
+    )
+
+    email = request.form.get(
+        "email",
+        ""
+    ).strip().lower()
+
+    special_notes = request.form.get(
+        "special_notes",
+        ""
+    ).strip()
+
+    consent = (
+            request.form.get(
+                "consent"
+            )
+            == "on"
+    )
+
+
+    # =====================================================
+    # VALIDATION
+    # =====================================================
+
+    errors = []
+
+
+    # REQUIRED
+    if not first_name:
+
+        errors.append(
+            messages["first_name"]
+        )
+
+
+    # REQUIRED
+    if not last_name:
+
+        errors.append(
+            messages["last_name"]
+        )
+
+
+    # OPTIONAL PHONE
+    #
+    # Пустой разрешён.
+    # Если заполнен — проверяем формат.
+    #
+
+    if phone and not valid_phone(
+            phone
+    ):
+
+        errors.append(
+            messages["phone"]
+        )
+
+
+    # OPTIONAL EMAIL
+    #
+    # Пустой разрешён.
+    # Если заполнен — проверяем формат.
+    #
+
+    if email and not valid_email(
+            email
+    ):
+
+        errors.append(
+            messages["email"]
+        )
+
+
+    # REQUIRED CONSENT
+    if not consent:
+
+        errors.append(
+            messages["consent"]
+        )
+
+
+    # =====================================================
+    # VALIDATION ERROR
+    # =====================================================
+
+    if errors:
+
+        return render_template(
+            "memorandum/index.html",
+
+            t=t,
+            lang=lang,
+
+            errors=errors,
+
+            form_data=request.form
+
+        ), 400
+
+
+    # =====================================================
+    # DUPLICATE CHECK
+    # =====================================================
+    #
+    # Пустые phone/email не проверяем.
+    #
+    # Ищем дубликат ТОЛЬКО среди
+    # memorandum-signing.
+    #
+    # =====================================================
+
+    duplicate_conditions = []
+
+
+    if email:
+
+        duplicate_conditions.append(
+            Guest.email == email
+        )
+
+
+    if phone:
+
+        duplicate_conditions.append(
+            Guest.phone == phone
+        )
+
+
+    existing_guest = None
+
+
+    if duplicate_conditions:
+
+        existing_guest = (
+            Guest.query
+            .filter(
+                Guest.event_slug == EVENT_MEMORANDUM,
+                db.or_(
+                    *duplicate_conditions
+                )
+            )
+            .first()
+        )
+
+
+    if existing_guest:
+
+        return redirect(
+            url_for(
+                "memorandum_already_registered",
+                lang=lang
+            )
+        )
+
+
+    # =====================================================
+    # SAVE
+    # =====================================================
+
+    guest = Guest(
+
+        # ВАЖНО
+        event_slug=EVENT_MEMORANDUM,
+
+        first_name=first_name,
+
+        last_name=last_name,
+
+        # В существующей БД company NOT NULL.
+        company=(
+                company
+                or ""
+        ),
+
+        position=(
+                position
+                or None
+        ),
+
+        # phone/email в существующей БД NOT NULL.
+        phone=(
+                phone
+                or ""
+        ),
+
+        email=(
+                email
+                or ""
+        ),
 
         attendance_type="solo",
 
@@ -652,55 +1119,57 @@ def register(lang):
 
     return redirect(
         url_for(
-            "thank_you",
+            "memorandum_thank_you",
             lang=lang
         )
     )
 
 
 # =========================================================
-# THANK YOU
+# MEMORANDUM THANK YOU
 # =========================================================
 
 @app.route(
-    "/<lang>/thank-you"
+    "/memorandum-signing/<lang>/thank-you"
 )
-def thank_you(lang):
+def memorandum_thank_you(lang):
 
     lang = normalize_language(
         lang
     )
 
-    t = get_translation(
+    t = get_memorandum_translation(
         lang
     )
 
     return render_template(
-        "thank_you.html",
+        "memorandum/thank_you.html",
+
         t=t,
         lang=lang
     )
 
 
 # =========================================================
-# ALREADY REGISTERED
+# MEMORANDUM ALREADY REGISTERED
 # =========================================================
 
 @app.route(
-    "/<lang>/already-registered"
+    "/memorandum-signing/<lang>/already-registered"
 )
-def already_registered(lang):
+def memorandum_already_registered(lang):
 
     lang = normalize_language(
         lang
     )
 
-    t = get_translation(
+    t = get_memorandum_translation(
         lang
     )
 
     return render_template(
-        "already_registered.html",
+        "memorandum/already_registered.html",
+
         t=t,
         lang=lang
     )
@@ -817,17 +1286,25 @@ def admin_guests():
     )
 
 
-    # =====================================================
-    # Старые значения пока оставляем для совместимости
-    # с admin.html.
-    #
-    # После удаления companion-карточек из admin.html
-    # их можно удалить и отсюда.
-    # =====================================================
+    main_count = sum(
+        1
+        for guest in guests
+        if guest.event_slug == EVENT_MAIN
+    )
+
+
+    memorandum_count = sum(
+        1
+        for guest in guests
+        if guest.event_slug == EVENT_MEMORANDUM
+    )
+
 
     companions = 0
 
-    total_people = registration_count
+    total_people = (
+        registration_count
+    )
 
 
     return render_template(
@@ -837,9 +1314,15 @@ def admin_guests():
 
         registration_count=registration_count,
 
+        main_count=main_count,
+
+        memorandum_count=memorandum_count,
+
         companions=companions,
 
         total_people=total_people,
+
+        event_names=EVENT_NAMES,
     )
 
 
@@ -887,6 +1370,8 @@ def export_excel():
 
         "Ազգանուն",
 
+        "Միջոցառում",
+
         "Ընկերություն / կազմակերպություն",
 
         "Պաշտոն",
@@ -909,7 +1394,7 @@ def export_excel():
 
 
     # =====================================================
-    # EXCEL STYLES
+    # HEADER STYLE
     # =====================================================
 
     header_fill = PatternFill(
@@ -929,10 +1414,6 @@ def export_excel():
         color="D8D8D2"
     )
 
-
-    # =====================================================
-    # HEADER STYLE
-    # =====================================================
 
     for cell in ws[1]:
 
@@ -966,8 +1447,6 @@ def export_excel():
         created = guest.created_at
 
 
-        # Excel не поддерживает timezone-aware datetime.
-        # Для отображения превращаем дату в обычную.
         if (
                 created
                 and created.tzinfo
@@ -992,17 +1471,20 @@ def export_excel():
 
             guest.last_name,
 
-            guest.company,
+            # Откуда пришла регистрация
+            get_event_name(
+                guest.event_slug
+            ),
 
-            guest.position
-            or "",
+            guest.company or "",
 
-            guest.phone,
+            guest.position or "",
 
-            guest.email,
+            guest.phone or "",
 
-            guest.special_notes
-            or "",
+            guest.email or "",
+
+            guest.special_notes or "",
 
             (
                 "Այո"
@@ -1021,29 +1503,21 @@ def export_excel():
 
 
     # =====================================================
-    # COLUMN WIDTHS
+    # WIDTHS
     # =====================================================
 
     widths = [
 
         8,      # ID
-
         20,     # First name
-
         20,     # Last name
-
+        26,     # Event
         32,     # Company
-
         25,     # Position
-
         20,     # Phone
-
         35,     # Email
-
         45,     # Notes
-
         18,     # Consent
-
         23,     # Date
     ]
 
@@ -1061,7 +1535,7 @@ def export_excel():
 
 
     # =====================================================
-    # BODY CELLS
+    # BODY STYLE
     # =====================================================
 
     for row in ws.iter_rows(
@@ -1084,12 +1558,14 @@ def export_excel():
 
 
     # =====================================================
-    # EXCEL FEATURES
+    # EXCEL OPTIONS
     # =====================================================
 
     ws.freeze_panes = "A2"
 
-    ws.auto_filter.ref = ws.dimensions
+    ws.auto_filter.ref = (
+        ws.dimensions
+    )
 
 
     # =====================================================

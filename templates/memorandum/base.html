@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="{{ t.html_lang if t is defined else 'hy' }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+        Baghramyan Residence — Special Invitation
+        {% endblock %}
+    </title>
+
+    <meta
+            name="description"
+            content="Special invitation to the Baghramyan Residence memorandum signing ceremony."
+    >
+
+    <meta
+            property="og:type"
+            content="website"
+    >
+
+    <meta
+            property="og:title"
+            content="Baghramyan Residence — Special Invitation"
+    >
+
+    <meta
+            property="og:description"
+            content="Memorandum signing ceremony — 09 September 2026."
+    >
+
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='memorandum/css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+{% block body %}
+{% endblock %}
+
+</body>
+
+</html>

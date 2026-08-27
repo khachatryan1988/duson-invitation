@@ -1,0 +1,50 @@
+{% extends "memorandum/base.html" %}
+
+{% block title %}
+{{ t.already_registered }} — Baghramyan Residence
+{% endblock %}
+
+
+{% block body %}
+
+<section class="mem-result">
+
+    <div class="mem-result-bg"></div>
+
+
+    <div class="mem-result-card">
+
+        <img
+                class="mem-result-logo"
+                src="{{ url_for('static', filename='memorandum/images/logo.svg') }}"
+                alt="Baghramyan Residence"
+        >
+
+
+        <div class="mem-section-label">
+            {{ t.registration_label }}
+        </div>
+
+
+        <h1>
+            {{ t.already_registered }}
+        </h1>
+
+
+        <p class="muted">
+            {{ t.already_registered_text }}
+        </p>
+
+
+        <a
+                href="{{ url_for('memorandum_index', lang=lang) }}"
+                class="mem-back"
+        >
+            ← {{ t.back_home }}
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
