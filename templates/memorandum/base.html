@@ -11,20 +11,40 @@
             content="width=device-width, initial-scale=1.0"
     >
 
+
+    <!-- ===================================================== -->
+    <!-- TITLE -->
+    <!-- ===================================================== -->
+
     <title>
         {% block title %}
         Baghramyan Residence — Special Invitation
         {% endblock %}
     </title>
 
+
+    <!-- ===================================================== -->
+    <!-- BASIC META -->
+    <!-- ===================================================== -->
+
     <meta
             name="description"
-            content="Special invitation to the Baghramyan Residence memorandum signing ceremony."
+            content="Memorandum signing ceremony — 09 September 2026."
     >
+
+
+    <!-- ===================================================== -->
+    <!-- OPEN GRAPH / WHATSAPP / FACEBOOK -->
+    <!-- ===================================================== -->
 
     <meta
             property="og:type"
             content="website"
+    >
+
+    <meta
+            property="og:site_name"
+            content="Baghramyan Residence"
     >
 
     <meta
@@ -36,6 +56,74 @@
             property="og:description"
             content="Memorandum signing ceremony — 09 September 2026."
     >
+
+    <meta
+            property="og:url"
+            content="{{ request.url }}"
+    >
+
+
+    <!-- PREVIEW IMAGE -->
+
+    <meta
+            property="og:image"
+            content="{{ url_for('static', filename='memorandum/images/share-preview.jpg', _external=True) }}"
+    >
+
+    <meta
+            property="og:image:secure_url"
+            content="{{ url_for('static', filename='memorandum/images/share-preview.jpg', _external=True) }}"
+    >
+
+    <meta
+            property="og:image:type"
+            content="image/jpeg"
+    >
+
+    <meta
+            property="og:image:width"
+            content="1200"
+    >
+
+    <meta
+            property="og:image:height"
+            content="630"
+    >
+
+    <meta
+            property="og:image:alt"
+            content="Baghramyan Residence — Special Invitation"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- TWITTER / OTHER SOCIAL PREVIEWS -->
+    <!-- ===================================================== -->
+
+    <meta
+            name="twitter:card"
+            content="summary_large_image"
+    >
+
+    <meta
+            name="twitter:title"
+            content="Baghramyan Residence — Special Invitation"
+    >
+
+    <meta
+            name="twitter:description"
+            content="Memorandum signing ceremony — 09 September 2026."
+    >
+
+    <meta
+            name="twitter:image"
+            content="{{ url_for('static', filename='memorandum/images/share-preview.jpg', _external=True) }}"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- CSS -->
+    <!-- ===================================================== -->
 
     <link
             rel="stylesheet"
