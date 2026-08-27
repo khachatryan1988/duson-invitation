@@ -1,5 +1,7 @@
 <!doctype html>
+
 <html lang="hy">
+
 <head>
 
     <meta charset="UTF-8">
@@ -9,42 +11,40 @@
             content="width=device-width, initial-scale=1.0"
     >
 
+
+    <!-- ===================================================== -->
+    <!-- TITLE -->
+    <!-- ===================================================== -->
+
     <title>
-        {% block title %}Baghramyan Residence — Private Invitation{% endblock %}
+        {% block title %}
+        Baghramyan Residence — Հատուկ հրավեր
+        {% endblock %}
     </title>
 
 
+    <!-- ===================================================== -->
     <!-- SEO -->
+    <!-- ===================================================== -->
+
     <meta
             name="description"
-            content="Private invitation to an exclusive Baghramyan Residence event in Yerevan."
+            content="Հատուկ հրավեր Baghramyan Residence-ի բացառիկ միջոցառմանը Երևանում։"
     >
 
 
-    <!-- OPEN GRAPH -->
+    <!-- ===================================================== -->
+    <!-- OPEN GRAPH / WHATSAPP / FACEBOOK -->
+    <!-- ===================================================== -->
+
     <meta
             property="og:type"
             content="website"
     >
 
     <meta
-            property="og:title"
-            content="Baghramyan Residence — Private Invitation"
-    >
-
-    <meta
-            property="og:description"
-            content="An exclusive private event at Baghramyan Residence in the heart of Yerevan."
-    >
-
-    <meta
-            property="og:url"
-            content="https://invitation.baghramyan-residence.am/{{ lang if lang else 'hy' }}"
-    >
-
-    <meta
-            property="og:image"
-            content="https://invitation.baghramyan-residence.am/static/images/rezidence.png"
+            property="og:locale"
+            content="hy_AM"
     >
 
     <meta
@@ -52,8 +52,61 @@
             content="Baghramyan Residence"
     >
 
+    <meta
+            property="og:title"
+            content="Baghramyan Residence — Հատուկ հրավեր"
+    >
 
+    <meta
+            property="og:description"
+            content="Բացառիկ միջոցառման հատուկ հրավեր Baghramyan Residence-ից՝ Երևանում։"
+    >
+
+    <meta
+            property="og:url"
+            content="https://invitation.baghramyan-residence.am/{{ lang if lang else 'hy' }}"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- PREVIEW IMAGE -->
+    <!-- ===================================================== -->
+
+    <meta
+            property="og:image"
+            content="https://invitation.baghramyan-residence.am/static/images/share-preview.jpg?v=1"
+    >
+
+    <meta
+            property="og:image:secure_url"
+            content="https://invitation.baghramyan-residence.am/static/images/share-preview.jpg?v=1"
+    >
+
+    <meta
+            property="og:image:type"
+            content="image/jpeg"
+    >
+
+    <meta
+            property="og:image:width"
+            content="1200"
+    >
+
+    <meta
+            property="og:image:height"
+            content="630"
+    >
+
+    <meta
+            property="og:image:alt"
+            content="Baghramyan Residence — Հատուկ հրավեր"
+    >
+
+
+    <!-- ===================================================== -->
     <!-- TWITTER / OTHER PREVIEWS -->
+    <!-- ===================================================== -->
+
     <meta
             name="twitter:card"
             content="summary_large_image"
@@ -61,14 +114,23 @@
 
     <meta
             name="twitter:title"
-            content="Baghramyan Residence — Private Invitation"
+            content="Baghramyan Residence — Հատուկ հրավեր"
     >
 
     <meta
             name="twitter:description"
-            content="An exclusive private event at Baghramyan Residence in the heart of Yerevan."
+            content="Բացառիկ միջոցառման հատուկ հրավեր Baghramyan Residence-ից՝ Երևանում։"
     >
 
+    <meta
+            name="twitter:image"
+            content="https://invitation.baghramyan-residence.am/static/images/share-preview.jpg?v=1"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- CSS -->
+    <!-- ===================================================== -->
 
     <link
             rel="stylesheet"
@@ -76,12 +138,19 @@
     >
 
 </head>
-<body>
-    {% block body %}{% endblock %}
 
-    <script
+
+<body>
+
+{% block body %}
+{% endblock %}
+
+
+<script
         src="{{ url_for('static', filename='js/main.js') }}"
         defer
-    ></script>
+></script>
+
 </body>
+
 </html>
