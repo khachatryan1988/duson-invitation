@@ -18,7 +18,7 @@
 
     <title>
         {% block title %}
-        Baghramyan Residence — Special Invitation
+        Baghramyan Residence — Հատուկ հրավեր
         {% endblock %}
     </title>
 
@@ -29,7 +29,7 @@
 
     <meta
             name="description"
-            content="Memorandum signing ceremony — 09 September 2026."
+            content="Հուշագրերի ստորագրման արարողություն — 09 սեպտեմբերի 2026թ."
     >
 
 
@@ -43,36 +43,43 @@
     >
 
     <meta
+            property="og:locale"
+            content="hy_AM"
+    >
+
+    <meta
             property="og:site_name"
             content="Baghramyan Residence"
     >
 
     <meta
             property="og:title"
-            content="Baghramyan Residence — Special Invitation"
+            content="Baghramyan Residence — Հատուկ հրավեր"
     >
 
     <meta
             property="og:description"
-            content="Memorandum signing ceremony — 09 September 2026."
+            content="Հուշագրերի ստորագրման արարողություն — 09 սեպտեմբերի 2026թ."
     >
 
     <meta
             property="og:url"
-            content="{{ request.url }}"
+            content="https://invitation.baghramyan-residence.am/memorandum-signing/{{ lang if lang else 'hy' }}"
     >
 
 
+    <!-- ===================================================== -->
     <!-- PREVIEW IMAGE -->
+    <!-- ===================================================== -->
 
     <meta
             property="og:image"
-            content="{{ url_for('static', filename='memorandum/images/share-preview.png', _external=True) }}"
+            content="{{ url_for('static', filename='memorandum/images/share-preview.jpg', _external=True) }}?v=5"
     >
 
     <meta
             property="og:image:secure_url"
-            content="{{ url_for('static', filename='memorandum/images/share-preview.png', _external=True) }}"
+            content="{{ url_for('static', filename='memorandum/images/share-preview.jpg', _external=True) }}?v=5"
     >
 
     <meta
@@ -92,7 +99,7 @@
 
     <meta
             property="og:image:alt"
-            content="Baghramyan Residence — Special Invitation"
+            content="Baghramyan Residence — Հատուկ հրավեր"
     >
 
 
@@ -107,17 +114,17 @@
 
     <meta
             name="twitter:title"
-            content="Baghramyan Residence — Special Invitation"
+            content="Baghramyan Residence — Հատուկ հրավեր"
     >
 
     <meta
             name="twitter:description"
-            content="Memorandum signing ceremony — 09 September 2026."
+            content="Հուշագրերի ստորագրման արարողություն — 09 սեպտեմբերի 2026թ."
     >
 
     <meta
             name="twitter:image"
-            content="{{ url_for('static', filename='memorandum/images/share-preview.jpg', _external=True) }}"
+            content="{{ url_for('static', filename='memorandum/images/share-preview.jpg', _external=True) }}?v=5"
     >
 
 
