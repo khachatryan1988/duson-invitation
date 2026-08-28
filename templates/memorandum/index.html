@@ -1,7 +1,8 @@
 {% extends "memorandum/base.html" %}
 
+
 {% block title %}
-Baghramyan Residence — Special Invitation
+Baghramyan Residence — Հատուկ հրավեր
 {% endblock %}
 
 
@@ -9,220 +10,1318 @@ Baghramyan Residence — Special Invitation
 
 
 <!-- ===================================================== -->
-<!-- HERO POSITION OVERRIDES -->
+<!-- PREMIUM ENVELOPE ANIMATION -->
 <!-- ===================================================== -->
 
-<!--<style>-->
+<style>
 
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
-<!--    /* TOP LOGO — НИЖЕ                                      */-->
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+    /* =========================================================
+       GENERAL
+       ========================================================= */
+
+    .mem-envelope-stage {
+        overflow: visible !important;
+    }
 
-<!--    .mem-envelope-brand {-->
-<!--        top: 65px !important;-->
-<!--    }-->
+    .mem-envelope {
+        position: relative;
 
+        overflow: visible !important;
 
-<!--    .mem-envelope-brand img {-->
-<!--        width: 145px;-->
-<!--        height: auto;-->
-<!--    }-->
+        perspective: 1800px;
 
+        transform-style: preserve-3d;
 
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
-<!--    /* ENVELOPE — НЕМНОГО ВЫШЕ                              */-->
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+        isolation: isolate;
+    }
 
-<!--    .mem-envelope-stage {-->
-<!--        padding-top: 120px !important;-->
-<!--        padding-bottom: 40px !important;-->
-<!--    }-->
 
+    .mem-envelope-back,
+    .mem-envelope-front,
+    .mem-envelope-flap,
+    .mem-envelope-flap-open,
+    .mem-invitation-card,
+    .mem-envelope-open {
+        will-change:
+            transform,
+            opacity,
+            filter;
+    }
 
-<!--    .mem-envelope {-->
-<!--        transform: translateY(-45px);-->
-<!--    }-->
 
+    /* =========================================================
+       CLOSED TOP FLAP
+       ========================================================= */
 
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
-<!--    /* OPEN BUTTON                                           */-->
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+    .mem-envelope-flap {
+        position: absolute;
 
-<!--    .mem-envelope-open {-->
-<!--        gap: 7px !important;-->
-<!--    }-->
+        z-index: 45;
 
+        left: 0;
 
-<!--    .mem-open-label {-->
-<!--        position: relative;-->
+        bottom:
+            calc(
+                var(--env-bottom)
+                + var(--back-h)
+                - var(--flap-h)
+            );
 
-<!--        margin-bottom: 1px;-->
+        width: 100%;
+        height: var(--flap-h);
 
-<!--        color: #56564f;-->
+        transform:
+            rotateX(0deg);
 
-<!--        font-family:-->
-<!--            Georgia,-->
-<!--            "Times New Roman",-->
-<!--            serif;-->
+        transform-origin:
+            center top;
 
-<!--        font-size: 12px;-->
+        transform-style:
+            preserve-3d;
 
-<!--        line-height: 1.2;-->
+        clip-path:
+            polygon(
+                0 0,
+                100% 0,
+                50% 100%
+            );
 
-<!--        text-align: center;-->
+        background:
+            linear-gradient(
+                180deg,
+                #fffdf8 0%,
+                #f7f2e9 47%,
+                #ece4d7 100%
+            );
 
-<!--        white-space: nowrap;-->
-<!--    }-->
+        box-shadow:
+            inset
+            0
+            1px
+            0
+            rgba(255, 255, 255, .90);
 
+        backface-visibility:
+            hidden;
 
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
-<!--    /* ARROW TO BR                                           */-->
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+        transition:
+            transform
+            1.05s
+            cubic-bezier(.20, .78, .20, 1),
 
-<!--    .mem-open-arrow {-->
-<!--        position: relative;-->
+            opacity
+            .32s
+            ease
+            .60s,
 
-<!--        display: block;-->
+            filter
+            .45s
+            ease;
+    }
 
-<!--        width: 1px;-->
-<!--        height: 35px;-->
 
-<!--        margin:-->
-<!--            1px-->
-<!--            auto-->
-<!--            0;-->
+    /* decorative fold line */
 
-<!--        background:-->
-<!--            linear-gradient(-->
-<!--                180deg,-->
-<!--                rgba(151, 105, 47, .25) 0%,-->
-<!--                rgba(151, 105, 47, .92) 100%-->
-<!--            );-->
+    .mem-envelope-flap::after {
+        content: "";
 
-<!--        pointer-events: none;-->
-<!--    }-->
+        position: absolute;
 
+        top: 0;
+        left: 5%;
 
-<!--    .mem-open-arrow::after {-->
-<!--        content: "";-->
+        width: 90%;
+        height: 1px;
 
-<!--        position: absolute;-->
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                rgba(164, 132, 91, .45),
+                transparent
+            );
+    }
 
-<!--        left: 50%;-->
-<!--        bottom: -1px;-->
 
-<!--        width: 8px;-->
-<!--        height: 8px;-->
+    /* =========================================================
+       CLOSED FLAP OPEN STATE
+       ========================================================= */
 
-<!--        border-right:-->
-<!--            1.5px solid-->
-<!--            #9c6c31;-->
+    .mem-envelope.is-opening
+    .mem-envelope-flap,
 
-<!--        border-bottom:-->
-<!--            1.5px solid-->
-<!--            #9c6c31;-->
+    .mem-envelope.is-open
+    .mem-envelope-flap,
 
-<!--        transform:-->
-<!--            translateX(-50%)-->
-<!--            rotate(45deg);-->
-<!--    }-->
+    .mem-envelope.is-card-ready
+    .mem-envelope-flap {
 
+        transform:
+            rotateX(-178deg);
 
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
-<!--    /* BR WAX SEAL                                           */-->
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+        opacity: 0;
 
-<!--    .mem-wax-seal {-->
-<!--        margin-top: 2px;-->
+        filter:
+            drop-shadow(
+                0
+                -6px
+                12px
+                rgba(0, 0, 0, .10)
+            );
+    }
 
-<!--        transition:-->
-<!--            transform .25s ease,-->
-<!--            box-shadow .25s ease;-->
-<!--    }-->
 
+    /* =========================================================
+       VISIBLE OPENED FLAP
+       ========================================================= */
 
-<!--    .mem-wax-monogram {-->
-<!--        font-size: 17px;-->
+    /*
+       Это отдельная внутренняя сторона клапана.
 
-<!--        font-family:-->
-<!--            Georgia,-->
-<!--            "Times New Roman",-->
-<!--            serif;-->
-<!--    }-->
+       Она остаётся видимой за приглашением даже после
+       полного открытия конверта.
+    */
 
+    .mem-envelope-flap-open {
+        position: absolute;
 
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
-<!--    /* SMALL ANIMATION FOR ARROW                             */-->
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+        left: 0;
 
-<!--    @keyframes memArrowMove {-->
+        bottom:
+            calc(
+                var(--env-bottom)
+                + var(--back-h)
+                - 1px
+            );
 
-<!--        0%,-->
-<!--        100% {-->
-<!--            transform:-->
-<!--                translateY(0);-->
-<!--        }-->
+        width: 100%;
+        height: var(--flap-h);
 
-<!--        50% {-->
-<!--            transform:-->
-<!--                translateY(4px);-->
-<!--        }-->
+        z-index: 8;
 
-<!--    }-->
+        clip-path:
+            polygon(
+                0 100%,
+                50% 0,
+                100% 100%
+            );
 
+        background:
+            linear-gradient(
+                180deg,
+                #e8dece 0%,
+                #f8f3e9 46%,
+                #ede4d7 100%
+            );
 
-<!--    .mem-open-arrow {-->
-<!--        animation:-->
-<!--            memArrowMove-->
-<!--            1.55s-->
-<!--            ease-in-out-->
-<!--            infinite;-->
-<!--    }-->
+        opacity: 0;
 
+        transform:
+            translateY(30px)
+            scaleY(.70);
 
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
-<!--    /* MOBILE                                                */-->
-<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */-->
+        transform-origin:
+            center bottom;
 
-<!--    @media (max-width: 720px) {-->
+        filter:
+            drop-shadow(
+                0
+                -10px
+                17px
+                rgba(0, 0, 0, .11)
+            );
 
-<!--        .mem-envelope-brand {-->
-<!--            top: 52px !important;-->
-<!--        }-->
+        transition:
+            opacity
+            .38s
+            ease
+            .40s,
 
+            transform
+            .75s
+            cubic-bezier(.16, 1, .30, 1)
+            .30s;
+    }
 
-<!--        .mem-envelope-brand img {-->
-<!--            width: 105px;-->
-<!--        }-->
 
+    /* paper texture/light */
 
-<!--        .mem-envelope {-->
-<!--            transform:-->
-<!--                translateY(-25px);-->
-<!--        }-->
+    .mem-envelope-flap-open::before {
+        content: "";
 
+        position: absolute;
 
-<!--        .mem-envelope-stage {-->
-<!--            padding-top: 105px !important;-->
-<!--        }-->
+        inset: 0;
 
+        clip-path:
+            polygon(
+                0 100%,
+                50% 0,
+                100% 100%
+            );
 
-<!--        .mem-open-label {-->
-<!--            font-size: 10px;-->
-<!--        }-->
+        background:
+            linear-gradient(
+                90deg,
+                rgba(150, 119, 78, .06),
+                rgba(255, 255, 255, .30) 50%,
+                rgba(150, 119, 78, .06)
+            );
+    }
 
 
-<!--        .mem-open-arrow {-->
-<!--            height: 27px;-->
-<!--        }-->
+    /* fold line */
 
-<!--    }-->
+    .mem-envelope-flap-open::after {
+        content: "";
 
-<!--</style>-->
+        position: absolute;
+
+        left: 5%;
+        bottom: 0;
+
+        width: 90%;
+        height: 1px;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                rgba(157, 123, 82, .43),
+                transparent
+            );
+    }
+
+
+    /* show opened flap */
+
+    .mem-envelope.is-opening
+    .mem-envelope-flap-open,
+
+    .mem-envelope.is-open
+    .mem-envelope-flap-open,
+
+    .mem-envelope.is-card-ready
+    .mem-envelope-flap-open {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scaleY(1);
+    }
+
+
+    /* =========================================================
+       INVITATION CARD
+       ========================================================= */
+
+    .mem-invitation-card {
+        z-index: 10;
+
+        transition:
+            transform
+            1.20s
+            cubic-bezier(.16, 1, .30, 1),
+
+            clip-path
+            .85s
+            cubic-bezier(.16, 1, .30, 1),
+
+            filter
+            .70s
+            ease !important;
+    }
+
+
+    /*
+       Пока открывается клапан,
+       приглашение остаётся внутри.
+    */
+
+    .mem-envelope.is-opening
+    .mem-invitation-card {
+        z-index: 10;
+
+        filter:
+            drop-shadow(
+                0
+                10px
+                18px
+                rgba(0, 0, 0, .08)
+            );
+    }
+
+
+    /*
+       Приглашение начинает выходить только после
+       открытия верхнего клапана.
+    */
+
+    .mem-envelope.is-open
+    .mem-invitation-card {
+
+        /*
+           Ниже передней стенки во время движения,
+           чтобы выглядело как настоящее вытаскивание.
+        */
+
+        z-index: 12 !important;
+
+        transform:
+            translateX(-50%)
+            translateY(
+                calc(
+                    -1 * (
+                        var(--stage-h)
+                        - var(--env-bottom)
+                        - var(--card-h)
+                        - var(--card-open-gap)
+                    )
+                )
+            ) !important;
+
+        clip-path:
+            inset(0 0 0 0) !important;
+
+        filter:
+            drop-shadow(
+                0
+                22px
+                38px
+                rgba(0, 0, 0, .20)
+            );
+    }
+
+
+    /*
+       Когда письмо полностью вышло,
+       оно становится выше передней стенки.
+    */
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card {
+
+        z-index: 60 !important;
+
+        transform:
+            translateX(-50%)
+            translateY(
+                calc(
+                    -1 * (
+                        var(--stage-h)
+                        - var(--env-bottom)
+                        - var(--card-h)
+                        - var(--card-open-gap)
+                    )
+                )
+            ) !important;
+
+        clip-path:
+            inset(0 0 0 0) !important;
+
+        filter:
+            drop-shadow(
+                0
+                30px
+                52px
+                rgba(0, 0, 0, .28)
+            );
+    }
+
+
+    /* =========================================================
+       CARD CONTENT VISIBILITY
+       ========================================================= */
+
+    /*
+       Пока конверт закрыт И пока открывается только клапан,
+       полностью скрываем всё содержимое внутренней карточки.
+       Это убирает маленькие золотые элементы, которые раньше
+       выглядывали возле линии сгиба.
+    */
+
+    .mem-envelope:not(.is-open):not(.is-card-ready)
+    .mem-invitation-card > * {
+
+        opacity: 0 !important;
+
+        visibility: hidden !important;
+
+        pointer-events: none !important;
+    }
+
+
+    /*
+       Скрываем и декоративные слои карточки, чтобы они
+       тоже не просвечивали через закрытый конверт.
+    */
+
+    .mem-envelope:not(.is-open):not(.is-card-ready)
+    .mem-invitation-card::before,
+
+    .mem-envelope:not(.is-open):not(.is-card-ready)
+    .mem-invitation-card::after {
+
+        opacity: 0 !important;
+
+        visibility: hidden !important;
+    }
+
+
+    /*
+       Когда карточка начинает выходить, возвращаем
+       содержимое. Кнопка регистрации всё равно останется
+       скрытой до is-card-ready благодаря правилам ниже.
+    */
+
+    .mem-envelope.is-open
+    .mem-invitation-card > *,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card > * {
+
+        visibility: visible !important;
+    }
+
+
+    .mem-envelope.is-open
+    .mem-invitation-card
+    .mem-card-logo,
+
+    .mem-envelope.is-open
+    .mem-invitation-card
+    .mem-card-label,
+
+    .mem-envelope.is-open
+    .mem-invitation-card h1,
+
+    .mem-envelope.is-open
+    .mem-invitation-card
+    .mem-card-divider,
+
+    .mem-envelope.is-open
+    .mem-invitation-card
+    .mem-card-date,
+
+    .mem-envelope.is-open
+    .mem-invitation-card
+    .mem-card-location,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card
+    .mem-card-logo,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card
+    .mem-card-label,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card h1,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card
+    .mem-card-divider,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card
+    .mem-card-date,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card
+    .mem-card-location {
+
+        opacity: 1 !important;
+
+        transform: none !important;
+    }
+
+
+    .mem-envelope.is-open
+    .mem-invitation-card::before,
+
+    .mem-envelope.is-open
+    .mem-invitation-card::after,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card::before,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card::after {
+
+        visibility: visible !important;
+    }
+
+
+    /* Clean layer order in closed state */
+
+    .mem-envelope-front {
+        z-index: 35 !important;
+    }
+
+    .mem-envelope-flap {
+        z-index: 45 !important;
+    }
+
+    .mem-envelope-closed-title {
+        z-index: 50 !important;
+    }
+
+    .mem-envelope-open {
+        z-index: 80 !important;
+    }
+
+
+    /* =========================================================
+       CARD LOGO
+       ========================================================= */
+
+    .mem-card-logo {
+        width: 148px !important;
+
+        margin:
+            0
+            auto
+            17px !important;
+
+        opacity: .95 !important;
+    }
+
+
+    /* =========================================================
+       CARD LABEL
+       ========================================================= */
+
+    .mem-card-label {
+        margin-bottom:
+            11px !important;
+
+        color:
+            #84643f !important;
+
+        font-size:
+            8px !important;
+
+        font-weight:
+            700 !important;
+
+        letter-spacing:
+            .20em !important;
+    }
+
+
+    /* =========================================================
+       CARD TITLE
+       ========================================================= */
+
+    .mem-invitation-card h1 {
+        color:
+            #242a24 !important;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif !important;
+
+        font-size:
+            30px !important;
+
+        font-weight:
+            500 !important;
+
+        line-height:
+            1.08 !important;
+
+        letter-spacing:
+            -.025em !important;
+
+        text-shadow:
+            0
+            1px
+            0
+            rgba(255, 255, 255, .55);
+    }
+
+
+    .mem-invitation-card h1 em {
+        display: block;
+
+        margin-top:
+            6px !important;
+
+        color:
+            #9b7446 !important;
+
+        font-weight:
+            500 !important;
+
+        opacity: 1 !important;
+    }
+
+
+    /* =========================================================
+       CARD DIVIDER
+       ========================================================= */
+
+    .mem-card-divider {
+        width:
+            46px !important;
+
+        margin:
+            18px
+            auto !important;
+
+        background:
+            #a98559 !important;
+    }
+
+
+    /* =========================================================
+       DATE
+       ========================================================= */
+
+    .mem-card-date span {
+        color:
+            #3d443e !important;
+
+        font-size:
+            14px !important;
+
+        font-weight:
+            500;
+    }
+
+
+    .mem-card-date strong {
+        color:
+            #222922 !important;
+
+        font-size:
+            13px !important;
+
+        font-weight:
+            700 !important;
+    }
+
+
+    /* =========================================================
+       LOCATION
+       ========================================================= */
+
+    .mem-card-location {
+        margin-top:
+            16px !important;
+    }
+
+
+    .mem-card-location strong {
+        color:
+            #252d26 !important;
+
+        font-size:
+            10px !important;
+
+        font-weight:
+            700 !important;
+
+        letter-spacing:
+            .11em !important;
+    }
+
+
+    .mem-card-location span {
+        max-width:
+            285px !important;
+
+        margin:
+            6px
+            auto
+            0 !important;
+
+        color:
+            #565c55 !important;
+
+        font-size:
+            9px !important;
+
+        font-weight:
+            500;
+
+        line-height:
+            1.55 !important;
+    }
+
+
+    /* =========================================================
+       FRONT ENVELOPE
+       ========================================================= */
+
+    .mem-envelope-front {
+        z-index: 30;
+
+        transition:
+            filter
+            .65s
+            ease !important;
+    }
+
+
+    .mem-envelope.is-open
+    .mem-envelope-front,
+
+    .mem-envelope.is-card-ready
+    .mem-envelope-front {
+
+        filter:
+            drop-shadow(
+                0
+                8px
+                12px
+                rgba(0, 0, 0, .08)
+            );
+    }
+
+
+    /* =========================================================
+       OPEN BUTTON
+       ========================================================= */
+
+    .mem-envelope-open {
+        transition:
+            opacity
+            .30s
+            ease,
+
+            transform
+            .42s
+            cubic-bezier(.22, 1, .36, 1),
+
+            filter
+            .30s
+            ease !important;
+    }
+
+
+    .mem-envelope.is-opening
+    .mem-envelope-open,
+
+    .mem-envelope.is-open
+    .mem-envelope-open,
+
+    .mem-envelope.is-card-ready
+    .mem-envelope-open {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            scale(.74) !important;
+
+        filter:
+            blur(1.5px);
+
+        pointer-events: none;
+    }
+
+
+    /* =========================================================
+       OPEN LABEL
+       ========================================================= */
+
+    .mem-open-label {
+        color:
+            #40453f !important;
+
+        font-size:
+            15px !important;
+
+        font-weight:
+            500;
+
+        text-shadow:
+            0
+            1px
+            rgba(255, 255, 255, .40);
+    }
+
+
+    /* =========================================================
+       ARROW
+       ========================================================= */
+
+    .mem-open-arrow {
+        transition:
+            opacity
+            .25s
+            ease,
+
+            transform
+            .25s
+            ease;
+    }
+
+
+    .mem-envelope.is-opening
+    .mem-open-arrow {
+        opacity: 0;
+
+        transform:
+            translateY(9px);
+    }
+
+
+    /* =========================================================
+       WAX SEAL
+       ========================================================= */
+
+    .mem-wax-seal {
+        transition:
+            transform
+            .32s
+            cubic-bezier(.22, 1, .36, 1),
+
+            opacity
+            .28s
+            ease,
+
+            box-shadow
+            .28s
+            ease !important;
+    }
+
+
+    .mem-envelope.is-opening
+    .mem-wax-seal {
+        opacity: 0;
+
+        transform:
+            scale(.74)
+            rotate(8deg);
+    }
+
+
+    /* =========================================================
+       REGISTER BUTTON
+       ========================================================= */
+
+    .mem-card-button {
+        opacity: 0 !important;
+
+        transform:
+            translateY(12px) !important;
+
+        pointer-events: none !important;
+
+        transition:
+            opacity
+            .45s
+            ease,
+
+            transform
+            .45s
+            cubic-bezier(.22, 1, .36, 1),
+
+            background
+            .2s
+            ease,
+
+            color
+            .2s
+            ease !important;
+    }
+
+
+    .mem-envelope.is-card-ready
+    .mem-card-button {
+        opacity: 1 !important;
+
+        transform:
+            translateY(0) !important;
+
+        pointer-events: auto !important;
+    }
+
+
+
+
+    /* =========================================================
+       CLOSED ENVELOPE TITLE — INSIDE THE TOP WHITE FLAP
+       HY / RU / EN automatically use translation values
+       ========================================================= */
+
+    .mem-envelope-closed-title {
+        position: absolute;
+
+        /*
+           IMPORTANT:
+           The title is positioned relative to the REAL envelope,
+           not relative to the top of the 560px animation stage.
+
+           Desktop:
+           560 - 40 - 320 = 200px = physical envelope top.
+           + 34px places the text inside the marked white area.
+        */
+        top:
+            calc(
+                var(--stage-h)
+                - var(--env-bottom)
+                - var(--back-h)
+                + 34px
+            );
+
+        left: 50%;
+
+        /*
+           Must be above the closed flap (z-index: 45),
+           otherwise the flap covers the text.
+        */
+        z-index: 50;
+
+        width: min(340px, 72%);
+
+        transform:
+            translateX(-50%);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        pointer-events: none;
+
+        transition:
+            opacity .30s ease,
+            transform .40s cubic-bezier(.22, 1, .36, 1),
+            filter .30s ease;
+    }
+
+
+    .mem-envelope-closed-title span {
+        display: block;
+
+        width: 100%;
+
+        color: #555a54;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 21px;
+
+        font-weight: 400;
+
+        line-height: 1.08;
+
+        letter-spacing: -.02em;
+    }
+
+
+    .mem-envelope-closed-title em {
+        display: block;
+
+        width: 100%;
+
+        margin-top: 5px;
+
+        color: #a47a49;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 25px;
+
+        font-weight: 400;
+
+        font-style: italic;
+
+        line-height: 1.04;
+    }
+
+
+    /* Armenian fits naturally in the target area */
+
+    html[lang="hy"]
+    .mem-envelope-closed-title span {
+        font-size: 21px;
+    }
+
+
+    html[lang="hy"]
+    .mem-envelope-closed-title em {
+        font-size: 25px;
+    }
+
+
+    /* Russian / English can be longer */
+
+    html[lang="ru"]
+    .mem-envelope-closed-title span,
+
+    html[lang="en"]
+    .mem-envelope-closed-title span {
+        font-size: 19px;
+
+        line-height: 1.10;
+    }
+
+
+    html[lang="ru"]
+    .mem-envelope-closed-title em,
+
+    html[lang="en"]
+    .mem-envelope-closed-title em {
+        font-size: 22px;
+    }
+
+
+    /* Hide the title as soon as opening starts */
+
+    .mem-envelope.is-opening
+    .mem-envelope-closed-title,
+
+    .mem-envelope.is-open
+    .mem-envelope-closed-title,
+
+    .mem-envelope.is-card-ready
+    .mem-envelope-closed-title {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(-8px)
+            scale(.98);
+
+        filter:
+            blur(1px);
+    }
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 720px) {
+
+
+        .mem-envelope-closed-title {
+            /*
+               Mobile:
+               468 - 26 - 266 = 176px = physical envelope top.
+               + 24px places the title inside the upper flap.
+            */
+            top:
+                calc(
+                    var(--stage-h)
+                    - var(--env-bottom)
+                    - var(--back-h)
+                    + 24px
+                );
+
+            width: min(250px, 70%);
+        }
+
+
+        .mem-envelope-closed-title span {
+            font-size: 17px;
+
+            line-height: 1.08;
+        }
+
+
+        .mem-envelope-closed-title em {
+            margin-top: 4px;
+
+            font-size: 20px;
+        }
+
+
+        html[lang="ru"]
+        .mem-envelope-closed-title span,
+
+        html[lang="en"]
+        .mem-envelope-closed-title span {
+            font-size: 15px;
+
+            line-height: 1.10;
+        }
+
+
+        html[lang="ru"]
+        .mem-envelope-closed-title em,
+
+        html[lang="en"]
+        .mem-envelope-closed-title em {
+            font-size: 18px;
+        }
+
+
+        .mem-envelope-flap-open {
+            height:
+                var(--flap-h);
+        }
+
+
+        .mem-invitation-card h1 {
+            font-size:
+                24px !important;
+
+            line-height:
+                1.10 !important;
+        }
+
+
+        .mem-card-logo {
+            width:
+                120px !important;
+        }
+
+
+        .mem-card-label {
+            font-size:
+                7px !important;
+        }
+
+
+        .mem-card-date span {
+            font-size:
+                12px !important;
+        }
+
+
+        .mem-card-date strong {
+            font-size:
+                11px !important;
+        }
+
+
+        .mem-card-location strong {
+            font-size:
+                8px !important;
+        }
+
+
+        .mem-card-location span {
+            font-size:
+                8px !important;
+        }
+
+
+        /*
+           На мобильном тоже гарантированно ничего
+           не выглядывает из закрытого конверта.
+        */
+
+        .mem-envelope:not(.is-open):not(.is-card-ready)
+        .mem-invitation-card > *,
+
+        .mem-envelope:not(.is-open):not(.is-card-ready)
+        .mem-invitation-card::before,
+
+        .mem-envelope:not(.is-open):not(.is-card-ready)
+        .mem-invitation-card::after {
+
+            opacity: 0 !important;
+
+            visibility: hidden !important;
+        }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .mem-envelope-flap,
+        .mem-envelope-flap-open,
+        .mem-invitation-card,
+        .mem-envelope-open,
+        .mem-wax-seal,
+        .mem-card-button {
+
+            transition-duration:
+                .01ms !important;
+        }
+
+    }
+
+
+    /* =========================================================
+       FINAL FIX: HIDE THE ENTIRE INVITATION CARD WHILE CLOSED
+       ========================================================= */
+
+    /*
+       The side lines and small gold marks in the closed envelope
+       come from the invitation card itself (border / pseudo layers).
+       Hiding only the card children is not enough, so we hide the
+       WHOLE card until the extraction animation actually starts.
+    */
+
+    .mem-envelope:not(.is-open):not(.is-card-ready)
+    .mem-invitation-card {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        filter: none !important;
+    }
+
+
+    /*
+       Restore the whole card when it begins to come out.
+    */
+
+    .mem-envelope.is-open
+    .mem-invitation-card,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+
+    /*
+       Extra hard cleanup for decorative card layers.
+    */
+
+    .mem-envelope:not(.is-open):not(.is-card-ready)
+    .mem-invitation-card::before,
+
+    .mem-envelope:not(.is-open):not(.is-card-ready)
+    .mem-invitation-card::after {
+        display: none !important;
+    }
+
+
+    .mem-envelope.is-open
+    .mem-invitation-card::before,
+
+    .mem-envelope.is-open
+    .mem-invitation-card::after,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card::before,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card::after {
+        display: block !important;
+    }
+
+
+</style>
+
 
 
 <!-- ===================================================== -->
-<!-- PREMIUM INTERACTIVE INVITATION HERO -->
+<!-- HERO -->
 <!-- ===================================================== -->
 
 <section
@@ -230,8 +1329,6 @@ Baghramyan Residence — Special Invitation
         id="invitation"
 >
 
-
-    <!-- BACKGROUND -->
 
     <div class="mem-envelope-background"></div>
 
@@ -242,13 +1339,14 @@ Baghramyan Residence — Special Invitation
 
 
         <!-- ================================================= -->
-        <!-- LANGUAGE SWITCHER -->
+        <!-- LANGUAGE -->
         <!-- ================================================= -->
 
         <nav
                 class="mem-envelope-languages"
                 aria-label="Language"
         >
+
 
             <a
                     href="{{ url_for('memorandum_index', lang='hy') }}"
@@ -283,14 +1381,17 @@ Baghramyan Residence — Special Invitation
                 EN
             </a>
 
+
         </nav>
 
 
+
         <!-- ================================================= -->
-        <!-- BRAND ABOVE ENVELOPE -->
+        <!-- BRAND -->
         <!-- ================================================= -->
 
         <div class="mem-envelope-brand">
+
 
             <img
                     src="{{ url_for('static', filename='memorandum/images/logo.svg') }}"
@@ -302,11 +1403,13 @@ Baghramyan Residence — Special Invitation
                 {{ t.private_presentation }}
             </span>
 
+
         </div>
 
 
+
         <!-- ================================================= -->
-        <!-- ENVELOPE STAGE -->
+        <!-- ENVELOPE -->
         <!-- ================================================= -->
 
         <div class="mem-envelope-stage">
@@ -318,16 +1421,47 @@ Baghramyan Residence — Special Invitation
             >
 
 
-                <!-- ========================================= -->
-                <!-- ENVELOPE BACK -->
-                <!-- ========================================= -->
+                <!-- BACK -->
 
-                <div class="mem-envelope-back"></div>
+                <div
+                        class="mem-envelope-back"
+                        aria-hidden="true"
+                ></div>
 
 
-                <!-- ========================================= -->
+
+                <!-- ================================================= -->
+                <!-- TITLE ON CLOSED ENVELOPE — AUTOMATIC HY / RU / EN -->
+                <!-- ================================================= -->
+
+                <div class="mem-envelope-closed-title">
+
+                    <span>
+                        {{ t.hero_title_1 }}
+                    </span>
+
+                    <em>
+                        {{ t.hero_title_2 }}
+                    </em>
+
+                </div>
+
+
+
+                <!-- ================================================= -->
+                <!-- OPENED FLAP -->
+                <!-- ================================================= -->
+
+                <div
+                        class="mem-envelope-flap-open"
+                        aria-hidden="true"
+                ></div>
+
+
+
+                <!-- ================================================= -->
                 <!-- INVITATION CARD -->
-                <!-- ========================================= -->
+                <!-- ================================================= -->
 
                 <div class="mem-invitation-card">
 
@@ -360,9 +1494,11 @@ Baghramyan Residence — Special Invitation
                     <div class="mem-card-divider"></div>
 
 
-                    <!-- DATE + TIME -->
+
+                    <!-- DATE -->
 
                     <div class="mem-card-date">
+
 
                         <span>
                             {{ t.date_value }}
@@ -373,12 +1509,15 @@ Baghramyan Residence — Special Invitation
                             {{ t.time_value }}
                         </strong>
 
+
                     </div>
+
 
 
                     <!-- LOCATION -->
 
                     <div class="mem-card-location">
+
 
                         <strong>
                             {{ t.location_value }}
@@ -389,47 +1528,64 @@ Baghramyan Residence — Special Invitation
                             {{ t.address_value }}
                         </span>
 
+
                     </div>
 
 
-                    <!-- REGISTER BUTTON -->
+
+                    <!-- REGISTER -->
 
                     <a
                             href="#rsvp"
                             class="mem-card-button"
                     >
 
+
                         <span>
                             {{ t.register_button }}
                         </span>
 
 
-                        <span class="mem-card-button-arrow">
+                        <span
+                                class="mem-card-button-arrow"
+                                aria-hidden="true"
+                        >
                             ↓
                         </span>
 
+
                     </a>
+
 
                 </div>
 
 
-                <!-- ========================================= -->
-                <!-- ENVELOPE FRONT -->
-                <!-- ========================================= -->
 
-                <div class="mem-envelope-front"></div>
+                <!-- ================================================= -->
+                <!-- FRONT -->
+                <!-- ================================================= -->
 
-
-                <!-- ========================================= -->
-                <!-- TOP FLAP -->
-                <!-- ========================================= -->
-
-                <div class="mem-envelope-flap"></div>
+                <div
+                        class="mem-envelope-front"
+                        aria-hidden="true"
+                ></div>
 
 
-                <!-- ========================================= -->
-                <!-- OPEN INVITATION -->
-                <!-- ========================================= -->
+
+                <!-- ================================================= -->
+                <!-- CLOSED FLAP -->
+                <!-- ================================================= -->
+
+                <div
+                        class="mem-envelope-flap"
+                        aria-hidden="true"
+                ></div>
+
+
+
+                <!-- ================================================= -->
+                <!-- OPEN BUTTON -->
+                <!-- ================================================= -->
 
                 <button
                         type="button"
@@ -440,16 +1596,10 @@ Baghramyan Residence — Special Invitation
                 >
 
 
-                    <!-- TEXT -->
-
                     <span class="mem-open-label">
-
                         {{ t.open_invitation }}
-
                     </span>
 
-
-                    <!-- ARROW TO BR -->
 
                     <span
                             class="mem-open-arrow"
@@ -457,33 +1607,35 @@ Baghramyan Residence — Special Invitation
                     ></span>
 
 
-                    <!-- WAX SEAL -->
-
                     <span class="mem-wax-seal">
 
 
-                        <span class="mem-wax-ring"></span>
+                        <span
+                                class="mem-wax-ring"
+                                aria-hidden="true"
+                        ></span>
 
 
                         <span class="mem-wax-monogram">
-
                             BR
-
                         </span>
 
 
                     </span>
+
 
                 </button>
 
 
             </div>
 
+
         </div>
 
 
+
         <!-- ================================================= -->
-        <!-- SCROLL INDICATOR -->
+        <!-- SCROLL -->
         <!-- ================================================= -->
 
         <a
@@ -499,17 +1651,20 @@ Baghramyan Residence — Special Invitation
 
     </div>
 
+
 </section>
 
 
+
 <!-- ===================================================== -->
-<!-- ABOUT / INVITATION -->
+<!-- ABOUT -->
 <!-- ===================================================== -->
 
 <section
         class="mem-about"
         id="about"
 >
+
 
     <div class="mem-container">
 
@@ -521,8 +1676,6 @@ Baghramyan Residence — Special Invitation
 
         <div class="mem-about-grid">
 
-
-            <!-- LEFT -->
 
             <div>
 
@@ -544,7 +1697,6 @@ Baghramyan Residence — Special Invitation
             </div>
 
 
-            <!-- RIGHT -->
 
             <div class="mem-about-text">
 
@@ -582,7 +1734,9 @@ Baghramyan Residence — Special Invitation
 
     </div>
 
+
 </section>
+
 
 
 <!-- ===================================================== -->
@@ -619,153 +1773,98 @@ Baghramyan Residence — Special Invitation
 
 
             <div class="mem-section-number light">
-
                 02
-
             </div>
 
 
         </div>
 
 
-        <!-- ================================================= -->
-        <!-- AGENDA LIST -->
-        <!-- ================================================= -->
 
         <div class="mem-agenda-list">
 
 
-            <!-- 01 -->
-
             <div class="mem-agenda-item">
-
 
                 <span class="number">
                     01
                 </span>
 
-
                 <time>
-
                     {{ t.agenda_1_time }}
-
                 </time>
 
-
                 <strong>
-
                     {{ t.agenda_1_title }}
-
                 </strong>
-
 
             </div>
 
 
-            <!-- 02 -->
-
             <div class="mem-agenda-item">
-
 
                 <span class="number">
                     02
                 </span>
 
-
                 <time>
-
                     {{ t.agenda_2_time }}
-
                 </time>
 
-
                 <strong>
-
                     {{ t.agenda_2_title }}
-
                 </strong>
-
 
             </div>
 
 
-            <!-- 03 -->
-
             <div class="mem-agenda-item">
-
 
                 <span class="number">
                     03
                 </span>
 
-
                 <time>
-
                     {{ t.agenda_3_time }}
-
                 </time>
 
-
                 <strong>
-
                     {{ t.agenda_3_title }}
-
                 </strong>
-
 
             </div>
 
 
-            <!-- 04 -->
-
             <div class="mem-agenda-item">
-
 
                 <span class="number">
                     04
                 </span>
 
-
                 <time>
-
                     {{ t.agenda_4_time }}
-
                 </time>
 
-
                 <strong>
-
                     {{ t.agenda_4_title }}
-
                 </strong>
-
 
             </div>
 
 
-            <!-- 05 -->
-
             <div class="mem-agenda-item">
-
 
                 <span class="number">
                     05
                 </span>
 
-
                 <time>
-
                     {{ t.agenda_5_time }}
-
                 </time>
 
-
                 <strong>
-
                     {{ t.agenda_5_title }}
-
                 </strong>
-
 
             </div>
 
@@ -775,7 +1874,9 @@ Baghramyan Residence — Special Invitation
 
     </div>
 
+
 </section>
+
 
 
 <!-- ===================================================== -->
@@ -792,18 +1893,15 @@ Baghramyan Residence — Special Invitation
 
 
         <div class="mem-section-number">
-
             03
-
         </div>
+
 
 
         <div class="mem-rsvp-grid">
 
 
-            <!-- ================================================= -->
-            <!-- LEFT INFO -->
-            <!-- ================================================= -->
+            <!-- LEFT -->
 
             <div class="mem-rsvp-info">
 
@@ -820,9 +1918,7 @@ Baghramyan Residence — Special Invitation
                     {{ t.registration_title_1 }}
 
                     <em>
-
                         {{ t.registration_title_2 }}
-
                     </em>
 
                 </h2>
@@ -835,73 +1931,45 @@ Baghramyan Residence — Special Invitation
                 </p>
 
 
-                <!-- EVENT DETAILS -->
 
                 <div class="mem-details">
 
 
-                    <!-- DATE -->
-
                     <div>
 
-
                         <small>
-
                             {{ t.date }}
-
                         </small>
 
-
                         <strong>
-
                             {{ t.date_value }}
-
                         </strong>
-
 
                     </div>
 
 
-                    <!-- TIME -->
-
                     <div>
 
-
                         <small>
-
                             {{ t.time }}
-
                         </small>
 
-
                         <strong>
-
                             {{ t.time_value }}
-
                         </strong>
-
 
                     </div>
 
 
-                    <!-- ADDRESS -->
-
                     <div>
 
-
                         <small>
-
                             {{ t.address }}
-
                         </small>
 
-
                         <strong>
-
                             {{ t.address_value }}
-
                         </strong>
-
 
                     </div>
 
@@ -912,14 +1980,13 @@ Baghramyan Residence — Special Invitation
             </div>
 
 
+
             <!-- ================================================= -->
             <!-- FORM -->
             <!-- ================================================= -->
 
             <div class="mem-form-card">
 
-
-                <!-- ERRORS -->
 
                 {% if errors %}
 
@@ -929,9 +1996,7 @@ Baghramyan Residence — Special Invitation
                     {% for error in errors %}
 
                     <div>
-
                         {{ error }}
-
                     </div>
 
                     {% endfor %}
@@ -942,7 +2007,6 @@ Baghramyan Residence — Special Invitation
                 {% endif %}
 
 
-                <!-- FORM -->
 
                 <form
                         method="post"
@@ -959,9 +2023,7 @@ Baghramyan Residence — Special Invitation
 
 
                             <span>
-
                                 {{ t.first_name }} *
-
                             </span>
 
 
@@ -979,15 +2041,14 @@ Baghramyan Residence — Special Invitation
                         </label>
 
 
+
                         <!-- LAST NAME -->
 
                         <label>
 
 
                             <span>
-
                                 {{ t.last_name }} *
-
                             </span>
 
 
@@ -1005,15 +2066,14 @@ Baghramyan Residence — Special Invitation
                         </label>
 
 
+
                         <!-- COMPANY -->
 
                         <label class="full">
 
 
                             <span>
-
                                 {{ t.company }}
-
                             </span>
 
 
@@ -1030,15 +2090,14 @@ Baghramyan Residence — Special Invitation
                         </label>
 
 
+
                         <!-- POSITION -->
 
                         <label>
 
 
                             <span>
-
                                 {{ t.position }}
-
                             </span>
 
 
@@ -1055,15 +2114,14 @@ Baghramyan Residence — Special Invitation
                         </label>
 
 
+
                         <!-- PHONE -->
 
                         <label>
 
 
                             <span>
-
                                 {{ t.phone }}
-
                             </span>
 
 
@@ -1080,15 +2138,14 @@ Baghramyan Residence — Special Invitation
                         </label>
 
 
+
                         <!-- EMAIL -->
 
                         <label class="full">
 
 
                             <span>
-
                                 {{ t.email }} *
-
                             </span>
 
 
@@ -1106,15 +2163,14 @@ Baghramyan Residence — Special Invitation
                         </label>
 
 
+
                         <!-- NOTES -->
 
                         <label class="full">
 
 
                             <span>
-
                                 {{ t.special_notes }}
-
                             </span>
 
 
@@ -1130,6 +2186,7 @@ Baghramyan Residence — Special Invitation
 
 
                     </div>
+
 
 
                     <!-- CONSENT -->
@@ -1148,13 +2205,12 @@ Baghramyan Residence — Special Invitation
 
 
                         <span>
-
                             {{ t.consent }}
-
                         </span>
 
 
                     </label>
+
 
 
                     <!-- SUBMIT -->
@@ -1166,16 +2222,12 @@ Baghramyan Residence — Special Invitation
 
 
                         <span>
-
                             {{ t.submit }}
-
                         </span>
 
 
-                        <span>
-
+                        <span aria-hidden="true">
                             →
-
                         </span>
 
 
@@ -1185,22 +2237,17 @@ Baghramyan Residence — Special Invitation
                 </form>
 
 
-                <!-- IMPORTANT -->
 
                 <div class="mem-important">
 
 
                     <strong>
-
                         {{ t.important }}
-
                     </strong>
 
 
                     <p>
-
                         {{ t.important_text }}
-
                     </p>
 
 
@@ -1215,7 +2262,9 @@ Baghramyan Residence — Special Invitation
 
     </div>
 
+
 </section>
+
 
 
 <!-- ===================================================== -->
@@ -1235,16 +2284,12 @@ Baghramyan Residence — Special Invitation
 
 
         <div>
-
             {{ t.footer_slogan }}
-
         </div>
 
 
         <small>
-
             {{ t.copyright }}
-
         </small>
 
 
@@ -1252,6 +2297,7 @@ Baghramyan Residence — Special Invitation
 
 
 </footer>
+
 
 
 <!-- ===================================================== -->
@@ -1277,15 +2323,12 @@ Baghramyan Residence — Special Invitation
                 );
 
 
-            if (
-                !envelope
-                ||
-                !openButton
-            ) {
-
+            if (!envelope || !openButton) {
                 return;
-
             }
+
+
+            let isOpening = false;
 
 
             openButton.addEventListener(
@@ -1294,24 +2337,76 @@ Baghramyan Residence — Special Invitation
 
 
                     if (
+                        isOpening
+                        ||
                         envelope.classList.contains(
-                            "is-open"
+                            "is-card-ready"
                         )
                     ) {
-
                         return;
-
                     }
 
 
-                    envelope.classList.add(
-                        "is-open"
-                    );
+                    isOpening = true;
 
 
                     openButton.setAttribute(
                         "aria-expanded",
                         "true"
+                    );
+
+
+                    /* =================================================
+                       STEP 1
+                       seal disappears
+                       closed flap opens
+                       opened inner flap appears
+                       ================================================= */
+
+                    envelope.classList.add(
+                        "is-opening"
+                    );
+
+
+                    /* =================================================
+                       STEP 2
+                       flap is already completely open
+                       invitation begins to rise
+                       ================================================= */
+
+                    window.setTimeout(
+                        function () {
+
+                            envelope.classList.add(
+                                "is-open"
+                            );
+
+                        },
+                        1050
+                    );
+
+
+                    /* =================================================
+                       STEP 3
+                       invitation is completely outside
+                       register button becomes available
+                       ================================================= */
+
+                    window.setTimeout(
+                        function () {
+
+                            envelope.classList.remove(
+                                "is-opening"
+                            );
+
+                            envelope.classList.add(
+                                "is-card-ready"
+                            );
+
+                            isOpening = false;
+
+                        },
+                        2350
                     );
 
 
