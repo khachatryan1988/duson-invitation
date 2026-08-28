@@ -869,7 +869,7 @@ button {
         linear-gradient(
             180deg,
             #fffdf8 0%,
-            #ece4d7 100%
+            #d7e1ec00 100%
         );
 
     backface-visibility: hidden;
