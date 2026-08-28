@@ -957,10 +957,9 @@ def memorandum_register(lang):
     # Если заполнен — проверяем формат.
     #
 
-    if email and not valid_email(
+    if not valid_email(
             email
     ):
-
         errors.append(
             messages["email"]
         )
@@ -1078,10 +1077,7 @@ def memorandum_register(lang):
                 or ""
         ),
 
-        email=(
-                email
-                or ""
-        ),
+        email=email,
 
         attendance_type="solo",
 
