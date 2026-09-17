@@ -1316,6 +1316,66 @@ Decora Group — Հատուկ հրավեր
     }
 
 
+
+    /* =========================================================
+       DECORA + EGGER CO-BRANDING
+       ========================================================= */
+
+    .mem-envelope-brand .mem-egger-logo {
+        width: 118px !important;
+        height: auto;
+        margin-top: -3px;
+        object-fit: contain;
+    }
+
+    .mem-invitation-card .mem-card-egger-logo {
+        width: 112px !important;
+        height: auto;
+        margin: -8px auto 15px !important;
+        object-fit: contain;
+        opacity: .98 !important;
+    }
+
+    .mem-footer-logos {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .mem-footer-logos .mem-footer-decora-logo {
+        width: 185px !important;
+        height: auto;
+    }
+
+    .mem-footer-logos .mem-footer-egger-logo {
+        width: 118px !important;
+        height: auto;
+    }
+
+    @media (max-width: 720px) {
+        .mem-envelope-brand .mem-egger-logo {
+            width: 88px !important;
+        }
+
+        .mem-invitation-card .mem-card-egger-logo {
+            width: 92px !important;
+            margin: -6px auto 12px !important;
+        }
+
+        .mem-footer-logos {
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .mem-footer-logos .mem-footer-decora-logo {
+            width: 145px !important;
+        }
+
+        .mem-footer-logos .mem-footer-egger-logo {
+            width: 96px !important;
+        }
+    }
+
 </style>
 
 
@@ -1399,6 +1459,13 @@ Decora Group — Հատուկ հրավեր
             >
 
 
+            <img
+                    class="mem-egger-logo"
+                    src="{{ url_for('static', filename='decora/images/egger.svg') }}"
+                    alt="EGGER"
+            >
+
+
             <span>
                 {{ t.private_presentation }}
             </span>
@@ -1470,6 +1537,13 @@ Decora Group — Հատուկ հրավեր
                             class="mem-card-logo"
                             src="{{ url_for('static', filename='decora/images/logo.svg') }}"
                             alt="Decora Group"
+                    >
+
+
+                    <img
+                            class="mem-card-logo mem-card-egger-logo"
+                            src="{{ url_for('static', filename='decora/images/egger.svg') }}"
+                            alt="EGGER"
                     >
 
 
@@ -1864,6 +1938,40 @@ Decora Group — Հատուկ հրավեր
 
                 <strong>
                     {{ t.agenda_5_title }}
+                </strong>
+
+            </div>
+
+
+            <div class="mem-agenda-item">
+
+                <span class="number">
+                    06
+                </span>
+
+                <time>
+                    {{ t.agenda_6_time }}
+                </time>
+
+                <strong>
+                    {{ t.agenda_6_title }}
+                </strong>
+
+            </div>
+
+
+            <div class="mem-agenda-item">
+
+                <span class="number">
+                    07
+                </span>
+
+                <time>
+                    {{ t.agenda_7_time }}
+                </time>
+
+                <strong>
+                    {{ t.agenda_7_title }}
                 </strong>
 
             </div>
@@ -2277,10 +2385,21 @@ Decora Group — Հատուկ հրավեր
     <div class="mem-container mem-footer-inner">
 
 
-        <img
-                src="{{ url_for('static', filename='decora/images/logo.svg') }}"
-                alt="Decora Group"
-        >
+        <div class="mem-footer-logos">
+
+            <img
+                    class="mem-footer-decora-logo"
+                    src="{{ url_for('static', filename='decora/images/logo.svg') }}"
+                    alt="Decora Group"
+            >
+
+            <img
+                    class="mem-footer-egger-logo"
+                    src="{{ url_for('static', filename='decora/images/egger.svg') }}"
+                    alt="EGGER"
+            >
+
+        </div>
 
 
         <div>

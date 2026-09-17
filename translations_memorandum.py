@@ -11,90 +11,125 @@ TRANSLATIONS = {
 
     "hy": {
 
-        "open_invitation": "Բացել հրավերը",
-
         "html_lang": "hy",
 
-        # =================================================
+        "open_invitation":
+            "Բացել հրավերը",
+
         # HERO
-        # =================================================
+        "private_presentation":
+            "ՀԱՏՈՒԿ ՀՐԱՎԵՐ",
 
-        "private_presentation": "ՀԱՏՈՒԿ ՀՐԱՎԵՐ",
+        "hero_title_1":
+            "EGGER Decorative",
 
-        "hero_title_1": "Հուշագրերի ստորագրման",
-        "hero_title_2": "արարողություն",
+        "hero_title_2":
+            "Collection 26+",
 
         "hero_subtitle":
-            "BAGHRAMYAN RESIDENCE",
+            "DECORA GROUP",
 
-        "register_button": "Գրանցվել",
+        "register_button":
+            "Գրանցվել",
 
-        # =================================================
         # EVENT
-        # =================================================
+        "date":
+            "Ամսաթիվ",
 
-        "date": "Ամսաթիվ",
-        "date_value": "09 սեպտեմբերի 2026",
+        "date_value":
+            "",
 
-        "time": "Ժամ",
-        "time_value": "18:00",
+        "time":
+            "Ժամ",
 
-        "location": "Վայր",
-        "location_value": "Baghramyan Residence",
+        "time_value":
+            "09:30",
 
-        "address": "Հասցե",
-        "address_value": "Արշակունյաց 33 (Դոմուս), 4-րդ հարկ, Տերրասա, Երևան",
+        "location":
+            "Վայր",
 
+        "location_value":
+            "Decora Group",
 
-        # =================================================
-        # ABOUT EVENT
-        # =================================================
+        "address":
+            "Հասցե",
 
+        "address_value":
+            "",
+
+        # ABOUT
         "intro_label":
-            "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
+            "DECORA GROUP / EGGER",
 
         "intro_title":
-            "Երեկո՝ նվիրված ժամանակակից պրեմիում բնակության նոր մշակույթին",
+            "EGGER Decorative Collection 26+ ներկայացում",
 
         "intro_text_1":
-            "Baghramyan Residence-ը սիրով հրավիրում է Ձեզ մասնակցելու գործընկերային հուշագրերի ստորագրման հատուկ միջոցառմանը։",
+            "Decora Group-ը սիրով հրավիրում է Ձեզ մասնակցելու "
+            "EGGER Decorative Collection 26+ նոր հավաքածուի "
+            "մասնագիտական ներկայացմանը։",
 
         "intro_text_2":
-            "Երեկոյի ընթացքում կներկայացվեն նախագծի գործընկերները, կստորագրվեն համագործակցության հուշագրերը և կներկայացվեն Baghramyan Residence-ում կիրառվող առաջատար լուծումներն ու տեխնոլոգիաները։",
+            "Միջոցառման ընթացքում կներկայացվեն նոր դեկորները, "
+            "ապրանքային լուծումները, EGGER-ի նոր հավաքածուի "
+            "առանձնահատկությունները, ինչպես նաև մարքեթինգային "
+            "գործիքներն ու գործընկերային հնարավորությունները։",
 
         "intro_text_3":
-            "Պաշտոնական հատվածին կհաջորդի հյուրասիրություն և հաճելի ժամանց։",
-
+            "Միջոցառումը կեզրափակվի նվերների հանձնումով "
+            "և նեթվորքինգով։",
 
         # =================================================
         # AGENDA
         # =================================================
 
-        "agenda_label": "ՕՐԱԿԱՐԳ",
+        "agenda_label":
+            "ՕՐԱԿԱՐԳ",
 
         "agenda_title":
             "Միջոցառման ծրագիր",
 
-        "agenda_1_time": "18:00",
+        "agenda_1_time":
+            "09:30",
+
         "agenda_1_title":
-            "Հյուրերի դիմավորում և հյուրասիրություն",
+            "Գրանցում",
 
-        "agenda_2_time": "19:00",
+        "agenda_2_time":
+            "10:00",
+
         "agenda_2_title":
-            "Միջոցառման պաշտոնական բացում",
+            "Միջոցառման մեկնարկ",
 
-        "agenda_3_time": "19:10",
+        "agenda_3_time":
+            "10:10–11:10",
+
         "agenda_3_title":
-            "Հուշագրերի ստորագրման արարողություն",
+            "EGGER Decorative Collection 26+ ներկայացում",
 
-        "agenda_4_time": "19:45",
+        "agenda_4_time":
+            "11:10–11:30",
+
         "agenda_4_title":
-            "Գործընկերների պրեզենտացիաների ներկայացում",
+            "Coffee Break",
 
-        "agenda_5_time": "20:35",
+        "agenda_5_time":
+            "11:30–13:00",
+
         "agenda_5_title":
-            "Հյուրասիրություն և հաճելի ժամանց",
+            "Ապրանքային և մարքեթինգային պրեզենտացիա",
 
+        "agenda_6_time":
+            "13:00–14:00",
+
+        "agenda_6_title":
+            "Նվերների հանձնում և նեթվորքինգ",
+
+        "agenda_7_time":
+            "14:00",
+
+        "agenda_7_title":
+            "Ավարտ",
 
         # =================================================
         # REGISTRATION
@@ -110,13 +145,10 @@ TRANSLATIONS = {
             "Ձեր մասնակցությունը",
 
         "registration_text":
-            "Խնդրում ենք լրացնել ստորև ներկայացված տվյալները՝ Ձեր մասնակցությունը հաստատելու և անհատական հրավիրատոմսը ստանալու համար։",
+            "Խնդրում ենք լրացնել ստորև ներկայացված տվյալները՝ "
+            "միջոցառմանը Ձեր մասնակցությունը հաստատելու համար։",
 
-
-        # =================================================
         # FORM
-        # =================================================
-
         "first_name":
             "Անուն",
 
@@ -154,38 +186,29 @@ TRANSLATIONS = {
             "email@example.com",
 
         "special_notes":
-            "Հատուկ նշումներ",
+            "Լրացուցիչ նշումներ",
 
         "special_notes_placeholder":
-            "Ցանկության դեպքում նշեք լրացուցիչ տեղեկություն կամ սննդային սահմանափակումներ։",
+            "Ցանկության դեպքում նշեք լրացուցիչ տեղեկություն։",
 
-
-        # =================================================
         # CONSENT
-        # =================================================
-
         "consent":
-            "Համաձայն եմ, որ տրամադրված տվյալներն օգտագործվեն միջոցառման կազմակերպման, մասնակցության հաստատման և միջոցառման հետ կապված հաղորդակցության նպատակով։",
+            "Համաձայն եմ, որ տրամադրված տվյալներն օգտագործվեն "
+            "միջոցառման կազմակերպման, մասնակցության հաստատման և "
+            "միջոցառման հետ կապված հաղորդակցության նպատակով։",
 
         "submit":
             "Հաստատել մասնակցությունը",
 
-
-        # =================================================
         # IMPORTANT
-        # =================================================
-
         "important":
             "Կարևոր",
 
         "important_text":
-            "Միջոցառումը կազմակերպվում է միայն հրավերով։ Մասնակցությունն անհատական է։ Խնդրում ենք միջոցառման օրը ներկայացնել Ձեր անձնական QR հրավիրատոմսը՝ մուտքի և գրանցման համար։",
+            "Միջոցառումը կազմակերպվում է հրավերով։ "
+            "Մասնակցությունը նախատեսված է գրանցված հյուրերի համար։",
 
-
-        # =================================================
         # THANK YOU
-        # =================================================
-
         "registration_received":
             "ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ ՀԱՍՏԱՏՎԱԾ Է",
 
@@ -193,119 +216,104 @@ TRANSLATIONS = {
             "Շնորհակալություն",
 
         "thank_you_text":
-            "Ձեր մասնակցության տվյալները հաջողությամբ ստացվել են։",
+            "Ձեր գրանցման տվյալները հաջողությամբ ստացվել են։",
 
         "thank_you_details":
-            "Միջոցառման համար նախատեսված անձնական հրավիրատոմսի վերաբերյալ լրացուցիչ տեղեկատվությունը կտրամադրվի Ձեզ առանձին։",
+            "Միջոցառման վերաբերյալ լրացուցիչ տեղեկատվությունը "
+            "կուղարկվի Ձեզ էլեկտրոնային փոստով։",
 
         "back_home":
             "Վերադառնալ գլխավոր էջ",
 
-
-        # =================================================
         # ALREADY REGISTERED
-        # =================================================
-
         "already_registered":
             "Դուք արդեն գրանցված եք",
 
         "already_registered_text":
-            "Այս հեռախոսահամարով կամ էլեկտրոնային հասցեով գրանցում արդեն առկա է համակարգում։",
+            "Այս էլեկտրոնային հասցեով կամ հեռախոսահամարով "
+            "գրանցում արդեն առկա է համակարգում։",
 
-
-        # =================================================
         # FOOTER
-        # =================================================
-
         "footer_slogan":
-            "Building Partnerships. Building the Future.",
+            "DECORA GROUP · EGGER Decorative Collection 26+",
 
         "copyright":
-            "09.09.2026",
-
+            "© 2026 Decora Group",
     },
 
 
     # =====================================================
     # RUSSIAN
     # =====================================================
-    "open_invitation": "Открыть приглашение",
+
     "ru": {
 
         "html_lang": "ru",
 
-        # =================================================
-        # HERO
-        # =================================================
+        "open_invitation":
+            "Открыть приглашение",
 
+        # HERO
         "private_presentation":
             "СПЕЦИАЛЬНОЕ ПРИГЛАШЕНИЕ",
 
         "hero_title_1":
-            "Церемония подписания",
+            "EGGER Decorative",
 
         "hero_title_2":
-            "меморандумов",
+            "Collection 26+",
 
         "hero_subtitle":
-            "BAGHRAMYAN RESIDENCE",
+            "DECORA GROUP",
 
         "register_button":
             "Зарегистрироваться",
 
-
-        # =================================================
         # EVENT
-        # =================================================
-
         "date":
             "Дата",
 
         "date_value":
-            "09 сентября 2026",
+            "",
 
         "time":
             "Время",
 
         "time_value":
-            "18:00",
+            "09:30",
 
         "location":
             "Место",
 
         "location_value":
-            "Baghramyan Residence",
+            "Decora Group",
 
         "address":
             "Адрес",
 
         "address_value":
-            "ул. Аршакуняц 33 (DOMUS), 4-й этаж, терраса, Ереван",
+            "",
 
-
-        # =================================================
-        # ABOUT EVENT
-        # =================================================
-
+        # ABOUT
         "intro_label":
-            "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
+            "DECORA GROUP / EGGER",
 
         "intro_title":
-            "Вечер, посвящённый новой культуре современной премиальной жизни",
+            "Презентация EGGER Decorative Collection 26+",
 
         "intro_text_1":
-            "Baghramyan Residence приглашает Вас на специальное мероприятие, посвящённое подписанию партнёрских меморандумов.",
+            "Decora Group приглашает Вас на профессиональную "
+            "презентацию новой коллекции EGGER Decorative Collection 26+.",
 
         "intro_text_2":
-            "В течение вечера будут представлены партнёры проекта, подписаны меморандумы о сотрудничестве, а также представлены передовые решения и технологии, применяемые в Baghramyan Residence.",
+            "В рамках мероприятия будут представлены новые декоры, "
+            "продуктовые решения и особенности новой коллекции EGGER, "
+            "а также маркетинговые инструменты и возможности "
+            "для партнёров.",
 
         "intro_text_3":
-            "После официальной части гостей ждут угощения и приятное продолжение вечера.",
-
-
-        # =================================================
-        # AGENDA
-        # =================================================
+            "Мероприятие завершится вручением подарков "
+            "и нетворкингом.",
 
         # =================================================
         # AGENDA
@@ -318,35 +326,46 @@ TRANSLATIONS = {
             "Программа мероприятия",
 
         "agenda_1_time":
-            "18:00",
+            "09:30",
 
         "agenda_1_title":
-            "Встреча гостей и приветственный фуршет",
+            "Регистрация",
 
         "agenda_2_time":
-            "19:00",
+            "10:00",
 
         "agenda_2_title":
-            "Официальное открытие мероприятия",
+            "Начало мероприятия",
 
         "agenda_3_time":
-            "19:10",
+            "10:10–11:10",
 
         "agenda_3_title":
-            "Церемония подписания меморандумов",
+            "Презентация EGGER Decorative Collection 26+",
 
         "agenda_4_time":
-            "19:45",
+            "11:10–11:30",
 
         "agenda_4_title":
-            "Презентации партнёров",
+            "Кофе-брейк",
 
         "agenda_5_time":
-            "20:35",
+            "11:30–13:00",
 
         "agenda_5_title":
-            "Угощения и приятное продолжение вечера",
+            "Продуктовая и маркетинговая презентация",
 
+        "agenda_6_time":
+            "13:00–14:00",
+
+        "agenda_6_title":
+            "Вручение подарков и нетворкинг",
+
+        "agenda_7_time":
+            "14:00",
+
+        "agenda_7_title":
+            "Завершение мероприятия",
 
         # =================================================
         # REGISTRATION
@@ -362,13 +381,10 @@ TRANSLATIONS = {
             "Ваше участие",
 
         "registration_text":
-            "Пожалуйста, заполните данные ниже, чтобы подтвердить Ваше участие и получить персональное приглашение.",
+            "Пожалуйста, заполните данные ниже, чтобы подтвердить "
+            "Ваше участие в мероприятии.",
 
-
-        # =================================================
         # FORM
-        # =================================================
-
         "first_name":
             "Имя",
 
@@ -409,35 +425,27 @@ TRANSLATIONS = {
             "Дополнительная информация",
 
         "special_notes_placeholder":
-            "При желании укажите дополнительную информацию или пищевые ограничения.",
+            "При желании укажите дополнительную информацию.",
 
-
-        # =================================================
         # CONSENT
-        # =================================================
-
         "consent":
-            "Я согласен(-на), чтобы предоставленные данные использовались для организации мероприятия, подтверждения участия и коммуникации, связанной с мероприятием.",
+            "Я согласен(-на), чтобы предоставленные данные "
+            "использовались для организации мероприятия, "
+            "подтверждения участия и коммуникации, связанной "
+            "с мероприятием.",
 
         "submit":
             "Подтвердить участие",
 
-
-        # =================================================
         # IMPORTANT
-        # =================================================
-
         "important":
             "Важно",
 
         "important_text":
-            "Мероприятие проводится только по приглашениям. Участие является индивидуальным. В день мероприятия просим предъявить Ваше персональное QR-приглашение для входа и регистрации.",
+            "Мероприятие проводится по приглашениям. "
+            "Участие предусмотрено для зарегистрированных гостей.",
 
-
-        # =================================================
         # THANK YOU
-        # =================================================
-
         "registration_received":
             "УЧАСТИЕ ПОДТВЕРЖДЕНО",
 
@@ -445,36 +453,29 @@ TRANSLATIONS = {
             "Спасибо",
 
         "thank_you_text":
-            "Ваши данные для участия успешно получены.",
+            "Ваши регистрационные данные успешно получены.",
 
         "thank_you_details":
-            "Дополнительная информация о персональном приглашении на мероприятие будет предоставлена Вам отдельно.",
+            "Дополнительная информация о мероприятии "
+            "будет отправлена Вам по электронной почте.",
 
         "back_home":
             "Вернуться на главную",
 
-
-        # =================================================
         # ALREADY REGISTERED
-        # =================================================
-
         "already_registered":
             "Вы уже зарегистрированы",
 
         "already_registered_text":
-            "Регистрация с этим номером телефона или адресом электронной почты уже существует в системе.",
+            "Регистрация с этим адресом электронной почты "
+            "или номером телефона уже существует в системе.",
 
-
-        # =================================================
         # FOOTER
-        # =================================================
-
         "footer_slogan":
-            "Building Partnerships. Building the Future.",
+            "DECORA GROUP · EGGER Decorative Collection 26+",
 
         "copyright":
-            "09.09.2026",
-
+            "© 2026 Decora Group",
     },
 
 
@@ -484,82 +485,72 @@ TRANSLATIONS = {
 
     "en": {
 
-        "open_invitation": "Open invitation",
-
         "html_lang": "en",
 
-        # =================================================
-        # HERO
-        # =================================================
+        "open_invitation":
+            "Open invitation",
 
+        # HERO
         "private_presentation":
             "SPECIAL INVITATION",
 
         "hero_title_1":
-            "Memorandum Signing",
+            "EGGER Decorative",
 
         "hero_title_2":
-            "Ceremony",
+            "Collection 26+",
 
         "hero_subtitle":
-            "BAGHRAMYAN RESIDENCE",
+            "DECORA GROUP",
 
         "register_button":
             "Register",
 
-
-        # =================================================
         # EVENT
-        # =================================================
-
         "date":
             "Date",
 
         "date_value":
-            "09 September 2026",
+            "",
 
         "time":
             "Time",
 
         "time_value":
-            "18:00",
+            "09:30",
 
         "location":
             "Venue",
 
         "location_value":
-            "Baghramyan Residence",
+            "Decora Group",
 
         "address":
             "Address",
 
         "address_value":
-            "33 Arshakunyats Ave. (DOMUS), 4th floor, Terrace, Yerevan",
+            "",
 
-
-        # =================================================
-        # ABOUT EVENT
-        # =================================================
-
+        # ABOUT
         "intro_label":
-            "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
+            "DECORA GROUP / EGGER",
 
         "intro_title":
-            "An evening dedicated to a new culture of contemporary premium living",
+            "EGGER Decorative Collection 26+ Presentation",
 
         "intro_text_1":
-            "Baghramyan Residence is pleased to invite you to a special event dedicated to the signing of partnership memorandums.",
+            "Decora Group is pleased to invite you to "
+            "the professional presentation of the new "
+            "EGGER Decorative Collection 26+.",
 
         "intro_text_2":
-            "During the evening, the project partners will be introduced, cooperation memorandums will be signed, and the advanced solutions and technologies implemented at Baghramyan Residence will be presented.",
+            "The event will introduce new decors, product solutions "
+            "and key features of the new EGGER collection, "
+            "as well as marketing tools and partnership opportunities.",
 
         "intro_text_3":
-            "The official part of the event will be followed by a reception and an enjoyable evening.",
-
-
-        # =================================================
-        # AGENDA
-        # =================================================
+            "The programme will conclude with gift presentation "
+            "and networking.",
 
         # =================================================
         # AGENDA
@@ -572,35 +563,46 @@ TRANSLATIONS = {
             "Event programme",
 
         "agenda_1_time":
-            "18:00",
+            "09:30",
 
         "agenda_1_title":
-            "Guest arrival and welcome reception",
+            "Registration",
 
         "agenda_2_time":
-            "19:00",
+            "10:00",
 
         "agenda_2_title":
-            "Official opening of the event",
+            "Event opening",
 
         "agenda_3_time":
-            "19:10",
+            "10:10–11:10",
 
         "agenda_3_title":
-            "Memorandum signing ceremony",
+            "EGGER Decorative Collection 26+ presentation",
 
         "agenda_4_time":
-            "19:45",
+            "11:10–11:30",
 
         "agenda_4_title":
-            "Partner presentations",
+            "Coffee Break",
 
         "agenda_5_time":
-            "20:35",
+            "11:30–13:00",
 
         "agenda_5_title":
-            "Reception and evening programme",
+            "Product and marketing presentation",
 
+        "agenda_6_time":
+            "13:00–14:00",
+
+        "agenda_6_title":
+            "Gift presentation and networking",
+
+        "agenda_7_time":
+            "14:00",
+
+        "agenda_7_title":
+            "End of event",
 
         # =================================================
         # REGISTRATION
@@ -616,13 +618,10 @@ TRANSLATIONS = {
             "your attendance",
 
         "registration_text":
-            "Please complete the information below to confirm your attendance and receive your personal invitation.",
+            "Please complete the information below "
+            "to confirm your attendance at the event.",
 
-
-        # =================================================
         # FORM
-        # =================================================
-
         "first_name":
             "First name",
 
@@ -660,38 +659,29 @@ TRANSLATIONS = {
             "email@example.com",
 
         "special_notes":
-            "Special notes",
+            "Additional notes",
 
         "special_notes_placeholder":
-            "If needed, please provide additional information or dietary restrictions.",
+            "If needed, please provide additional information.",
 
-
-        # =================================================
         # CONSENT
-        # =================================================
-
         "consent":
-            "I agree that the information provided may be used for event organization, attendance confirmation and communication related to the event.",
+            "I agree that the information provided may be used "
+            "for event organization, attendance confirmation "
+            "and communication related to the event.",
 
         "submit":
             "Confirm attendance",
 
-
-        # =================================================
         # IMPORTANT
-        # =================================================
-
         "important":
             "Important",
 
         "important_text":
-            "The event is by invitation only. Attendance is personal and non-transferable. Please present your personal QR invitation on the day of the event for entry and registration.",
+            "The event is by invitation only and attendance "
+            "is intended for registered guests.",
 
-
-        # =================================================
         # THANK YOU
-        # =================================================
-
         "registration_received":
             "ATTENDANCE CONFIRMED",
 
@@ -699,51 +689,34 @@ TRANSLATIONS = {
             "Thank you",
 
         "thank_you_text":
-            "Your attendance information has been received successfully.",
+            "Your registration information has been received successfully.",
 
         "thank_you_details":
-            "Additional information regarding your personal invitation will be provided separately.",
+            "Additional information regarding the event "
+            "will be sent to you by email.",
 
         "back_home":
             "Back to home",
 
-
-        # =================================================
         # ALREADY REGISTERED
-        # =================================================
-
         "already_registered":
             "You are already registered",
 
         "already_registered_text":
-            "A registration with this phone number or email address already exists in the system.",
+            "A registration with this email address or phone number "
+            "already exists in the system.",
 
-
-        # =================================================
         # FOOTER
-        # =================================================
-
         "footer_slogan":
-            "Building Partnerships. Building the Future.",
+            "DECORA GROUP · EGGER Decorative Collection 26+",
 
         "copyright":
-            "09.09.2026",
-
+            "© 2026 Decora Group",
     },
-
 }
 
 
-# =====================================================
-# HELPERS
-# =====================================================
-
 def normalize_language(lang):
-    """
-    Return a supported language code.
-    Falls back to Armenian.
-    """
-
     if not lang:
         return DEFAULT_LANGUAGE
 
@@ -756,10 +729,5 @@ def normalize_language(lang):
 
 
 def get_translation(lang):
-    """
-    Return translations for requested language.
-    """
-
     lang = normalize_language(lang)
-
     return TRANSLATIONS[lang]

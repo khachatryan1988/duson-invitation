@@ -13,91 +13,71 @@ TRANSLATIONS = {
 
         "html_lang": "hy",
 
-        # =================================================
+        "open_invitation":
+            "Բացել հրավերը",
+
         # HERO
-        # =================================================
+        "private_presentation":
+            "ՀԱՏՈՒԿ ՀՐԱՎԵՐ",
 
-        "private_presentation": "ՀԱՏՈՒԿ ՀՐԱՎԵՐ",
+        "hero_title_1":
+            "Prestige Design",
 
-        "hero_title_1": "Հուշագրերի ստորագրման",
-        "hero_title_2": "արարողություն",
+        "hero_title_2":
+            "հատուկ միջոցառում",
 
         "hero_subtitle":
-            "BAGHRAMYAN RESIDENCE",
+            "PRESTIGE DESIGN",
 
-        "register_button": "Գրանցվել",
+        "register_button":
+            "Գրանցվել",
 
-        # =================================================
         # EVENT
-        # =================================================
+        "date":
+            "Ամսաթիվ",
 
-        "date": "Ամսաթիվ",
-        "date_value": "09 սեպտեմբերի 2026",
+        "date_value":
+            "",
 
-        "time": "Ժամ",
-        "time_value": "18:00",
+        "time":
+            "Ժամ",
 
-        "location": "Վայր",
-        "location_value": "Baghramyan Residence",
+        "time_value":
+            "",
 
-        "address": "Հասցե",
-        "address_value": "Արշակունյաց 33 (Դոմուս), 4-րդ հարկ, Տերրասա, Երևան",
+        "location":
+            "Վայր",
 
+        "location_value":
+            "Prestige Design",
 
-        # =================================================
-        # ABOUT EVENT
-        # =================================================
+        "address":
+            "Հասցե",
 
+        "address_value":
+            "",
+
+        # INTRO
         "intro_label":
-            "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
+            "PRESTIGE DESIGN / PRIVATE EVENT",
 
         "intro_title":
-            "Երեկո՝ նվիրված ժամանակակից պրեմիում բնակության նոր մշակույթին",
+            "Prestige Design-ի հատուկ միջոցառում",
 
         "intro_text_1":
-            "Baghramyan Residence-ը սիրով հրավիրում է Ձեզ մասնակցելու գործընկերային հուշագրերի ստորագրման հատուկ միջոցառմանը։",
+            "Prestige Design-ը սիրով հրավիրում է Ձեզ մասնակցելու "
+            "հատուկ միջոցառմանը։",
 
         "intro_text_2":
-            "Երեկոյի ընթացքում կներկայացվեն նախագծի գործընկերները, կստորագրվեն համագործակցության հուշագրերը և կներկայացվեն Baghramyan Residence-ում կիրառվող առաջատար լուծումներն ու տեխնոլոգիաները։",
+            "Միջոցառման ընթացքում Դուք հնարավորություն կունենաք "
+            "ծանոթանալու Prestige Design-ի ներկայացրած պրեմիում "
+            "ինտերիերային լուծումներին, նորություններին և գործընկերային "
+            "առաջարկներին։",
 
         "intro_text_3":
-            "Պաշտոնական հատվածին կհաջորդի հյուրասիրություն և հաճելի ժամանց։",
+            "",
 
-
-        # =================================================
-        # AGENDA
-        # =================================================
-
-        "agenda_label": "ՕՐԱԿԱՐԳ",
-
-        "agenda_title":
-            "Միջոցառման ծրագիր",
-
-        "agenda_1_time": "18:00",
-        "agenda_1_title":
-            "Հյուրերի դիմավորում և հյուրասիրություն",
-
-        "agenda_2_time": "19:00",
-        "agenda_2_title":
-            "Միջոցառման պաշտոնական բացում",
-
-        "agenda_3_time": "19:10",
-        "agenda_3_title":
-            "Հուշագրերի ստորագրման արարողություն",
-
-        "agenda_4_time": "19:45",
-        "agenda_4_title":
-            "Գործընկերների պրեզենտացիաների ներկայացում",
-
-        "agenda_5_time": "20:35",
-        "agenda_5_title":
-            "Հյուրասիրություն և հաճելի ժամանց",
-
-
-        # =================================================
         # REGISTRATION
-        # =================================================
-
         "registration_label":
             "ՄԱՍՆԱԿՑՈՒԹՅԱՆ ՀԱՍՏԱՏՈՒՄ",
 
@@ -108,13 +88,10 @@ TRANSLATIONS = {
             "Ձեր մասնակցությունը",
 
         "registration_text":
-            "Խնդրում ենք լրացնել ստորև ներկայացված տվյալները՝ Ձեր մասնակցությունը հաստատելու և անհատական հրավիրատոմսը ստանալու համար։",
+            "Խնդրում ենք լրացնել ստորև ներկայացված տվյալները՝ "
+            "միջոցառմանը Ձեր մասնակցությունը հաստատելու համար։",
 
-
-        # =================================================
         # FORM
-        # =================================================
-
         "first_name":
             "Անուն",
 
@@ -152,75 +129,59 @@ TRANSLATIONS = {
             "email@example.com",
 
         "special_notes":
-            "Հատուկ նշումներ",
+            "Լրացուցիչ նշումներ",
 
         "special_notes_placeholder":
-            "Ցանկության դեպքում նշեք լրացուցիչ տեղեկություն կամ սննդային սահմանափակումներ։",
+            "Ցանկության դեպքում նշեք լրացուցիչ տեղեկություն։",
 
-
-        # =================================================
         # CONSENT
-        # =================================================
-
         "consent":
-            "Համաձայն եմ, որ տրամադրված տվյալներն օգտագործվեն միջոցառման կազմակերպման, մասնակցության հաստատման և միջոցառման հետ կապված հաղորդակցության նպատակով։",
+            "Համաձայն եմ, որ տրամադրված տվյալներն օգտագործվեն "
+            "միջոցառման կազմակերպման, մասնակցության հաստատման և "
+            "միջոցառման հետ կապված հաղորդակցության նպատակով։",
 
         "submit":
             "Հաստատել մասնակցությունը",
 
-
-        # =================================================
         # IMPORTANT
-        # =================================================
-
         "important":
             "Կարևոր",
 
         "important_text":
-            "Միջոցառումը կազմակերպվում է միայն հրավերով։ Մասնակցությունն անհատական է։ Խնդրում ենք միջոցառման օրը ներկայացնել Ձեր անձնական QR հրավիրատոմսը՝ մուտքի և գրանցման համար։",
+            "Միջոցառումը կազմակերպվում է հրավերով։ "
+            "Մասնակցությունը նախատեսված է միայն գրանցված հյուրերի համար։",
 
-
-        # =================================================
         # THANK YOU
-        # =================================================
-
         "registration_received":
-            "ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ ՀԱՍՏԱՏՎԱԾ Է",
+            "ԳՐԱՆՑՈՒՄԸ ՀԱՍՏԱՏՎԱԾ Է",
 
         "thank_you_title":
             "Շնորհակալություն",
 
         "thank_you_text":
-            "Ձեր մասնակցության տվյալները հաջողությամբ ստացվել են։",
+            "Ձեր գրանցման տվյալները հաջողությամբ ստացվել են։",
 
         "thank_you_details":
-            "Միջոցառման համար նախատեսված անձնական հրավիրատոմսի վերաբերյալ լրացուցիչ տեղեկատվությունը կտրամադրվի Ձեզ առանձին։",
+            "Միջոցառման վերաբերյալ լրացուցիչ տեղեկատվությունը "
+            "կտրամադրվի Ձեզ առանձին։",
 
         "back_home":
             "Վերադառնալ գլխավոր էջ",
 
-
-        # =================================================
         # ALREADY REGISTERED
-        # =================================================
-
         "already_registered":
             "Դուք արդեն գրանցված եք",
 
         "already_registered_text":
-            "Այս հեռախոսահամարով կամ էլեկտրոնային հասցեով գրանցում արդեն առկա է համակարգում։",
+            "Այս հեռախոսահամարով կամ էլեկտրոնային հասցեով "
+            "գրանցում արդեն առկա է համակարգում։",
 
-
-        # =================================================
         # FOOTER
-        # =================================================
-
         "footer_slogan":
-            "Building Partnerships. Building the Future.",
+            "PRESTIGE DESIGN",
 
         "copyright":
-            "09.09.2026",
-
+            "© 2026 Prestige Design",
     },
 
 
@@ -232,124 +193,70 @@ TRANSLATIONS = {
 
         "html_lang": "ru",
 
-        # =================================================
-        # HERO
-        # =================================================
+        "open_invitation":
+            "Открыть приглашение",
 
+        # HERO
         "private_presentation":
             "СПЕЦИАЛЬНОЕ ПРИГЛАШЕНИЕ",
 
         "hero_title_1":
-            "Церемония подписания",
+            "Prestige Design",
 
         "hero_title_2":
-            "меморандумов",
+            "специальное мероприятие",
 
         "hero_subtitle":
-            "BAGHRAMYAN RESIDENCE",
+            "PRESTIGE DESIGN",
 
         "register_button":
             "Зарегистрироваться",
 
-
-        # =================================================
         # EVENT
-        # =================================================
-
         "date":
             "Дата",
 
         "date_value":
-            "09 сентября 2026",
+            "",
 
         "time":
             "Время",
 
         "time_value":
-            "18:00",
+            "",
 
         "location":
             "Место",
 
         "location_value":
-            "Baghramyan Residence",
+            "Prestige Design",
 
         "address":
             "Адрес",
 
         "address_value":
-            "ул. Аршакуняц 33 (DOMUS), 4-й этаж, терраса, Ереван",
+            "",
 
-
-        # =================================================
-        # ABOUT EVENT
-        # =================================================
-
+        # INTRO
         "intro_label":
-            "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
+            "PRESTIGE DESIGN / PRIVATE EVENT",
 
         "intro_title":
-            "Вечер, посвящённый новой культуре современной премиальной жизни",
+            "Специальное мероприятие Prestige Design",
 
         "intro_text_1":
-            "Baghramyan Residence приглашает Вас на специальное мероприятие, посвящённое подписанию партнёрских меморандумов.",
+            "Prestige Design приглашает Вас принять участие "
+            "в специальном мероприятии.",
 
         "intro_text_2":
-            "В течение вечера будут представлены партнёры проекта, подписаны меморандумы о сотрудничестве, а также представлены передовые решения и технологии, применяемые в Baghramyan Residence.",
+            "Во время мероприятия Вы сможете познакомиться "
+            "с премиальными интерьерными решениями, новинками "
+            "и партнёрскими предложениями Prestige Design.",
 
         "intro_text_3":
-            "После официальной части гостей ждут угощения и приятное продолжение вечера.",
+            "",
 
-
-        # =================================================
-        # AGENDA
-        # =================================================
-
-        # =================================================
-        # AGENDA
-        # =================================================
-
-        "agenda_label":
-            "ПРОГРАММА",
-
-        "agenda_title":
-            "Программа мероприятия",
-
-        "agenda_1_time":
-            "18:00",
-
-        "agenda_1_title":
-            "Встреча гостей и приветственный фуршет",
-
-        "agenda_2_time":
-            "19:00",
-
-        "agenda_2_title":
-            "Официальное открытие мероприятия",
-
-        "agenda_3_time":
-            "19:10",
-
-        "agenda_3_title":
-            "Церемония подписания меморандумов",
-
-        "agenda_4_time":
-            "19:45",
-
-        "agenda_4_title":
-            "Презентации партнёров",
-
-        "agenda_5_time":
-            "20:35",
-
-        "agenda_5_title":
-            "Угощения и приятное продолжение вечера",
-
-
-        # =================================================
         # REGISTRATION
-        # =================================================
-
         "registration_label":
             "ПОДТВЕРЖДЕНИЕ УЧАСТИЯ",
 
@@ -360,13 +267,10 @@ TRANSLATIONS = {
             "Ваше участие",
 
         "registration_text":
-            "Пожалуйста, заполните данные ниже, чтобы подтвердить Ваше участие и получить персональное приглашение.",
+            "Пожалуйста, заполните данные ниже, чтобы подтвердить "
+            "Ваше участие в мероприятии.",
 
-
-        # =================================================
         # FORM
-        # =================================================
-
         "first_name":
             "Имя",
 
@@ -407,72 +311,57 @@ TRANSLATIONS = {
             "Дополнительная информация",
 
         "special_notes_placeholder":
-            "При желании укажите дополнительную информацию или пищевые ограничения.",
+            "При желании укажите дополнительную информацию.",
 
-
-        # =================================================
         # CONSENT
-        # =================================================
-
         "consent":
-            "Я согласен(-на), чтобы предоставленные данные использовались для организации мероприятия, подтверждения участия и коммуникации, связанной с мероприятием.",
+            "Я согласен(-на), чтобы предоставленные данные "
+            "использовались для организации мероприятия, "
+            "подтверждения участия и коммуникации, связанной "
+            "с мероприятием.",
 
         "submit":
             "Подтвердить участие",
 
-
-        # =================================================
         # IMPORTANT
-        # =================================================
-
         "important":
             "Важно",
 
         "important_text":
-            "Мероприятие проводится только по приглашениям. Участие является индивидуальным. В день мероприятия просим предъявить Ваше персональное QR-приглашение для входа и регистрации.",
+            "Мероприятие проводится по приглашениям. "
+            "Участие предусмотрено только для зарегистрированных гостей.",
 
-
-        # =================================================
         # THANK YOU
-        # =================================================
-
         "registration_received":
-            "УЧАСТИЕ ПОДТВЕРЖДЕНО",
+            "РЕГИСТРАЦИЯ ПОДТВЕРЖДЕНА",
 
         "thank_you_title":
             "Спасибо",
 
         "thank_you_text":
-            "Ваши данные для участия успешно получены.",
+            "Ваши регистрационные данные успешно получены.",
 
         "thank_you_details":
-            "Дополнительная информация о персональном приглашении на мероприятие будет предоставлена Вам отдельно.",
+            "Дополнительная информация о мероприятии "
+            "будет предоставлена Вам отдельно.",
 
         "back_home":
             "Вернуться на главную",
 
-
-        # =================================================
         # ALREADY REGISTERED
-        # =================================================
-
         "already_registered":
             "Вы уже зарегистрированы",
 
         "already_registered_text":
-            "Регистрация с этим номером телефона или адресом электронной почты уже существует в системе.",
+            "Регистрация с этим номером телефона или адресом "
+            "электронной почты уже существует в системе.",
 
-
-        # =================================================
         # FOOTER
-        # =================================================
-
         "footer_slogan":
-            "Building Partnerships. Building the Future.",
+            "PRESTIGE DESIGN",
 
         "copyright":
-            "09.09.2026",
-
+            "© 2026 Prestige Design",
     },
 
 
@@ -484,124 +373,70 @@ TRANSLATIONS = {
 
         "html_lang": "en",
 
-        # =================================================
-        # HERO
-        # =================================================
+        "open_invitation":
+            "Open invitation",
 
+        # HERO
         "private_presentation":
             "SPECIAL INVITATION",
 
         "hero_title_1":
-            "Memorandum Signing",
+            "Prestige Design",
 
         "hero_title_2":
-            "Ceremony",
+            "special event",
 
         "hero_subtitle":
-            "BAGHRAMYAN RESIDENCE",
+            "PRESTIGE DESIGN",
 
         "register_button":
             "Register",
 
-
-        # =================================================
         # EVENT
-        # =================================================
-
         "date":
             "Date",
 
         "date_value":
-            "09 September 2026",
+            "",
 
         "time":
             "Time",
 
         "time_value":
-            "18:00",
+            "",
 
         "location":
             "Venue",
 
         "location_value":
-            "Baghramyan Residence",
+            "Prestige Design",
 
         "address":
             "Address",
 
         "address_value":
-            "33 Arshakunyats Ave. (DOMUS), 4th floor, Terrace, Yerevan",
+            "",
 
-
-        # =================================================
-        # ABOUT EVENT
-        # =================================================
-
+        # INTRO
         "intro_label":
-            "BAGHRAMYAN RESIDENCE / PRIVATE EVENT",
+            "PRESTIGE DESIGN / PRIVATE EVENT",
 
         "intro_title":
-            "An evening dedicated to a new culture of contemporary premium living",
+            "A special event by Prestige Design",
 
         "intro_text_1":
-            "Baghramyan Residence is pleased to invite you to a special event dedicated to the signing of partnership memorandums.",
+            "Prestige Design is pleased to invite you "
+            "to a special event.",
 
         "intro_text_2":
-            "During the evening, the project partners will be introduced, cooperation memorandums will be signed, and the advanced solutions and technologies implemented at Baghramyan Residence will be presented.",
+            "During the event, you will have the opportunity "
+            "to discover premium interior solutions, new products "
+            "and partnership opportunities presented by Prestige Design.",
 
         "intro_text_3":
-            "The official part of the event will be followed by a reception and an enjoyable evening.",
+            "",
 
-
-        # =================================================
-        # AGENDA
-        # =================================================
-
-        # =================================================
-        # AGENDA
-        # =================================================
-
-        "agenda_label":
-            "AGENDA",
-
-        "agenda_title":
-            "Event programme",
-
-        "agenda_1_time":
-            "18:00",
-
-        "agenda_1_title":
-            "Guest arrival and welcome reception",
-
-        "agenda_2_time":
-            "19:00",
-
-        "agenda_2_title":
-            "Official opening of the event",
-
-        "agenda_3_time":
-            "19:10",
-
-        "agenda_3_title":
-            "Memorandum signing ceremony",
-
-        "agenda_4_time":
-            "19:45",
-
-        "agenda_4_title":
-            "Partner presentations",
-
-        "agenda_5_time":
-            "20:35",
-
-        "agenda_5_title":
-            "Reception and evening programme",
-
-
-        # =================================================
         # REGISTRATION
-        # =================================================
-
         "registration_label":
             "ATTENDANCE CONFIRMATION",
 
@@ -612,13 +447,10 @@ TRANSLATIONS = {
             "your attendance",
 
         "registration_text":
-            "Please complete the information below to confirm your attendance and receive your personal invitation.",
+            "Please complete the information below to confirm "
+            "your attendance at the event.",
 
-
-        # =================================================
         # FORM
-        # =================================================
-
         "first_name":
             "First name",
 
@@ -656,90 +488,64 @@ TRANSLATIONS = {
             "email@example.com",
 
         "special_notes":
-            "Special notes",
+            "Additional notes",
 
         "special_notes_placeholder":
-            "If needed, please provide additional information or dietary restrictions.",
+            "If needed, please provide additional information.",
 
-
-        # =================================================
         # CONSENT
-        # =================================================
-
         "consent":
-            "I agree that the information provided may be used for event organization, attendance confirmation and communication related to the event.",
+            "I agree that the information provided may be used "
+            "for event organization, attendance confirmation "
+            "and communication related to the event.",
 
         "submit":
             "Confirm attendance",
 
-
-        # =================================================
         # IMPORTANT
-        # =================================================
-
         "important":
             "Important",
 
         "important_text":
-            "The event is by invitation only. Attendance is personal and non-transferable. Please present your personal QR invitation on the day of the event for entry and registration.",
+            "The event is by invitation only and attendance "
+            "is intended for registered guests.",
 
-
-        # =================================================
         # THANK YOU
-        # =================================================
-
         "registration_received":
-            "ATTENDANCE CONFIRMED",
+            "REGISTRATION CONFIRMED",
 
         "thank_you_title":
             "Thank you",
 
         "thank_you_text":
-            "Your attendance information has been received successfully.",
+            "Your registration information has been received successfully.",
 
         "thank_you_details":
-            "Additional information regarding your personal invitation will be provided separately.",
+            "Additional information regarding the event "
+            "will be provided separately.",
 
         "back_home":
             "Back to home",
 
-
-        # =================================================
         # ALREADY REGISTERED
-        # =================================================
-
         "already_registered":
             "You are already registered",
 
         "already_registered_text":
-            "A registration with this phone number or email address already exists in the system.",
+            "A registration with this phone number or email address "
+            "already exists in the system.",
 
-
-        # =================================================
         # FOOTER
-        # =================================================
-
         "footer_slogan":
-            "Building Partnerships. Building the Future.",
+            "PRESTIGE DESIGN",
 
         "copyright":
-            "09.09.2026",
-
+            "© 2026 Prestige Design",
     },
-
 }
 
 
-# =====================================================
-# HELPERS
-# =====================================================
-
 def normalize_language(lang):
-    """
-    Return a supported language code.
-    Falls back to Armenian.
-    """
-
     if not lang:
         return DEFAULT_LANGUAGE
 
@@ -752,10 +558,5 @@ def normalize_language(lang):
 
 
 def get_translation(lang):
-    """
-    Return translations for requested language.
-    """
-
     lang = normalize_language(lang)
-
     return TRANSLATIONS[lang]
