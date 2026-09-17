@@ -2,6 +2,7 @@ import os
 import re
 import hmac
 
+
 from io import BytesIO
 from datetime import datetime, timezone
 
@@ -18,6 +19,12 @@ from flask import (
 )
 
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_
+from sqlalchemy.engine import URL
+
+from qr_integration import (
+    register_qr_guest,
+)
 
 from openpyxl import Workbook
 from openpyxl.styles import (
@@ -73,20 +80,96 @@ app.config["MAX_CONTENT_LENGTH"] = 1 * 1024 * 1024
 # DATABASE
 # =========================================================
 
-database_url = os.getenv(
-    "DATABASE_URL",
-    "sqlite:///duson_event.db"
+POSTGRES_HOST = os.getenv(
+    "POSTGRES_HOST",
+    "db",
 )
 
-if database_url.startswith("postgres://"):
-    database_url = database_url.replace(
-        "postgres://",
-        "postgresql://",
-        1
+POSTGRES_PORT = int(
+    os.getenv(
+        "POSTGRES_PORT",
+        "5432",
+    )
+)
+
+POSTGRES_USER = os.getenv(
+    "POSTGRES_USER",
+    "duson_user",
+)
+
+POSTGRES_PASSWORD = os.getenv(
+    "POSTGRES_PASSWORD",
+    "",
+)
+
+POSTGRES_DB = os.getenv(
+    "POSTGRES_DB",
+    "duson_event",
+)
+
+DECORA_DB_NAME = os.getenv(
+    "DECORA_DB_NAME",
+    "decora_event",
+)
+
+PRESTIGE_DB_NAME = os.getenv(
+    "PRESTIGE_DB_NAME",
+    "prestige_event",
+)
+
+
+def build_postgres_url(database_name):
+
+    return URL.create(
+        drivername="postgresql+psycopg",
+        username=POSTGRES_USER,
+        password=POSTGRES_PASSWORD,
+        host=POSTGRES_HOST,
+        port=POSTGRES_PORT,
+        database=database_name,
     )
 
-app.config["SQLALCHEMY_DATABASE_URI"] = database_url
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+legacy_database_url = os.getenv(
+    "DATABASE_URL",
+    "",
+).strip()
+
+if legacy_database_url.startswith(
+        "postgres://"
+):
+    legacy_database_url = (
+        legacy_database_url.replace(
+            "postgres://",
+            "postgresql://",
+            1,
+        )
+    )
+
+if not legacy_database_url:
+    legacy_database_url = build_postgres_url(
+        POSTGRES_DB
+    )
+
+
+app.config[
+    "SQLALCHEMY_DATABASE_URI"
+] = legacy_database_url
+
+app.config[
+    "SQLALCHEMY_BINDS"
+] = {
+    "decora": build_postgres_url(
+        DECORA_DB_NAME
+    ),
+    "prestige": build_postgres_url(
+        PRESTIGE_DB_NAME
+    ),
+}
+
+app.config[
+    "SQLALCHEMY_TRACK_MODIFICATIONS"
+] = False
 
 db = SQLAlchemy(app)
 
@@ -216,6 +299,174 @@ class Guest(db.Model):
         db.DateTime,
         nullable=False,
         default=lambda: datetime.now(timezone.utc)
+    )
+
+
+# =========================================================
+# DECORA REGISTRATION MODEL
+# =========================================================
+
+class DecoraRegistration(db.Model):
+
+    __bind_key__ = "decora"
+    __tablename__ = "registrations"
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True,
+    )
+
+    first_name = db.Column(
+        db.String(100),
+        nullable=False,
+    )
+
+    last_name = db.Column(
+        db.String(100),
+        nullable=False,
+    )
+
+    company = db.Column(
+        db.String(200),
+        nullable=False,
+    )
+
+    position = db.Column(
+        db.String(200),
+        nullable=True,
+    )
+
+    phone = db.Column(
+        db.String(50),
+        nullable=False,
+        index=True,
+    )
+
+    email = db.Column(
+        db.String(200),
+        nullable=False,
+        index=True,
+    )
+
+    special_notes = db.Column(
+        db.Text,
+        nullable=True,
+    )
+
+    consent = db.Column(
+        db.Boolean,
+        nullable=False,
+        default=False,
+    )
+
+    qr_guest_id = db.Column(
+        db.Integer,
+        nullable=True,
+        index=True,
+    )
+
+    qr_sync_status = db.Column(
+        db.String(30),
+        nullable=False,
+        default="pending",
+        index=True,
+    )
+
+    qr_sync_error = db.Column(
+        db.Text,
+        nullable=True,
+    )
+
+    created_at = db.Column(
+        db.DateTime,
+        nullable=False,
+        default=lambda: datetime.now(
+            timezone.utc
+        ),
+    )
+
+
+# =========================================================
+# PRESTIGE REGISTRATION MODEL
+# =========================================================
+
+class PrestigeRegistration(db.Model):
+
+    __bind_key__ = "prestige"
+    __tablename__ = "registrations"
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True,
+    )
+
+    first_name = db.Column(
+        db.String(100),
+        nullable=False,
+    )
+
+    last_name = db.Column(
+        db.String(100),
+        nullable=False,
+    )
+
+    company = db.Column(
+        db.String(200),
+        nullable=False,
+    )
+
+    position = db.Column(
+        db.String(200),
+        nullable=True,
+    )
+
+    phone = db.Column(
+        db.String(50),
+        nullable=False,
+        index=True,
+    )
+
+    email = db.Column(
+        db.String(200),
+        nullable=False,
+        index=True,
+    )
+
+    special_notes = db.Column(
+        db.Text,
+        nullable=True,
+    )
+
+    consent = db.Column(
+        db.Boolean,
+        nullable=False,
+        default=False,
+    )
+
+    qr_guest_id = db.Column(
+        db.Integer,
+        nullable=True,
+        index=True,
+    )
+
+    qr_sync_status = db.Column(
+        db.String(30),
+        nullable=False,
+        default="pending",
+        index=True,
+    )
+
+    qr_sync_error = db.Column(
+        db.Text,
+        nullable=True,
+    )
+
+    created_at = db.Column(
+        db.DateTime,
+        nullable=False,
+        default=lambda: datetime.now(
+            timezone.utc
+        ),
     )
 
 
@@ -355,8 +606,25 @@ def get_memorandum_translation(lang):
 
 def admin_required():
 
-    if not session.get("admin_logged_in"):
+    site = get_current_site()
+
+    if site not in {
+        "decora",
+        "prestige",
+    }:
+        abort(404)
+
+    if not session.get(
+            "admin_logged_in"
+    ):
         abort(403)
+
+    if session.get(
+            "admin_site"
+    ) != site:
+        abort(403)
+
+    return site
 
 
 def normalize_phone(phone: str) -> str:
@@ -420,6 +688,111 @@ def get_event_name(event_slug: str) -> str:
 
 
 # =========================================================
+# BRAND -> QR SYSTEM SYNC
+# =========================================================
+
+def sync_registration_to_qr(
+        registration,
+        site,
+        model,
+):
+
+    if registration is None:
+        return False
+
+    registration_id = registration.id
+
+    full_name = " ".join(
+        value
+        for value in (
+            registration.first_name,
+            registration.last_name,
+        )
+        if value
+    )
+
+    try:
+
+        result = register_qr_guest(
+            site=site,
+            registration_id=registration.id,
+            name=full_name,
+            phone=registration.phone,
+            email=registration.email,
+        )
+
+        registration.qr_guest_id = result.get(
+            "guest_id"
+        )
+
+        registration.qr_sync_status = "synced"
+        registration.qr_sync_error = None
+
+        db.session.commit()
+
+        app.logger.info(
+            (
+                "%s registration %s synced "
+                "with QR guest %s"
+            ),
+            site,
+            registration.id,
+            registration.qr_guest_id,
+        )
+
+        return True
+
+    except Exception as exc:
+
+        db.session.rollback()
+
+        registration = db.session.get(
+            model,
+            registration_id,
+        )
+
+        if registration is not None:
+
+            registration.qr_sync_status = "failed"
+            registration.qr_sync_error = str(exc)[:5000]
+
+            db.session.commit()
+
+        app.logger.exception(
+            (
+                "%s registration %s saved, "
+                "but QR synchronization failed"
+            ),
+            site,
+            registration_id,
+        )
+
+        return False
+
+
+def sync_decora_registration_to_qr(
+        registration,
+):
+
+    return sync_registration_to_qr(
+        registration=registration,
+        site="decora",
+        model=DecoraRegistration,
+    )
+
+
+def sync_prestige_registration_to_qr(
+        registration,
+):
+
+    return sync_registration_to_qr(
+        registration=registration,
+        site="prestige",
+        model=PrestigeRegistration,
+    )
+
+
+# =========================================================
 # ROOT
 # =========================================================
 
@@ -435,19 +808,155 @@ def home():
 
 
 # =========================================================
+# MULTI-BRAND PUBLIC SITE
 # =========================================================
-# MAIN BAGHRAMYAN VERSION
+
+
 # =========================================================
+# CURRENT SITE
 # =========================================================
-#
-# /hy
-# /ru
-# /en
-#
-# event_slug:
-# baghramyan-main
-#
-# =========================================================
+
+def get_current_site():
+
+    host = (
+        request.host
+        .split(":")[0]
+        .strip()
+        .lower()
+    )
+
+    if host == "invitation.decoragroup.am":
+        return "decora"
+
+    if host == "invitation.prestigedesign.am":
+        return "prestige"
+
+    if host == "invitation.baghramyan-residence.am":
+        return "legacy"
+
+    return os.getenv(
+        "DEFAULT_INVITATION_SITE",
+        "decora",
+    ).strip().lower()
+
+
+def get_brand_config(
+        lang,
+):
+
+    site = get_current_site()
+
+
+    # =====================================================
+    # DECORA GROUP
+    # =====================================================
+
+    if site == "decora":
+
+        return {
+            "site": "decora",
+            "model": DecoraRegistration,
+
+            "translation": (
+                get_memorandum_translation(
+                    lang
+                )
+            ),
+
+            "index_template": (
+                "decora/index.html"
+            ),
+
+            "thank_you_template": (
+                "decora/thank_you.html"
+            ),
+
+            "already_template": (
+                "decora/already_registered.html"
+            ),
+
+            "required_fields": {
+                "first_name",
+                "last_name",
+                "email",
+                "consent",
+            },
+        }
+
+
+    # =====================================================
+    # PRESTIGE DESIGN
+    # =====================================================
+
+    if site == "prestige":
+
+        return {
+            "site": "prestige",
+            "model": PrestigeRegistration,
+
+            "translation": (
+                get_translation(
+                    lang
+                )
+            ),
+
+            "index_template": (
+                "prestige/index.html"
+            ),
+
+            "thank_you_template": (
+                "prestige/thank_you.html"
+            ),
+
+            "already_template": (
+                "prestige/already_registered.html"
+            ),
+
+            "required_fields": {
+                "first_name",
+                "last_name",
+                "company",
+                "position",
+                "phone",
+                "email",
+                "consent",
+            },
+        }
+
+
+    # =====================================================
+    # LEGACY
+    # =====================================================
+
+    if site == "legacy":
+
+        return {
+            "site": "legacy",
+            "model": None,
+
+            "translation": (
+                get_translation(
+                    lang
+                )
+            ),
+
+            "index_template": (
+                "index.html"
+            ),
+
+            "thank_you_template": (
+                "thank_you.html"
+            ),
+
+            "already_template": (
+                "already_registered.html"
+            ),
+
+            "required_fields": set(),
+        }
+
+
+    abort(404)
 
 
 # =========================================================
@@ -461,46 +970,70 @@ def index(lang):
         lang
     )
 
-    t = get_translation(
+    config = get_brand_config(
         lang
     )
 
     return render_template(
-        "index.html",
-        t=t,
-        lang=lang
+        config["index_template"],
+        t=config["translation"],
+        lang=lang,
     )
 
 
 # =========================================================
-# MAIN REGISTRATION
-# =========================================================
-#
-# REQUIRED:
-#
-# first_name
-# last_name
-# company
-# position
-# phone
-# email
-# consent
-#
+# BRAND REGISTRATION
 # =========================================================
 
 @app.route(
     "/<lang>/register",
-    methods=["POST"]
+    methods=["POST"],
 )
 def register(lang):
+
+    # =====================================================
+    # LANGUAGE
+    # =====================================================
 
     lang = normalize_language(
         lang
     )
 
-    t = get_translation(
+
+    # =====================================================
+    # BRAND CONFIG
+    # =====================================================
+
+    config = get_brand_config(
         lang
     )
+
+    site = config[
+        "site"
+    ]
+
+    RegistrationModel = config[
+        "model"
+    ]
+
+    t = config[
+        "translation"
+    ]
+
+    template_name = config[
+        "index_template"
+    ]
+
+    required_fields = config.get(
+        "required_fields",
+        set(),
+    )
+
+
+    if site == "legacy":
+
+        abort(404)
+
 
     messages = ERROR_MESSAGES[
         lang
@@ -513,39 +1046,39 @@ def register(lang):
 
     first_name = request.form.get(
         "first_name",
-        ""
+        "",
     ).strip()
 
     last_name = request.form.get(
         "last_name",
-        ""
+        "",
     ).strip()
 
     company = request.form.get(
         "company",
-        ""
+        "",
     ).strip()
 
     position = request.form.get(
         "position",
-        ""
+        "",
     ).strip()
 
     phone = normalize_phone(
         request.form.get(
             "phone",
-            ""
+            "",
         )
     )
 
     email = request.form.get(
         "email",
-        ""
+        "",
     ).strip().lower()
 
     special_notes = request.form.get(
         "special_notes",
-        ""
+        "",
     ).strip()
 
     consent = (
@@ -563,49 +1096,127 @@ def register(lang):
     errors = []
 
 
-    if not first_name:
+    if (
+            "first_name" in required_fields
+            and not first_name
+    ):
+
         errors.append(
-            messages["first_name"]
+            messages[
+                "first_name"
+            ]
         )
 
 
-    if not last_name:
+    if (
+            "last_name" in required_fields
+            and not last_name
+    ):
+
         errors.append(
-            messages["last_name"]
+            messages[
+                "last_name"
+            ]
         )
 
 
-    if not company:
+    if (
+            "company" in required_fields
+            and not company
+    ):
+
         errors.append(
-            messages["company"]
+            messages[
+                "company"
+            ]
         )
 
 
-    if not position:
+    if (
+            "position" in required_fields
+            and not position
+    ):
+
         errors.append(
-            messages["position"]
+            messages[
+                "position"
+            ]
         )
 
 
-    if not valid_phone(
+    # =====================================================
+    # PHONE
+    # =====================================================
+
+    if "phone" in required_fields:
+
+        if not valid_phone(
+                phone
+        ):
+
+            errors.append(
+                messages[
+                    "phone"
+                ]
+            )
+
+    elif (
             phone
+            and not valid_phone(
+        phone
+    )
     ):
+
         errors.append(
-            messages["phone"]
+            messages[
+                "phone"
+            ]
         )
 
 
-    if not valid_email(
+    # =====================================================
+    # EMAIL
+    # =====================================================
+
+    if "email" in required_fields:
+
+        if not valid_email(
+                email
+        ):
+
+            errors.append(
+                messages[
+                    "email"
+                ]
+            )
+
+    elif (
             email
+            and not valid_email(
+        email
+    )
     ):
+
         errors.append(
-            messages["email"]
+            messages[
+                "email"
+            ]
         )
 
 
-    if not consent:
+    # =====================================================
+    # CONSENT
+    # =====================================================
+
+    if (
+            "consent" in required_fields
+            and not consent
+    ):
+
         errors.append(
-            messages["consent"]
+            messages[
+                "consent"
+            ]
         )
 
 
@@ -616,14 +1227,16 @@ def register(lang):
     if errors:
 
         return render_template(
-            "index.html",
+            template_name,
 
             t=t,
             lang=lang,
 
             errors=errors,
 
-            form_data=request.form
+            form_data=(
+                request.form
+            ),
 
         ), 400
 
@@ -631,69 +1244,97 @@ def register(lang):
     # =====================================================
     # DUPLICATE CHECK
     # =====================================================
-    #
-    # Проверяем только внутри MAIN event.
-    #
-    # Один человек может зарегистрироваться:
-    #
-    # 1 раз на baghramyan-main
-    # +
-    # 1 раз на memorandum-signing
-    #
+
+    duplicate_conditions = []
+
+
+    if email:
+
+        duplicate_conditions.append(
+            RegistrationModel.email
+            == email
+        )
+
+
+    if phone:
+
+        duplicate_conditions.append(
+            RegistrationModel.phone
+            == phone
+        )
+
+
+    existing_registration = None
+
+
+    if duplicate_conditions:
+
+        existing_registration = (
+            RegistrationModel.query
+            .filter(
+                or_(
+                    *duplicate_conditions
+                )
+            )
+            .first()
+        )
+
+
+    # =====================================================
+    # ALREADY REGISTERED
     # =====================================================
 
-    existing_guest = (
-        Guest.query
-        .filter(
-            Guest.event_slug == EVENT_MAIN,
-            db.or_(
-                Guest.email == email,
-                Guest.phone == phone
+    if existing_registration:
+
+        if (
+                existing_registration
+                        .qr_sync_status
+                != "synced"
+        ):
+
+            sync_registration_to_qr(
+                registration=(
+                    existing_registration
+                ),
+                site=site,
+                model=RegistrationModel,
             )
-        )
-        .first()
-    )
 
-
-    if existing_guest:
 
         return redirect(
             url_for(
                 "already_registered",
-                lang=lang
+                lang=lang,
             )
         )
 
 
     # =====================================================
-    # SAVE
+    # SAVE TO BRAND DATABASE
     # =====================================================
 
-    guest = Guest(
-
-        # ВАЖНО
-        event_slug=EVENT_MAIN,
+    registration = RegistrationModel(
 
         first_name=first_name,
 
         last_name=last_name,
 
-        company=company,
+        company=(
+                company
+                or ""
+        ),
 
-        position=position,
+        position=(
+                position
+                or None
+        ),
 
-        phone=phone,
+        phone=(
+                phone
+                or ""
+        ),
 
         email=email,
-
-        attendance_type="solo",
-
-        companion_first_name=None,
-        companion_last_name=None,
-        companion_company=None,
-        companion_position=None,
-        companion_phone=None,
-        companion_email=None,
 
         special_notes=(
                 special_notes
@@ -701,26 +1342,81 @@ def register(lang):
         ),
 
         consent=consent,
+
+        qr_sync_status="pending",
+
+        qr_sync_error=None,
     )
 
 
     db.session.add(
-        guest
+        registration
     )
 
-    db.session.commit()
 
+    try:
+
+        db.session.commit()
+
+    except Exception:
+
+        db.session.rollback()
+
+        app.logger.exception(
+            (
+                "Could not save %s "
+                "registration"
+            ),
+            site,
+        )
+
+        errors = [
+            (
+                "Registration could not "
+                "be saved. Please try again."
+            )
+        ]
+
+        return render_template(
+            template_name,
+
+            t=t,
+            lang=lang,
+
+            errors=errors,
+
+            form_data=(
+                request.form
+            ),
+
+        ), 500
+
+
+    # =====================================================
+    # SEND TO QR PROJECT
+    # =====================================================
+
+    sync_registration_to_qr(
+        registration=registration,
+        site=site,
+        model=RegistrationModel,
+    )
+
+
+    # =====================================================
+    # SUCCESS
+    # =====================================================
 
     return redirect(
         url_for(
             "thank_you",
-            lang=lang
+            lang=lang,
         )
     )
 
 
 # =========================================================
-# MAIN THANK YOU
+# THANK YOU
 # =========================================================
 
 @app.route(
@@ -732,19 +1428,21 @@ def thank_you(lang):
         lang
     )
 
-    t = get_translation(
+    config = get_brand_config(
         lang
     )
 
     return render_template(
-        "thank_you.html",
-        t=t,
-        lang=lang
+        config[
+            "thank_you_template"
+        ],
+        t=config["translation"],
+        lang=lang,
     )
 
 
 # =========================================================
-# MAIN ALREADY REGISTERED
+# ALREADY REGISTERED
 # =========================================================
 
 @app.route(
@@ -756,14 +1454,16 @@ def already_registered(lang):
         lang
     )
 
-    t = get_translation(
+    config = get_brand_config(
         lang
     )
 
     return render_template(
-        "already_registered.html",
-        t=t,
-        lang=lang
+        config[
+            "already_template"
+        ],
+        t=config["translation"],
+        lang=lang,
     )
 
 
@@ -813,15 +1513,36 @@ def memorandum_index(lang):
         lang
     )
 
+    host = (
+        request.host
+        .split(":")[0]
+        .strip()
+        .lower()
+    )
+
+
+    if host in {
+        "invitation.decoragroup.am",
+        "invitation.prestigedesign.am",
+    }:
+
+        return redirect(
+            url_for(
+                "index",
+                lang=lang,
+            ),
+            code=302,
+        )
+
+
     t = get_memorandum_translation(
         lang
     )
 
     return render_template(
         "memorandum/index.html",
-
         t=t,
-        lang=lang
+        lang=lang,
     )
 
 
@@ -1172,6 +1893,39 @@ def memorandum_already_registered(lang):
 
 
 # =========================================================
+# ADMIN HELPERS
+# =========================================================
+
+def get_admin_site_config(site):
+
+    if site == "decora":
+
+        return {
+            "site": "decora",
+            "brand_name": "Decora Group",
+            "model": DecoraRegistration,
+            "password_env": "DECORA_ADMIN_PASSWORD",
+            "excel_prefix": "Decora_registration",
+            "sheet_title": "Decora Registrations",
+        }
+
+
+    if site == "prestige":
+
+        return {
+            "site": "prestige",
+            "brand_name": "Prestige Design",
+            "model": PrestigeRegistration,
+            "password_env": "PRESTIGE_ADMIN_PASSWORD",
+            "excel_prefix": "Prestige_registration",
+            "sheet_title": "Prestige Registrations",
+        }
+
+
+    abort(404)
+
+
+# =========================================================
 # ADMIN LOGIN
 # =========================================================
 
@@ -1179,48 +1933,106 @@ def memorandum_already_registered(lang):
     "/admin/login",
     methods=[
         "GET",
-        "POST"
-    ]
+        "POST",
+    ],
 )
 def admin_login():
+
+    site = get_current_site()
+
+    config = get_admin_site_config(
+        site
+    )
+
+    brand_name = config[
+        "brand_name"
+    ]
+
+
+    # If an admin is already logged in to this brand,
+    # send them directly to the admin page.
+    if (
+            request.method == "GET"
+            and session.get(
+        "admin_logged_in"
+    )
+            and session.get(
+        "admin_site"
+    ) == site
+    ):
+
+        return redirect(
+            url_for(
+                "admin_guests"
+            )
+        )
+
 
     if request.method == "GET":
 
         return render_template(
-            "admin_login.html"
+            "admin_login.html",
+            brand_name=brand_name,
+            site=site,
         )
 
 
     password = request.form.get(
         "password",
-        ""
+        "",
     )
 
 
-    admin_password = os.getenv(
+    # Separate password can be configured for each brand.
+    # If it is not set, ADMIN_PASSWORD is used as fallback.
+    admin_password = (
+            os.getenv(
+                config[
+                    "password_env"
+                ],
+                "",
+            ).strip()
+            or os.getenv(
         "ADMIN_PASSWORD",
-        "change-me"
+        "change-me",
+    )
     )
 
 
     if not hmac.compare_digest(
             password,
-            admin_password
+            admin_password,
     ):
+
+        session.pop(
+            "admin_logged_in",
+            None,
+        )
+
+        session.pop(
+            "admin_site",
+            None,
+        )
 
         flash(
             "Неверный пароль",
-            "error"
+            "error",
         )
 
         return render_template(
-            "admin_login.html"
+            "admin_login.html",
+            brand_name=brand_name,
+            site=site,
         ), 403
 
 
     session[
         "admin_logged_in"
     ] = True
+
+    session[
+        "admin_site"
+    ] = site
 
 
     return redirect(
@@ -1257,9 +2069,31 @@ def admin_logout():
 )
 def admin_guests():
 
-    if not session.get(
-            "admin_logged_in"
+    site = get_current_site()
+
+
+    # =====================================================
+    # SESSION CHECK
+    # =====================================================
+
+    if (
+            not session.get(
+                "admin_logged_in"
+            )
+            or session.get(
+        "admin_site"
+    ) != site
     ):
+
+        session.pop(
+            "admin_logged_in",
+            None,
+        )
+
+        session.pop(
+            "admin_site",
+            None,
+        )
 
         return redirect(
             url_for(
@@ -1268,57 +2102,92 @@ def admin_guests():
         )
 
 
-    guests = (
-        Guest.query
+    config = get_admin_site_config(
+        site
+    )
+
+    RegistrationModel = config[
+        "model"
+    ]
+
+    brand_name = config[
+        "brand_name"
+    ]
+
+
+    # =====================================================
+    # REGISTRATIONS
+    # =====================================================
+
+    registrations = (
+        RegistrationModel.query
         .order_by(
-            Guest.created_at.desc()
+            RegistrationModel
+            .created_at
+            .desc()
         )
         .all()
     )
 
 
     registration_count = len(
-        guests
+        registrations
     )
 
 
-    main_count = sum(
+    # =====================================================
+    # QR STATISTICS
+    # =====================================================
+
+    qr_synced_count = sum(
+
         1
-        for guest in guests
-        if guest.event_slug == EVENT_MAIN
+
+        for registration
+        in registrations
+
+        if (
+                registration
+                .qr_sync_status
+                == "synced"
+        )
     )
 
 
-    memorandum_count = sum(
-        1
-        for guest in guests
-        if guest.event_slug == EVENT_MEMORANDUM
+    qr_problem_count = (
+            registration_count
+            - qr_synced_count
     )
 
 
-    companions = 0
-
-    total_people = (
-        registration_count
-    )
-
+    # =====================================================
+    # TEMPLATE
+    # =====================================================
 
     return render_template(
         "admin.html",
 
-        guests=guests,
+        registrations=(
+            registrations
+        ),
 
-        registration_count=registration_count,
+        registration_count=(
+            registration_count
+        ),
 
-        main_count=main_count,
+        qr_synced_count=(
+            qr_synced_count
+        ),
 
-        memorandum_count=memorandum_count,
+        qr_problem_count=(
+            qr_problem_count
+        ),
 
-        companions=companions,
+        brand_name=(
+            brand_name
+        ),
 
-        total_people=total_people,
-
-        event_names=EVENT_NAMES,
+        site=site,
     )
 
 
@@ -1331,13 +2200,27 @@ def admin_guests():
 )
 def export_excel():
 
-    admin_required()
+    site = admin_required()
+
+    config = get_admin_site_config(
+        site
+    )
+
+    RegistrationModel = config[
+        "model"
+    ]
 
 
-    guests = (
-        Guest.query
+    # =====================================================
+    # REGISTRATIONS
+    # =====================================================
+
+    registrations = (
+        RegistrationModel.query
         .order_by(
-            Guest.created_at.asc()
+            RegistrationModel
+            .created_at
+            .asc()
         )
         .all()
     )
@@ -1351,7 +2234,9 @@ def export_excel():
 
     ws = wb.active
 
-    ws.title = "Baghramyan Registrations"
+    ws.title = config[
+        "sheet_title"
+    ]
 
 
     # =====================================================
@@ -1366,8 +2251,6 @@ def export_excel():
 
         "Ազգանուն",
 
-        "Գրանցման աղբյուր",
-
         "Ընկերություն / կազմակերպություն",
 
         "Պաշտոն",
@@ -1379,6 +2262,12 @@ def export_excel():
         "Հատուկ նշումներ",
 
         "Համաձայնություն",
+
+        "QR Guest ID",
+
+        "QR Sync Status",
+
+        "QR Sync Error",
 
         "Գրանցման ամսաթիվ",
     ]
@@ -1395,19 +2284,17 @@ def export_excel():
 
     header_fill = PatternFill(
         fill_type="solid",
-        fgColor="252A24"
+        fgColor="252A24",
     )
-
 
     header_font = Font(
         color="FFFFFF",
-        bold=True
+        bold=True,
     )
-
 
     thin = Side(
         style="thin",
-        color="D8D8D2"
+        color="D8D8D2",
     )
 
 
@@ -1420,27 +2307,31 @@ def export_excel():
         cell.alignment = Alignment(
             horizontal="center",
             vertical="center",
-            wrap_text=True
+            wrap_text=True,
         )
 
         cell.border = Border(
             left=thin,
             right=thin,
             top=thin,
-            bottom=thin
+            bottom=thin,
         )
 
 
-    ws.row_dimensions[1].height = 38
+    ws.row_dimensions[
+        1
+    ].height = 38
 
 
     # =====================================================
     # DATA
     # =====================================================
 
-    for guest in guests:
+    for registration in registrations:
 
-        created = guest.created_at
+        created = (
+            registration.created_at
+        )
 
 
         if (
@@ -1461,31 +2352,41 @@ def export_excel():
 
         ws.append([
 
-            guest.id,
+            registration.id,
 
-            guest.first_name,
+            registration.first_name,
 
-            guest.last_name,
+            registration.last_name,
 
-            # Откуда пришла регистрация
-            get_event_name(
-                guest.event_slug
-            ),
+            registration.company or "",
 
-            guest.company or "",
+            registration.position or "",
 
-            guest.position or "",
+            registration.phone or "",
 
-            guest.phone or "",
+            registration.email or "",
 
-            guest.email or "",
-
-            guest.special_notes or "",
+            registration.special_notes or "",
 
             (
                 "Այո"
-                if guest.consent
+                if registration.consent
                 else "Ոչ"
+            ),
+
+            (
+                    registration.qr_guest_id
+                    or ""
+            ),
+
+            (
+                    registration.qr_sync_status
+                    or ""
+            ),
+
+            (
+                    registration.qr_sync_error
+                    or ""
             ),
 
             (
@@ -1503,24 +2404,25 @@ def export_excel():
     # =====================================================
 
     widths = [
-
         8,      # ID
         20,     # First name
         20,     # Last name
-        26,     # Event
         32,     # Company
         25,     # Position
         20,     # Phone
         35,     # Email
         45,     # Notes
         18,     # Consent
+        16,     # QR guest ID
+        20,     # QR status
+        45,     # QR error
         23,     # Date
     ]
 
 
     for index, width in enumerate(
             widths,
-            start=1
+            start=1,
     ):
 
         ws.column_dimensions[
@@ -1542,14 +2444,14 @@ def export_excel():
 
             cell.alignment = Alignment(
                 vertical="top",
-                wrap_text=True
+                wrap_text=True,
             )
 
             cell.border = Border(
                 left=thin,
                 right=thin,
                 top=thin,
-                bottom=thin
+                bottom=thin,
             )
 
 
@@ -1580,14 +2482,13 @@ def export_excel():
 
 
     filename = (
-        "Baghramyan_registration_"
+        f"{config['excel_prefix']}_"
         f"{datetime.now().strftime('%Y-%m-%d')}"
         ".xlsx"
     )
 
 
     return send_file(
-
         output,
 
         as_attachment=True,

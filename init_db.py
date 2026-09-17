@@ -1,6 +1,17 @@
 from app import app, db
 
-with app.app_context():
-    db.create_all()
 
-print("Database initialized successfully.")
+def init_database():
+
+    with app.app_context():
+
+        db.create_all()
+
+        print(
+            "Database tables checked/created successfully."
+        )
+
+
+if __name__ == "__main__":
+
+    init_database()

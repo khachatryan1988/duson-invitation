@@ -1,25 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-BAGHRAMYAN RESIDENCE — Registrations
+{{ brand_name }} — Registrations
 {% endblock %}
-
 
 {% block body %}
 
 <main class="admin-page">
-
-
-    <!-- ================================================= -->
-    <!-- HEADER -->
-    <!-- ================================================= -->
 
     <header class="admin-header">
 
         <div>
 
             <div class="admin-brand">
-                BAGHRAMYAN RESIDENCE
+                {{ brand_name|upper }}
             </div>
 
             <h1>
@@ -27,11 +21,14 @@ BAGHRAMYAN RESIDENCE — Registrations
             </h1>
 
             <p>
-                09 September 2026 / Yerevan
+                {% if site == "decora" %}
+                Decora Group
+                {% elif site == "prestige" %}
+                Prestige Design
+                {% endif %}
             </p>
 
         </div>
-
 
         <div class="admin-actions">
 
@@ -54,18 +51,9 @@ BAGHRAMYAN RESIDENCE — Registrations
     </header>
 
 
-
-    <!-- ================================================= -->
-    <!-- STATISTICS -->
-    <!-- ================================================= -->
-
     <section class="admin-stats">
 
-
-        <!-- TOTAL -->
-
         <article>
-
             <span>
                 Total registrations
             </span>
@@ -73,62 +61,43 @@ BAGHRAMYAN RESIDENCE — Registrations
             <strong>
                 {{ registration_count }}
             </strong>
-
         </article>
 
 
-        <!-- MAIN -->
-
         <article>
-
             <span>
-                Baghramyan Residence
+                Brand
             </span>
 
             <strong>
-                {{ main_count }}
+                {{ brand_name }}
             </strong>
-
         </article>
 
 
-        <!-- MEMORANDUM -->
-
         <article>
-
             <span>
-                Memorandum Signing
+                QR synced
             </span>
 
             <strong>
-                {{ memorandum_count }}
+                {{ qr_synced_count }}
             </strong>
-
         </article>
 
 
-        <!-- UNKNOWN -->
-
         <article>
-
             <span>
-                Unknown / old
+                QR pending / failed
             </span>
 
             <strong>
-                {{ unknown_count }}
+                {{ qr_problem_count }}
             </strong>
-
         </article>
-
 
     </section>
 
-
-
-    <!-- ================================================= -->
-    <!-- TABLE -->
-    <!-- ================================================= -->
 
     <section class="admin-table-card">
 
@@ -140,53 +109,19 @@ BAGHRAMYAN RESIDENCE — Registrations
 
                 <tr>
 
-                    <th>
-                        ID
-                    </th>
-
-
-                    <!-- SOURCE -->
-
-                    <th>
-                        Գրանցման աղբյուր
-                    </th>
-
-
-                    <th>
-                        Անուն
-                    </th>
-
-                    <th>
-                        Ազգանուն
-                    </th>
-
-                    <th>
-                        Ընկերություն
-                    </th>
-
-                    <th>
-                        Պաշտոն
-                    </th>
-
-                    <th>
-                        Հեռախոս
-                    </th>
-
-                    <th>
-                        Email
-                    </th>
-
-                    <th>
-                        Նշումներ
-                    </th>
-
-                    <th>
-                        Համաձայնություն
-                    </th>
-
-                    <th>
-                        Գրանցում
-                    </th>
+                    <th>ID</th>
+                    <th>Անուն</th>
+                    <th>Ազգանուն</th>
+                    <th>Ընկերություն</th>
+                    <th>Պաշտոն</th>
+                    <th>Հեռախոս</th>
+                    <th>Email</th>
+                    <th>Նշումներ</th>
+                    <th>Համաձայնություն</th>
+                    <th>QR Guest ID</th>
+                    <th>QR Status</th>
+                    <th>QR Error</th>
+                    <th>Գրանցում</th>
 
                 </tr>
 
@@ -195,25 +130,57 @@ BAGHRAMYAN RESIDENCE — Registrations
 
                 <tbody>
 
-                {% for guest in guests %}
+                {% for registration in registrations %}
 
                 <tr>
 
-
-                    <!-- ID -->
-
                     <td>
-                        {{ guest.id }}
+                        {{ registration.id }}
                     </td>
 
+                    <td>
+                        {{ registration.first_name }}
+                    </td>
 
-                    <!-- ================================================= -->
-                    <!-- REGISTRATION SOURCE -->
-                    <!-- ================================================= -->
+                    <td>
+                        {{ registration.last_name }}
+                    </td>
+
+                    <td>
+                        {{ registration.company or "—" }}
+                    </td>
+
+                    <td>
+                        {{ registration.position or "—" }}
+                    </td>
+
+                    <td>
+                        {{ registration.phone or "—" }}
+                    </td>
+
+                    <td>
+                        {{ registration.email or "—" }}
+                    </td>
+
+                    <td>
+                        {{ registration.special_notes or "—" }}
+                    </td>
+
+                    <td>
+                        {% if registration.consent %}
+                        Այո
+                        {% else %}
+                        Ոչ
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {{ registration.qr_guest_id or "—" }}
+                    </td>
 
                     <td>
 
-                        {% if guest.event_slug == 'baghramyan-main' %}
+                        {% if registration.qr_sync_status == "synced" %}
 
                         <span
                                 style="
@@ -227,11 +194,27 @@ BAGHRAMYAN RESIDENCE — Registrations
                                     font-weight:600;
                                 "
                         >
-                                Baghramyan Residence
+                                synced
                             </span>
 
+                        {% elif registration.qr_sync_status == "failed" %}
 
-                        {% elif guest.event_slug == 'memorandum-signing' %}
+                        <span
+                                style="
+                                    display:inline-block;
+                                    padding:5px 9px;
+                                    background:#f4e4e4;
+                                    color:#8a2c2c;
+                                    border:1px solid #e2bcbc;
+                                    border-radius:4px;
+                                    white-space:nowrap;
+                                    font-weight:600;
+                                "
+                        >
+                                failed
+                            </span>
+
+                        {% else %}
 
                         <span
                                 style="
@@ -245,54 +228,31 @@ BAGHRAMYAN RESIDENCE — Registrations
                                     font-weight:600;
                                 "
                         >
-                                Memorandum Signing
+                                {{ registration.qr_sync_status or "pending" }}
                             </span>
 
+                        {% endif %}
 
-                        {% else %}
+                    </td>
+
+                    <td>
+
+                        {% if registration.qr_sync_error %}
 
                         <span
+                                title="{{ registration.qr_sync_error }}"
                                 style="
-                                    display:inline-block;
-                                    padding:5px 9px;
-                                    background:#eeeeee;
-                                    color:#666666;
-                                    border:1px solid #dddddd;
-                                    border-radius:4px;
+                                    display:block;
+                                    max-width:300px;
+                                    overflow:hidden;
+                                    text-overflow:ellipsis;
                                     white-space:nowrap;
-                                    font-weight:600;
+                                    color:#8a2c2c;
                                 "
                         >
-                                Unknown / old
+                                {{ registration.qr_sync_error }}
                             </span>
 
-                        {% endif %}
-
-                    </td>
-
-
-                    <!-- FIRST NAME -->
-
-                    <td>
-                        {{ guest.first_name }}
-                    </td>
-
-
-                    <!-- LAST NAME -->
-
-                    <td>
-                        {{ guest.last_name }}
-                    </td>
-
-
-                    <!-- COMPANY -->
-
-                    <td>
-
-                        {% if guest.company %}
-
-                        {{ guest.company }}
-
                         {% else %}
 
                         —
@@ -301,14 +261,15 @@ BAGHRAMYAN RESIDENCE — Registrations
 
                     </td>
 
-
-                    <!-- POSITION -->
-
                     <td>
 
-                        {% if guest.position %}
+                        {% if registration.created_at %}
 
-                        {{ guest.position }}
+                        {{
+                        registration.created_at.strftime(
+                        "%d.%m.%Y %H:%M"
+                        )
+                        }}
 
                         {% else %}
 
@@ -317,102 +278,15 @@ BAGHRAMYAN RESIDENCE — Registrations
                         {% endif %}
 
                     </td>
-
-
-                    <!-- PHONE -->
-
-                    <td>
-
-                        {% if guest.phone %}
-
-                        {{ guest.phone }}
-
-                        {% else %}
-
-                        —
-
-                        {% endif %}
-
-                    </td>
-
-
-                    <!-- EMAIL -->
-
-                    <td>
-
-                        {% if guest.email %}
-
-                        {{ guest.email }}
-
-                        {% else %}
-
-                        —
-
-                        {% endif %}
-
-                    </td>
-
-
-                    <!-- NOTES -->
-
-                    <td>
-
-                        {% if guest.special_notes %}
-
-                        {{ guest.special_notes }}
-
-                        {% else %}
-
-                        —
-
-                        {% endif %}
-
-                    </td>
-
-
-                    <!-- CONSENT -->
-
-                    <td>
-
-                        {% if guest.consent %}
-
-                        Այո
-
-                        {% else %}
-
-                        Ոչ
-
-                        {% endif %}
-
-                    </td>
-
-
-                    <!-- DATE -->
-
-                    <td>
-
-                        {% if guest.created_at %}
-
-                        {{ guest.created_at.strftime('%d.%m.%Y %H:%M') }}
-
-                        {% else %}
-
-                        —
-
-                        {% endif %}
-
-                    </td>
-
 
                 </tr>
-
 
                 {% else %}
 
                 <tr>
 
                     <td
-                            colspan="11"
+                            colspan="13"
                             class="empty-table"
                     >
                         Пока регистраций нет.

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="{{ t.html_lang if t is defined else 'hy' }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- TITLE -->
+    <!-- ===================================================== -->
+
+    <title>
+        {% block title %}
+        Prestige Design — Հատուկ հրավեր
+        {% endblock %}
+    </title>
+
+
+    <!-- ===================================================== -->
+    <!-- BASIC META -->
+    <!-- ===================================================== -->
+
+    <meta
+        name="description"
+        content="Prestige Design — Հատուկ հրավեր"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- OPEN GRAPH / WHATSAPP / FACEBOOK -->
+    <!-- ===================================================== -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:locale"
+        content="{% if lang == 'ru' %}ru_RU{% elif lang == 'en' %}en_US{% else %}hy_AM{% endif %}"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Prestige Design"
+    >
+
+    <meta
+        property="og:title"
+        content="Prestige Design — Հատուկ հրավեր"
+    >
+
+    <meta
+        property="og:description"
+        content="Prestige Design — Հատուկ հրավեր"
+    >
+
+    <meta
+        property="og:url"
+        content="https://invitation.prestigedesign.am/{{ lang if lang else 'hy' }}"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- PREVIEW IMAGE -->
+    <!-- ===================================================== -->
+
+    <meta
+        property="og:image"
+        content="{{ url_for('static', filename='prestige/images/share-preview.jpg', _external=True) }}?v=1"
+    >
+
+    <meta
+        property="og:image:secure_url"
+        content="{{ url_for('static', filename='prestige/images/share-preview.jpg', _external=True) }}?v=1"
+    >
+
+    <meta
+        property="og:image:type"
+        content="image/jpeg"
+    >
+
+    <meta
+        property="og:image:width"
+        content="1200"
+    >
+
+    <meta
+        property="og:image:height"
+        content="630"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="Prestige Design — Հատուկ հրավեր"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- TWITTER / OTHER SOCIAL PREVIEWS -->
+    <!-- ===================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Prestige Design — Հատուկ հրավեր"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Prestige Design — Հատուկ հրավեր"
+    >
+
+    <meta
+        name="twitter:image"
+        content="{{ url_for('static', filename='prestige/images/share-preview.jpg', _external=True) }}?v=1"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- CSS -->
+    <!-- ===================================================== -->
+
+    <!-- Reuse the existing memorandum stylesheet to preserve the current design. -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='memorandum/css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+{% block body %}
+{% endblock %}
+
+</body>
+
+</html>

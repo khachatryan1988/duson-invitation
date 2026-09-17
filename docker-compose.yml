@@ -1,5 +1,9 @@
 services:
 
+  # =====================================================
+  # POSTGRESQL
+  # =====================================================
+
   db:
     image: postgres:16-alpine
     container_name: duson_invitation_db
@@ -31,6 +35,10 @@ services:
       - duson_network
 
 
+  # =====================================================
+  # FLASK WEB
+  # =====================================================
+
   web:
     build:
       context: .
@@ -44,17 +52,62 @@ services:
         condition: service_healthy
 
     environment:
+
+      # =================================================
+      # FLASK
+      # =================================================
+
       SECRET_KEY: ${SECRET_KEY}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
-
-      DATABASE_URL: >-
-        postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
 
       PORT: 8000
       FLASK_DEBUG: 0
 
+
+      # =================================================
+      # POSTGRES CONNECTION
+      # =================================================
+      #
+      # Эти переменные нужны app.py,
+      # чтобы подключить:
+      #
+      # default  -> duson_event
+      # decora   -> decora_event
+      # prestige -> prestige_event
+      #
+      # =================================================
+
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+      POSTGRES_DB: ${POSTGRES_DB}
+
+      DECORA_DB_NAME: ${DECORA_DB_NAME}
+      PRESTIGE_DB_NAME: ${PRESTIGE_DB_NAME}
+
+
+      # =================================================
+      # LEGACY DATABASE
+      # =================================================
+
+      DATABASE_URL: >-
+        postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+
+
+      # =================================================
+      # QR SYSTEM INTEGRATION
+      # =================================================
+
+      QR_API_URL: ${QR_API_URL}
+      QR_INTEGRATION_SECRET: ${QR_INTEGRATION_SECRET}
+
+
     ports:
       - "${APP_PORT}:8000"
+
 
     healthcheck:
       test:
@@ -69,15 +122,54 @@ services:
       retries: 10
       start_period: 10s
 
-    networks:
-      - duson_network
 
+    networks:
+
+      duson_network:
+
+      invitation_shared:
+        aliases:
+          - invitation-web
+
+
+# =====================================================
+# VOLUMES
+# =====================================================
 
 volumes:
+
   duson_postgres_data:
     name: duson_invitation_postgres_data
 
 
+# =====================================================
+# NETWORKS
+# =====================================================
+
 networks:
+
+  # ===================================================
+  # PRIVATE NETWORK
+  #
+  # duson_invitation_web
+  #        ↕
+  # duson_invitation_db
+  # ===================================================
+
   duson_network:
     name: duson_invitation_network
+
+
+  # ===================================================
+  # SHARED NETWORK
+  #
+  # invitation web
+  #       ↕
+  # QR system
+  #       ↕
+  # local nginx proxy
+  # ===================================================
+
+  invitation_shared:
+    external: true
+    name: invitation_shared

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="{{ t.html_lang if t is defined else 'hy' }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- TITLE -->
+    <!-- ===================================================== -->
+
+    <title>
+        {% block title %}
+        Decora Group — Հատուկ հրավեր
+        {% endblock %}
+    </title>
+
+
+    <!-- ===================================================== -->
+    <!-- BASIC META -->
+    <!-- ===================================================== -->
+
+    <meta
+        name="description"
+        content="Հուշագրերի ստորագրման արարողություն — 09 սեպտեմբերի 2026թ."
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- OPEN GRAPH / WHATSAPP / FACEBOOK -->
+    <!-- ===================================================== -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:locale"
+        content="{% if lang == 'ru' %}ru_RU{% elif lang == 'en' %}en_US{% else %}hy_AM{% endif %}"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Decora Group"
+    >
+
+    <meta
+        property="og:title"
+        content="Decora Group — Հատուկ հրավեր"
+    >
+
+    <meta
+        property="og:description"
+        content="Հուշագրերի ստորագրման արարողություն — 09 սեպտեմբերի 2026թ."
+    >
+
+    <meta
+        property="og:url"
+        content="https://invitation.decoragroup.am/{{ lang if lang else 'hy' }}"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- PREVIEW IMAGE -->
+    <!-- ===================================================== -->
+
+    <meta
+        property="og:image"
+        content="{{ url_for('static', filename='decora/images/share-preview.jpg', _external=True) }}?v=1"
+    >
+
+    <meta
+        property="og:image:secure_url"
+        content="{{ url_for('static', filename='decora/images/share-preview.jpg', _external=True) }}?v=1"
+    >
+
+    <meta
+        property="og:image:type"
+        content="image/jpeg"
+    >
+
+    <meta
+        property="og:image:width"
+        content="1200"
+    >
+
+    <meta
+        property="og:image:height"
+        content="630"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="Decora Group — Հատուկ հրավեր"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- TWITTER / OTHER SOCIAL PREVIEWS -->
+    <!-- ===================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Decora Group — Հատուկ հրավեր"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Հուշագրերի ստորագրման արարողություն — 09 սեպտեմբերի 2026թ."
+    >
+
+    <meta
+        name="twitter:image"
+        content="{{ url_for('static', filename='decora/images/share-preview.jpg', _external=True) }}?v=1"
+    >
+
+
+    <!-- ===================================================== -->
+    <!-- CSS -->
+    <!-- ===================================================== -->
+
+    <!-- Reuse the existing memorandum stylesheet so the current design stays unchanged. -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='memorandum/css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+{% block body %}
+{% endblock %}
+
+</body>
+
+</html>
