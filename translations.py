@@ -21,10 +21,10 @@ TRANSLATIONS = {
             "ՀԱՏՈՒԿ ՀՐԱՎԵՐ",
 
         "hero_title_1":
-            "Prestige Design",
+            "Prestige",
 
         "hero_title_2":
-            "հատուկ միջոցառում",
+            "Design",
 
         "hero_subtitle":
             "PRESTIGE DESIGN",
@@ -37,13 +37,13 @@ TRANSLATIONS = {
             "Ամսաթիվ",
 
         "date_value":
-            "",
+            "30.10.2026",
 
         "time":
             "Ժամ",
 
         "time_value":
-            "",
+            "09:30",
 
         "location":
             "Վայր",
@@ -55,29 +55,84 @@ TRANSLATIONS = {
             "Հասցե",
 
         "address_value":
-            "",
+            "ք․ Երևան, Արշակունյաց 33 (Դոմուս)",
 
-        # INTRO
+        # ABOUT
         "intro_label":
-            "PRESTIGE DESIGN / PRIVATE EVENT",
+            "PRESTIGE DESIGN",
 
         "intro_title":
-            "Prestige Design-ի հատուկ միջոցառում",
+            "Prestige Design հատուկ միջոցառում",
 
         "intro_text_1":
             "Prestige Design-ը սիրով հրավիրում է Ձեզ մասնակցելու "
             "հատուկ միջոցառմանը։",
 
         "intro_text_2":
-            "Միջոցառման ընթացքում Դուք հնարավորություն կունենաք "
-            "ծանոթանալու Prestige Design-ի ներկայացրած պրեմիում "
-            "ինտերիերային լուծումներին, նորություններին և գործընկերային "
-            "առաջարկներին։",
+            "Միջոցառման ընթացքում կներկայացվեն ժամանակակից և պրեմիում "
+            "ինտերիերային լուծումներ, նոր հավաքածուներ, ապրանքային "
+            "առաջարկներ և գործընկերային հնարավորություններ։",
 
         "intro_text_3":
-            "",
+            "Միջոցառումը կեզրափակվի նվերների հանձնումով "
+            "և նեթվորքինգով։",
 
+        # =================================================
+        # AGENDA
+        # =================================================
+
+        "agenda_label":
+            "ՕՐԱԿԱՐԳ",
+
+        "agenda_title":
+            "Միջոցառման ծրագիր",
+
+        "agenda_1_time":
+            "09:30",
+
+        "agenda_1_title":
+            "Գրանցում",
+
+        "agenda_2_time":
+            "10:00",
+
+        "agenda_2_title":
+            "Միջոցառման մեկնարկ",
+
+        "agenda_3_time":
+            "10:10–11:10",
+
+        "agenda_3_title":
+            "Prestige Design ներկայացում",
+
+        "agenda_4_time":
+            "11:10–11:30",
+
+        "agenda_4_title":
+            "Coffee Break",
+
+        "agenda_5_time":
+            "11:30–13:00",
+
+        "agenda_5_title":
+            "Ապրանքային և մարքեթինգային պրեզենտացիա",
+
+        "agenda_6_time":
+            "13:00–14:00",
+
+        "agenda_6_title":
+            "Նվերների հանձնում և նեթվորքինգ",
+
+        "agenda_7_time":
+            "14:00",
+
+        "agenda_7_title":
+            "Ավարտ",
+
+        # =================================================
         # REGISTRATION
+        # =================================================
+
         "registration_label":
             "ՄԱՍՆԱԿՑՈՒԹՅԱՆ ՀԱՍՏԱՏՈՒՄ",
 
@@ -149,11 +204,11 @@ TRANSLATIONS = {
 
         "important_text":
             "Միջոցառումը կազմակերպվում է հրավերով։ "
-            "Մասնակցությունը նախատեսված է միայն գրանցված հյուրերի համար։",
+            "Մասնակցությունը նախատեսված է գրանցված հյուրերի համար։",
 
         # THANK YOU
         "registration_received":
-            "ԳՐԱՆՑՈՒՄԸ ՀԱՍՏԱՏՎԱԾ Է",
+            "ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ ՀԱՍՏԱՏՎԱԾ Է",
 
         "thank_you_title":
             "Շնորհակալություն",
@@ -163,7 +218,7 @@ TRANSLATIONS = {
 
         "thank_you_details":
             "Միջոցառման վերաբերյալ լրացուցիչ տեղեկատվությունը "
-            "կտրամադրվի Ձեզ առանձին։",
+            "կուղարկվի Ձեզ էլեկտրոնային փոստով։",
 
         "back_home":
             "Վերադառնալ գլխավոր էջ",
@@ -173,7 +228,7 @@ TRANSLATIONS = {
             "Դուք արդեն գրանցված եք",
 
         "already_registered_text":
-            "Այս հեռախոսահամարով կամ էլեկտրոնային հասցեով "
+            "Այս էլեկտրոնային հասցեով կամ հեռախոսահամարով "
             "գրանցում արդեն առկա է համակարգում։",
 
         # FOOTER
@@ -201,10 +256,10 @@ TRANSLATIONS = {
             "СПЕЦИАЛЬНОЕ ПРИГЛАШЕНИЕ",
 
         "hero_title_1":
-            "Prestige Design",
+            "Prestige",
 
         "hero_title_2":
-            "специальное мероприятие",
+            "Design",
 
         "hero_subtitle":
             "PRESTIGE DESIGN",
@@ -217,13 +272,13 @@ TRANSLATIONS = {
             "Дата",
 
         "date_value":
-            "",
+            "30.10.2026",
 
         "time":
             "Время",
 
         "time_value":
-            "",
+            "09:30",
 
         "location":
             "Место",
@@ -235,11 +290,11 @@ TRANSLATIONS = {
             "Адрес",
 
         "address_value":
-            "",
+            "г. Ереван, Аршакуняц 33 (DOMUS)",
 
-        # INTRO
+        # ABOUT
         "intro_label":
-            "PRESTIGE DESIGN / PRIVATE EVENT",
+            "PRESTIGE DESIGN",
 
         "intro_title":
             "Специальное мероприятие Prestige Design",
@@ -249,14 +304,70 @@ TRANSLATIONS = {
             "в специальном мероприятии.",
 
         "intro_text_2":
-            "Во время мероприятия Вы сможете познакомиться "
-            "с премиальными интерьерными решениями, новинками "
-            "и партнёрскими предложениями Prestige Design.",
+            "В рамках мероприятия будут представлены современные "
+            "и премиальные интерьерные решения, новые коллекции, "
+            "продуктовые предложения и возможности для партнёров.",
 
         "intro_text_3":
-            "",
+            "Мероприятие завершится вручением подарков "
+            "и нетворкингом.",
 
+        # =================================================
+        # AGENDA
+        # =================================================
+
+        "agenda_label":
+            "ПРОГРАММА",
+
+        "agenda_title":
+            "Программа мероприятия",
+
+        "agenda_1_time":
+            "09:30",
+
+        "agenda_1_title":
+            "Регистрация",
+
+        "agenda_2_time":
+            "10:00",
+
+        "agenda_2_title":
+            "Начало мероприятия",
+
+        "agenda_3_time":
+            "10:10–11:10",
+
+        "agenda_3_title":
+            "Презентация Prestige Design",
+
+        "agenda_4_time":
+            "11:10–11:30",
+
+        "agenda_4_title":
+            "Кофе-брейк",
+
+        "agenda_5_time":
+            "11:30–13:00",
+
+        "agenda_5_title":
+            "Продуктовая и маркетинговая презентация",
+
+        "agenda_6_time":
+            "13:00–14:00",
+
+        "agenda_6_title":
+            "Вручение подарков и нетворкинг",
+
+        "agenda_7_time":
+            "14:00",
+
+        "agenda_7_title":
+            "Завершение мероприятия",
+
+        # =================================================
         # REGISTRATION
+        # =================================================
+
         "registration_label":
             "ПОДТВЕРЖДЕНИЕ УЧАСТИЯ",
 
@@ -329,11 +440,11 @@ TRANSLATIONS = {
 
         "important_text":
             "Мероприятие проводится по приглашениям. "
-            "Участие предусмотрено только для зарегистрированных гостей.",
+            "Участие предусмотрено для зарегистрированных гостей.",
 
         # THANK YOU
         "registration_received":
-            "РЕГИСТРАЦИЯ ПОДТВЕРЖДЕНА",
+            "УЧАСТИЕ ПОДТВЕРЖДЕНО",
 
         "thank_you_title":
             "Спасибо",
@@ -343,7 +454,7 @@ TRANSLATIONS = {
 
         "thank_you_details":
             "Дополнительная информация о мероприятии "
-            "будет предоставлена Вам отдельно.",
+            "будет отправлена Вам по электронной почте.",
 
         "back_home":
             "Вернуться на главную",
@@ -353,8 +464,8 @@ TRANSLATIONS = {
             "Вы уже зарегистрированы",
 
         "already_registered_text":
-            "Регистрация с этим номером телефона или адресом "
-            "электронной почты уже существует в системе.",
+            "Регистрация с этим адресом электронной почты "
+            "или номером телефона уже существует в системе.",
 
         # FOOTER
         "footer_slogan":
@@ -381,10 +492,10 @@ TRANSLATIONS = {
             "SPECIAL INVITATION",
 
         "hero_title_1":
-            "Prestige Design",
+            "Prestige",
 
         "hero_title_2":
-            "special event",
+            "Design",
 
         "hero_subtitle":
             "PRESTIGE DESIGN",
@@ -397,13 +508,13 @@ TRANSLATIONS = {
             "Date",
 
         "date_value":
-            "",
+            "30.10.2026",
 
         "time":
             "Time",
 
         "time_value":
-            "",
+            "09:30",
 
         "location":
             "Venue",
@@ -415,28 +526,84 @@ TRANSLATIONS = {
             "Address",
 
         "address_value":
-            "",
+            "33 Arshakunyats Ave. (DOMUS), Yerevan",
 
-        # INTRO
+        # ABOUT
         "intro_label":
-            "PRESTIGE DESIGN / PRIVATE EVENT",
+            "PRESTIGE DESIGN",
 
         "intro_title":
-            "A special event by Prestige Design",
+            "Prestige Design Special Event",
 
         "intro_text_1":
             "Prestige Design is pleased to invite you "
             "to a special event.",
 
         "intro_text_2":
-            "During the event, you will have the opportunity "
-            "to discover premium interior solutions, new products "
-            "and partnership opportunities presented by Prestige Design.",
+            "The event will present contemporary and premium interior "
+            "solutions, new collections, product offerings "
+            "and partnership opportunities.",
 
         "intro_text_3":
-            "",
+            "The programme will conclude with gift presentation "
+            "and networking.",
 
+        # =================================================
+        # AGENDA
+        # =================================================
+
+        "agenda_label":
+            "AGENDA",
+
+        "agenda_title":
+            "Event programme",
+
+        "agenda_1_time":
+            "09:30",
+
+        "agenda_1_title":
+            "Registration",
+
+        "agenda_2_time":
+            "10:00",
+
+        "agenda_2_title":
+            "Event opening",
+
+        "agenda_3_time":
+            "10:10–11:10",
+
+        "agenda_3_title":
+            "Prestige Design presentation",
+
+        "agenda_4_time":
+            "11:10–11:30",
+
+        "agenda_4_title":
+            "Coffee Break",
+
+        "agenda_5_time":
+            "11:30–13:00",
+
+        "agenda_5_title":
+            "Product and marketing presentation",
+
+        "agenda_6_time":
+            "13:00–14:00",
+
+        "agenda_6_title":
+            "Gift presentation and networking",
+
+        "agenda_7_time":
+            "14:00",
+
+        "agenda_7_title":
+            "End of event",
+
+        # =================================================
         # REGISTRATION
+        # =================================================
+
         "registration_label":
             "ATTENDANCE CONFIRMATION",
 
@@ -447,8 +614,8 @@ TRANSLATIONS = {
             "your attendance",
 
         "registration_text":
-            "Please complete the information below to confirm "
-            "your attendance at the event.",
+            "Please complete the information below "
+            "to confirm your attendance at the event.",
 
         # FORM
         "first_name":
@@ -512,7 +679,7 @@ TRANSLATIONS = {
 
         # THANK YOU
         "registration_received":
-            "REGISTRATION CONFIRMED",
+            "ATTENDANCE CONFIRMED",
 
         "thank_you_title":
             "Thank you",
@@ -522,7 +689,7 @@ TRANSLATIONS = {
 
         "thank_you_details":
             "Additional information regarding the event "
-            "will be provided separately.",
+            "will be sent to you by email.",
 
         "back_home":
             "Back to home",
@@ -532,7 +699,7 @@ TRANSLATIONS = {
             "You are already registered",
 
         "already_registered_text":
-            "A registration with this phone number or email address "
+            "A registration with this email address or phone number "
             "already exists in the system.",
 
         # FOOTER

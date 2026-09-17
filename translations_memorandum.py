@@ -37,7 +37,7 @@ TRANSLATIONS = {
             "Ամսաթիվ",
 
         "date_value":
-            "",
+            "06.10.2026",
 
         "time":
             "Ժամ",
@@ -55,7 +55,7 @@ TRANSLATIONS = {
             "Հասցե",
 
         "address_value":
-            "",
+            "ք․ Երևան, Իսակովի 48/1",
 
         # ABOUT
         "intro_label":
@@ -274,7 +274,7 @@ TRANSLATIONS = {
             "Дата",
 
         "date_value":
-            "",
+            "06.10.2026",
 
         "time":
             "Время",
@@ -292,7 +292,7 @@ TRANSLATIONS = {
             "Адрес",
 
         "address_value":
-            "",
+            "Isakov 48/1",
 
         # ABOUT
         "intro_label":

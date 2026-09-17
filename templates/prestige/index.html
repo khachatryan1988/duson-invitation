@@ -2422,5 +2422,103 @@ Prestige Design — Հատուկ հրավեր
 
 </script>
 
+<style>
+    /* Убираем только внешний верхний логотип */
+    .mem-envelope-brand img {
+        display: none !important;
+    }
+
+    /* Блок ՀԱՏՈՒԿ ՀՐԱՎԵՐ немного ниже */
+    .mem-envelope-brand {
+        top: 82px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 0 !important;
+    }
+
+    /* Декоративная надпись */
+    .mem-envelope-brand span {
+        position: relative;
+
+        display: block !important;
+
+        padding: 0 42px;
+
+        color: #d6b77d !important;
+
+        font-size: 15px !important;
+        font-weight: 600 !important;
+
+        letter-spacing: .22em !important;
+
+        text-transform: uppercase;
+
+        text-shadow:
+            0 1px 8px rgba(214, 183, 125, .18);
+    }
+
+    /* Декоративные линии слева и справа */
+    .mem-envelope-brand span::before,
+    .mem-envelope-brand span::after {
+        content: "";
+
+        position: absolute;
+        top: 50%;
+
+        width: 27px;
+        height: 1px;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                rgba(214, 183, 125, .85)
+            );
+    }
+
+    .mem-envelope-brand span::before {
+        left: 0;
+    }
+
+    .mem-envelope-brand span::after {
+        right: 0;
+
+        transform: rotate(180deg);
+    }
+
+    /* Большие BR / DG на фоне убрать */
+    .mem-agenda::after,
+    .mem-about::after,
+    .mem-rsvp::after {
+        content: none !important;
+        display: none !important;
+    }
+
+    /* MOBILE */
+    @media (max-width: 720px) {
+
+        .mem-envelope-brand {
+            top: 45px !important;
+        }
+
+        .mem-envelope-brand span {
+            display: block !important;
+
+            padding: 0 30px;
+
+            font-size: 11px !important;
+            letter-spacing: .18em !important;
+        }
+
+        .mem-envelope-brand span::before,
+        .mem-envelope-brand span::after {
+            width: 20px;
+        }
+    }
+</style>
+
 
 {% endblock %}
