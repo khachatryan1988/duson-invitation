@@ -511,7 +511,7 @@ TRANSLATIONS = {
             "Date",
 
         "date_value":
-            "",
+            "06.10.2026",
 
         "time":
             "Time",
@@ -529,7 +529,7 @@ TRANSLATIONS = {
             "Address",
 
         "address_value":
-            "",
+            "Իսակով 48/1",
 
         # ABOUT
         "intro_label":
