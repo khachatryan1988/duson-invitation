@@ -825,7 +825,7 @@ def get_current_site():
         .lower()
     )
 
-    if host == "invitation.decoragroup.am":
+    if host == "invitation.decora.am":
         return "decora"
 
     if host == "invitation.prestigedesign.am":
@@ -1522,7 +1522,7 @@ def memorandum_index(lang):
 
 
     if host in {
-        "invitation.decoragroup.am",
+        "invitation.decora.am",
         "invitation.prestigedesign.am",
     }:
 
