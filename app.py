@@ -18,6 +18,8 @@ from flask import (
     flash,
 )
 
+from werkzeug.middleware.proxy_fix import ProxyFix
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
 from sqlalchemy.engine import URL
@@ -67,6 +69,8 @@ EVENT_NAMES = {
 # =========================================================
 
 app = Flask(__name__)
+
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1)
 
 app.config["SECRET_KEY"] = os.getenv(
     "SECRET_KEY",
