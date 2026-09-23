@@ -1,37 +1,101 @@
-SUPPORTED_LANGUAGES = ("hy", "ru", "en")
+from pathlib import Path
+import re
+import py_compile
 
-DEFAULT_LANGUAGE = "hy"
+TRANSLATIONS = Path("translations_memorandum.py")
+TEMPLATE = Path("templates/decora/index.html")
 
 
-TRANSLATIONS = {
+def read_utf8(path: Path) -> str:
+    if not path.exists():
+        raise SystemExit(f"File not found: {path}")
+    return path.read_text(encoding="utf-8-sig")
 
-    # =====================================================
-    # ARMENIAN
-    # =====================================================
 
+def write_utf8(path: Path, text: str) -> None:
+    path.write_text(text, encoding="utf-8", newline="\n")
+
+
+def lang_bounds(text: str, lang: str):
+    marker = f'    "{lang}": {{'
+    start = text.find(marker)
+    if start == -1:
+        raise RuntimeError(f"Language block not found: {lang}")
+
+    candidates = []
+    for other in ("hy", "ru", "en"):
+        pos = text.find(f'    "{other}": {{', start + len(marker))
+        if pos != -1:
+            candidates.append(pos)
+
+    pos = text.find("\ndef normalize_language", start + len(marker))
+    if pos != -1:
+        candidates.append(pos)
+
+    end = min(candidates) if candidates else len(text)
+    return start, end
+
+
+def replace_one(block: str, pattern: str, replacement: str, label: str) -> str:
+    new_block, count = re.subn(pattern, replacement, block, count=1, flags=re.S)
+    if count != 1:
+        raise RuntimeError(f"Expected exactly one replacement for {label}, got {count}")
+    return new_block
+
+
+def update_language(text: str, lang: str, cfg: dict) -> str:
+    start, end = lang_bounds(text, lang)
+    block = text[start:end]
+
+    block = replace_one(
+        block,
+        r'        "hero_subtitle":\n\s+"[^"]*",',
+        f'        "hero_subtitle":\n            "{cfg["hero_subtitle"]}",',
+        f"{lang}: hero_subtitle",
+    )
+
+    block = replace_one(
+        block,
+        r'        # EVENT\n.*?(?=        # =================================================\n        # REGISTRATION)',
+        cfg["event_block"].strip("\n") + "\n\n",
+        f"{lang}: event/about/agenda",
+    )
+
+    block = replace_one(
+        block,
+        r'        "registration_text":\n.*?(?=        # FORM)',
+        cfg["registration_text"].strip("\n") + "\n\n",
+        f"{lang}: registration_text",
+    )
+
+    block = replace_one(
+        block,
+        r'        "important_text":\n.*?(?=        # THANK YOU)',
+        cfg["important_text"].strip("\n") + "\n\n",
+        f"{lang}: important_text",
+    )
+
+    block = replace_one(
+        block,
+        r'        "thank_you_details":\n.*?(?=        "back_home":)',
+        cfg["thank_you_details"].strip("\n") + "\n\n",
+        f"{lang}: thank_you_details",
+    )
+
+    block = replace_one(
+        block,
+        r'        "footer_slogan":\n\s+"[^"]*",',
+        '        "footer_slogan":\n            "EGGER × DECORA · Decorative Collection 26+",',
+        f"{lang}: footer_slogan",
+    )
+
+    return text[:start] + block + text[end:]
+
+
+CONFIG = {
     "hy": {
-
-        "html_lang": "hy",
-
-        "open_invitation":
-            "Բացել հրավերը",
-
-        # HERO
-        "private_presentation":
-            "ՀԱՏՈՒԿ ՀՐԱՎԵՐ",
-
-        "hero_title_1":
-            "EGGER Decorative",
-
-        "hero_title_2":
-            "Collection 26+",
-
-        "hero_subtitle":
-            "EGGER × ԴԵԿՈՐԱ",
-
-        "register_button":
-            "Գրանցվել",
-
+        "hero_subtitle": "EGGER × ԴԵԿՈՐԱ",
+        "event_block": r'''
         # EVENT
         "date":
             "Ամսաթիվ",
@@ -161,147 +225,28 @@ TRANSLATIONS = {
         "agenda_8_text":
             "Նոր դեկորներին մոտիկից ծանոթանալու հնարավորություն և "
             "EGGER Decorative Collection 26+ Mini Box-երի տրամադրում։",
-
-        # =================================================
-        # REGISTRATION
-        # =================================================
-
-        "registration_label":
-            "ՄԱՍՆԱԿՑՈՒԹՅԱՆ ՀԱՍՏԱՏՈՒՄ",
-
-        "registration_title_1":
-            "Հաստատեք",
-
-        "registration_title_2":
-            "Ձեր մասնակցությունը",
-
+''',
+        "registration_text": r'''
         "registration_text":
             "Խնդրում ենք լրացնել տվյալները՝ միջոցառմանը Ձեր մասնակցությունը նախապես "
             "հաստատելու համար։ Գրանցումից հետո Դուք կստանաք անհատական QR կոդ, "
             "որը կօգտագործվի միջոցառման մուտքի և Mini Box / նվերի ստացման ժամանակ։",
-
-        # FORM
-        "first_name":
-            "Անուն",
-
-        "first_name_placeholder":
-            "Մուտքագրեք Ձեր անունը",
-
-        "last_name":
-            "Ազգանուն",
-
-        "last_name_placeholder":
-            "Մուտքագրեք Ձեր ազգանունը",
-
-        "company":
-            "Ընկերություն / կազմակերպություն",
-
-        "company_placeholder":
-            "Ընկերության անվանումը",
-
-        "position":
-            "Պաշտոն",
-
-        "position_placeholder":
-            "Ձեր պաշտոնը",
-
-        "phone":
-            "Հեռախոսահամար",
-
-        "phone_placeholder":
-            "+374 __ __ __ __",
-
-        "email":
-            "Էլեկտրոնային հասցե",
-
-        "email_placeholder":
-            "email@example.com",
-
-        "special_notes":
-            "Լրացուցիչ նշումներ",
-
-        "special_notes_placeholder":
-            "Ցանկության դեպքում նշեք լրացուցիչ տեղեկություն։",
-
-        # CONSENT
-        "consent":
-            "Համաձայն եմ, որ տրամադրված տվյալներն օգտագործվեն "
-            "միջոցառման կազմակերպման, մասնակցության հաստատման և "
-            "միջոցառման հետ կապված հաղորդակցության նպատակով։",
-
-        "submit":
-            "Հաստատել մասնակցությունը",
-
-        # IMPORTANT
-        "important":
-            "Կարևոր",
-
+''',
+        "important_text": r'''
         "important_text":
             "Միջոցառումը կազմակերպվում է հրավերով և նախատեսված է գրանցված հյուրերի համար։ "
             "Խնդրում ենք ներկայանալ փոքր-ինչ շուտ՝ հաշվի առնելով ճանապարհային խցանումները "
             "և կայանման համար անհրաժեշտ ժամանակը։",
-
-        # THANK YOU
-        "registration_received":
-            "ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ ՀԱՍՏԱՏՎԱԾ Է",
-
-        "thank_you_title":
-            "Շնորհակալություն",
-
-        "thank_you_text":
-            "Ձեր գրանցման տվյալները հաջողությամբ ստացվել են։",
-
+''',
+        "thank_you_details": r'''
         "thank_you_details":
             "Ձեր անհատական QR կոդը կուղարկվի Ձեր էլեկտրոնային հասցեին։ "
             "Այն անհրաժեշտ կլինի միջոցառման մուտքի և Mini Box / նվերի ստացման համար։",
-
-        "back_home":
-            "Վերադառնալ գլխավոր էջ",
-
-        # ALREADY REGISTERED
-        "already_registered":
-            "Դուք արդեն գրանցված եք",
-
-        "already_registered_text":
-            "Այս էլեկտրոնային հասցեով կամ հեռախոսահամարով "
-            "գրանցում արդեն առկա է համակարգում։",
-
-        # FOOTER
-        "footer_slogan":
-            "EGGER × DECORA · Decorative Collection 26+",
-
-        "copyright":
-            "© 2026 Decora Group",
+''',
     },
-
-
-    # =====================================================
-    # RUSSIAN
-    # =====================================================
-
     "ru": {
-
-        "html_lang": "ru",
-
-        "open_invitation":
-            "Открыть приглашение",
-
-        # HERO
-        "private_presentation":
-            "СПЕЦИАЛЬНОЕ ПРИГЛАШЕНИЕ",
-
-        "hero_title_1":
-            "EGGER Decorative",
-
-        "hero_title_2":
-            "Collection 26+",
-
-        "hero_subtitle":
-            "EGGER × DECORA",
-
-        "register_button":
-            "Зарегистрироваться",
-
+        "hero_subtitle": "EGGER × DECORA",
+        "event_block": r'''
         # EVENT
         "date":
             "Дата",
@@ -430,148 +375,28 @@ TRANSLATIONS = {
         "agenda_8_text":
             "Возможность подробнее ознакомиться с новыми декорами и получить "
             "Mini Box EGGER Decorative Collection 26+.",
-
-        # =================================================
-        # REGISTRATION
-        # =================================================
-
-        "registration_label":
-            "ПОДТВЕРЖДЕНИЕ УЧАСТИЯ",
-
-        "registration_title_1":
-            "Подтвердите",
-
-        "registration_title_2":
-            "Ваше участие",
-
+''',
+        "registration_text": r'''
         "registration_text":
             "Пожалуйста, заполните данные для предварительного подтверждения участия. "
             "После регистрации Вы получите индивидуальный QR-код, который будет "
             "использоваться для входа на мероприятие и получения Mini Box / подарка.",
-
-        # FORM
-        "first_name":
-            "Имя",
-
-        "first_name_placeholder":
-            "Введите Ваше имя",
-
-        "last_name":
-            "Фамилия",
-
-        "last_name_placeholder":
-            "Введите Вашу фамилию",
-
-        "company":
-            "Компания / организация",
-
-        "company_placeholder":
-            "Название компании",
-
-        "position":
-            "Должность",
-
-        "position_placeholder":
-            "Ваша должность",
-
-        "phone":
-            "Номер телефона",
-
-        "phone_placeholder":
-            "+374 __ __ __ __",
-
-        "email":
-            "Электронная почта",
-
-        "email_placeholder":
-            "email@example.com",
-
-        "special_notes":
-            "Дополнительная информация",
-
-        "special_notes_placeholder":
-            "При желании укажите дополнительную информацию.",
-
-        # CONSENT
-        "consent":
-            "Я согласен(-на), чтобы предоставленные данные "
-            "использовались для организации мероприятия, "
-            "подтверждения участия и коммуникации, связанной "
-            "с мероприятием.",
-
-        "submit":
-            "Подтвердить участие",
-
-        # IMPORTANT
-        "important":
-            "Важно",
-
+''',
+        "important_text": r'''
         "important_text":
             "Мероприятие проводится по приглашениям и предназначено для зарегистрированных гостей. "
             "Пожалуйста, приезжайте немного заранее, учитывая возможные дорожные пробки "
             "и время, необходимое для парковки.",
-
-        # THANK YOU
-        "registration_received":
-            "УЧАСТИЕ ПОДТВЕРЖДЕНО",
-
-        "thank_you_title":
-            "Спасибо",
-
-        "thank_you_text":
-            "Ваши регистрационные данные успешно получены.",
-
+''',
+        "thank_you_details": r'''
         "thank_you_details":
             "Ваш индивидуальный QR-код будет отправлен на электронную почту. "
             "Он понадобится для входа на мероприятие и получения Mini Box / подарка.",
-
-        "back_home":
-            "Вернуться на главную",
-
-        # ALREADY REGISTERED
-        "already_registered":
-            "Вы уже зарегистрированы",
-
-        "already_registered_text":
-            "Регистрация с этим адресом электронной почты "
-            "или номером телефона уже существует в системе.",
-
-        # FOOTER
-        "footer_slogan":
-            "EGGER × DECORA · Decorative Collection 26+",
-
-        "copyright":
-            "© 2026 Decora Group",
+''',
     },
-
-
-    # =====================================================
-    # ENGLISH
-    # =====================================================
-
     "en": {
-
-        "html_lang": "en",
-
-        "open_invitation":
-            "Open invitation",
-
-        # HERO
-        "private_presentation":
-            "SPECIAL INVITATION",
-
-        "hero_title_1":
-            "EGGER Decorative",
-
-        "hero_title_2":
-            "Collection 26+",
-
-        "hero_subtitle":
-            "EGGER × DECORA",
-
-        "register_button":
-            "Register",
-
+        "hero_subtitle": "EGGER × DECORA",
+        "event_block": r'''
         # EVENT
         "date":
             "Date",
@@ -700,132 +525,195 @@ TRANSLATIONS = {
         "agenda_8_text":
             "An opportunity to explore the new decors up close and receive an "
             "EGGER Decorative Collection 26+ Mini Box.",
-
-        # =================================================
-        # REGISTRATION
-        # =================================================
-
-        "registration_label":
-            "ATTENDANCE CONFIRMATION",
-
-        "registration_title_1":
-            "Confirm",
-
-        "registration_title_2":
-            "your attendance",
-
+''',
+        "registration_text": r'''
         "registration_text":
             "Please complete the form to confirm your attendance in advance. "
             "After registration, you will receive an individual QR code to be used "
             "for event entry and for receiving your Mini Box / gift.",
-
-        # FORM
-        "first_name":
-            "First name",
-
-        "first_name_placeholder":
-            "Enter your first name",
-
-        "last_name":
-            "Last name",
-
-        "last_name_placeholder":
-            "Enter your last name",
-
-        "company":
-            "Company / organization",
-
-        "company_placeholder":
-            "Company name",
-
-        "position":
-            "Position",
-
-        "position_placeholder":
-            "Your position",
-
-        "phone":
-            "Phone number",
-
-        "phone_placeholder":
-            "+374 __ __ __ __",
-
-        "email":
-            "Email address",
-
-        "email_placeholder":
-            "email@example.com",
-
-        "special_notes":
-            "Additional notes",
-
-        "special_notes_placeholder":
-            "If needed, please provide additional information.",
-
-        # CONSENT
-        "consent":
-            "I agree that the information provided may be used "
-            "for event organization, attendance confirmation "
-            "and communication related to the event.",
-
-        "submit":
-            "Confirm attendance",
-
-        # IMPORTANT
-        "important":
-            "Important",
-
+''',
+        "important_text": r'''
         "important_text":
             "The event is by invitation and intended for registered guests. "
             "Please arrive a little early, allowing additional time for traffic and parking.",
-
-        # THANK YOU
-        "registration_received":
-            "ATTENDANCE CONFIRMED",
-
-        "thank_you_title":
-            "Thank you",
-
-        "thank_you_text":
-            "Your registration information has been received successfully.",
-
+''',
+        "thank_you_details": r'''
         "thank_you_details":
             "Your individual QR code will be sent to your email address. "
             "It will be required for event entry and for receiving your Mini Box / gift.",
-
-        "back_home":
-            "Back to home",
-
-        # ALREADY REGISTERED
-        "already_registered":
-            "You are already registered",
-
-        "already_registered_text":
-            "A registration with this email address or phone number "
-            "already exists in the system.",
-
-        # FOOTER
-        "footer_slogan":
-            "EGGER × DECORA · Decorative Collection 26+",
-
-        "copyright":
-            "© 2026 Decora Group",
+''',
     },
 }
 
 
-def normalize_language(lang):
-    if not lang:
-        return DEFAULT_LANGUAGE
+translations = read_utf8(TRANSLATIONS)
+for language in ("hy", "ru", "en"):
+    translations = update_language(translations, language, CONFIG[language])
 
-    lang = str(lang).lower().strip()
+required_translation_checks = [
+    "6 հոկտեմբերի, 2026",
+    "13:00–17:10",
+    "Elite Plaza Business Center",
+    "Մովսես Խորենացի 15, Երևան",
+    '"agenda_8_time":',
+    "Դեկորների դիտում, Networking & Mini Box",
+    "Հատուկ Երևան ժամանած EGGER ընկերության ներկայացուցիչները",
+]
+for value in required_translation_checks:
+    if value not in translations:
+        raise RuntimeError(f"Missing expected translation value: {value}")
 
-    if lang not in SUPPORTED_LANGUAGES:
-        return DEFAULT_LANGUAGE
+write_utf8(TRANSLATIONS, translations)
+py_compile.compile(str(TRANSLATIONS), doraise=True)
+print(f"UPDATED: {TRANSLATIONS}")
 
-    return lang
+
+template = read_utf8(TEMPLATE)
+
+template = template.replace(
+    "Decora Group — Հատուկ հրավեր",
+    "EGGER × Decora — Decorative Collection 26+",
+    1,
+)
+
+highlight_pattern = (
+    r'(\{% if t\.intro_text_3 %\}\s*)'
+    r'<p>'
+    r'(\s*\{\{ t\.intro_text_3 \}\}\s*)'
+    r'</p>'
+)
+template, count = re.subn(
+    highlight_pattern,
+    r'\1<p class="mem-event-highlight">\2</p>',
+    template,
+    count=1,
+    flags=re.S,
+)
+if count != 1:
+    raise RuntimeError(f"Could not update intro highlight, replacements: {count}")
 
 
-def get_translation(lang):
-    lang = normalize_language(lang)
-    return TRANSLATIONS[lang]
+agenda_items = []
+for i in range(1, 9):
+    agenda_items.append(f'''            <div class="mem-agenda-item">
+
+                <span class="number">
+                    {i:02d}
+                </span>
+
+                <time>
+                    {{{{ t.agenda_{i}_time }}}}
+                </time>
+
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{{{ t.agenda_{i}_title }}}}
+                    </strong>
+
+                    {{% if t.agenda_{i}_text %}}
+                    <p>
+                        {{{{ t.agenda_{i}_text }}}}
+                    </p>
+                    {{% endif %}}
+
+                </div>
+
+            </div>''')
+
+agenda_html = "\n\n\n".join(agenda_items)
+
+agenda_pattern = (
+    r'(<section class="mem-agenda">.*?'
+    r'<div class="mem-agenda-list">\s*)'
+    r'.*?'
+    r'(\s*</div>\s*</div>\s*</section>)'
+)
+template, count = re.subn(
+    agenda_pattern,
+    lambda m: m.group(1) + "\n" + agenda_html + "\n\n        " + m.group(2).lstrip(),
+    template,
+    count=1,
+    flags=re.S,
+)
+if count != 1:
+    raise RuntimeError(f"Could not replace agenda HTML, replacements: {count}")
+
+
+css_marker = "/* DECORA EVENT 2026 DETAILS */"
+if css_marker not in template:
+    extra_css = r'''
+<style>
+    /* DECORA EVENT 2026 DETAILS */
+
+    .mem-event-highlight {
+        margin-top: 26px !important;
+        padding: 18px 20px !important;
+        border-left: 2px solid #a98559;
+        background: rgba(169, 133, 89, .08);
+        color: #242a24 !important;
+        font-weight: 600;
+    }
+
+    .mem-agenda-item {
+        align-items: start;
+        padding-top: 22px;
+        padding-bottom: 22px;
+    }
+
+    .mem-agenda-copy {
+        min-width: 0;
+    }
+
+    .mem-agenda-copy strong {
+        display: block;
+    }
+
+    .mem-agenda-copy p {
+        max-width: 760px;
+        margin: 8px 0 0;
+        color: rgba(255, 255, 255, .68);
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.65;
+    }
+
+    @media (max-width: 720px) {
+        .mem-agenda-item {
+            min-height: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .mem-agenda-copy p {
+            margin-top: 7px;
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        .mem-event-highlight {
+            padding: 15px 16px !important;
+        }
+    }
+</style>
+
+'''
+    pos = template.rfind("{% endblock %}")
+    if pos == -1:
+        raise RuntimeError("Could not find {% endblock %} in Decora template")
+    template = template[:pos] + extra_css + template[pos:]
+
+required_template_checks = [
+    "{{ t.agenda_8_time }}",
+    "{{ t.agenda_8_title }}",
+    "{{ t.agenda_8_text }}",
+    'class="mem-event-highlight"',
+    "DECORA EVENT 2026 DETAILS",
+]
+for value in required_template_checks:
+    if value not in template:
+        raise RuntimeError(f"Missing expected template value: {value}")
+
+write_utf8(TEMPLATE, template)
+print(f"UPDATED: {TEMPLATE}")
+print("DONE")

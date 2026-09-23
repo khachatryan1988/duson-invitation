@@ -2,7 +2,7 @@
 
 
 {% block title %}
-Decora Group — Հատուկ հրավեր
+EGGER × Decora — Decorative Collection 26+
 {% endblock %}
 
 
@@ -1791,7 +1791,7 @@ Decora Group — Հատուկ հրավեր
 
                 {% if t.intro_text_3 %}
 
-                <p>
+                <p class="mem-event-highlight">
 
                     {{ t.intro_text_3 }}
 
@@ -1858,6 +1858,7 @@ Decora Group — Հատուկ հրավեր
         <div class="mem-agenda-list">
 
 
+            
             <div class="mem-agenda-item">
 
                 <span class="number">
@@ -1868,9 +1869,19 @@ Decora Group — Հատուկ հրավեր
                     {{ t.agenda_1_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_1_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_1_title }}
+                    </strong>
+
+                    {% if t.agenda_1_text %}
+                    <p>
+                        {{ t.agenda_1_text }}
+                    </p>
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1885,9 +1896,19 @@ Decora Group — Հատուկ հրավեր
                     {{ t.agenda_2_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_2_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_2_title }}
+                    </strong>
+
+                    {% if t.agenda_2_text %}
+                    <p>
+                        {{ t.agenda_2_text }}
+                    </p>
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1902,9 +1923,19 @@ Decora Group — Հատուկ հրավեր
                     {{ t.agenda_3_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_3_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_3_title }}
+                    </strong>
+
+                    {% if t.agenda_3_text %}
+                    <p>
+                        {{ t.agenda_3_text }}
+                    </p>
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1919,9 +1950,19 @@ Decora Group — Հատուկ հրավեր
                     {{ t.agenda_4_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_4_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_4_title }}
+                    </strong>
+
+                    {% if t.agenda_4_text %}
+                    <p>
+                        {{ t.agenda_4_text }}
+                    </p>
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1936,9 +1977,19 @@ Decora Group — Հատուկ հրավեր
                     {{ t.agenda_5_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_5_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_5_title }}
+                    </strong>
+
+                    {% if t.agenda_5_text %}
+                    <p>
+                        {{ t.agenda_5_text }}
+                    </p>
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1953,9 +2004,19 @@ Decora Group — Հատուկ հրավեր
                     {{ t.agenda_6_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_6_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_6_title }}
+                    </strong>
+
+                    {% if t.agenda_6_text %}
+                    <p>
+                        {{ t.agenda_6_text }}
+                    </p>
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1970,12 +2031,48 @@ Decora Group — Հատուկ հրավեր
                     {{ t.agenda_7_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_7_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_7_title }}
+                    </strong>
+
+                    {% if t.agenda_7_text %}
+                    <p>
+                        {{ t.agenda_7_text }}
+                    </p>
+                    {% endif %}
+
+                </div>
 
             </div>
 
+
+            <div class="mem-agenda-item">
+
+                <span class="number">
+                    08
+                </span>
+
+                <time>
+                    {{ t.agenda_8_time }}
+                </time>
+
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_8_title }}
+                    </strong>
+
+                    {% if t.agenda_8_text %}
+                    <p>
+                        {{ t.agenda_8_text }}
+                    </p>
+                    {% endif %}
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -2636,5 +2733,60 @@ Decora Group — Հատուկ հրավեր
     }
 </style>
 
+
+
+<style>
+    /* DECORA EVENT 2026 DETAILS */
+
+    .mem-event-highlight {
+        margin-top: 26px !important;
+        padding: 18px 20px !important;
+        border-left: 2px solid #a98559;
+        background: rgba(169, 133, 89, .08);
+        color: #242a24 !important;
+        font-weight: 600;
+    }
+
+    .mem-agenda-item {
+        align-items: start;
+        padding-top: 22px;
+        padding-bottom: 22px;
+    }
+
+    .mem-agenda-copy {
+        min-width: 0;
+    }
+
+    .mem-agenda-copy strong {
+        display: block;
+    }
+
+    .mem-agenda-copy p {
+        max-width: 760px;
+        margin: 8px 0 0;
+        color: rgba(255, 255, 255, .68);
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.65;
+    }
+
+    @media (max-width: 720px) {
+        .mem-agenda-item {
+            min-height: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .mem-agenda-copy p {
+            margin-top: 7px;
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        .mem-event-highlight {
+            padding: 15px 16px !important;
+        }
+    }
+</style>
 
 {% endblock %}
