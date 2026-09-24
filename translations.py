@@ -220,6 +220,10 @@ TRANSLATIONS = {
             "Միջոցառման վերաբերյալ լրացուցիչ տեղեկատվությունը "
             "կուղարկվի Ձեզ էլեկտրոնային փոստով։",
 
+        "email_spam_note":
+            "Եթե նամակը չեք ստացել մի քանի րոպեի ընթացքում, "
+            "խնդրում ենք ստուգել նաև Spam / Junk թղթապանակը։",
+
         "back_home":
             "Վերադառնալ գլխավոր էջ",
 
@@ -456,6 +460,10 @@ TRANSLATIONS = {
             "Дополнительная информация о мероприятии "
             "будет отправлена Вам по электронной почте.",
 
+        "email_spam_note":
+            "Если письмо не пришло в течение нескольких минут, "
+            "пожалуйста, проверьте также папку «Спам» / Junk.",
+
         "back_home":
             "Вернуться на главную",
 
@@ -690,6 +698,10 @@ TRANSLATIONS = {
         "thank_you_details":
             "Additional information regarding the event "
             "will be sent to you by email.",
+
+        "email_spam_note":
+            "If you do not receive the email within a few minutes, "
+            "please also check your Spam / Junk folder.",
 
         "back_home":
             "Back to home",

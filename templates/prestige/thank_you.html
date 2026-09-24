@@ -7,21 +7,792 @@
 
 {% block body %}
 
+<style>
+
+    /* =========================================================
+       PRESTIGE THANK YOU PAGE
+       ========================================================= */
+
+    .mem-result {
+        position: relative;
+
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100svh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding:
+            40px
+            24px;
+
+        overflow: hidden;
+
+        box-sizing: border-box;
+
+        background:
+            #071911;
+    }
+
+
+    /* =========================================================
+       BACKGROUND
+       ========================================================= */
+
+    .mem-result-bg {
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(5, 18, 12, .96),
+                rgba(8, 31, 21, .97)
+            );
+
+        pointer-events: none;
+    }
+
+
+    .mem-result-bg::before {
+        content: "";
+
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        width: 760px;
+        height: 760px;
+
+        transform:
+            translate(-50%, -50%);
+
+        border-radius: 50%;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(214, 183, 125, .09) 0%,
+                rgba(214, 183, 125, .025) 42%,
+                transparent 72%
+            );
+    }
+
+
+    /* =========================================================
+       CARD
+       ========================================================= */
+
+    .mem-result-card {
+        position: relative;
+
+        z-index: 2;
+
+        width:
+            min(
+                620px,
+                100%
+            );
+
+        min-width: 0;
+
+        margin:
+            0
+            auto;
+
+        padding:
+            58px
+            56px
+            52px;
+
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        overflow: hidden;
+
+        background:
+            rgba(
+                250,
+                247,
+                240,
+                .985
+            );
+
+        border-top:
+            3px solid
+            #c48b45;
+
+        box-shadow:
+            0
+            28px
+            75px
+            rgba(0, 0, 0, .32);
+    }
+
+
+    .mem-result-card::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 13px;
+
+        border:
+            1px solid
+            rgba(196, 139, 69, .22);
+
+        pointer-events: none;
+    }
+
+
+    .mem-result-card > * {
+        position: relative;
+
+        z-index: 2;
+
+        box-sizing: border-box;
+
+        min-width: 0;
+    }
+
+
+    /* =========================================================
+       LOGO
+       ========================================================= */
+
+    .mem-result-logo {
+        display: block;
+
+        width:
+            min(
+                210px,
+                72%
+            );
+
+        max-width: 100%;
+
+        height: auto;
+
+        margin:
+            0
+            auto
+            30px;
+
+        object-fit: contain;
+    }
+
+
+    /* =========================================================
+       SUCCESS ICON
+       ========================================================= */
+
+    .mem-result-icon {
+        width: 56px;
+        height: 56px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        flex:
+            0
+            0
+            56px;
+
+        margin:
+            0
+            auto
+            26px;
+
+        border:
+            1px solid
+            #c48b45;
+
+        border-radius:
+            50%;
+
+        color:
+            #17271e;
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        font-size:
+            20px;
+
+        font-weight:
+            400;
+
+        line-height:
+            1;
+    }
+
+
+    /* =========================================================
+       LABEL
+       ========================================================= */
+
+    .mem-result-card
+    .mem-section-label {
+        width: 100%;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 14px;
+
+        margin:
+            0
+            auto
+            25px;
+
+        color:
+            #9b7446;
+
+        font-size:
+            9px;
+
+        font-weight:
+            700;
+
+        line-height:
+            1.4;
+
+        letter-spacing:
+            .17em;
+
+        text-align: center;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    .mem-result-card
+    .mem-section-label::before,
+
+    .mem-result-card
+    .mem-section-label::after {
+        content: "";
+
+        width: 30px;
+        height: 1px;
+
+        flex:
+            0
+            0
+            30px;
+
+        background:
+            rgba(196, 139, 69, .72);
+    }
+
+
+    /* =========================================================
+       TITLE
+       ========================================================= */
+
+    .mem-result-card h1 {
+        width: 100%;
+        max-width: 100%;
+
+        margin:
+            0
+            auto
+            24px;
+
+        padding: 0;
+
+        color:
+            #17231b;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size:
+            clamp(
+                38px,
+                4vw,
+                54px
+            );
+
+        font-weight:
+            400;
+
+        line-height:
+            1.08;
+
+        letter-spacing:
+            -.035em;
+
+        text-align:
+            center;
+
+        overflow-wrap:
+            anywhere;
+
+        word-break:
+            normal;
+    }
+
+
+    html[lang="hy"]
+    .mem-result-card h1 {
+        font-size:
+            clamp(
+                36px,
+                3.6vw,
+                50px
+            );
+
+        line-height:
+            1.14;
+
+        letter-spacing:
+            -.025em;
+    }
+
+
+    /* =========================================================
+       TEXT
+       ========================================================= */
+
+    .mem-result-card p {
+        width: 100%;
+
+        max-width: 455px;
+
+        margin:
+            0
+            auto
+            16px;
+
+        color:
+            #313a33;
+
+        font-size:
+            15px;
+
+        font-weight:
+            400;
+
+        line-height:
+            1.75;
+
+        text-align:
+            center;
+
+        overflow-wrap:
+            anywhere;
+    }
+
+
+    .mem-result-card .muted {
+        max-width:
+            470px;
+
+        margin-top:
+            2px;
+
+        color:
+            #747970;
+
+        font-size:
+            14px;
+
+        line-height:
+            1.75;
+    }
+
+
+    /* =========================================================
+       EMAIL / SPAM NOTE
+       ========================================================= */
+
+    .mem-email-note {
+        width: 100%;
+
+        max-width: 470px;
+
+        margin:
+            8px
+            auto
+            0;
+
+        padding:
+            13px
+            16px;
+
+        border:
+            1px solid
+            rgba(196, 139, 69, .25);
+
+        border-radius:
+            6px;
+
+        background:
+            rgba(196, 139, 69, .07);
+
+        color:
+            #5f625c;
+
+        font-size:
+            12px !important;
+
+        font-weight:
+            500;
+
+        line-height:
+            1.65 !important;
+
+        text-align:
+            center;
+    }
+
+
+    .mem-email-note::before {
+        content: "✉";
+
+        display: inline-block;
+
+        margin-right:
+            7px;
+
+        color:
+            #9b7446;
+
+        font-size:
+            13px;
+    }
+
+
+    /* =========================================================
+       BACK LINK
+       ========================================================= */
+
+    .mem-back {
+        display:
+            inline-flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        margin:
+            24px
+            auto
+            0;
+
+        padding:
+            0
+            0
+            6px;
+
+        border-bottom:
+            1px solid
+            #c48b45;
+
+        color:
+            #17271e;
+
+        text-decoration:
+            none;
+
+        font-size:
+            11px;
+
+        font-weight:
+            700;
+
+        line-height:
+            1.4;
+
+        text-align:
+            center;
+
+        transition:
+            color .2s ease,
+            border-color .2s ease,
+            transform .2s ease;
+    }
+
+
+    .mem-back:hover {
+        color:
+            #9b7446;
+
+        border-color:
+            #9b7446;
+
+        transform:
+            translateY(-1px);
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 720px) {
+
+        .mem-result {
+            padding:
+                24px
+                16px;
+        }
+
+
+        .mem-result-card {
+            width: 100%;
+
+            max-width:
+                520px;
+
+            padding:
+                44px
+                28px
+                40px;
+        }
+
+
+        .mem-result-logo {
+            width:
+                175px;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .mem-result-icon {
+            width:
+                52px;
+
+            height:
+                52px;
+
+            flex-basis:
+                52px;
+
+            margin-bottom:
+                23px;
+        }
+
+
+        .mem-result-card
+        .mem-section-label {
+            gap:
+                10px;
+
+            margin-bottom:
+                22px;
+
+            font-size:
+                8px;
+
+            letter-spacing:
+                .13em;
+        }
+
+
+        .mem-result-card
+        .mem-section-label::before,
+
+        .mem-result-card
+        .mem-section-label::after {
+            width:
+                22px;
+
+            flex-basis:
+                22px;
+        }
+
+
+        .mem-result-card h1 {
+            font-size:
+                40px;
+
+            line-height:
+                1.12;
+        }
+
+
+        html[lang="hy"]
+        .mem-result-card h1 {
+            font-size:
+                34px;
+
+            line-height:
+                1.16;
+        }
+
+
+        .mem-result-card p {
+            max-width:
+                390px;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.7;
+        }
+
+
+        .mem-result-card .muted {
+            font-size:
+                13px;
+        }
+
+
+        .mem-email-note {
+            max-width:
+                390px;
+
+            padding:
+                12px
+                14px;
+
+            font-size:
+                11px !important;
+        }
+
+    }
+
+
+    /* =========================================================
+       SMALL MOBILE
+       ========================================================= */
+
+    @media (max-width: 420px) {
+
+        .mem-result {
+            align-items:
+                center;
+
+            padding:
+                18px
+                12px;
+        }
+
+
+        .mem-result-card {
+            padding:
+                38px
+                20px
+                34px;
+        }
+
+
+        .mem-result-card::before {
+            inset:
+                9px;
+        }
+
+
+        .mem-result-logo {
+            width:
+                155px;
+        }
+
+
+        .mem-result-card h1 {
+            font-size:
+                34px;
+        }
+
+
+        html[lang="hy"]
+        .mem-result-card h1 {
+            font-size:
+                30px;
+
+            line-height:
+                1.18;
+        }
+
+
+        .mem-result-card p {
+            font-size:
+                13px;
+        }
+
+
+        .mem-result-card .muted {
+            font-size:
+                12px;
+        }
+
+
+        .mem-email-note {
+            padding:
+                11px
+                12px;
+
+            font-size:
+                10px !important;
+
+            line-height:
+                1.6 !important;
+        }
+
+
+        .mem-back {
+            font-size:
+                10px;
+        }
+
+    }
+
+</style>
+
+
+
 <section class="mem-result">
 
-    <div class="mem-result-bg"></div>
+    <div
+            class="mem-result-bg"
+            aria-hidden="true"
+    ></div>
 
 
     <div class="mem-result-card">
 
+
         <img
-            class="mem-result-logo"
-            src="{{ url_for('static', filename='prestige/images/logo.svg') }}"
-            alt="Prestige Design"
+                class="mem-result-logo"
+                src="{{ url_for('static', filename='prestige/images/logo.svg') }}"
+                alt="Prestige Design"
         >
 
 
-        <div class="mem-result-icon">
+        <div
+                class="mem-result-icon"
+                aria-hidden="true"
+        >
             ✓
         </div>
 
@@ -46,15 +817,26 @@
         </p>
 
 
+        {% if t.email_spam_note %}
+
+        <p class="mem-email-note">
+            {{ t.email_spam_note }}
+        </p>
+
+        {% endif %}
+
+
         <a
-            href="{{ url_for('index', lang=lang) }}"
-            class="mem-back"
+                href="{{ url_for('index', lang=lang) }}"
+                class="mem-back"
         >
             ← {{ t.back_home }}
         </a>
 
+
     </div>
 
 </section>
+
 
 {% endblock %}
