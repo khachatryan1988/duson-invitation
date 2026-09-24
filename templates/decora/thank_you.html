@@ -419,6 +419,67 @@
 
 
     /* =========================================================
+       EMAIL / SPAM NOTE
+       ========================================================= */
+
+    .mem-email-note {
+        width: 100%;
+
+        max-width: 470px;
+
+        margin:
+            8px
+            auto
+            0;
+
+        padding:
+            13px
+            16px;
+
+        border:
+            1px solid
+            rgba(181, 142, 91, .28);
+
+        border-radius:
+            6px;
+
+        background:
+            rgba(181, 142, 91, .07);
+
+        color:
+            #5f625c;
+
+        font-size:
+            12px !important;
+
+        font-weight:
+            500;
+
+        line-height:
+            1.65 !important;
+
+        text-align:
+            center;
+    }
+
+
+    .mem-email-note::before {
+        content: "✉";
+
+        display: inline-block;
+
+        margin-right:
+            7px;
+
+        color:
+            #9b7446;
+
+        font-size:
+            13px;
+    }
+
+
+    /* =========================================================
        BACK LINK
        ========================================================= */
 
@@ -598,6 +659,19 @@
                 13px;
         }
 
+
+        .mem-email-note {
+            max-width:
+                390px;
+
+            padding:
+                12px
+                14px;
+
+            font-size:
+                11px !important;
+        }
+
     }
 
 
@@ -665,6 +739,19 @@
         }
 
 
+        .mem-email-note {
+            padding:
+                11px
+                12px;
+
+            font-size:
+                10px !important;
+
+            line-height:
+                1.6 !important;
+        }
+
+
         .mem-back {
             font-size:
                 10px;
@@ -720,6 +807,15 @@
         <p class="muted">
             {{ t.thank_you_details }}
         </p>
+
+
+        {% if t.email_spam_note %}
+
+        <p class="mem-email-note">
+            {{ t.email_spam_note }}
+        </p>
+
+        {% endif %}
 
 
         <a

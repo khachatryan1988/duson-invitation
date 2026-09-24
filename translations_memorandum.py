@@ -272,6 +272,10 @@ TRANSLATIONS = {
 
         "copyright":
             "© 2026 Decora Group",
+
+        "email_spam_note":
+            "Եթե նամակը չեք ստացել մի քանի րոպեի ընթացքում, "
+            "խնդրում ենք ստուգել նաև Spam / Junk թղթապանակը։",
     },
 
 
@@ -542,6 +546,10 @@ TRANSLATIONS = {
 
         "copyright":
             "© 2026 Decora Group",
+
+        "email_spam_note":
+            "Если письмо не пришло в течение нескольких минут, "
+            "пожалуйста, проверьте также папку «Спам» / Junk.",
     },
 
 
@@ -810,6 +818,10 @@ TRANSLATIONS = {
 
         "copyright":
             "© 2026 Decora Group",
+
+        "email_spam_note":
+            "If you do not receive the email within a few minutes, "
+            "please also check your Spam / Junk folder.",
     },
 }
 
