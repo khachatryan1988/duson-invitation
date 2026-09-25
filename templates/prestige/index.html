@@ -4133,4 +4133,1892 @@ Prestige Design — 1 Year
 
 </style>
 
+
+
+<style>
+
+    /* =========================================================
+       FINAL HERO LOOK
+       Full background visibility + translucent envelope/card/text
+       ========================================================= */
+
+    /* ---------------------------------------------------------
+       BACKGROUND — FULL, CLEAR, NOT TRANSPARENT
+       --------------------------------------------------------- */
+
+    .mem-envelope-hero {
+        background:
+            #111711 !important;
+    }
+
+
+    .mem-envelope-background {
+        opacity:
+            1 !important;
+
+        filter:
+            none !important;
+
+        background-image:
+            url("https://decora-group.ams3.cdn.digitaloceanspaces.com/prestigedesign/media/39/photo_2025-08-28_14-12-26.jpg") !important;
+
+        background-size:
+            cover !important;
+
+        background-position:
+            center center !important;
+
+        background-repeat:
+            no-repeat !important;
+
+        transform:
+            scale(1.025);
+    }
+
+
+    /* Disable dark layer inherited from Prestige base stylesheet */
+
+    .mem-envelope-background::after {
+        content:
+            "" !important;
+
+        position:
+            absolute !important;
+
+        inset:
+            0 !important;
+
+        background:
+            transparent !important;
+
+        opacity:
+            0 !important;
+
+        pointer-events:
+            none !important;
+    }
+
+
+    .mem-envelope-overlay {
+        background:
+            transparent !important;
+
+        opacity:
+            0 !important;
+    }
+
+
+    /* No dark glass rectangle behind the envelope */
+
+    .mem-envelope-stage {
+        background:
+            transparent !important;
+
+        box-shadow:
+            none !important;
+
+        backdrop-filter:
+            none !important;
+
+        -webkit-backdrop-filter:
+            none !important;
+
+        filter:
+            drop-shadow(
+                0
+                24px
+                38px
+                rgba(0, 0, 0, .12)
+            ) !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       ENVELOPE BACK — TRANSLUCENT
+       --------------------------------------------------------- */
+
+    .mem-envelope-back {
+        border:
+            1px solid
+            rgba(163, 137, 96, .22) !important;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(244, 238, 227, .52) 0%,
+                rgba(255, 253, 248, .58) 50%,
+                rgba(230, 222, 209, .50) 100%
+            ) !important;
+
+        box-shadow:
+            0
+            24px
+            54px
+            rgba(0, 0, 0, .12) !important;
+
+        backdrop-filter:
+            blur(2px);
+
+        -webkit-backdrop-filter:
+            blur(2px);
+    }
+
+
+    /* ---------------------------------------------------------
+       FRONT ENVELOPE — TRANSLUCENT
+       --------------------------------------------------------- */
+
+    .mem-envelope-front {
+        border:
+            1px solid
+            rgba(160, 134, 95, .22) !important;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(247, 241, 230, .50),
+                rgba(234, 226, 213, .48)
+            ) !important;
+
+        box-shadow:
+            0
+            -5px
+            14px
+            rgba(0, 0, 0, .035),
+
+            0
+            12px
+            24px
+            rgba(0, 0, 0, .06) !important;
+
+        backdrop-filter:
+            blur(2px);
+
+        -webkit-backdrop-filter:
+            blur(2px);
+    }
+
+
+    .mem-envelope-front::before {
+        background:
+            linear-gradient(
+                120deg,
+                rgba(253, 250, 243, .55),
+                rgba(241, 234, 222, .44)
+            ) !important;
+    }
+
+
+    .mem-envelope-front::after {
+        background:
+            linear-gradient(
+                240deg,
+                rgba(246, 239, 227, .52),
+                rgba(231, 223, 209, .43)
+            ) !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       CLOSED TOP FLAP — TRANSLUCENT
+       --------------------------------------------------------- */
+
+    .mem-envelope-flap {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255, 253, 248, .58) 0%,
+                rgba(247, 242, 233, .52) 47%,
+                rgba(236, 228, 215, .46) 100%
+            ) !important;
+
+        box-shadow:
+            inset
+            0
+            1px
+            0
+            rgba(255, 255, 255, .56) !important;
+
+        backdrop-filter:
+            blur(2px);
+
+        -webkit-backdrop-filter:
+            blur(2px);
+    }
+
+
+    .mem-envelope-flap::after {
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                rgba(164, 132, 91, .32),
+                transparent
+            ) !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       OPENED INNER FLAP — TRANSLUCENT
+       --------------------------------------------------------- */
+
+    .mem-envelope-flap-open {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(232, 222, 206, .46) 0%,
+                rgba(248, 243, 233, .53) 46%,
+                rgba(237, 228, 215, .45) 100%
+            ) !important;
+
+        filter:
+            drop-shadow(
+                0
+                -8px
+                14px
+                rgba(0, 0, 0, .06)
+            ) !important;
+
+        backdrop-filter:
+            blur(2px);
+
+        -webkit-backdrop-filter:
+            blur(2px);
+    }
+
+
+    .mem-envelope-flap-open::before {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(150, 119, 78, .035),
+                rgba(255, 255, 255, .16) 50%,
+                rgba(150, 119, 78, .035)
+            ) !important;
+    }
+
+
+    .mem-envelope-flap-open::after {
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                rgba(157, 123, 82, .28),
+                transparent
+            ) !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       INVITATION CARD — TRANSLUCENT PAPER
+       --------------------------------------------------------- */
+
+    .mem-invitation-card {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(252, 249, 242, .64) 0%,
+                rgba(242, 234, 222, .58) 100%
+            ) !important;
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .27) !important;
+
+        box-shadow:
+            0
+            18px
+            38px
+            rgba(0, 0, 0, .10) !important;
+
+        backdrop-filter:
+            blur(2.5px);
+
+        -webkit-backdrop-filter:
+            blur(2.5px);
+    }
+
+
+    .mem-invitation-card::before {
+        border-color:
+            rgba(181, 126, 67, .22) !important;
+    }
+
+
+    .mem-invitation-card::after {
+        opacity:
+            .035 !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       CARD LOGO / TEXT — SOFT TRANSPARENCY
+       --------------------------------------------------------- */
+
+    .mem-card-logo {
+        opacity:
+            .78 !important;
+    }
+
+
+    .mem-card-label {
+        color:
+            rgba(132, 100, 63, .73) !important;
+    }
+
+
+    .mem-invitation-card h1 {
+        color:
+            rgba(36, 42, 36, .78) !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-invitation-card h1 em {
+        color:
+            rgba(155, 116, 70, .76) !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-card-divider {
+        background:
+            rgba(169, 133, 89, .64) !important;
+    }
+
+
+    .mem-card-date span {
+        color:
+            rgba(61, 68, 62, .76) !important;
+    }
+
+
+    .mem-card-date strong {
+        color:
+            rgba(34, 41, 34, .80) !important;
+    }
+
+
+    .mem-card-location strong {
+        color:
+            rgba(37, 45, 38, .78) !important;
+    }
+
+
+    .mem-card-location span {
+        color:
+            rgba(86, 92, 85, .72) !important;
+    }
+
+
+    .mem-card-button {
+        background:
+            rgba(17, 29, 22, .78) !important;
+
+        color:
+            rgba(255, 255, 255, .90) !important;
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .48) !important;
+
+        box-shadow:
+            0
+            8px
+            18px
+            rgba(0, 0, 0, .07) !important;
+    }
+
+
+    .mem-card-button:hover {
+        background:
+            rgba(181, 126, 67, .82) !important;
+
+        color:
+            rgba(255, 255, 255, .95) !important;
+    }
+
+
+    .mem-card-button-arrow {
+        color:
+            rgba(217, 170, 107, .82) !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TEXT ON CLOSED ENVELOPE — TRANSLUCENT
+       --------------------------------------------------------- */
+
+    .mem-envelope-closed-title span {
+        color:
+            rgba(49, 54, 49, .72) !important;
+    }
+
+
+    .mem-envelope-closed-title em {
+        color:
+            rgba(164, 122, 73, .72) !important;
+    }
+
+
+    .mem-open-label {
+        color:
+            rgba(64, 69, 63, .72) !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-open-arrow {
+        opacity:
+            .72;
+    }
+
+
+    .mem-wax-seal {
+        opacity:
+            .80;
+    }
+
+
+    /* ---------------------------------------------------------
+       TOP PRESTIGE BRAND / LANGUAGES — TRANSLUCENT
+       --------------------------------------------------------- */
+
+    .mem-envelope-brand img {
+        opacity:
+            .80 !important;
+    }
+
+
+    .mem-envelope-brand span {
+        color:
+            rgba(217, 170, 107, .76) !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-envelope-languages a,
+    .mem-envelope-languages span {
+        color:
+            rgba(255, 255, 255, .66) !important;
+    }
+
+
+    .mem-envelope-languages a.active {
+        color:
+            rgba(224, 183, 121, .82) !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       MOBILE
+       --------------------------------------------------------- */
+
+    @media (max-width: 520px) {
+
+        .mem-envelope-background {
+            background-position:
+                68% center !important;
+
+            opacity:
+                1 !important;
+
+            filter:
+                none !important;
+        }
+
+
+        .mem-envelope-background::after,
+        .mem-envelope-overlay {
+            background:
+                transparent !important;
+
+            opacity:
+                0 !important;
+        }
+
+
+        .mem-envelope-back {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(244, 238, 227, .58) 0%,
+                    rgba(255, 253, 248, .62) 50%,
+                    rgba(230, 222, 209, .56) 100%
+                ) !important;
+        }
+
+
+        .mem-envelope-front {
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(247, 241, 230, .56),
+                    rgba(234, 226, 213, .53)
+                ) !important;
+        }
+
+
+        .mem-envelope-flap {
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(255, 253, 248, .64) 0%,
+                    rgba(247, 242, 233, .57) 47%,
+                    rgba(236, 228, 215, .53) 100%
+                ) !important;
+        }
+
+
+        .mem-invitation-card {
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(252, 249, 242, .70) 0%,
+                    rgba(242, 234, 222, .65) 100%
+                ) !important;
+        }
+
+    }
+
+</style>
+
+
+
+<style>
+
+    /* =========================================================
+       FINAL PRESTIGE HERO
+       CLEAN BACKGROUND IMAGE + ORIGINAL HTML ENVELOPE ANIMATION
+       ========================================================= */
+
+    .mem-envelope-hero {
+        position:
+            relative;
+
+        min-height:
+            100vh;
+
+        min-height:
+            100svh;
+
+        overflow:
+            hidden;
+
+        background:
+            #07110d !important;
+    }
+
+
+    /* CLEAN BACKGROUND ONLY:
+       no envelope, no text baked into the image */
+
+    .mem-envelope-background {
+        position:
+            absolute !important;
+
+        inset:
+            0 !important;
+
+        width:
+            100% !important;
+
+        height:
+            100% !important;
+
+        opacity:
+            1 !important;
+
+        background-image:
+            url("{{ url_for('static', filename='prestige/images/prestige-1year-bg.png') }}") !important;
+
+        background-size:
+            cover !important;
+
+        background-position:
+            center center !important;
+
+        background-repeat:
+            no-repeat !important;
+
+        transform:
+            scale(1.01);
+
+        filter:
+            brightness(.72)
+            saturate(.90)
+            contrast(1.04) !important;
+    }
+
+
+    /* Remove inherited background pseudo-overlay */
+
+    .mem-envelope-background::after {
+        content:
+            "" !important;
+
+        position:
+            absolute !important;
+
+        inset:
+            0 !important;
+
+        background:
+            transparent !important;
+
+        opacity:
+            0 !important;
+
+        pointer-events:
+            none !important;
+    }
+
+
+    /* Premium darkening while keeping the background visible */
+
+    .mem-envelope-overlay {
+        position:
+            absolute !important;
+
+        inset:
+            0 !important;
+
+        opacity:
+            1 !important;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(3, 11, 8, .34) 0%,
+                rgba(3, 11, 8, .16) 34%,
+                rgba(3, 11, 8, .22) 72%,
+                rgba(3, 11, 8, .40) 100%
+            ) !important;
+
+        pointer-events:
+            none !important;
+    }
+
+
+    /* Remove extra lower-left hero caption */
+
+    .mem-envelope-hero::after {
+        content:
+            none !important;
+
+        display:
+            none !important;
+    }
+
+
+    /* Very subtle premium frame */
+
+    .mem-envelope-hero::before {
+        content:
+            "";
+
+        position:
+            absolute;
+
+        z-index:
+            2;
+
+        inset:
+            18px;
+
+        border:
+            1px solid
+            rgba(209, 160, 98, .16);
+
+        pointer-events:
+            none;
+    }
+
+
+    .mem-envelope-inner {
+        position:
+            relative;
+
+        z-index:
+            5;
+    }
+
+
+    /* =========================================================
+       TOP PRESTIGE BRAND / LANGUAGES
+       ========================================================= */
+
+    .mem-envelope-brand {
+        top:
+            28px !important;
+
+        z-index:
+            12 !important;
+
+        display:
+            flex !important;
+
+        flex-direction:
+            column !important;
+
+        align-items:
+            center !important;
+
+        justify-content:
+            center !important;
+
+        gap:
+            10px !important;
+    }
+
+
+    .mem-envelope-brand img {
+        display:
+            block !important;
+
+        width:
+            170px !important;
+
+        height:
+            auto !important;
+
+        opacity:
+            1 !important;
+
+        filter:
+            brightness(0)
+            invert(1)
+            brightness(1.15) !important;
+    }
+
+
+    .mem-envelope-brand span {
+        display:
+            flex !important;
+
+        align-items:
+            center;
+
+        gap:
+            12px;
+
+        padding:
+            0 !important;
+
+        color:
+            #d9aa6b !important;
+
+        opacity:
+            1 !important;
+
+        font-size:
+            10px !important;
+
+        font-weight:
+            700 !important;
+
+        letter-spacing:
+            .22em !important;
+
+        text-shadow:
+            0
+            2px
+            14px
+            rgba(0, 0, 0, .45) !important;
+    }
+
+
+    .mem-envelope-brand span::before,
+    .mem-envelope-brand span::after {
+        position:
+            static !important;
+
+        display:
+            block !important;
+
+        width:
+            34px !important;
+
+        height:
+            1px;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                rgba(217, 170, 107, .90)
+            ) !important;
+
+        transform:
+            none !important;
+    }
+
+
+    .mem-envelope-brand span::after {
+        transform:
+            rotate(180deg) !important;
+    }
+
+
+    .mem-envelope-languages {
+        z-index:
+            14 !important;
+    }
+
+
+    .mem-envelope-languages a,
+    .mem-envelope-languages span {
+        color:
+            rgba(255, 255, 255, .90) !important;
+    }
+
+
+    .mem-envelope-languages a.active {
+        color:
+            #e0b779 !important;
+    }
+
+
+    /* =========================================================
+       ORIGINAL ENVELOPE — KEEP ANIMATION, IMPROVE VISIBILITY
+       ========================================================= */
+
+    .mem-envelope-stage {
+        position:
+            relative;
+
+        z-index:
+            8;
+
+        background:
+            transparent !important;
+
+        box-shadow:
+            none !important;
+
+        backdrop-filter:
+            none !important;
+
+        -webkit-backdrop-filter:
+            none !important;
+
+        filter:
+            drop-shadow(
+                0
+                30px
+                48px
+                rgba(0, 0, 0, .30)
+            ) !important;
+    }
+
+
+    .mem-envelope {
+        transform:
+            translateZ(0)
+            scale(1.03);
+
+        transform-origin:
+            center center;
+    }
+
+
+    .mem-envelope-back {
+        border:
+            1px solid
+            rgba(164, 133, 90, .28) !important;
+
+        background:
+            linear-gradient(
+                145deg,
+                #f0e8da 0%,
+                #fffdf8 50%,
+                #e4d8c7 100%
+            ) !important;
+
+        box-shadow:
+            0
+            24px
+            58px
+            rgba(0, 0, 0, .20) !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-envelope-front {
+        border:
+            1px solid
+            rgba(160, 134, 95, .25) !important;
+
+        background:
+            linear-gradient(
+                180deg,
+                #faf4e9 0%,
+                #e9dfd0 100%
+            ) !important;
+
+        box-shadow:
+            0
+            16px
+            30px
+            rgba(0, 0, 0, .12) !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-envelope-front::before {
+        background:
+            linear-gradient(
+                120deg,
+                #fffaf1,
+                #f2e8d8
+            ) !important;
+    }
+
+
+    .mem-envelope-front::after {
+        background:
+            linear-gradient(
+                240deg,
+                #f8efe1,
+                #e7ddce
+            ) !important;
+    }
+
+
+    .mem-envelope-flap {
+        background:
+            linear-gradient(
+                180deg,
+                #fffdf8 0%,
+                #f8f2e8 47%,
+                #ece2d3 100%
+            ) !important;
+    }
+
+
+    .mem-envelope-flap-open {
+        background:
+            linear-gradient(
+                180deg,
+                #e7dccb 0%,
+                #faf4e8 46%,
+                #ece1d1 100%
+            ) !important;
+    }
+
+
+    /* =========================================================
+       CARD — FULLY VISIBLE
+       ========================================================= */
+
+    .mem-invitation-card {
+        background:
+            linear-gradient(
+                180deg,
+                #fffaf1 0%,
+                #f3e8d8 100%
+            ) !important;
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .34) !important;
+
+        color:
+            #1d2921 !important;
+
+        box-shadow:
+            0
+            24px
+            56px
+            rgba(0, 0, 0, .22) !important;
+
+        backdrop-filter:
+            none !important;
+
+        -webkit-backdrop-filter:
+            none !important;
+    }
+
+
+    .mem-invitation-card::before {
+        border-color:
+            rgba(181, 126, 67, .30) !important;
+    }
+
+
+    .mem-invitation-card::after {
+        opacity:
+            .04 !important;
+    }
+
+
+    .mem-card-logo {
+        width:
+            150px !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-card-label {
+        color:
+            #9d6a34 !important;
+
+        opacity:
+            1 !important;
+
+        letter-spacing:
+            .20em !important;
+    }
+
+
+    .mem-invitation-card h1 {
+        color:
+            #13251b !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-invitation-card h1 em {
+        color:
+            #b57e43 !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-card-divider {
+        background:
+            #b57e43 !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-card-date span {
+        color:
+            #26392d !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-card-date strong {
+        color:
+            #0e2016 !important;
+
+        opacity:
+            1 !important;
+
+        font-weight:
+            700 !important;
+    }
+
+
+    .mem-card-location strong {
+        color:
+            #17291e !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-card-location span {
+        color:
+            #46534b !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-card-button {
+        background:
+            #0b281b !important;
+
+        color:
+            #ffffff !important;
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .55) !important;
+
+        box-shadow:
+            0
+            10px
+            24px
+            rgba(0, 0, 0, .18) !important;
+    }
+
+
+    .mem-card-button span {
+        color:
+            #ffffff !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-card-button-arrow {
+        color:
+            #d9aa6b !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-card-button:hover {
+        background:
+            #b57e43 !important;
+    }
+
+
+    /* =========================================================
+       CLOSED ENVELOPE TEXT / SEAL
+       ========================================================= */
+
+    .mem-envelope-closed-title span {
+        color:
+            #354239 !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-envelope-closed-title em {
+        color:
+            #a87742 !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-open-label {
+        color:
+            #354239 !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            0
+            1px
+            0
+            rgba(255, 255, 255, .65) !important;
+    }
+
+
+    .mem-open-arrow,
+    .mem-wax-seal {
+        opacity:
+            1 !important;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 900px) {
+
+        .mem-envelope-background {
+            background-position:
+                center center !important;
+        }
+
+
+        .mem-envelope-brand {
+            top:
+                20px !important;
+        }
+
+
+        .mem-envelope-brand img {
+            width:
+                145px !important;
+        }
+
+
+        .mem-envelope {
+            transform:
+                translateZ(0)
+                scale(.96);
+        }
+
+    }
+
+
+    @media (max-width: 520px) {
+
+        .mem-envelope-background {
+            background-position:
+                54% center !important;
+
+            filter:
+                brightness(.68)
+                saturate(.87)
+                contrast(1.05) !important;
+        }
+
+
+        .mem-envelope-overlay {
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(3, 11, 8, .40) 0%,
+                    rgba(3, 11, 8, .20) 40%,
+                    rgba(3, 11, 8, .26) 72%,
+                    rgba(3, 11, 8, .46) 100%
+                ) !important;
+        }
+
+
+        .mem-envelope-hero::before {
+            inset:
+                10px;
+        }
+
+
+        .mem-envelope-brand {
+            top:
+                16px !important;
+        }
+
+
+        .mem-envelope-brand img {
+            width:
+                126px !important;
+        }
+
+
+        .mem-envelope-brand span {
+            font-size:
+                7px !important;
+
+            letter-spacing:
+                .16em !important;
+        }
+
+
+        .mem-envelope {
+            transform:
+                translateZ(0)
+                scale(.90);
+        }
+
+    }
+
+</style>
+
+
+
+<style>
+
+    /* =========================================================
+       FINAL READABILITY FIX
+       Keep the original envelope opening animation,
+       but make all envelope/card text crisp and high-contrast.
+       ========================================================= */
+
+    /* Avoid rendering the whole envelope as a filtered bitmap.
+       Parent filters/transforms were making small text look soft. */
+
+    .mem-envelope-stage {
+        filter:
+            none !important;
+
+        box-shadow:
+            none !important;
+    }
+
+
+    .mem-envelope {
+        transform:
+            none !important;
+
+        filter:
+            none !important;
+    }
+
+
+    /* Keep the physical envelope clearly separated from background */
+
+    .mem-envelope-back {
+        background:
+            linear-gradient(
+                145deg,
+                #f2eadc 0%,
+                #fffdf8 52%,
+                #e5d9c8 100%
+            ) !important;
+
+        border:
+            1px solid
+            rgba(157, 121, 76, .30) !important;
+
+        box-shadow:
+            0
+            20px
+            44px
+            rgba(0, 0, 0, .20) !important;
+    }
+
+
+    .mem-envelope-front {
+        background:
+            linear-gradient(
+                180deg,
+                #fbf6ec 0%,
+                #eadfce 100%
+            ) !important;
+
+        border:
+            1px solid
+            rgba(157, 121, 76, .28) !important;
+
+        box-shadow:
+            0
+            14px
+            28px
+            rgba(0, 0, 0, .12) !important;
+    }
+
+
+    .mem-envelope-front::before {
+        background:
+            linear-gradient(
+                120deg,
+                #fffaf1,
+                #f2e8d8
+            ) !important;
+    }
+
+
+    .mem-envelope-front::after {
+        background:
+            linear-gradient(
+                240deg,
+                #f8efe1,
+                #e7ddce
+            ) !important;
+    }
+
+
+    .mem-envelope-flap {
+        background:
+            linear-gradient(
+                180deg,
+                #fffdf8 0%,
+                #f8f2e8 47%,
+                #ece2d3 100%
+            ) !important;
+    }
+
+
+    .mem-envelope-flap-open {
+        background:
+            linear-gradient(
+                180deg,
+                #e7dccb 0%,
+                #faf4e8 46%,
+                #ece1d1 100%
+            ) !important;
+    }
+
+
+    /* =========================================================
+       INVITATION CARD — brighter paper, stronger contrast
+       ========================================================= */
+
+    .mem-invitation-card {
+        background:
+            linear-gradient(
+                180deg,
+                #fffdf8 0%,
+                #f5ecde 100%
+            ) !important;
+
+        border:
+            1px solid
+            rgba(171, 116, 54, .38) !important;
+
+        box-shadow:
+            0
+            22px
+            48px
+            rgba(0, 0, 0, .22) !important;
+
+        filter:
+            none !important;
+
+        -webkit-font-smoothing:
+            auto;
+
+        text-rendering:
+            geometricPrecision;
+    }
+
+
+    /* During / after animation keep the card sharp.
+       Original CSS adds filter: drop-shadow to the card,
+       which can rasterize the text and make it look soft. */
+
+    .mem-envelope.is-opening
+    .mem-invitation-card,
+
+    .mem-envelope.is-open
+    .mem-invitation-card,
+
+    .mem-envelope.is-card-ready
+    .mem-invitation-card {
+        filter:
+            none !important;
+    }
+
+
+    .mem-invitation-card::before {
+        border-color:
+            rgba(171, 116, 54, .34) !important;
+    }
+
+
+    /* =========================================================
+       LOGO
+       ========================================================= */
+
+    .mem-card-logo {
+        width:
+            158px !important;
+
+        opacity:
+            1 !important;
+
+        filter:
+            none !important;
+    }
+
+
+    /* =========================================================
+       SMALL GOLD LABEL
+       ========================================================= */
+
+    .mem-card-label {
+        color:
+            #8e5e2b !important;
+
+        font-size:
+            9px !important;
+
+        font-weight:
+            800 !important;
+
+        letter-spacing:
+            .18em !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    /* =========================================================
+       MAIN TITLE
+       ========================================================= */
+
+    .mem-invitation-card h1 {
+        color:
+            #10261a !important;
+
+        font-size:
+            32px !important;
+
+        font-weight:
+            600 !important;
+
+        line-height:
+            1.06 !important;
+
+        letter-spacing:
+            -.025em !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-invitation-card h1 em {
+        color:
+            #aa6d2f !important;
+
+        font-size:
+            30px !important;
+
+        font-weight:
+            600 !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-card-divider {
+        width:
+            48px !important;
+
+        height:
+            1px !important;
+
+        background:
+            #aa6d2f !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    /* =========================================================
+       DATE / TIME
+       ========================================================= */
+
+    .mem-card-date span {
+        color:
+            #182b20 !important;
+
+        font-size:
+            15px !important;
+
+        font-weight:
+            650 !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-card-date strong {
+        color:
+            #07170e !important;
+
+        font-size:
+            14px !important;
+
+        font-weight:
+            800 !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    /* =========================================================
+       LOCATION
+       ========================================================= */
+
+    .mem-card-location strong {
+        color:
+            #102219 !important;
+
+        font-size:
+            11px !important;
+
+        font-weight:
+            800 !important;
+
+        letter-spacing:
+            .12em !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-card-location span {
+        color:
+            #34483c !important;
+
+        font-size:
+            10px !important;
+
+        font-weight:
+            600 !important;
+
+        line-height:
+            1.45 !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    /* =========================================================
+       REGISTER BUTTON
+       ========================================================= */
+
+    .mem-card-button {
+        background:
+            #062619 !important;
+
+        border:
+            1px solid
+            #9b6a35 !important;
+
+        box-shadow:
+            0
+            8px
+            20px
+            rgba(0, 0, 0, .18) !important;
+
+        opacity:
+            1;
+    }
+
+
+    .mem-card-button span {
+        color:
+            #ffffff !important;
+
+        font-size:
+            12px !important;
+
+        font-weight:
+            800 !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-card-button-arrow {
+        color:
+            #e1b36f !important;
+
+        font-size:
+            16px !important;
+
+        opacity:
+            1 !important;
+    }
+
+
+    /* Preserve the original show-after-animation rule */
+
+    .mem-envelope:not(.is-card-ready)
+    .mem-card-button {
+        opacity:
+            0 !important;
+
+        pointer-events:
+            none !important;
+    }
+
+
+    .mem-envelope.is-card-ready
+    .mem-card-button {
+        opacity:
+            1 !important;
+
+        pointer-events:
+            auto !important;
+    }
+
+
+    /* =========================================================
+       CLOSED ENVELOPE TEXT — also sharper
+       ========================================================= */
+
+    .mem-envelope-closed-title span {
+        color:
+            #263c30 !important;
+
+        font-size:
+            23px !important;
+
+        font-weight:
+            600 !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-envelope-closed-title em {
+        color:
+            #a56c32 !important;
+
+        font-size:
+            28px !important;
+
+        font-weight:
+            600 !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-open-label {
+        color:
+            #263c30 !important;
+
+        font-size:
+            15px !important;
+
+        font-weight:
+            700 !important;
+
+        opacity:
+            1 !important;
+
+        text-shadow:
+            none !important;
+    }
+
+
+    .mem-open-arrow {
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-wax-seal {
+        opacity:
+            1 !important;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 720px) {
+
+        .mem-envelope {
+            /*
+               Keep the existing mobile geometry but avoid blurry
+               fractional 3D rendering as much as possible.
+            */
+            transform:
+                scale(.96) !important;
+
+            transform-origin:
+                center center;
+        }
+
+
+        .mem-invitation-card h1 {
+            font-size:
+                26px !important;
+        }
+
+
+        .mem-invitation-card h1 em {
+            font-size:
+                25px !important;
+        }
+
+
+        .mem-card-date span {
+            font-size:
+                13px !important;
+        }
+
+
+        .mem-card-date strong {
+            font-size:
+                12px !important;
+        }
+
+
+        .mem-card-location strong {
+            font-size:
+                9px !important;
+        }
+
+
+        .mem-card-location span {
+            font-size:
+                9px !important;
+        }
+
+
+        .mem-envelope-closed-title span {
+            font-size:
+                18px !important;
+        }
+
+
+        .mem-envelope-closed-title em {
+            font-size:
+                22px !important;
+        }
+
+    }
+
+
+    @media (max-width: 520px) {
+
+        .mem-envelope {
+            transform:
+                scale(.90) !important;
+        }
+
+    }
+
+</style>
+
 {% endblock %}

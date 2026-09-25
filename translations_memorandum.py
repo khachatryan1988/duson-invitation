@@ -65,13 +65,14 @@ TRANSLATIONS = {
             "EGGER Decorative Collection 26+",
 
         "intro_text_1":
-            "EGGER × Դեկորա հրավիրում են մասնակցելու "
+            "Դեկորա Գրուպ և EGGER ընկերությունները հրավիրում են մասնակցելու "
             "EGGER Decorative Collection 26+ նոր հավաքածուի ներկայացմանը։",
 
         "intro_text_2":
-            "Միջոցառմանը հատուկ մասնակցելու նպատակով Երևան են ժամանելու "
-            "EGGER ընկերության ներկայացուցիչներ, ովքեր կներկայացնեն նոր հավաքածուն, "
-            "դեկորների վերջին թրենդները, նոր լուծումները և դրանց կիրառման հնարավորությունները։",
+            "Ծանոթացեք EGGER Decorative Collection 26+ նոր հավաքածուին, "
+            "բացահայտեք դիզայնի արդի ուղղություններն ու նոր լուծումները "
+            "և ստացեք մասնագիտական խորհրդատվություն անմիջապես "
+            "EGGER-ի ներկայացուցիչներից։",
 
         "intro_text_3":
             "Հատուկ Երևան ժամանած EGGER ընկերության ներկայացուցիչները կներկայացնեն "
@@ -339,13 +340,14 @@ TRANSLATIONS = {
             "EGGER Decorative Collection 26+",
 
         "intro_text_1":
-            "EGGER × Decora приглашают Вас принять участие в презентации "
+            "Компании Decora Group и EGGER приглашают Вас на презентацию "
             "новой коллекции EGGER Decorative Collection 26+.",
 
         "intro_text_2":
-            "Специально для участия в мероприятии в Ереван прибудут представители "
-            "компании EGGER, которые представят новую коллекцию, последние тренды "
-            "в декорах, новые решения и возможности их применения.",
+            "Познакомьтесь с новой коллекцией EGGER Decorative Collection 26+, "
+            "откройте для себя актуальные направления дизайна и новые решения, "
+            "а также получите профессиональную консультацию непосредственно "
+            "от представителей EGGER.",
 
         "intro_text_3":
             "Представители компании EGGER, специально прибывшие в Ереван, представят "
@@ -613,13 +615,14 @@ TRANSLATIONS = {
             "EGGER Decorative Collection 26+",
 
         "intro_text_1":
-            "EGGER × Decora invite you to the presentation of the new "
-            "EGGER Decorative Collection 26+.",
+            "Decora Group and EGGER invite you to the presentation of "
+            "the new EGGER Decorative Collection 26+.",
 
         "intro_text_2":
-            "EGGER representatives will travel specially to Yerevan for the event "
-            "to present the new collection, the latest decor trends, new solutions "
-            "and their application possibilities.",
+            "Discover the new EGGER Decorative Collection 26+, "
+            "explore the latest design trends and new solutions, "
+            "and receive professional advice directly from "
+            "EGGER representatives.",
 
         "intro_text_3":
             "EGGER representatives specially visiting Yerevan will present the new "
