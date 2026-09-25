@@ -2,7 +2,7 @@
 
 
 {% block title %}
-Prestige Design — Հատուկ հրավեր
+Prestige Design — 1 Year
 {% endblock %}
 
 
@@ -1739,6 +1739,136 @@ Prestige Design — Հատուկ հրավեր
 
 
 
+
+<!-- ===================================================== -->
+<!-- SPECIAL GUEST -->
+<!-- ===================================================== -->
+
+<section class="prestige-guest">
+
+    <div class="mem-container prestige-guest-inner">
+
+        <div class="prestige-guest-number">
+            02
+        </div>
+
+        <div class="prestige-guest-copy">
+
+            <div class="mem-section-label">
+                {{ t.guest_label }}
+            </div>
+
+            <h2>
+                {{ t.guest_title }}
+            </h2>
+
+            <div class="prestige-guest-role">
+                {{ t.guest_role }}
+            </div>
+
+            <p>
+                {{ t.guest_text }}
+            </p>
+
+        </div>
+
+        <div
+                class="prestige-guest-monogram"
+                aria-hidden="true"
+        >
+            DV
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ===================================================== -->
+<!-- INVITATION TILE / QR -->
+<!-- ===================================================== -->
+
+<section class="prestige-concept">
+
+    <div class="mem-container">
+
+        <div class="prestige-concept-grid">
+
+
+            <div class="prestige-tile-visual" aria-hidden="true">
+
+                <div class="prestige-tile-square tile-a"></div>
+                <div class="prestige-tile-square tile-b"></div>
+                <div class="prestige-tile-square tile-c"></div>
+                <div class="prestige-tile-square tile-d"></div>
+
+                <div class="prestige-tile-center">
+                    <span>1</span>
+                    <small>YEAR</small>
+                </div>
+
+            </div>
+
+
+            <div class="prestige-concept-copy">
+
+                <div class="mem-section-label">
+                    {{ t.tile_label }}
+                </div>
+
+                <h2>
+                    {{ t.tile_title }}
+                </h2>
+
+                <p>
+                    {{ t.tile_text_1 }}
+                </p>
+
+                <p>
+                    {{ t.tile_text_2 }}
+                </p>
+
+                <div class="prestige-tile-reminder">
+                    {{ t.tile_reminder }}
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="prestige-qr-card">
+
+            <div class="prestige-qr-icon" aria-hidden="true">
+                QR
+            </div>
+
+            <div>
+
+                <div class="prestige-qr-label">
+                    {{ t.qr_label }}
+                </div>
+
+                <h3>
+                    {{ t.qr_title }}
+                </h3>
+
+                <p>
+                    {{ t.qr_text }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
 <!-- ===================================================== -->
 <!-- AGENDA -->
 <!-- ===================================================== -->
@@ -1773,7 +1903,7 @@ Prestige Design — Հատուկ հրավեր
 
 
             <div class="mem-section-number light">
-                02
+                04
             </div>
 
 
@@ -1794,9 +1924,21 @@ Prestige Design — Հատուկ հրավեր
                     {{ t.agenda_1_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_1_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_1_title }}
+                    </strong>
+
+                    {% if t.agenda_1_text %}
+
+                    <p>
+                        {{ t.agenda_1_text }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1811,9 +1953,21 @@ Prestige Design — Հատուկ հրավեր
                     {{ t.agenda_2_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_2_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_2_title }}
+                    </strong>
+
+                    {% if t.agenda_2_text %}
+
+                    <p>
+                        {{ t.agenda_2_text }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1828,9 +1982,21 @@ Prestige Design — Հատուկ հրավեր
                     {{ t.agenda_3_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_3_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_3_title }}
+                    </strong>
+
+                    {% if t.agenda_3_text %}
+
+                    <p>
+                        {{ t.agenda_3_text }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1845,9 +2011,21 @@ Prestige Design — Հատուկ հրավեր
                     {{ t.agenda_4_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_4_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_4_title }}
+                    </strong>
+
+                    {% if t.agenda_4_text %}
+
+                    <p>
+                        {{ t.agenda_4_text }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1862,9 +2040,108 @@ Prestige Design — Հատուկ հրավեր
                     {{ t.agenda_5_time }}
                 </time>
 
-                <strong>
-                    {{ t.agenda_5_title }}
-                </strong>
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_5_title }}
+                    </strong>
+
+                    {% if t.agenda_5_text %}
+
+                    <p>
+                        {{ t.agenda_5_text }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <div class="mem-agenda-item">
+
+                <span class="number">
+                    06
+                </span>
+
+                <time>
+                    {{ t.agenda_6_time }}
+                </time>
+
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_6_title }}
+                    </strong>
+
+                    {% if t.agenda_6_text %}
+
+                    <p>
+                        {{ t.agenda_6_text }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <div class="mem-agenda-item">
+
+                <span class="number">
+                    07
+                </span>
+
+                <time>
+                    {{ t.agenda_7_time }}
+                </time>
+
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_7_title }}
+                    </strong>
+
+                    {% if t.agenda_7_text %}
+
+                    <p>
+                        {{ t.agenda_7_text }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <div class="mem-agenda-item">
+
+                <span class="number">
+                    08
+                </span>
+
+                <time>
+                    {{ t.agenda_8_time }}
+                </time>
+
+                <div class="mem-agenda-copy">
+
+                    <strong>
+                        {{ t.agenda_8_title }}
+                    </strong>
+
+                    {% if t.agenda_8_text %}
+
+                    <p>
+                        {{ t.agenda_8_text }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
 
             </div>
 
@@ -1893,7 +2170,7 @@ Prestige Design — Հատուկ հրավեր
 
 
         <div class="mem-section-number">
-            03
+            05
         </div>
 
 
@@ -2091,7 +2368,6 @@ Prestige Design — Հատուկ հրավեր
                         </label>
 
 
-
                         <!-- POSITION -->
 
                         <label>
@@ -2114,7 +2390,6 @@ Prestige Design — Հատուկ հրավեր
 
 
                         </label>
-
 
 
                         <!-- PHONE -->
@@ -2164,7 +2439,6 @@ Prestige Design — Հատուկ հրավեր
 
 
                         </label>
-
 
 
                         <!-- NOTES -->
@@ -2520,5 +2794,1343 @@ Prestige Design — Հատուկ հրավեր
     }
 </style>
 
+
+
+<style>
+
+    /* =========================================================
+       PRESTIGE DESIGN — 1 YEAR
+       ========================================================= */
+
+    .prestige-guest {
+        position: relative;
+        overflow: hidden;
+
+        padding:
+            105px
+            0;
+
+        background:
+            linear-gradient(
+                135deg,
+                #f8f4ed 0%,
+                #eee6da 100%
+            );
+    }
+
+    .prestige-guest::after {
+        content: "1";
+
+        position: absolute;
+
+        right: -10px;
+        bottom: -105px;
+
+        color:
+            rgba(181, 126, 67, .055);
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size:
+            420px;
+
+        line-height:
+            1;
+
+        pointer-events: none;
+    }
+
+    .prestige-guest-inner {
+        position: relative;
+
+        z-index: 2;
+
+        display: grid;
+
+        grid-template-columns:
+            70px
+            minmax(0, 1fr)
+            250px;
+
+        align-items: center;
+
+        gap:
+            45px;
+    }
+
+    .prestige-guest-number {
+        align-self: start;
+
+        color:
+            rgba(142, 94, 43, .58);
+
+        font-size:
+            11px;
+
+        font-weight:
+            700;
+
+        letter-spacing:
+            .18em;
+    }
+
+    .prestige-guest-copy h2 {
+        max-width:
+            760px;
+
+        margin:
+            14px
+            0
+            10px;
+
+        color:
+            #1e241f;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size:
+            clamp(
+                46px,
+                6vw,
+                78px
+            );
+
+        font-weight:
+            400;
+
+        line-height:
+            .98;
+
+        letter-spacing:
+            -.045em;
+    }
+
+    .prestige-guest-role {
+        margin-bottom:
+            24px;
+
+        color:
+            #b57e43;
+
+        font-size:
+            12px;
+
+        font-weight:
+            700;
+
+        letter-spacing:
+            .11em;
+
+        text-transform:
+            uppercase;
+    }
+
+    .prestige-guest-copy p {
+        max-width:
+            650px;
+
+        margin: 0;
+
+        color:
+            #62635d;
+
+        font-size:
+            15px;
+
+        line-height:
+            1.8;
+    }
+
+    .prestige-guest-monogram {
+        width:
+            220px;
+
+        height:
+            220px;
+
+        display:
+            grid;
+
+        place-items:
+            center;
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .38);
+
+        border-radius:
+            50%;
+
+        color:
+            #b57e43;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size:
+            58px;
+
+        letter-spacing:
+            -.05em;
+
+        box-shadow:
+            inset
+            0
+            0
+            0
+            12px
+            rgba(181, 126, 67, .035);
+    }
+
+
+    /* =========================================================
+       TILE CONCEPT
+       ========================================================= */
+
+    .prestige-concept {
+        padding:
+            110px
+            0;
+
+        background:
+            #efe9df;
+    }
+
+    .prestige-concept-grid {
+        display:
+            grid;
+
+        grid-template-columns:
+            minmax(300px, .85fr)
+            minmax(0, 1.15fr);
+
+        align-items:
+            center;
+
+        gap:
+            90px;
+    }
+
+    .prestige-tile-visual {
+        position: relative;
+
+        width:
+            min(
+                470px,
+                100%
+            );
+
+        aspect-ratio:
+            1
+            /
+            1;
+
+        margin:
+            0
+            auto;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+        grid-template-rows:
+            1fr
+            1fr;
+
+        gap:
+            10px;
+
+        transform:
+            rotate(-3deg);
+    }
+
+    .prestige-tile-square {
+        border:
+            1px solid
+            rgba(132, 91, 49, .18);
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,255,255,.92),
+                rgba(217,202,181,.86)
+            );
+
+        box-shadow:
+            0
+            16px
+            45px
+            rgba(45, 37, 27, .09);
+    }
+
+    .prestige-tile-square.tile-b,
+    .prestige-tile-square.tile-c {
+        background:
+            linear-gradient(
+                145deg,
+                #c9a675,
+                #8f6b43
+            );
+    }
+
+    .prestige-tile-center {
+        position:
+            absolute;
+
+        top:
+            50%;
+
+        left:
+            50%;
+
+        width:
+            126px;
+
+        height:
+            126px;
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        transform:
+            translate(-50%, -50%)
+            rotate(3deg);
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .42);
+
+        background:
+            #f8f4ed;
+
+        box-shadow:
+            0
+            18px
+            45px
+            rgba(45, 37, 27, .17);
+    }
+
+    .prestige-tile-center span {
+        color:
+            #aa743e;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size:
+            62px;
+
+        line-height:
+            .8;
+    }
+
+    .prestige-tile-center small {
+        margin-top:
+            10px;
+
+        color:
+            #5c5a54;
+
+        font-size:
+            9px;
+
+        font-weight:
+            700;
+
+        letter-spacing:
+            .26em;
+    }
+
+    .prestige-concept-copy h2 {
+        max-width:
+            700px;
+
+        margin:
+            14px
+            0
+            28px;
+
+        color:
+            #1e241f;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size:
+            clamp(
+                38px,
+                4.5vw,
+                62px
+            );
+
+        font-weight:
+            400;
+
+        line-height:
+            1.04;
+
+        letter-spacing:
+            -.035em;
+    }
+
+    .prestige-concept-copy p {
+        max-width:
+            700px;
+
+        margin:
+            0
+            0
+            16px;
+
+        color:
+            #666760;
+
+        font-size:
+            14px;
+
+        line-height:
+            1.8;
+    }
+
+    .prestige-tile-reminder {
+        margin-top:
+            28px;
+
+        padding:
+            19px
+            21px;
+
+        border-left:
+            3px solid
+            #b57e43;
+
+        background:
+            rgba(255,255,255,.55);
+
+        color:
+            #31362f;
+
+        font-size:
+            13px;
+
+        font-weight:
+            700;
+
+        line-height:
+            1.7;
+    }
+
+
+    /* =========================================================
+       QR REMINDER
+       ========================================================= */
+
+    .prestige-qr-card {
+        margin-top:
+            72px;
+
+        padding:
+            30px
+            34px;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            76px
+            minmax(0, 1fr);
+
+        align-items:
+            center;
+
+        gap:
+            26px;
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .33);
+
+        background:
+            #18221b;
+
+        box-shadow:
+            0
+            22px
+            60px
+            rgba(29, 34, 29, .12);
+    }
+
+    .prestige-qr-icon {
+        width:
+            76px;
+
+        height:
+            76px;
+
+        display:
+            grid;
+
+        place-items:
+            center;
+
+        border:
+            1px solid
+            rgba(216, 183, 125, .70);
+
+        color:
+            #d8b77d;
+
+        font-size:
+            17px;
+
+        font-weight:
+            700;
+
+        letter-spacing:
+            .10em;
+    }
+
+    .prestige-qr-label {
+        color:
+            #d8b77d;
+
+        font-size:
+            9px;
+
+        font-weight:
+            700;
+
+        letter-spacing:
+            .20em;
+
+        text-transform:
+            uppercase;
+    }
+
+    .prestige-qr-card h3 {
+        margin:
+            6px
+            0
+            6px;
+
+        color:
+            #ffffff;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size:
+            27px;
+
+        font-weight:
+            400;
+    }
+
+    .prestige-qr-card p {
+        max-width:
+            760px;
+
+        margin:
+            0;
+
+        color:
+            rgba(255,255,255,.70);
+
+        font-size:
+            13px;
+
+        line-height:
+            1.7;
+    }
+
+
+    /* =========================================================
+       AGENDA DESCRIPTIONS
+       ========================================================= */
+
+    .mem-agenda-item {
+        align-items:
+            start;
+    }
+
+    .mem-agenda-copy {
+        min-width:
+            0;
+    }
+
+    .mem-agenda-copy strong {
+        display:
+            block;
+    }
+
+    .mem-agenda-copy p {
+        max-width:
+            720px;
+
+        margin:
+            7px
+            0
+            0;
+
+        color:
+            rgba(255,255,255,.60);
+
+        font-size:
+            12px;
+
+        font-weight:
+            400;
+
+        line-height:
+            1.6;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 860px) {
+
+        .prestige-guest,
+        .prestige-concept {
+            padding:
+                78px
+                0;
+        }
+
+        .prestige-guest-inner {
+            grid-template-columns:
+                1fr;
+
+            gap:
+                25px;
+        }
+
+        .prestige-guest-number {
+            display:
+                none;
+        }
+
+        .prestige-guest-monogram {
+            width:
+                160px;
+
+            height:
+                160px;
+
+            order:
+                -1;
+
+            margin:
+                0
+                auto;
+        }
+
+        .prestige-guest-copy {
+            text-align:
+                center;
+        }
+
+        .prestige-guest-copy p {
+            margin:
+                0
+                auto;
+        }
+
+        .prestige-concept-grid {
+            grid-template-columns:
+                1fr;
+
+            gap:
+                55px;
+        }
+
+        .prestige-concept-copy {
+            text-align:
+                center;
+        }
+
+        .prestige-concept-copy h2,
+        .prestige-concept-copy p {
+            margin-left:
+                auto;
+
+            margin-right:
+                auto;
+        }
+
+        .prestige-tile-reminder {
+            text-align:
+                left;
+        }
+
+    }
+
+    @media (max-width: 720px) {
+
+        .prestige-guest-copy h2 {
+            font-size:
+                46px;
+        }
+
+        .prestige-concept-copy h2 {
+            font-size:
+                38px;
+        }
+
+        .prestige-tile-visual {
+            width:
+                min(
+                    320px,
+                    92%
+                );
+        }
+
+        .prestige-tile-center {
+            width:
+                100px;
+
+            height:
+                100px;
+        }
+
+        .prestige-tile-center span {
+            font-size:
+                50px;
+        }
+
+        .prestige-qr-card {
+            grid-template-columns:
+                1fr;
+
+            padding:
+                26px
+                22px;
+
+            text-align:
+                center;
+        }
+
+        .prestige-qr-icon {
+            margin:
+                0
+                auto;
+        }
+
+        .mem-agenda-copy p {
+            font-size:
+                11px;
+        }
+
+    }
+
+</style>
+
+
+<style>
+
+    /* =========================================================
+       PRESTIGE WEBSITE-INSPIRED HERO
+       Uses an official Prestige Design website interior image.
+       Keeps the invitation-envelope interaction intact.
+       ========================================================= */
+
+    .mem-envelope-hero {
+        position: relative;
+
+        min-height:
+            100vh;
+
+        min-height:
+            100svh;
+
+        overflow:
+            hidden;
+
+        background:
+            #111711 !important;
+    }
+
+
+    .mem-envelope-background {
+        position:
+            absolute !important;
+
+        inset:
+            0 !important;
+
+        width:
+            100% !important;
+
+        height:
+            100% !important;
+
+        background-image:
+            linear-gradient(
+                90deg,
+                rgba(10, 15, 11, .72) 0%,
+                rgba(10, 15, 11, .46) 46%,
+                rgba(10, 15, 11, .68) 100%
+            ),
+            url("https://decora-group.ams3.cdn.digitaloceanspaces.com/prestigedesign/media/39/photo_2025-08-28_14-12-26.jpg") !important;
+
+        background-size:
+            cover !important;
+
+        background-position:
+            center center !important;
+
+        background-repeat:
+            no-repeat !important;
+
+        transform:
+            scale(1.025);
+
+        filter:
+            saturate(.90)
+            contrast(1.03);
+
+        opacity:
+            1 !important;
+    }
+
+
+    .mem-envelope-overlay {
+        position:
+            absolute !important;
+
+        inset:
+            0 !important;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(4, 12, 8, .42) 0%,
+                rgba(4, 12, 8, .17) 36%,
+                rgba(4, 12, 8, .34) 72%,
+                rgba(4, 12, 8, .64) 100%
+            ) !important;
+
+        pointer-events:
+            none;
+    }
+
+
+    .mem-envelope-hero::before {
+        content:
+            "";
+
+        position:
+            absolute;
+
+        z-index:
+            2;
+
+        inset:
+            18px;
+
+        border:
+            1px solid
+            rgba(209, 160, 98, .28);
+
+        pointer-events:
+            none;
+    }
+
+
+    .mem-envelope-hero::after {
+        content:
+            "PRESTIGE DESIGN · 1 YEAR";
+
+        position:
+            absolute;
+
+        z-index:
+            3;
+
+        left:
+            48px;
+
+        bottom:
+            34px;
+
+        color:
+            rgba(255, 255, 255, .72);
+
+        font-size:
+            9px;
+
+        font-weight:
+            600;
+
+        letter-spacing:
+            .28em;
+
+        text-transform:
+            uppercase;
+
+        pointer-events:
+            none;
+    }
+
+
+    /* =========================================================
+       TOP BRAND — closer to prestigedesign.am
+       ========================================================= */
+
+    .mem-envelope-brand {
+        top:
+            32px !important;
+
+        display:
+            flex !important;
+
+        flex-direction:
+            column !important;
+
+        align-items:
+            center !important;
+
+        justify-content:
+            center !important;
+
+        gap:
+            12px !important;
+
+        z-index:
+            10 !important;
+    }
+
+
+    .mem-envelope-brand img {
+        display:
+            block !important;
+
+        width:
+            170px !important;
+
+        height:
+            auto !important;
+
+        filter:
+            brightness(0)
+            invert(1)
+            sepia(.10)
+            saturate(.6)
+            brightness(1.15);
+
+        opacity:
+            .96;
+    }
+
+
+    .mem-envelope-brand span {
+        display:
+            flex !important;
+
+        align-items:
+            center;
+
+        gap:
+            12px;
+
+        padding:
+            0 !important;
+
+        color:
+            #d9aa6b !important;
+
+        font-size:
+            10px !important;
+
+        font-weight:
+            600 !important;
+
+        letter-spacing:
+            .26em !important;
+
+        line-height:
+            1.4;
+
+        text-shadow:
+            0
+            2px
+            16px
+            rgba(0, 0, 0, .30);
+    }
+
+
+    .mem-envelope-brand span::before,
+    .mem-envelope-brand span::after {
+        position:
+            static !important;
+
+        display:
+            block;
+
+        width:
+            34px !important;
+
+        height:
+            1px;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                rgba(217, 170, 107, .90)
+            ) !important;
+
+        transform:
+            none !important;
+    }
+
+
+    .mem-envelope-brand span::after {
+        transform:
+            rotate(180deg) !important;
+    }
+
+
+    /* =========================================================
+       LANGUAGE SWITCHER
+       ========================================================= */
+
+    .mem-envelope-languages {
+        z-index:
+            12 !important;
+    }
+
+
+    .mem-envelope-languages a,
+    .mem-envelope-languages span {
+        color:
+            rgba(255, 255, 255, .72) !important;
+    }
+
+
+    .mem-envelope-languages a.active {
+        color:
+            #e0b779 !important;
+    }
+
+
+    /* =========================================================
+       ENVELOPE — refined premium presentation
+       ========================================================= */
+
+    .mem-envelope-stage {
+        position:
+            relative;
+
+        z-index:
+            8;
+
+        filter:
+            drop-shadow(
+                0
+                34px
+                48px
+                rgba(0, 0, 0, .34)
+            );
+    }
+
+
+    .mem-envelope {
+        transform:
+            translateZ(0)
+            scale(1.03);
+
+        transform-origin:
+            center center;
+    }
+
+
+    .mem-envelope-back,
+    .mem-envelope-front,
+    .mem-envelope-flap,
+    .mem-envelope-flap-open {
+        border-color:
+            rgba(186, 142, 87, .16) !important;
+    }
+
+
+    .mem-invitation-card {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(252, 249, 242, .985) 0%,
+                rgba(242, 234, 222, .985) 100%
+            ) !important;
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .24) !important;
+
+        box-shadow:
+            0
+            22px
+            48px
+            rgba(0, 0, 0, .16) !important;
+    }
+
+
+    .mem-invitation-card::before {
+        border-color:
+            rgba(181, 126, 67, .18) !important;
+    }
+
+
+    .mem-card-logo {
+        width:
+            150px !important;
+    }
+
+
+    .mem-card-label {
+        color:
+            #a46f38 !important;
+
+        letter-spacing:
+            .20em !important;
+    }
+
+
+    .mem-invitation-card h1 {
+        color:
+            #222720 !important;
+    }
+
+
+    .mem-invitation-card h1 em {
+        color:
+            #b57e43 !important;
+    }
+
+
+    .mem-card-divider {
+        background:
+            #b57e43 !important;
+    }
+
+
+    .mem-card-button {
+        background:
+            #111d16 !important;
+
+        color:
+            #ffffff !important;
+
+        border:
+            1px solid
+            rgba(217, 170, 107, .40) !important;
+    }
+
+
+    .mem-card-button:hover {
+        background:
+            #b57e43 !important;
+
+        color:
+            #ffffff !important;
+    }
+
+
+    /* =========================================================
+       SCROLL INDICATOR
+       ========================================================= */
+
+    .mem-envelope-scroll {
+        z-index:
+            10 !important;
+
+        color:
+            #ffffff !important;
+    }
+
+
+    .mem-envelope-scroll span {
+        border-color:
+            rgba(255, 255, 255, .75) !important;
+    }
+
+
+    /* =========================================================
+       DESKTOP LARGE
+       ========================================================= */
+
+    @media (min-width: 1280px) {
+
+        .mem-envelope-inner {
+            max-width:
+                1500px;
+        }
+
+    }
+
+
+    /* =========================================================
+       TABLET / MOBILE
+       ========================================================= */
+
+    @media (max-width: 900px) {
+
+        .mem-envelope-background {
+            background-position:
+                62% center !important;
+        }
+
+
+        .mem-envelope-hero::before {
+            inset:
+                10px;
+        }
+
+
+        .mem-envelope-hero::after {
+            left:
+                24px;
+
+            bottom:
+                20px;
+
+            font-size:
+                8px;
+
+            letter-spacing:
+                .20em;
+        }
+
+
+        .mem-envelope-brand {
+            top:
+                22px !important;
+        }
+
+
+        .mem-envelope-brand img {
+            width:
+                145px !important;
+        }
+
+
+        .mem-envelope-brand span {
+            font-size:
+                8px !important;
+
+            letter-spacing:
+                .20em !important;
+        }
+
+
+        .mem-envelope-brand span::before,
+        .mem-envelope-brand span::after {
+            width:
+                24px !important;
+        }
+
+
+        .mem-envelope {
+            transform:
+                translateZ(0)
+                scale(.96);
+        }
+
+    }
+
+
+    @media (max-width: 520px) {
+
+        .mem-envelope-background {
+            background-position:
+                68% center !important;
+        }
+
+
+        .mem-envelope-overlay {
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(4, 12, 8, .60) 0%,
+                    rgba(4, 12, 8, .30) 38%,
+                    rgba(4, 12, 8, .48) 72%,
+                    rgba(4, 12, 8, .75) 100%
+                ) !important;
+        }
+
+
+        .mem-envelope-brand {
+            top:
+                18px !important;
+
+            gap:
+                8px !important;
+        }
+
+
+        .mem-envelope-brand img {
+            width:
+                126px !important;
+        }
+
+
+        .mem-envelope-brand span {
+            font-size:
+                7px !important;
+
+            letter-spacing:
+                .16em !important;
+        }
+
+
+        .mem-envelope-brand span::before,
+        .mem-envelope-brand span::after {
+            width:
+                18px !important;
+        }
+
+
+        .mem-envelope {
+            transform:
+                translateZ(0)
+                scale(.90);
+        }
+
+
+        .mem-envelope-hero::after {
+            display:
+                none;
+        }
+
+    }
+
+</style>
 
 {% endblock %}

@@ -50,6 +50,8 @@ from translations_memorandum import (
 )
 
 
+
+from translations_prestige import get_translation as get_prestige_translation
 # =========================================================
 # EVENTS
 # =========================================================
@@ -899,7 +901,7 @@ def get_brand_config(
             "model": PrestigeRegistration,
 
             "translation": (
-                get_translation(
+                get_prestige_translation(
                     lang
                 )
             ),
