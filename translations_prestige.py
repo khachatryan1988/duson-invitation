@@ -21,13 +21,16 @@ TRANSLATIONS = {
 
         # HERO
         "private_presentation":
-            "1-ԱՄՅԱԿԻ ՀԱՏՈՒԿ ՀՐԱՎԵՐ",
+            "",
 
         "hero_title_1":
             "Prestige Design",
 
         "hero_title_2":
-            "1 Year",
+            "1-ամյակ",
+
+        "year_label":
+            "ՏԱՐԻ",
 
         "hero_subtitle":
             "Մեկ տարի՝ նվիրված դիզայնին, գաղափարներին և համագործակցությանը։",
@@ -62,7 +65,7 @@ TRANSLATIONS = {
 
         # ABOUT
         "intro_label":
-            "PRESTIGE DESIGN / 1 YEAR",
+            "PRESTIGE DESIGN / 1-ԱՄՅԱԿ",
 
         "intro_title":
             "Մեկ տարի՝ նվիրված դիզայնին, գաղափարներին և համագործակցությանը",
@@ -76,27 +79,28 @@ TRANSLATIONS = {
             "դիզայներները, ճարտարապետները, ոլորտի ներկայացուցիչներն ու հյուրերը։",
 
         "intro_text_3":
-            "Միջոցառումը միավորում է իտալական դիզայնը, հատուկ հյուրի մասնակցությունը, "
-            "տարեդարձային արարողությունը և networking-ը։",
+            "Միջոցառման հատուկ հյուրն է FIMA / Carlo Frattini բրենդի "
+            "կրեատիվ տնօրեն և գլխավոր դիզայներ Դավիդե Վերչելին, "
+            "ով այս պաշտոնում է 2013 թվականից։",
 
         # SPECIAL GUEST
         "guest_label":
-            "SPECIAL GUEST FROM ITALY",
+            "ՀԱՏՈՒԿ ՀՅՈՒՐ ԻՏԱԼԻԱՅԻՑ",
 
         "guest_title":
-            "Davide Vercelli",
+            "Դավիդե Վերչելի",
 
         "guest_role":
-            "Իտալացի հայտնի դիզայներ և ինժեներ",
+            "FIMA / Carlo Frattini-ի կրեատիվ տնօրեն և գլխավոր դիզայներ",
 
         "guest_text":
-            "Prestige Design-ի 1-ամյակի հատուկ հյուրն Իտալիայից "
-            "Davide Vercelli-ն է, ով երեկոյի ընթացքում կհանդիպի հյուրերին "
-            "և կներկայացնի իր դիզայներական փորձն ու մոտեցումները։",
+            "Երեկոյի ընթացքում Դավիդե Վերչելին կներկայացնի իր ամենահայտնի աշխատանքները, "
+            "ինչպես նաև այն մոդելները, որոնք նա ստեղծել է FIMA / Carlo Frattini "
+            "բրենդի համար, և որոնք շուտով կներկայացվեն Prestige խանութ-սրահներում։",
 
         # TILE INVITATION
         "tile_label":
-            "INVITATION TILE",
+            "ՍԱԼԻԿ-ՀՐԱՎԻՐԱՏՈՄՍ",
 
         "tile_title":
             "Ձեր հրավիրատոմսը կդառնա 1-ամյակի դիզայն-օբյեկտի մի մասը",
@@ -107,9 +111,7 @@ TRANSLATIONS = {
             "ընդհանուր դիզայն-օբյեկտի մաս։",
 
         "tile_text_2":
-            "Հյուրերի բոլոր սալիկները միասին կկազմեն տարեդարձային սեղան, "
-            "որը հետագայում կմնա Prestige Design-ում՝ որպես այս օրվա "
-            "հիշողություն և ցուցադրական դիզայն-օբյեկտ։",
+            "",
 
         "tile_reminder":
             "Եթե ստացել եք Prestige Design-ի սալիկ-հրավիրատոմսը, "
@@ -117,10 +119,10 @@ TRANSLATIONS = {
 
         # QR
         "qr_label":
-            "YOUR PERSONAL QR",
+            "ՁԵՐ ԱՆՀԱՏԱԿԱՆ QR ԿՈԴԸ",
 
         "qr_title":
-            "Save your QR — Entry & Gift",
+            "Պահպանեք QR կոդը՝ մուտքի և նվերի համար",
 
         "qr_text":
             "Խնդրում ենք պահպանել Ձեր էլ․ հասցեին ուղարկված QR կոդը։ "
@@ -141,7 +143,8 @@ TRANSLATIONS = {
             "Հյուրերի դիմավորում և գրանցում",
 
         "agenda_1_text":
-            "QR check-in, welcome, AI Photobooth",
+            "QR կոդով մուտքի գրանցում, հյուրերի դիմավորում, "
+            "արհեստական բանականությամբ ֆոտոբութ",
 
         "agenda_2_time":
             "19:00–19:15",
@@ -150,7 +153,7 @@ TRANSLATIONS = {
             "Միջոցառման պաշտոնական բացում",
 
         "agenda_2_text":
-            "Վարող",
+            "",
 
         "agenda_3_time":
             "19:15–19:20",
@@ -159,7 +162,7 @@ TRANSLATIONS = {
             "Բացման խոսք",
 
         "agenda_3_text":
-            "Աննա Հայթայան",
+            "",
 
         "agenda_4_time":
             "19:20–19:30",
@@ -174,35 +177,34 @@ TRANSLATIONS = {
             "19:30–20:00",
 
         "agenda_5_title":
-            "Special Guest from Italy — Davide Vercelli",
+            "Հատուկ հյուր — Դավիդե Վերչելի",
 
         "agenda_5_text":
-            "Իտալական դիզայն, փորձ և գաղափարներ հատուկ հյուրի հետ։",
+            "",
 
         "agenda_6_time":
             "20:00–21:00",
 
         "agenda_6_title":
-            "Prestige Anniversary Table Ceremony",
+            "Սալիկ-հրավիրատոմսերի հավաքում",
 
         "agenda_6_text":
-            "Հյուրերի սալիկ-հրավիրատոմսերից տարեդարձային "
-            "դիզայն-օբյեկտի / սեղանի ստեղծում։",
+            "",
 
         "agenda_7_time":
-            "21:00–21:15",
+            "",
 
         "agenda_7_title":
-            "Anniversary Cake",
+            "",
 
         "agenda_7_text":
             "",
 
         "agenda_8_time":
-            "21:15–23:00",
+            "21:00–23:00",
 
         "agenda_8_title":
-            "DJ / Networking / Free Time",
+            "Երաժշտություն / շփում / ազատ ժամանց",
 
         "agenda_8_text":
             "",
@@ -296,7 +298,7 @@ TRANSLATIONS = {
 
         "email_spam_note":
             "Եթե նամակը չեք ստացել մի քանի րոպեի ընթացքում, "
-            "խնդրում ենք ստուգել նաև Spam / Junk թղթապանակը։",
+            "խնդրում ենք ստուգել նաև «Սպամ» / «Անցանկալի նամակներ» թղթապանակը։",
 
         "back_home":
             "Վերադառնալ գլխավոր էջ",
@@ -310,7 +312,7 @@ TRANSLATIONS = {
 
         # FOOTER
         "footer_slogan":
-            "Prestige Design · 1 Year",
+            "Prestige Design · 1-ամյակ",
 
         "copyright":
             "© 2026 Prestige Design",
@@ -329,13 +331,19 @@ TRANSLATIONS = {
 
         # HERO
         "private_presentation":
-            "СПЕЦИАЛЬНОЕ ПРИГЛАШЕНИЕ НА 1-ЛЕТИЕ",
+            "",
 
         "hero_title_1":
             "Prestige Design",
 
         "hero_title_2":
             "1 Year",
+
+        "year_label":
+            "YEAR",
+
+        "year_label":
+            "ГОД",
 
         "hero_subtitle":
             "Один год, посвящённый дизайну, идеям и сотрудничеству.",
@@ -384,8 +392,8 @@ TRANSLATIONS = {
             "архитекторы, представители индустрии и приглашённые гости.",
 
         "intro_text_3":
-            "Вечер объединит итальянский дизайн, встречу со специальным гостем, "
-            "юбилейную церемонию и networking.",
+            "Специальный гость мероприятия — Davide Vercelli, креативный директор "
+            "и главный дизайнер бренда FIMA / Carlo Frattini с 2013 года.",
 
         # SPECIAL GUEST
         "guest_label":
@@ -395,12 +403,12 @@ TRANSLATIONS = {
             "Davide Vercelli",
 
         "guest_role":
-            "Известный итальянский дизайнер и инженер",
+            "Креативный директор и главный дизайнер FIMA / Carlo Frattini",
 
         "guest_text":
-            "Специальный гость 1-летия Prestige Design — Davide Vercelli из Италии. "
-            "В течение вечера он встретится с гостями и поделится своим "
-            "профессиональным опытом и подходом к дизайну.",
+            "В течение вечера Davide Vercelli представит свои самые известные работы, "
+            "а также модели, созданные им для бренда FIMA / Carlo Frattini, "
+            "которые вскоре будут представлены в салонах Prestige.",
 
         # TILE INVITATION
         "tile_label":
@@ -415,8 +423,7 @@ TRANSLATIONS = {
             "создаваемого во время мероприятия.",
 
         "tile_text_2":
-            "Все плитки гостей будут объединены в юбилейный стол, который останется "
-            "в Prestige Design как память об этом дне и выставочный дизайн-объект.",
+            "",
 
         "tile_reminder":
             "Если Вы получили плитку-приглашение Prestige Design, "
@@ -456,7 +463,7 @@ TRANSLATIONS = {
             "Официальное открытие мероприятия",
 
         "agenda_2_text":
-            "Ведущий",
+            "",
 
         "agenda_3_time":
             "19:15–19:20",
@@ -465,7 +472,7 @@ TRANSLATIONS = {
             "Приветственное слово",
 
         "agenda_3_text":
-            "Анна Айтаян",
+            "",
 
         "agenda_4_time":
             "19:20–19:30",
@@ -483,7 +490,7 @@ TRANSLATIONS = {
             "Special Guest from Italy — Davide Vercelli",
 
         "agenda_5_text":
-            "Итальянский дизайн, опыт и идеи вместе со специальным гостем.",
+            "",
 
         "agenda_6_time":
             "20:00–21:00",
@@ -492,7 +499,7 @@ TRANSLATIONS = {
             "Prestige Anniversary Table Ceremony",
 
         "agenda_6_text":
-            "Создание юбилейного дизайн-объекта / стола из плиток-приглашений гостей.",
+            "",
 
         "agenda_7_time":
             "21:00–21:15",
@@ -634,7 +641,7 @@ TRANSLATIONS = {
 
         # HERO
         "private_presentation":
-            "1 YEAR ANNIVERSARY INVITATION",
+            "",
 
         "hero_title_1":
             "Prestige Design",
@@ -689,8 +696,8 @@ TRANSLATIONS = {
             "architects, industry professionals and invited guests.",
 
         "intro_text_3":
-            "The programme combines Italian design, a special guest appearance, "
-            "an anniversary ceremony and networking.",
+            "The special guest of the event is Davide Vercelli, Creative Director "
+            "and Chief Designer of FIMA / Carlo Frattini since 2013.",
 
         # SPECIAL GUEST
         "guest_label":
@@ -700,12 +707,12 @@ TRANSLATIONS = {
             "Davide Vercelli",
 
         "guest_role":
-            "Renowned Italian designer and engineer",
+            "Creative Director & Chief Designer, FIMA / Carlo Frattini",
 
         "guest_text":
-            "Prestige Design welcomes Davide Vercelli from Italy as the special guest "
-            "of its first anniversary. During the evening, he will meet guests and "
-            "share his professional experience and approach to design.",
+            "During the evening, Davide Vercelli will present some of his most renowned works, "
+            "as well as models he created for FIMA / Carlo Frattini that will soon be "
+            "presented at Prestige showrooms.",
 
         # TILE INVITATION
         "tile_label":
@@ -719,8 +726,7 @@ TRANSLATIONS = {
             "it is part of a collective design object that will be created during the event.",
 
         "tile_text_2":
-            "All guest tiles will come together to form an anniversary table that will remain "
-            "at Prestige Design as a memory of the occasion and a display design object.",
+            "",
 
         "tile_reminder":
             "If you received a Prestige Design invitation tile, "
@@ -760,7 +766,7 @@ TRANSLATIONS = {
             "Official Opening",
 
         "agenda_2_text":
-            "Host",
+            "",
 
         "agenda_3_time":
             "19:15–19:20",
@@ -769,7 +775,7 @@ TRANSLATIONS = {
             "Opening Remarks",
 
         "agenda_3_text":
-            "Anna Haytayan",
+            "",
 
         "agenda_4_time":
             "19:20–19:30",
@@ -787,7 +793,7 @@ TRANSLATIONS = {
             "Special Guest from Italy — Davide Vercelli",
 
         "agenda_5_text":
-            "Italian design, experience and ideas with the evening’s special guest.",
+            "",
 
         "agenda_6_time":
             "20:00–21:00",
@@ -796,7 +802,7 @@ TRANSLATIONS = {
             "Prestige Anniversary Table Ceremony",
 
         "agenda_6_text":
-            "Creating the anniversary design object / table from guests’ invitation tiles.",
+            "",
 
         "agenda_7_time":
             "21:00–21:15",

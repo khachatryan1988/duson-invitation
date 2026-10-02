@@ -1399,9 +1399,11 @@ Prestige Design — 1 Year
             >
 
 
+            {% if t.private_presentation %}
             <span>
                 {{ t.private_presentation }}
             </span>
+            {% endif %}
 
 
         </div>
@@ -1473,11 +1475,13 @@ Prestige Design — 1 Year
                     >
 
 
+                    {% if t.private_presentation %}
                     <div class="mem-card-label">
 
                         {{ t.private_presentation }}
 
                     </div>
+                    {% endif %}
 
 
                     <h1>
@@ -1772,12 +1776,14 @@ Prestige Design — 1 Year
 
         </div>
 
-        <div
-                class="prestige-guest-monogram"
-                aria-hidden="true"
-        >
-            DV
-        </div>
+        <figure class="prestige-guest-photo">
+
+            <img
+                    src="{{ url_for('static', filename='prestige/images/davide-vercelli.jpg') }}"
+                    alt="Davide Vercelli"
+            >
+
+        </figure>
 
     </div>
 
@@ -1805,7 +1811,7 @@ Prestige Design — 1 Year
 
                 <div class="prestige-tile-center">
                     <span>1</span>
-                    <small>YEAR</small>
+                    <small>{{ t.year_label }}</small>
                 </div>
 
             </div>
@@ -1825,9 +1831,11 @@ Prestige Design — 1 Year
                     {{ t.tile_text_1 }}
                 </p>
 
+                {% if t.tile_text_2 %}
                 <p>
                     {{ t.tile_text_2 }}
                 </p>
+                {% endif %}
 
                 <div class="prestige-tile-reminder">
                     {{ t.tile_reminder }}
@@ -2092,35 +2100,6 @@ Prestige Design — 1 Year
 
                 <span class="number">
                     07
-                </span>
-
-                <time>
-                    {{ t.agenda_7_time }}
-                </time>
-
-                <div class="mem-agenda-copy">
-
-                    <strong>
-                        {{ t.agenda_7_title }}
-                    </strong>
-
-                    {% if t.agenda_7_text %}
-
-                    <p>
-                        {{ t.agenda_7_text }}
-                    </p>
-
-                    {% endif %}
-
-                </div>
-
-            </div>
-
-
-            <div class="mem-agenda-item">
-
-                <span class="number">
-                    08
                 </span>
 
                 <time>
@@ -6015,6 +5994,119 @@ Prestige Design — 1 Year
         .mem-envelope {
             transform:
                 scale(.90) !important;
+        }
+
+    }
+
+</style>
+
+
+
+<style>
+
+    /* =========================================================
+       FINAL DAVIDE VERCELLI PHOTO
+       ========================================================= */
+
+    .prestige-guest-inner {
+        grid-template-columns:
+            70px
+            minmax(0, 1fr)
+            minmax(260px, 330px) !important;
+    }
+
+
+    .prestige-guest-photo {
+        position:
+            relative;
+
+        width:
+            min(330px, 100%);
+
+        aspect-ratio:
+            4 / 5;
+
+        margin:
+            0;
+
+        justify-self:
+            end;
+
+        overflow:
+            hidden;
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .34);
+
+        background:
+            #111;
+
+        box-shadow:
+            0
+            24px
+            60px
+            rgba(31, 25, 18, .16);
+    }
+
+
+    .prestige-guest-photo::before {
+        content:
+            "";
+
+        position:
+            absolute;
+
+        z-index:
+            2;
+
+        inset:
+            10px;
+
+        border:
+            1px solid
+            rgba(216, 183, 125, .36);
+
+        pointer-events:
+            none;
+    }
+
+
+    .prestige-guest-photo img {
+        display:
+            block;
+
+        width:
+            100%;
+
+        height:
+            100%;
+
+        object-fit:
+            cover;
+
+        object-position:
+            50% 22%;
+    }
+
+
+    @media (max-width: 860px) {
+
+        .prestige-guest-inner {
+            grid-template-columns:
+                1fr !important;
+        }
+
+
+        .prestige-guest-photo {
+            width:
+                min(360px, 88vw);
+
+            justify-self:
+                center;
+
+            order:
+                -1;
         }
 
     }
