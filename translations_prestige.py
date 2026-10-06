@@ -80,8 +80,7 @@ TRANSLATIONS = {
 
         "intro_text_3":
             "Միջոցառման հատուկ հյուրն է FIMA / Carlo Frattini բրենդի "
-            "կրեատիվ տնօրեն և գլխավոր դիզայներ Դավիդե Վերչելին, "
-            "ով այս պաշտոնում է 2013 թվականից։",
+            "կրեատիվ տնօրեն և գլխավոր դիզայներ Դավիդե Վերչելին:",
 
         # SPECIAL GUEST
         "guest_label":
@@ -393,7 +392,7 @@ TRANSLATIONS = {
 
         "intro_text_3":
             "Специальный гость мероприятия — Davide Vercelli, креативный директор "
-            "и главный дизайнер бренда FIMA / Carlo Frattini с 2013 года.",
+            "и главный дизайнер бренда FIMA / Carlo Frattini.",
 
         # SPECIAL GUEST
         "guest_label":
@@ -697,7 +696,7 @@ TRANSLATIONS = {
 
         "intro_text_3":
             "The special guest of the event is Davide Vercelli, Creative Director "
-            "and Chief Designer of FIMA / Carlo Frattini since 2013.",
+            "and Chief Designer of FIMA / Carlo Frattini.",
 
         # SPECIAL GUEST
         "guest_label":

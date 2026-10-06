@@ -1802,19 +1802,15 @@ Prestige Design — 1 Year
         <div class="prestige-concept-grid">
 
 
-            <div class="prestige-tile-visual" aria-hidden="true">
+            <figure class="prestige-tile-showcase">
 
-                <div class="prestige-tile-square tile-a"></div>
-                <div class="prestige-tile-square tile-b"></div>
-                <div class="prestige-tile-square tile-c"></div>
-                <div class="prestige-tile-square tile-d"></div>
+                <img
+                        src="{{ url_for('static', filename='prestige/images/prestige-invitation-tiles.png') }}"
+                        alt="{{ t.tile_label }}"
+                        loading="lazy"
+                >
 
-                <div class="prestige-tile-center">
-                    <span>1</span>
-                    <small>{{ t.year_label }}</small>
-                </div>
-
-            </div>
+            </figure>
 
 
             <div class="prestige-concept-copy">
@@ -6107,6 +6103,159 @@ Prestige Design — 1 Year
 
             order:
                 -1;
+        }
+
+    }
+
+</style>
+
+
+
+<style>
+
+    /* =========================================================
+       FINAL INVITATION TILE VISUAL
+       Uses the real 4-tile composition instead of abstract squares
+       ========================================================= */
+
+    .prestige-tile-showcase {
+        position:
+            relative;
+
+        width:
+            min(560px, 100%);
+
+        margin:
+            0 auto;
+
+        overflow:
+            hidden;
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .18);
+
+        background:
+            #f2ece3;
+
+        box-shadow:
+            0
+            28px
+            70px
+            rgba(45, 37, 27, .14);
+
+        transform:
+            rotate(-1deg);
+    }
+
+
+    .prestige-tile-showcase::before {
+        content:
+            "";
+
+        position:
+            absolute;
+
+        z-index:
+            2;
+
+        inset:
+            12px;
+
+        border:
+            1px solid
+            rgba(181, 126, 67, .16);
+
+        pointer-events:
+            none;
+    }
+
+
+    .prestige-tile-showcase img {
+        display:
+            block;
+
+        width:
+            100%;
+
+        height:
+            auto;
+
+        aspect-ratio:
+            1 / 1;
+
+        object-fit:
+            cover;
+
+        object-position:
+            center;
+
+        filter:
+            saturate(.96)
+            contrast(1.02);
+
+        transition:
+            transform
+            .7s
+            cubic-bezier(.22, 1, .36, 1);
+    }
+
+
+    .prestige-tile-showcase:hover img {
+        transform:
+            scale(1.018);
+    }
+
+
+    /* Keep the right-side copy vertically balanced with the new image */
+
+    .prestige-concept-grid {
+        grid-template-columns:
+            minmax(360px, .95fr)
+            minmax(0, 1.05fr) !important;
+
+        gap:
+            clamp(
+                55px,
+                6vw,
+                95px
+            ) !important;
+    }
+
+
+    @media (max-width: 860px) {
+
+        .prestige-concept-grid {
+            grid-template-columns:
+                1fr !important;
+
+            gap:
+                48px !important;
+        }
+
+
+        .prestige-tile-showcase {
+            width:
+                min(520px, 92vw);
+
+            transform:
+                none;
+        }
+
+    }
+
+
+    @media (max-width: 520px) {
+
+        .prestige-tile-showcase {
+            width:
+                min(360px, 92vw);
+        }
+
+
+        .prestige-tile-showcase::before {
+            inset:
+                8px;
         }
 
     }
