@@ -516,6 +516,10 @@ ERROR_MESSAGES = {
         "position":
             "Խնդրում ենք լրացնել պաշտոնը։",
 
+        "latin_only":
+            "Խնդրում ենք անունը, ազգանունը, ընկերությունը և "
+            "պաշտոնը լրացնել միայն անգլերեն (լատինատառ) տառերով։",
+
         "phone":
             "Խնդրում ենք լրացնել ճիշտ հեռախոսահամար։",
 
@@ -546,6 +550,10 @@ ERROR_MESSAGES = {
         "position":
             "Пожалуйста, укажите должность.",
 
+        "latin_only":
+            "Пожалуйста, заполните имя, фамилию, компанию и "
+            "должность только английскими (латинскими) буквами.",
+
         "phone":
             "Пожалуйста, укажите корректный номер телефона.",
 
@@ -575,6 +583,10 @@ ERROR_MESSAGES = {
 
         "position":
             "Please enter your position.",
+
+        "latin_only":
+            "Please enter your first name, last name, company and "
+            "position using English (Latin) letters only.",
 
         "phone":
             "Please enter a valid phone number.",
@@ -681,6 +693,34 @@ def valid_email(email: str) -> bool:
         re.match(
             pattern,
             email
+        )
+    )
+
+
+def valid_latin_text(value: str) -> bool:
+
+    """
+    Prestige registration text fields may contain only
+    English/Latin letters, digits, spaces and common punctuation.
+    Armenian, Cyrillic and other writing systems are rejected.
+    """
+
+    value = (
+            value
+            or ""
+    ).strip()
+
+    if not value:
+        return True
+
+    pattern = (
+        r"^[A-Za-z0-9\s&.,'’()/:+\-]+$"
+    )
+
+    return bool(
+        re.fullmatch(
+            pattern,
+            value
         )
     )
 
@@ -1148,6 +1188,34 @@ def register(lang):
                 "position"
             ]
         )
+
+
+    # =====================================================
+    # PRESTIGE: LATIN-ONLY TEXT FIELDS
+    # =====================================================
+
+    if site == "prestige":
+
+        latin_fields = (
+            first_name,
+            last_name,
+            company,
+            position,
+        )
+
+        if any(
+                value
+                and not valid_latin_text(
+                    value
+                )
+                for value in latin_fields
+        ):
+
+            errors.append(
+                messages[
+                    "latin_only"
+                ]
+            )
 
 
     # =====================================================

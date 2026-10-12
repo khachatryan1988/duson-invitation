@@ -2282,6 +2282,7 @@ Prestige Design — 1 Year
                             <input
                                     type="text"
                                     name="first_name"
+                                    data-prestige-latin="true"
                                     required
                                     maxlength="100"
                                     autocomplete="given-name"
@@ -2307,6 +2308,7 @@ Prestige Design — 1 Year
                             <input
                                     type="text"
                                     name="last_name"
+                                    data-prestige-latin="true"
                                     required
                                     maxlength="100"
                                     autocomplete="family-name"
@@ -2332,6 +2334,7 @@ Prestige Design — 1 Year
                             <input
                                     type="text"
                                     name="company"
+                                    data-prestige-latin="true"
                                     required
                                     maxlength="200"
                                     autocomplete="organization"
@@ -2356,6 +2359,7 @@ Prestige Design — 1 Year
                             <input
                                     type="text"
                                     name="position"
+                                    data-prestige-latin="true"
                                     required
                                     maxlength="200"
                                     autocomplete="organization-title"
@@ -6425,5 +6429,204 @@ Prestige Design — 1 Year
     }
 
 </style>
+
+
+<!-- ===================================================== -->
+<!-- PRESTIGE REGISTRATION — LATIN-ONLY VALIDATION -->
+<!-- ===================================================== -->
+
+<style>
+    .prestige-latin-error {
+        display: none;
+        margin-top: 7px;
+        color: #a64b3c;
+        font-size: 12px;
+        line-height: 1.45;
+    }
+
+    .prestige-latin-error.is-visible {
+        display: block;
+    }
+
+    .mem-form-card input.prestige-latin-invalid {
+        border-color: #a64b3c !important;
+    }
+</style>
+
+<script>
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            const messages = {
+                hy: "Խնդրում ենք լրացնել միայն անգլերեն (լատինատառ) տառերով։",
+                ru: "Пожалуйста, используйте только английские (латинские) буквы.",
+                en: "Please use English (Latin) letters only."
+            };
+
+            const currentLanguage = "{{ lang }}";
+
+            const validationMessage =
+                messages[currentLanguage]
+                || messages.en;
+
+            const latinPattern =
+                /^[A-Za-z0-9\s&.,'’()/:+\-]*$/;
+
+            const fields =
+                document.querySelectorAll(
+                    '[data-prestige-latin="true"]'
+                );
+
+
+            function getErrorElement(input) {
+
+                let error =
+                    input.parentElement.querySelector(
+                        ".prestige-latin-error"
+                    );
+
+                if (!error) {
+
+                    error =
+                        document.createElement(
+                            "small"
+                        );
+
+                    error.className =
+                        "prestige-latin-error";
+
+                    error.setAttribute(
+                        "aria-live",
+                        "polite"
+                    );
+
+                    input.insertAdjacentElement(
+                        "afterend",
+                        error
+                    );
+                }
+
+                return error;
+            }
+
+
+            function validateLatinField(input) {
+
+                const error =
+                    getErrorElement(input);
+
+                const value =
+                    input.value.trim();
+
+                const isValid =
+                    !value
+                    || latinPattern.test(
+                        value
+                    );
+
+                if (!isValid) {
+
+                    input.setCustomValidity(
+                        validationMessage
+                    );
+
+                    input.classList.add(
+                        "prestige-latin-invalid"
+                    );
+
+                    error.textContent =
+                        validationMessage;
+
+                    error.classList.add(
+                        "is-visible"
+                    );
+
+                    return false;
+                }
+
+                input.setCustomValidity("");
+
+                input.classList.remove(
+                    "prestige-latin-invalid"
+                );
+
+                error.textContent = "";
+
+                error.classList.remove(
+                    "is-visible"
+                );
+
+                return true;
+            }
+
+
+            fields.forEach(
+                function (input) {
+
+                    input.addEventListener(
+                        "input",
+                        function () {
+                            validateLatinField(
+                                input
+                            );
+                        }
+                    );
+
+                    input.addEventListener(
+                        "blur",
+                        function () {
+                            validateLatinField(
+                                input
+                            );
+                        }
+                    );
+                }
+            );
+
+
+            const form =
+                document.querySelector(
+                    ".mem-form-card form"
+                );
+
+            if (form) {
+
+                form.addEventListener(
+                    "submit",
+                    function (event) {
+
+                        let firstInvalid =
+                            null;
+
+                        fields.forEach(
+                            function (input) {
+
+                                if (
+                                    !validateLatinField(
+                                        input
+                                    )
+                                    && !firstInvalid
+                                ) {
+                                    firstInvalid =
+                                        input;
+                                }
+                            }
+                        );
+
+                        if (firstInvalid) {
+
+                            event.preventDefault();
+
+                            firstInvalid.focus();
+
+                            firstInvalid.reportValidity();
+                        }
+                    }
+                );
+            }
+        }
+    );
+</script>
 
 {% endblock %}
