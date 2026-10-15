@@ -1024,6 +1024,37 @@ def index(lang):
         config["index_template"],
         t=config["translation"],
         lang=lang,
+        special_mode=False,
+    )
+
+
+# =========================================================
+# PRESTIGE SPECIAL INDEX
+# =========================================================
+
+@app.route("/<lang>/special")
+def special_index(lang):
+
+    lang = normalize_language(
+        lang
+    )
+
+    config = get_brand_config(
+        lang
+    )
+
+    if config[
+        "site"
+    ] != "prestige":
+
+        abort(404)
+
+
+    return render_template(
+        config["index_template"],
+        t=config["translation"],
+        lang=lang,
+        special_mode=True,
     )
 
 
@@ -1035,7 +1066,18 @@ def index(lang):
     "/<lang>/register",
     methods=["POST"],
 )
+@app.route(
+    "/<lang>/special/register",
+    methods=["POST"],
+)
 def register(lang):
+
+    special_mode = (
+        request.path.rstrip("/")
+        .endswith(
+            "/special/register"
+        )
+    )
 
     # =====================================================
     # LANGUAGE
@@ -1077,6 +1119,14 @@ def register(lang):
 
 
     if site == "legacy":
+
+        abort(404)
+
+
+    if (
+            special_mode
+            and site != "prestige"
+    ):
 
         abort(404)
 
@@ -1312,6 +1362,8 @@ def register(lang):
                 request.form
             ),
 
+            special_mode=special_mode,
+
         ), 400
 
 
@@ -1377,7 +1429,11 @@ def register(lang):
 
         return redirect(
             url_for(
-                "already_registered",
+                (
+                    "special_already_registered"
+                    if special_mode
+                    else "already_registered"
+                ),
                 lang=lang,
             )
         )
@@ -1463,6 +1519,8 @@ def register(lang):
                 request.form
             ),
 
+            special_mode=special_mode,
+
         ), 500
 
 
@@ -1483,7 +1541,11 @@ def register(lang):
 
     return redirect(
         url_for(
-            "thank_you",
+            (
+                "special_thank_you"
+                if special_mode
+                else "thank_you"
+            ),
             lang=lang,
         )
     )
@@ -1512,6 +1574,107 @@ def thank_you(lang):
         ],
         t=config["translation"],
         lang=lang,
+    )
+
+
+# =========================================================
+# PRESTIGE SPECIAL THANK YOU
+# =========================================================
+
+@app.route(
+    "/<lang>/special/thank-you"
+)
+def special_thank_you(lang):
+
+    lang = normalize_language(
+        lang
+    )
+
+    config = get_brand_config(
+        lang
+    )
+
+    if config[
+        "site"
+    ] != "prestige":
+
+        abort(404)
+
+
+    special_messages = {
+
+        "hy": (
+            "Խնդրում ենք պահպանել էլ․ հասցեին "
+            "ուղարկված QR կոդը մուտքի համար։"
+        ),
+
+        "ru": (
+            "Пожалуйста, сохраните QR-код, "
+            "отправленный на электронную почту, "
+            "для входа."
+        ),
+
+        "en": (
+            "Please keep the QR code sent to "
+            "your email for entry."
+        ),
+    }
+
+
+    t = dict(
+        config[
+            "translation"
+        ]
+    )
+
+    t[
+        "thank_you_details"
+    ] = special_messages[
+        lang
+    ]
+
+
+    return render_template(
+        config[
+            "thank_you_template"
+        ],
+        t=t,
+        lang=lang,
+        special_mode=True,
+    )
+
+
+# =========================================================
+# PRESTIGE SPECIAL ALREADY REGISTERED
+# =========================================================
+
+@app.route(
+    "/<lang>/special/already-registered"
+)
+def special_already_registered(lang):
+
+    lang = normalize_language(
+        lang
+    )
+
+    config = get_brand_config(
+        lang
+    )
+
+    if config[
+        "site"
+    ] != "prestige":
+
+        abort(404)
+
+
+    return render_template(
+        config[
+            "already_template"
+        ],
+        t=config["translation"],
+        lang=lang,
+        special_mode=True,
     )
 
 

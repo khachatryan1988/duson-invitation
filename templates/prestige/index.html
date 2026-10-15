@@ -1349,7 +1349,7 @@ Prestige Design — 1 Year
 
 
             <a
-                    href="{{ url_for('index', lang='hy') }}"
+                    href="{{ url_for('special_index', lang='hy') if special_mode else url_for('index', lang='hy') }}"
                     class="{% if lang == 'hy' %}active{% endif %}"
             >
                 HY
@@ -1362,7 +1362,7 @@ Prestige Design — 1 Year
 
 
             <a
-                    href="{{ url_for('index', lang='ru') }}"
+                    href="{{ url_for('special_index', lang='ru') if special_mode else url_for('index', lang='ru') }}"
                     class="{% if lang == 'ru' %}active{% endif %}"
             >
                 RU
@@ -1375,7 +1375,7 @@ Prestige Design — 1 Year
 
 
             <a
-                    href="{{ url_for('index', lang='en') }}"
+                    href="{{ url_for('special_index', lang='en') if special_mode else url_for('index', lang='en') }}"
                     class="{% if lang == 'en' %}active{% endif %}"
             >
                 EN
@@ -2262,7 +2262,7 @@ Prestige Design — 1 Year
 
                 <form
                         method="post"
-                        action="{{ url_for('register', lang=lang) }}"
+                        action="{% if special_mode %}/{{ lang }}/special/register{% else %}{{ url_for('register', lang=lang) }}{% endif %}"
                 >
 
 
