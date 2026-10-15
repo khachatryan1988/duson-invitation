@@ -1069,14 +1069,13 @@ def special_index(lang):
 @app.route(
     "/<lang>/special/register",
     methods=["POST"],
+    endpoint="special_register",
 )
 def register(lang):
 
     special_mode = (
-        request.path.rstrip("/")
-        .endswith(
-            "/special/register"
-        )
+            request.endpoint
+            == "special_register"
     )
 
     # =====================================================

@@ -2262,7 +2262,7 @@ Prestige Design — 1 Year
 
                 <form
                         method="post"
-                        action="{% if special_mode %}/{{ lang }}/special/register{% else %}{{ url_for('register', lang=lang) }}{% endif %}"
+                        action="{{ url_for('special_register', lang=lang) if special_mode else url_for('register', lang=lang) }}"
                 >
 
 
