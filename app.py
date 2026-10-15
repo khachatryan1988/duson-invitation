@@ -1577,6 +1577,30 @@ def thank_you(lang):
     )
 
 
+def prestige_special_url_for(
+        endpoint,
+        **values,
+):
+
+    if endpoint == "index":
+
+        lang = values.get(
+            "lang",
+            "hy",
+        )
+
+        return url_for(
+            "special_index",
+            lang=lang,
+        )
+
+
+    return url_for(
+        endpoint,
+        **values,
+    )
+
+
 # =========================================================
 # PRESTIGE SPECIAL THANK YOU
 # =========================================================
@@ -1641,6 +1665,7 @@ def special_thank_you(lang):
         t=t,
         lang=lang,
         special_mode=True,
+        url_for=prestige_special_url_for,
     )
 
 
@@ -1675,6 +1700,7 @@ def special_already_registered(lang):
         t=config["translation"],
         lang=lang,
         special_mode=True,
+        url_for=prestige_special_url_for,
     )
 
 
