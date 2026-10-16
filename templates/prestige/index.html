@@ -1791,8 +1791,6 @@ Prestige Design — 1 Year
 
 
 
-{% if not special_mode %}
-
 <!-- ===================================================== -->
 <!-- INVITATION TILE / QR -->
 <!-- ===================================================== -->
@@ -1858,11 +1856,34 @@ Prestige Design — 1 Year
                 </div>
 
                 <h3>
+                    {% if special_mode %}
+                    {% if lang == 'hy' %}
+                    Պահպանեք QR կոդը՝ մուտքի համար
+                    {% elif lang == 'ru' %}
+                    Сохраните QR-код для входа
+                    {% else %}
+                    Save your QR code for entry
+                    {% endif %}
+                    {% else %}
                     {{ t.qr_title }}
+                    {% endif %}
                 </h3>
 
                 <p>
+                    {% if special_mode %}
+                    {% if lang == 'hy' %}
+                    Խնդրում ենք պահպանել Ձեր էլ․ հասցեին ուղարկված QR կոդը։
+                    Այն պարտադիր անհրաժեշտ է լինելու միջոցառման մուտքի ժամանակ։
+                    {% elif lang == 'ru' %}
+                    Пожалуйста, сохраните QR-код, отправленный на Вашу электронную почту.
+                    Он необходим для входа на мероприятие.
+                    {% else %}
+                    Please keep the QR code sent to your email.
+                    It is required for entry to the event.
+                    {% endif %}
+                    {% else %}
                     {{ t.qr_text }}
+                    {% endif %}
                 </p>
 
             </div>
@@ -1872,8 +1893,6 @@ Prestige Design — 1 Year
     </div>
 
 </section>
-
-{% endif %}
 
 
 
