@@ -1799,7 +1799,7 @@ Prestige Design — 1 Year
 
     <div class="mem-container">
 
-        <div class="prestige-concept-grid">
+        <div class="prestige-concept-grid{% if special_mode %} prestige-concept-grid-special{% endif %}">
 
 
             <figure class="prestige-tile-showcase">
@@ -1813,6 +1813,7 @@ Prestige Design — 1 Year
             </figure>
 
 
+            {% if not special_mode %}
             <div class="prestige-concept-copy">
 
                 <div class="mem-section-label">
@@ -1838,6 +1839,7 @@ Prestige Design — 1 Year
                 </div>
 
             </div>
+            {% endif %}
 
 
         </div>
@@ -6651,5 +6653,31 @@ Prestige Design — 1 Year
         }
     );
 </script>
+
+
+<style>
+    /* =========================================================
+       PRESTIGE SPECIAL — TILE IMAGE ONLY
+       ========================================================= */
+
+    .prestige-concept-grid-special {
+        grid-template-columns:
+            1fr !important;
+
+        gap:
+            0 !important;
+    }
+
+    .prestige-concept-grid-special .prestige-tile-showcase {
+        width:
+            min(560px, 100%);
+
+        justify-self:
+            center;
+
+        margin:
+            0 auto;
+    }
+</style>
 
 {% endblock %}
